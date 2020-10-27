@@ -10,11 +10,11 @@ Data Scientists are not so different from developers and DevSecOps practices can
 
 Developers (Data Scienstist included) can rely on AI for support on their daily work.
 
-Project Thoth [1] develops tools that can enhance developers work, reducing their workload on mundane tasks that can be automatically handlded by bots.
-This tutorial show one example of how AI (Project Thoth) can support AIDevSecOps and it will be focused on the use of an AI centric tool called Elyra [2],
+[Project Thoth][1] develops tools that can enhance developers work, reducing their workload on mundane tasks that can be automatically handlded by bots.
+This tutorial show one example of how AI ([Project Thoth][1]) can support AIDevSecOps and it will be focused on the use of an AI centric tool called [Elyra][2],
 JupyterLab extensions to handle notebooks and Python scripts, backed by AI pipelines.
 
-For the purpose of this tutorial we focus on local use of Elyra [2].
+For the purpose of this tutorial we focus on local use of [Elyra][2].
 
 Preliminary steps
 =================
@@ -71,12 +71,12 @@ GitOps best practices help reproducibility and traecability for all projects ava
 
 Having dependencies clearly stated allow for reusability and portability of notebooks, which can be reused in another projects.
 
-Project Thoth [1] helps developers keep these depencies up to date, moreover improve developers work creating software stacks for their project that satisfies developers requirements.
+[Project Thoth][1] helps developers keep these depencies up to date, moreover improve developers work creating software stacks for their project that satisfies developers requirements.
 These requirments might across the AIDevSecOps lifecycle of a project, therefore the software stack requirements can change as well.
 
 For the purpose of this tutorial the type of recommendation requested is: performance. See `.thoth.yaml file <https://github.com/aicoe-aiops/project-template>`__.
 
-The project template is based on [3].
+The project template used can be found [here][3].
 
 References
 ==========
