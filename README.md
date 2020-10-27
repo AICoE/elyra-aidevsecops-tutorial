@@ -10,7 +10,7 @@ Developers (Data Scienstist included) can rely on AI for support on their daily 
 
 Project Thoth [1] develops tools that can enhance developers work, reducing their workload on mundane tasks that can be automatically handlded by bots.
 This tutorial show one example of how AI (Project Thoth) can support AIDevSecOps and it will be focused on the use of an AI centric tool called Elyra,
-JupyterLab extensions to handle notebooks and Python scripts, backed by AI pipelines. 
+JupyterLab extensions to handle notebooks and Python scripts, backed by AI pipelines.
 
 For the purpose of this tutorial we focus on local use of Elyra.
 
