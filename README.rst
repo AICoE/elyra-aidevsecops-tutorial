@@ -11,14 +11,10 @@ Data Scientists are not so different from developers and DevSecOps practices can
 Developers (Data Scienstist included) can rely on AI for support on their daily work.
 
 Project Thoth [1] develops tools that can enhance developers work, reducing their workload on mundane tasks that can be automatically handlded by bots.
-This tutorial show one example of how AI (Project Thoth) can support AIDevSecOps and it will be focused on the use of an AI centric tool called Elyra,
+This tutorial show one example of how AI (Project Thoth) can support AIDevSecOps and it will be focused on the use of an AI centric tool called Elyra [2],
 JupyterLab extensions to handle notebooks and Python scripts, backed by AI pipelines.
 
-For the purpose of this tutorial we focus on local use of Elyra.
-
-More information about `Project Thoth <https://thoth-station.ninja/>`__.
-
-More information about `Elyra <https://github.com/elyra-ai/elyra>`__.
+For the purpose of this tutorial we focus on local use of Elyra [2].
 
 Preliminary steps
 =================
@@ -80,11 +76,13 @@ These requirments might across the AIDevSecOps lifecycle of a project, therefore
 
 For the purpose of this tutorial the type of recommendation requested is: performance. See `.thoth.yaml file <https://github.com/aicoe-aiops/project-template>`__.
 
-The project template is based on [2].
+The project template is based on [3].
 
 References
 ==========
 
-- [1] `Project Thoth <https://thoth-station.ninja/>`__.
+- [1] `Project Thoth <https://thoth-station.ninja/>`__;
 
-- [2] `Enhanced cookiecutter data science project template <https://github.com/aicoe-aiops/project-template>`__.
+- [2] `Elyra <https://github.com/elyra-ai/elyra>`__;
+
+- [3] `Enhanced cookiecutter data science project template <https://github.com/aicoe-aiops/project-template>`__;
