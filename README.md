@@ -1,10 +1,9 @@
-Elyra AIDevSecOps Tutorial
---------------------------
+
+# Elyra AIDevSecOps Tutorial
 
 As a Data Scientist on a rhel8 workstation, I want to run a toolbox container image, so that I can start developing notebooks with Elyra locally.
 
-AIDevSecOps
-===========
+## AIDevSecOps
 
 Data Scientists are not so different from developers and DevSecOps practices can be applied to MLOps ones. (AIDevSecOps).
 
@@ -16,44 +15,37 @@ JupyterLab extensions to handle notebooks and Python scripts, backed by AI pipel
 
 For the purpose of this tutorial we focus on local use of [Elyra][2].
 
-Preliminary steps
-=================
+## Preliminary steps
 
-Create your toolbox container
-=============================
+### Create your toolbox container
 
 ```shell
-[user@hostname ~]$ toolbox create --image quay.io/thoth-station/thoth-toolbox:v0.5.4
-Created container: thoth-toolbox-v0.5.4
-Enter with: toolbox enter --container thoth-toolbox-v0.5.4
-[user@hostname ~]$
+  toolbox create --image quay.io/thoth-station/thoth-toolbox:v0.5.4
 ```
 
 This will create a container called `thoth-toolbox-<version-id>`.
 
-More information about `Thoth toolbox container <https://github.com/thoth-station/thoth-toolbox>`__.
+More information about [Thoth toolbox container](https://github.com/thoth-station/thoth-toolbox).
 
-Enter the toolbox
-=================
+### Enter the toolbox
 
 ```shell
-[user@hostname ~]$ toolbox enter --container thoth-toolbox-v0.5.4
-⬢[user@toolbox ~]$
+  toolbox enter --container thoth-toolbox-v0.5.4
 ```
 
-Install podman
-==============
+### Install podman
 
-[user@hostname ~]$ sudo dnf install -y podman
+```shell
+  sudo dnf install -y podman
+```
 
 ### Start Elyra to work on your AI project
 
 ```shell
-[user@hostname ~]$ podman run -p 8080:8080 quay.io/thoth-station/s2i-lab-elyra:v0.0.4  start-singleuser.sh --ip="0.0.0.0" --port=8080 --debug
+  podman run -p 8080:8080 quay.io/thoth-station/s2i-lab-elyra:v0.0.4  start-singleuser.sh --ip="0.0.0.0" --port=8080 --debug
 ```
 
-Start AI project
-=================
+## Start AI project
 
 1. Download your data with a Python script
 
@@ -63,8 +55,7 @@ Start AI project
 
 4. Create and run your AI pipeline
 
-GitOps, reproducibility, portability and traceability with AI support
-======================================================================
+## GitOps, reproducibility, portability and traceability with AI support
 
 Nowadays, developers (including Data Scientists) use Git and GitOps practices to store, share all notebooks, sources on development platforms (e.g. GitHub).
 GitOps best practices help reproducibility and traecability for all projects avaialble. One of the most important requirement for reproducibility is dependencies management.
@@ -74,15 +65,16 @@ Having dependencies clearly stated allow for reusability and portability of note
 [Project Thoth][1] helps developers keep these depencies up to date, moreover improve developers work creating software stacks for their project that satisfies developers requirements.
 These requirments might across the AIDevSecOps lifecycle of a project, therefore the software stack requirements can change as well.
 
-For the purpose of this tutorial the type of recommendation requested is: performance. See `.thoth.yaml file <https://github.com/aicoe-aiops/project-template>`__.
+For the purpose of this tutorial the type of recommendation requested is: performance. See [.thoth.yaml file](https://github.com/aicoe-aiops/project-template).
 
-The project template used can be found [here][3].
+The project template used can be found here: [project-template][3].
 
-References
-==========
+## References
 
-- [1] `Project Thoth <https://thoth-station.ninja/>`__;
+ * [Project Thoth][1]
+ * [Elyra][2]
+ * [project-template][3]
 
-- [2] `Elyra <https://github.com/elyra-ai/elyra>`__;
-
-- [3] `Enhanced cookiecutter data science project template <https://github.com/aicoe-aiops/project-template>`__;
+[1]: https://thoth-station.ninja/
+[2]: https://github.com/elyra-ai/elyra
+[3]: https://github.com/aicoe-aiops/project-template
