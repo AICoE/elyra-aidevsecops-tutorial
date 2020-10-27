@@ -7,8 +7,8 @@ runtime_environments:
     operating_system:
       name: rhel
       version: "8"
-    python_version: "3.6"
-    recommendation_type: latest
+    python_version: "3.7"
+    recommendation_type: performance
 
 managers:
   - name: pipfile-requirements
@@ -19,7 +19,10 @@ managers:
   - name: version
     configuration:
       maintainers:
-        - tumido
+        - pacospace
+        - sesheta
+        - goern
+        - fridex
       assignees:
         - sesheta
       labels: [bot]

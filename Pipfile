@@ -3,14 +3,23 @@ name = "pypi"
 url = "https://pypi.org/simple"
 verify_ssl = true
 
+[packages]
+pandas = "*"
+mlxtend = "*"
+tensorflow = "*"
+
 [dev-packages]
 flake8 = "*"
 coverage = "*"
 Sphinx = "*"
-
-[packages]
-src = {editable = true, path = "./"}
-awscli = "*"
+pytest = "*"
+pytest-timeout = "*"
+pytest-cov = "*"
+hypothesis-auto = "*"
+hypothesis = "*"
+pytest-mypy = "*"
+mypy = "*"
+pre-commit = "==2.0.1"
 
 [requires]
-python_version = "3.8"
+python_version = "3.7"
