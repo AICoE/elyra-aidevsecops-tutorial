@@ -65,7 +65,7 @@ Having dependencies clearly stated allow for reusability and portability of note
 [Project Thoth][1] helps developers keep these depencies up to date, moreover improve developers work creating software stacks for their project that satisfies developers requirements.
 These requirments might across the AIDevSecOps lifecycle of a project, therefore the software stack requirements can change as well.
 
-For the purpose of this tutorial the type of recommendation requested is: performance. See [.thoth.yaml file](https://github.com/aicoe-aiops/project-template).
+For the purpose of this tutorial the type of recommendation requested is: performance. See [.thoth.yaml file](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.thoth.yaml).
 
 The project template used can be found here: [project-template][3].
 
