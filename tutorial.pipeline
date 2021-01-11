@@ -13,7 +13,7 @@
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
-            "filename": "elyra-aidevsecops-tutorial/notebooks/download_dataset.ipynb",
+            "filename": "notebooks/download_dataset.ipynb",
             "runtime_image": "tensorflow/tensorflow:2.2.0",
             "env_vars": [
               "DESTINATION_DATASET=elyra-aidevsecops-tutorial/data/raw"
@@ -62,7 +62,7 @@
         "ui_data": {
           "comments": []
         },
-        "version": 1
+        "version": 3
       },
       "runtime_ref": ""
     }
