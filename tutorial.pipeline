@@ -14,17 +14,17 @@
           "op": "execute-notebook-node",
           "app_data": {
             "filename": "notebooks/download_dataset.ipynb",
-            "runtime_image": "tensorflow/tensorflow:2.2.0",
+            "runtime_image": "tensorflow/tensorflow:2.3.0",
             "env_vars": [
-              "DESTINATION_DATASET=elyra-aidevsecops-tutorial/data/raw"
+              "DESTINATION_DATASET=/data/raw"
             ],
             "include_subdirectories": false,
             "invalidNodeError": null,
             "ui_data": {
               "label": "download_dataset",
               "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 269,
-              "y_pos": 273,
+              "x_pos": 217,
+              "y_pos": 214.99998474121094,
               "description": "Notebook file"
             }
           },
@@ -56,11 +56,94 @@
               }
             }
           ]
+        },
+        {
+          "id": "9bc739f6-de92-42f4-9616-cd519108bba3",
+          "type": "execution_node",
+          "op": "execute-notebook-node",
+          "app_data": {
+            "filename": "notebooks/training.ipynb",
+            "runtime_image": "tensorflow/tensorflow:2.3.0",
+            "env_vars": [],
+            "include_subdirectories": false,
+            "invalidNodeError": null,
+            "ui_data": {
+              "label": "training.ipynb",
+              "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
+              "x_pos": 578,
+              "y_pos": 253,
+              "description": "Notebook file"
+            }
+          },
+          "inputs": [
+            {
+              "id": "inPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Input Port"
+                }
+              },
+              "links": [
+                {
+                  "id": "341e4a1a-6584-44ae-a503-53e8e98beb61",
+                  "node_id_ref": "6d70e272-ddb8-46ae-9493-ba07958df428",
+                  "port_id_ref": "outPort"
+                }
+              ]
+            }
+          ],
+          "outputs": [
+            {
+              "id": "outPort",
+              "app_data": {
+                "ui_data": {
+                  "cardinality": {
+                    "min": 0,
+                    "max": -1
+                  },
+                  "label": "Output Port"
+                }
+              }
+            }
+          ]
         }
       ],
       "app_data": {
         "ui_data": {
-          "comments": []
+          "comments": [
+            {
+              "id": "e7c591e9-9549-45e5-bb94-d995fc503de1",
+              "x_pos": 79,
+              "y_pos": 102.99999618530273,
+              "width": 175,
+              "height": 42,
+              "class_name": "d3-comment-rect",
+              "content": "Download MNIST dataset",
+              "associated_id_refs": [
+                {
+                  "node_ref": "6d70e272-ddb8-46ae-9493-ba07958df428"
+                }
+              ]
+            },
+            {
+              "id": "395ffe14-2fc0-4897-9f09-9b1ea270b642",
+              "x_pos": 508.99998474121094,
+              "y_pos": 121.99999618530273,
+              "width": 175,
+              "height": 42,
+              "class_name": "d3-comment-rect",
+              "content": "train CNN model",
+              "associated_id_refs": [
+                {
+                  "node_ref": "9bc739f6-de92-42f4-9616-cd519108bba3"
+                }
+              ]
+            }
+          ]
         },
         "version": 3
       },
