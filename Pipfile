@@ -5,8 +5,8 @@ verify_ssl = true
 
 [packages]
 pandas = "*"
-mlxtend = "*"
 tensorflow = "*"
+matplotlib = "*"
 
 [dev-packages]
 flake8 = "*"
@@ -22,4 +22,4 @@ mypy = "*"
 pre-commit = "==2.0.1"
 
 [requires]
-python_version = "3.7"
+python_version = "3.8"
