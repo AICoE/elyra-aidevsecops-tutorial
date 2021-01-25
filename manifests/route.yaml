@@ -1,0 +1,9 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: aidevsecops-tutorial
+spec:
+  to:
+    kind: Service
+    name: aidevsecops-tutorial

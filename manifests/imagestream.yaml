@@ -1,12 +1,8 @@
-kind: ImageStream
+---
 apiVersion: image.openshift.io/v1
+kind: ImageStream
 metadata:
-  name: <CHANGE_ME>
+  name: aidevsecops-tutorial
 spec:
   lookupPolicy:
     local: true
-  tags:
-    - name: latest
-      from:
-        kind: DockerImage
-        name: <QUAY_IMAGE_URL>

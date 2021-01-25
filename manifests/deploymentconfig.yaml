@@ -1,0 +1,50 @@
+---
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: aidevsecops-tutorial
+spec:
+  replicas: 1
+  selector:
+    service: aidevsecops-tutorial
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: aidevsecops-tutorial
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
+  template:
+    metadata:
+      labels:
+        service: aidevsecops-tutorial
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: aidevsecops-tutorial
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
+    spec:
+      containers:
+        - name: aidevsecops-tutorial
+          image: aidevsecops-tutorial
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "384Mi"
+              cpu: "2"
+            limits:
+              memory: "768Mi"
+              cpu: "2"
+          readinessProbe:
+            httpGet:
+              path: "/metrics"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 30
+            periodSeconds: 10
+            timeoutSeconds: 10
+          livenessProbe:
+            httpGet:
+              path: "/metrics"
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 45
+            periodSeconds: 10
+            timeoutSeconds: 10
+  test: false
