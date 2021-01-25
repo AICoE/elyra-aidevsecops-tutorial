@@ -1,14 +1,29 @@
 host: khemenu.thoth-station.ninja
-tls_verify: false
+tls_verify: true
 requirements_format: pipenv
 
 runtime_environments:
-  - name: rhel:8
+  - name: cleaning_data
     operating_system:
       name: rhel
       version: "8"
-    python_version: "3.7"
+    python_version: "3.8"
+    recommendation_type: latest
+
+  - name: training
+    operating_system:
+      name: rhel
+      version: "8"
+    python_version: "3.8"
     recommendation_type: performance
+
+  - name: inference
+    operating_system:
+      name: rhel
+      version: "8"
+    python_version: "3.8"
+    recommendation_type: security
+
 
 managers:
   - name: pipfile-requirements
