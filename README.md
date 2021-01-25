@@ -47,13 +47,13 @@ More information about [Thoth toolbox container](https://github.com/thoth-statio
 
 ## Start AI project
 
-1. Download your data with a Python script
+1. Download your data with a Python script or Jupyter notebook;
 
-2. Process your data in a Jupyter notebook
+2. Train the model in a Jupyter notebook;
 
-3. Train the model in a Jupyter notebook
+3. Create and run your AI pipeline;
 
-4. Create and run your AI pipeline
+4. Deploy your application.
 
 ## GitOps, reproducibility, portability and traceability with AI support
 

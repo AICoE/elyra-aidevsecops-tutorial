@@ -7,8 +7,11 @@ verify_ssl = true
 pandas = "*"
 tensorflow = "*"
 matplotlib = "*"
+prometheus-client = "*"
+flask-cors = "*"
 
 [dev-packages]
+jupyter = "*"
 flake8 = "*"
 coverage = "*"
 Sphinx = "*"
