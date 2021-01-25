@@ -47,13 +47,41 @@ More information about [Thoth toolbox container](https://github.com/thoth-statio
 
 ## Start AI project
 
-1. Download your data with a Python script or Jupyter notebook;
+1. Download your data with a [Python script](https://github.com/thoth-station/elyra-aidevsecops-tutorial/src/data/download_dataset_from_tf.py) or [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/notebooks/download_dataset.ipynb);
 
-2. Train the model in a Jupyter notebook;
+2. Train the model in a [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/notebooks/training.ipynb) and store model locally;
 
-3. Create and run your AI pipeline;
+3. Create and run your [AI pipeline](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tutorial.pipeline) on Elyra to retrain your model automatically using step 1. and 2.;
 
-4. Deploy your application.
+4. Create your [application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/wsgi.py) to expose endpoints (e.g /predict and /metrics).
+
+5. Deploy your application.
+
+## Test endpoints locally
+
+1. Install dependencies using pipenv
+
+```shell
+  pipenv install
+```
+
+or micropipenv:
+
+```shell
+  micropipenv install
+```
+
+2. Start application.
+
+```shell
+  pipenv run python3 wsgi.py
+```
+
+3. Run test that will show the input image and then return the prediction from the model.
+
+```shell
+  pipenv run python3 src/test.py
+```
 
 ## GitOps, reproducibility, portability and traceability with AI support
 
@@ -67,7 +95,7 @@ These requirments might across the AIDevSecOps lifecycle of a project, therefore
 
 For the purpose of this tutorial the type of recommendation requested is: performance. See [.thoth.yaml file](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.thoth.yaml).
 
-The project template used can be found here: [project-template][3].
+The project template used can be found here: [project-template][3] which show correlation between data scientists requirements and AI dev ops engineers ones.
 
 ## References
 
