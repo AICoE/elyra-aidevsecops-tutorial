@@ -1,0 +1,14 @@
+---
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: aidevsecops-tutorial
+spec:
+  tags:
+  - name: latest
+    from:
+      kind: DockerImage
+      name: quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.0.1
+    importPolicy: {}
+    referencePolicy:
+      type: Source
