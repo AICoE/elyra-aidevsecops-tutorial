@@ -30,16 +30,13 @@ import numpy as np
 (x_train, y_train), (x_test, y_test) = mnist.load_data()
 
 # Convert to float32.
-x_test  = np.array(x_test, np.float32)
+x_test = np.array(x_test, np.float32)
 
 # Normalize images value from [0, 255] to [0, 1].
-x_test = x_test / 255.
+x_test = x_test / 255.0
 
-addr = os.getenv(
-    "THOTH_AIDEVSECOPS_TUTORIAL_MODEL_URL",
-    'http://localhost:8080'
-)
-test_url = addr + '/predict'
+addr = os.getenv("THOTH_AIDEVSECOPS_TUTORIAL_MODEL_URL", "http://localhost:8080")
+test_url = addr + "/predict"
 
 # prepare headers for http request
 headers = {"content-type": "application/json"}
@@ -49,7 +46,7 @@ img = x_test[5890]
 data = json.dumps({"inputs": img.tolist()})
 
 # Check which image is sent
-plt.imshow(img, cmap='gray')
+plt.imshow(img, cmap="gray")
 plt.show(block=False)
 plt.pause(1)
 plt.close()
