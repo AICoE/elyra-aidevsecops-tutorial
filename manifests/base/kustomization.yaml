@@ -2,10 +2,10 @@ apiVersion: kustomize.config.k8s.io/v1beta1
 kind: Kustomization
 commonLabels:
   app.kubernetes.io/name: thoth
-  app.kubernetes.io/component: aidevsecops-tutorial
+  app.kubernetes.io/component: elyra-aidevsecops-tutorial
   app.kubernetes.io/managed-by: aicoe-thoth-devops
 resources:
   - deploymentconfig.yaml
-  - imagestreamtag.yaml
+  - imagestream.yaml
   - route.yaml
   - service.yaml
