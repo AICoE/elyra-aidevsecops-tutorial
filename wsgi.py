@@ -29,7 +29,7 @@ from flask import request
 from flask import redirect
 
 from prometheus_flask_exporter import PrometheusMetrics
-from prometheus_client import generate_latest, Gauge
+from prometheus_client import generate_latest
 
 import numpy as np
 
@@ -47,18 +47,17 @@ application = Flask("aidevsecops-tutorial")
 # Add Cross Origin Request Policy to all
 CORS(application)
 
-metrics = PrometheusMetrics(
-    application,
-    group_by="endpoint"
-)
+prometheus_metrics = PrometheusMetrics(application, group_by="endpoint")
 
 # static information as metric
-metrics.info("aidevsecops_tutorial_app_version", "App version deployed", version=__version__)
+prometheus_metrics.info(
+    "aidevsecops_tutorial_app_version", "App version deployed", version=__version__
+)
 
 model = Model()
 
 # custom metric to expose model version
-model_version_metric = metrics.info(
+model_version_metric = prometheus_metrics.info(
     "aidevsecops_tutorial_model_version",
     "Model version deployed",
     model_version=model.model_version,  # label
