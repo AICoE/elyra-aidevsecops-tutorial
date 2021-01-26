@@ -1,7 +1,7 @@
 {
     "_meta": {
         "hash": {
-            "sha256": "3a8a34b41de5c17d63e387359c14cef5a1274329e1743271c732d0a35b5365ce"
+            "sha256": "246934557b9b1826371729328e807e88afa0ebb7bb2907939dd5ddf0348746ee"
         },
         "pipfile-spec": 6,
         "requires": {
@@ -480,6 +480,13 @@
             ],
             "index": "pypi",
             "version": "==0.9.0"
+        },
+        "prometheus-flask-exporter": {
+            "hashes": [
+                "sha256:01c8282eb695596531f29f4869c1b127e1918af4f191f1215c4b0b0d081f757e"
+            ],
+            "index": "pypi",
+            "version": "==0.18.1"
         },
         "protobuf": {
             "hashes": [
