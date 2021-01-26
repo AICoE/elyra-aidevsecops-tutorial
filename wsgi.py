@@ -58,9 +58,9 @@ model = Model()
 
 # custom metric to expose model version
 model_version_metric = prometheus_metrics.info(
-    "aidevsecops_tutorial_model_version",
+    "aidevsecops_tutorial_model_info",
     "Model version deployed",
-    model_version=model.model_version,  # label
+    version=model.model_version,  # label
 )
 
 
