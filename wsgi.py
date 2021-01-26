@@ -28,7 +28,8 @@ from flask import Flask
 from flask import request
 from flask import redirect
 
-from prometheus_client import generate_latest, Gauge
+from prometheus_flask_exporter import PrometheusMetrics
+from prometheus_client import generate_latest
 
 import numpy as np
 
@@ -46,15 +47,28 @@ application = Flask("aidevsecops-tutorial")
 # Add Cross Origin Request Policy to all
 CORS(application)
 
-app_version = Gauge(
-    "aidevsecops_tutorial_app_version", "App version deployed", ["app_version"]
-)
+prometheus_metrics = PrometheusMetrics(application, group_by="endpoint")
 
-model_version = Gauge(
-    "aidevsecops_tutorial_model_version", "Model version deployed", ["model_version"]
+# static information as metric
+prometheus_metrics.info(
+    "aidevsecops_tutorial_app_version", "App version deployed", version=__version__
 )
 
 model = Model()
+
+# custom metric to expose model version
+model_version_metric = prometheus_metrics.info(
+    "aidevsecops_tutorial_model_version",
+    "Model version deployed",
+    model_version=model.model_version,  # label
+)
+
+
+@application.before_first_request
+def before_first_request_callback():
+    """Register callback, runs before first request to this service."""
+    model_version_metric.set(1)
+    _LOGGER.info("Running once before first request to expose metric.")
 
 
 @application.after_request
@@ -88,9 +102,6 @@ def predict():
 @application.route("/metrics")
 def metrics():
     """Return the Prometheus Metrics."""
-    app_version.labels(__version__).set(1)
-    model_version.labels(model.model_version).set(1)
-
     return generate_latest().decode("utf-8")
 
 

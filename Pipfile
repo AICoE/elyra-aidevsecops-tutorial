@@ -10,6 +10,7 @@ matplotlib = "*"
 prometheus-client = "*"
 flask-cors = "*"
 gunicorn = "*"
+prometheus-flask-exporter = "*"
 
 [dev-packages]
 flake8 = "*"
