@@ -38,8 +38,7 @@ _LOGGER = logging.getLogger("aidevsecops-tutorial")
 _LOGGER.info("Thoth AIDevSecOps Tutorial v%s", __version__)
 
 _GRAFANA_REDIRECT_URL = os.getenv(
-    "THOTH_AIDEVSECOPS_GRAFANA_REDIRECT_URL",
-    "https://grafana.datahub.redhat.com/"
+    "THOTH_AIDEVSECOPS_GRAFANA_REDIRECT_URL", "https://grafana.datahub.redhat.com/"
 )
 
 application = Flask("aidevsecops-tutorial")
@@ -48,15 +47,11 @@ application = Flask("aidevsecops-tutorial")
 CORS(application)
 
 app_version = Gauge(
-    "aidevsecops_tutorial_app_version",
-    "App version deployed",
-    ["app_version"]
+    "aidevsecops_tutorial_app_version", "App version deployed", ["app_version"]
 )
 
 model_version = Gauge(
-    "aidevsecops_tutorial_model_version",
-    "Model version deployed",
-    ["model_version"]
+    "aidevsecops_tutorial_model_version", "Model version deployed", ["model_version"]
 )
 
 model = Model()
@@ -78,15 +73,15 @@ def main():
 @application.route("/predict", methods=["POST"])
 def predict():
     """Evaluate prediction."""
-    image_list = request.get_json()['inputs']
+    image_list = request.get_json()["inputs"]
 
     # reshape
     image_array = np.array(image_list)
 
     prediction, probability = model.predict(image_array=image_array)
     return {
-        'response': f"The number in the image is {str(prediction)}"
-                    f" with probability {str(probability)}"
+        "response": f"The number in the image is {str(prediction)}"
+        f" with probability {str(probability)}"
     }
 
 

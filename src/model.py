@@ -23,23 +23,23 @@ import os
 from pathlib import Path
 
 import tensorflow as tf
-import numpy as np
 
 
 class Model:
     """Model to handle prediction for MNIST classification."""
 
     def __init__(self):
+        """Load model once when app starts."""
         # Path to data
         directory_path = Path.cwd()
         trained_model_path = directory_path.joinpath(
-            str(os.environ.get(
-                "THOTH_AIDEVSECOPS_TRAINED_MODEL_PATH", "models"
-            ))
+            str(os.environ.get("THOTH_AIDEVSECOPS_TRAINED_MODEL_PATH", "models"))
         )
-        model_version = str(os.environ.get(
-            "THOTH_AIDEVSECOPS_MODEL_VERSION", "210124112759-d97fd1f46b13ee40"
-        ))
+        model_version = str(
+            os.environ.get(
+                "THOTH_AIDEVSECOPS_MODEL_VERSION", "210124112759-d97fd1f46b13ee40"
+            )
+        )
 
         loaded_model = tf.keras.models.load_model(
             f"{trained_model_path}/{model_version}", compile=False
