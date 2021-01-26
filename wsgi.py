@@ -39,7 +39,7 @@ _LOGGER = logging.getLogger("aidevsecops-tutorial")
 _LOGGER.info("Thoth AIDevSecOps Tutorial v%s", __version__)
 
 _GRAFANA_REDIRECT_URL = os.getenv(
-    "THOTH_AIDEVSECOPS_GRAFANA_REDIRECT_URL", "https://grafana.datahub.redhat.com/"
+    "THOTH_AIDEVSECOPS_GRAFANA_REDIRECT_URL", "https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/README.md"
 )
 
 application = Flask("aidevsecops-tutorial")
