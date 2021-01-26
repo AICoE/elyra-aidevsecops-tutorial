@@ -10,6 +10,6 @@ build:
   registry-secret: thoth-station-thoth-pusher-secret
 deploy:
   project-org: "thoth-station"
-  project-name: "thoth-deployment-examples"
+  project-name: "elyra-aidevsecops-tutorial"
   image-name: "elyra-aidevsecops-tutorial"
   overlay-contextpath: "elyra-aidevsecops-tutorial/manifests/overlays/test/imagestreamtag.yaml"
