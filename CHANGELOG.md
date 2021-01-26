@@ -17,3 +17,9 @@
 * Adjust deploy in .aicoe.yaml for handling correctly the overlays context path (#29)
 * Add gunicorn (#32)
 * Add bot approvers for release (#27)
+
+## Release 0.2.1 (2021-01-26T17:38:06)
+### Features
+* Update wsgi.py (#40)
+* Adjust context path for image tag update (#39)
+* Add WIP (#37)
