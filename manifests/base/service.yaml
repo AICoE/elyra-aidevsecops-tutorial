@@ -2,11 +2,11 @@
 kind: Service
 apiVersion: v1
 metadata:
-  name: aidevsecops-tutorial
+  name: elyra-aidevsecops-tutorial
 spec:
   ports:
     - port: 80
       protocol: TCP
       targetPort: 8080
   selector:
-    service: aidevsecops-tutorial
+    service: elyra-aidevsecops-tutorial

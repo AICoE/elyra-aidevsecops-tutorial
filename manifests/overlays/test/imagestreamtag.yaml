@@ -2,7 +2,7 @@
 apiVersion: image.openshift.io/v1
 kind: ImageStream
 metadata:
-  name: aidevsecops-tutorial
+  name: elyra-aidevsecops-tutorial
 spec:
   tags:
   - name: latest

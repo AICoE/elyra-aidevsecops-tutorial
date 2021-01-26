@@ -2,25 +2,25 @@
 kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
-  name: aidevsecops-tutorial
+  name: elyra-aidevsecops-tutorial
 spec:
   replicas: 1
   selector:
-    service: aidevsecops-tutorial
+    service: elyra-aidevsecops-tutorial
     app.kubernetes.io/name: thoth
-    app.kubernetes.io/component: aidevsecops-tutorial
+    app.kubernetes.io/component: elyra-aidevsecops-tutorial
     app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
-        service: aidevsecops-tutorial
+        service: elyra-aidevsecops-tutorial
         app.kubernetes.io/name: thoth
-        app.kubernetes.io/component: aidevsecops-tutorial
+        app.kubernetes.io/component: elyra-aidevsecops-tutorial
         app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       containers:
-        - name: aidevsecops-tutorial
-          image: aidevsecops-tutorial
+        - name: elyra-aidevsecops-tutorial
+          image: elyra-aidevsecops-tutorial
           ports:
             - containerPort: 8080
               protocol: TCP
