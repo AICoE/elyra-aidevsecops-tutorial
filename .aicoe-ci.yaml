@@ -12,4 +12,4 @@ deploy:
   project-org: "thoth-station"
   project-name: "elyra-aidevsecops-tutorial"
   image-name: "elyra-aidevsecops-tutorial"
-  overlay-contextpath: "elyra-aidevsecops-tutorial/manifests/overlays/test/imagestreamtag.yaml"
+  overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
