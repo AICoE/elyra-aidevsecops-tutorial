@@ -51,7 +51,7 @@ prometheus_metrics = PrometheusMetrics(application, group_by="endpoint")
 
 # static information as metric
 prometheus_metrics.info(
-    "aidevsecops_tutorial_app_version", "App version deployed", version=__version__
+    "aidevsecops_tutorial_app_info", "App version deployed", version=__version__
 )
 
 model = Model()
