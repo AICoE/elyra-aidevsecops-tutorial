@@ -21,6 +21,9 @@ spec:
       containers:
         - name: elyra-aidevsecops-tutorial
           image: elyra-aidevsecops-tutorial
+          env:
+            - name: "APP_FILE"
+              value: "wsgi.py"
           ports:
             - containerPort: 8080
               protocol: TCP
