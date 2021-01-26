@@ -34,7 +34,7 @@ The project template used can be found here: [project-template][3] which show co
 
 - The use of github templates for actions that can be automated by bots (e.g. release (patch, minor, major), deliver container image, dependency updates)
 
-- The use of overlays directory highlights the different requirements that are used during ML project lifecycle. The management and optimization of each step can be done automatically using Thoth recommendation engine and bots. Different images corresponding to the overlays can be created automatically and used in a pipeline (e.g Elyra using Kubeflow Pipeline).
+- The use of overlays directory ([WIP](https://github.com/aicoe-aiops/project-template/issues/28)) highlights the different requirements that are used during ML project lifecycle. The management and optimization of each step can be done automatically using Thoth recommendation engine and bots. Different images corresponding to the overlays can be created automatically and used in a pipeline (e.g Elyra using Kubeflow Pipeline).
 
 ## Preliminary steps
 
