@@ -11,7 +11,6 @@ prometheus-client = "*"
 flask-cors = "*"
 
 [dev-packages]
-jupyter = "*"
 flake8 = "*"
 coverage = "*"
 Sphinx = "*"
