@@ -39,7 +39,8 @@ _LOGGER = logging.getLogger("aidevsecops-tutorial")
 _LOGGER.info("Thoth AIDevSecOps Tutorial v%s", __version__)
 
 _GRAFANA_REDIRECT_URL = os.getenv(
-    "THOTH_AIDEVSECOPS_GRAFANA_REDIRECT_URL", "https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/README.md"
+    "THOTH_AIDEVSECOPS_GRAFANA_REDIRECT_URL",
+    "https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/README.md",
 )
 
 application = Flask("aidevsecops-tutorial")
@@ -51,16 +52,16 @@ prometheus_metrics = PrometheusMetrics(application, group_by="endpoint")
 
 # static information as metric
 prometheus_metrics.info(
-    "aidevsecops_tutorial_app_version", "App version deployed", version=__version__
+    "aidevsecops_tutorial_app_info", "App version deployed", version=__version__
 )
 
 model = Model()
 
 # custom metric to expose model version
 model_version_metric = prometheus_metrics.info(
-    "aidevsecops_tutorial_model_version",
+    "aidevsecops_tutorial_model_info",
     "Model version deployed",
-    model_version=model.model_version,  # label
+    version=model.model_version,  # label
 )
 
 
