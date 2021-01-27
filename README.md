@@ -47,8 +47,11 @@ From [Open Data Hub][5] tools in particular we will use:
 The use of the notebook is powered by Thoth Extension for Dependency Management on JupyterLab ([WIP](https://github.com/thoth-station/jupyterlab-requirements/issues/53)).
 If you want to know more, have a look at this [video](https://www.youtube.com/watch?v=IBzTOP4TCdA).
 
-## Automated piipelines and bots
+## Automated pipelines and bots
 
+- [Kebechet][7] Bot
+
+- [AICoE CI Pipeline](https://github.com/AICoE/aicoe-ci)
 
 # Tutorial
 
@@ -58,13 +61,11 @@ In this tutorial we rely on [project-template][3] as described above to have a c
 
 ## 2. Start working on your project through Elyra
 
-
 Get access to Operate First environment and become a user there, so that you can benefit from all the tooling and support and you can focus on your AI project.
 
 1. Access [Operate First][4] environment.
 
 2. Access [JupyterHub][6] and select Elyra image.
-
 
 ## 3. Start creating your code and notebooks
 
@@ -105,9 +106,9 @@ These are the typical steps you need:
 
 1. Create all manifests for deployment (e.g. deployment, service, routes)
 
-2. Request access to a namespace
+2. [Request access to a namespace](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_to_cluster.md&title=)
 
-3. Request support for deployment of your application.
+3. [Request support for deployment of your application](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=).
 
 ## 7. Test prediction
 
