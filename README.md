@@ -36,7 +36,7 @@ The project template used can be found here: [project-template][3] which show co
 
 ## Environment and tools
 
-This tutorial has been created using [Operate First][4] infrustructure and [Open Data Hub][5] tools provided, available on [Operate First][4].
+This tutorial has been created using [Operate First][4] infrustructure and [Open Data Hub][5] tools provided, which is available on [Operate First][4].
 If you are interested in using it, just get in touch, it's an open source initiative.
 
 From [Open Data Hub][5] tools in particular we will use:
@@ -57,11 +57,11 @@ If you want to know more, have a look at this [video](https://www.youtube.com/wa
 
 ## 1. Set your project using a template
 
-In this tutorial we rely on [project-template][3] as described above to have a common structures that easily understood by data scientists and dev ops in order to find all the bits required from ML lifecycle and from the DevOps lifecycle.
+In this tutorial we rely on [project-template][3] as described above to have a common structures that can be easily used by data scientists and dev ops in order to find all the bits required from ML lifecycle and from the DevOps lifecycle.
 
 ## 2. Start working on your project through Elyra
 
-Get access to Operate First environment and become a user there, so that you can benefit from all the tooling and support and you can focus on your AI project.
+Get access to Operate First environment and become a user there, so that you can benefit from all the tools and support and you can focus on your AI project.
 
 1. Access [Operate First][4] environment.
 
@@ -77,8 +77,9 @@ Get access to Operate First environment and become a user there, so that you can
 
 Whenever you finish working on your project or you need to stop, push your changes to GitHub, so that all your work can be traced and not lost. In order to do that:
 
-- You can use your token
-- You can create an SSH key and linked it to your GitHub project.
+- You can use your Github token.
+
+- You can create an SSH key and link it to your GitHub project.
 
 ## 4. Create an application to expose your model (simple case using Flask for example)
 
