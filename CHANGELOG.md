@@ -23,3 +23,8 @@
 * Update wsgi.py (#40)
 * Adjust context path for image tag update (#39)
 * Add WIP (#37)
+
+## Release 0.2.2 (2021-01-27T13:54:16)
+### Features
+* Update wsgi.py (#42)
+* :ship: Deploy the Tag v0.2.1 for elyra-aidevsecops-tutorial
