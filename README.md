@@ -47,17 +47,19 @@ From [Open Data Hub][5] tools in particular we will use:
 The use of the notebook is powered by Thoth Extension for Dependency Management on JupyterLab ([WIP](https://github.com/thoth-station/jupyterlab-requirements/issues/53)).
 If you want to know more, have a look at this [video](https://www.youtube.com/watch?v=IBzTOP4TCdA).
 
-## Automated pipelines and bots
+## Automated pipelines and bots for your GitHub project
 
-- [Kebechet][7] Bot
+- [Kebechet Bot][7] to keep your dependencies fresh and up to date receiving recommendations and justifications using AI.
 
-- [AICoE CI Pipeline](https://github.com/AICoE/aicoe-ci)
+- [AICoE CI Pipeline](https://github.com/AICoE/aicoe-ci) to support your AI project lifecycle.
+
+All these tools are integrated with the [project-template][3], therefore most of the things are already set for you.
 
 # Tutorial
 
 ## 1. Set your project using a template
 
-In this tutorial we rely on [project-template][3] as described above to have a common structures that can be easily used by data scientists and dev ops in order to find all the bits required from ML lifecycle and from the DevOps lifecycle.
+In this tutorial we rely on [project-template][3] as described above to have a common structures that can be easily used by data scientists and devops in order to find all the bits required from ML lifecycle and from the DevOps lifecycle.
 
 ## 2. Start working on your project through Elyra
 
@@ -67,9 +69,13 @@ Get access to Operate First environment and become a user there, so that you can
 
 2. Access [JupyterHub][6] and select Elyra image.
 
+Each of the following steps is iterative if you are following ML Ops lifecycle (e.g. you need to change your model, new dependency is added). Using the tools described you can see that using AI, bot and automated pipelines will off load lot of work from developers (including data scientists) that can be focused on other more important aspects of the AI project.
+
 ## 3. Start creating your code and notebooks
 
-1. Download your data with a [Python script](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/src/data/download_dataset_from_tf.py) or [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/download_dataset.ipynb);
+For the purpose of this tutorial we used the following steps:
+
+1. Download your data with a [Python script](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/src/data/download_dataset_from_tf.py) or [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/notebooks/download_dataset.ipynb);
 
 2. Train the model in a [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/training.ipynb) and store model locally;
 
@@ -85,11 +91,11 @@ Whenever you finish working on your project or you need to stop, push your chang
 
 Create your [application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/wsgi.py) to expose endpoints (e.g `/predict` and `/metrics`).
 
-## 5. Create an image
+## Use automated pipelines and benefit from AI and bots
 
-Using Thoth/AICoE tooling you can rely on bots helping you:
+Using AICoE tooling you can rely on bots helping you:
 
-1. Install [Kebechet][7] bot to benefit from automatic pipelines and dependency management:
+Install [Kebechet Bot][7] to benefit from automatic pipelines and dependency management updates:
 
 - you can use Kebechet to create release about your project (have a look at [.thoth.yaml](https://github.com/thoth-station/thamos) description);
 
@@ -101,17 +107,19 @@ Using Thoth/AICoE tooling you can rely on bots helping you:
 
 - you get smart changelog creation using AI model in Kebechet after you ask for release.
 
-## 6. Deploy your model on Operate First
+## 5. Deploy your model on Operate First
 
 These are the typical steps you need:
 
-1. Create all manifests for deployment (e.g. deployment, service, routes)
+1. Create all manifests for your projects (e.g. deployment, service, routes, workflows, pipelines).
 
 2. [Request access to a namespace](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_to_cluster.md&title=)
 
 3. [Request support for deployment of your application](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=).
 
-## 7. Test prediction
+In this way [ArgoCD](https://argoproj.github.io/argo-cd/) will make sure your application is always in sync with your changes, once you make a new release (e.g. you changed your model, you added a new metric, you added a new feature).
+
+## 6. Test prediction
 
 If you want to test the deployment:
 
@@ -147,12 +155,11 @@ or micropipenv:
   pipenv run python3 src/test.py
 ```
 
-## 8. Monitor your model and application with Prometheus and Grafana
+## 7. Monitor your model and application with Prometheus and Grafana
 
 1. Request Prometheus scraping the model endpoint `/metrics`.
 
 2. Request creation of new Grafana dashbord for the model to see how the application and model are performing.
-
 
 ## References
 
@@ -162,7 +169,7 @@ or micropipenv:
  * [Operate First][4]
  * [Open Data Hub][5]
  * [JupyterHub][6]
- * [Kebechet][7]
+ * [Kebechet Bot][7]
 
 [1]: https://thoth-station.ninja/
 [2]: https://github.com/elyra-ai/elyra
