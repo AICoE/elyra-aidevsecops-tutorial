@@ -110,27 +110,27 @@ For the purpose of this tutorial you fill find the following steps:
 
 4. Create runtime to be used in Kubeflow pipeline.
 
-    - Select the Runtime Tab (there are more buttons to see Runtimes in the menu tab or in the pipeline editor as well):
+Select the Runtime Tab (there are more buttons to see Runtimes in the menu tab or in the pipeline editor as well):
 
 <div style="text-align:center">
 <img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
 </div>
 
-    - Start creating new Runtime:
+Start creating new Runtime:
 
 <div style="text-align:center">
 <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
 </div>
 
-    - Insert all inputs for the Runtime:
+Insert all inputs for the Runtime:
 
 <div style="text-align:center">
 <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
 </div>
 
-    (WIP) Show inputs for Kubeflow pipeline.
+(WIP) Show inputs for Kubeflow pipeline.
 
-    (WIP) Show how to [create a new bucket](https://github.com/operate-first/support/blob/main/docs/claiming_object_store.md) for storing your results.
+(WIP) Show how to [create a new bucket](https://github.com/operate-first/support/blob/main/docs/claiming_object_store.md) for storing your results.
 
 5. Run your pipeline and move to Kubeflow Pipeline UI provided to see what is happening.
 
@@ -185,33 +185,33 @@ If you want to test the application created in this tutorial from your local mac
 
 1. Install dependencies using [Pipenv](https://github.com/pypa/pipenv)
 
-        ```shell
-          pipenv install
-        ```
+```bash
+  pipenv install
+```
 
-    or [micropipenv](https://pypi.org/project/micropipenv/):
+or [micropipenv](https://pypi.org/project/micropipenv/):
 
-        ```shell
-          micropipenv install
-        ```
+```bash
+  micropipenv install
+```
 
 2. Start application.
 
-        ```shell
-          pipenv run python3 wsgi.py
-        ```
+```bash
+  pipenv run python3 wsgi.py
+```
 
 3. Run test that will show the input image and then return the prediction from the model.
 
-        ```shell
-          pipenv run python3 src/test.py
-        ```
+```bash
+  pipenv run python3 src/test.py
+```
 
 If you want to test the application deployed you need to provide the URL:
 
-        ```shell
-          THOTH_AIDEVSECOPS_TUTORIAL_MODEL_URL=<MODEL_DEPLOYED_URL> pipenv run python3 src/test.py
-        ```
+```bash
+  THOTH_AIDEVSECOPS_TUTORIAL_MODEL_URL=<MODEL_DEPLOYED_URL> pipenv run python3 src/test.py
+```
 
 ## 7. Monitor your model and application with Prometheus and Grafana
 
