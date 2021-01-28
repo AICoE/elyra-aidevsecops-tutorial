@@ -68,9 +68,9 @@ Get access to Operate First environment and become a user there, so that you can
 
 2. Access [JupyterHub][4] and select Elyra image.
 
-        <div style="text-align:center">
-        <img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubUI.png">
-        </div>
+<div style="text-align:center">
+<img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubUI.png">
+</div>
 
 Each of the following steps is iterative if you are following ML Ops lifecycle (e.g. you need to change your model, new dependency is added). Using the tools described you can see that using AI, bot and automated pipelines will off load lot of work from developers (including data scientists) that can be focused on other more important aspects of the AI project.
 
@@ -80,15 +80,15 @@ Once you are logged in into Elyra image provided by ODH, you can use the Git ext
 
 - Click the Git extension button:
 
-      <div style="text-align:center">
-      <img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
-      </div>
+<div style="text-align:center">
+<img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
+</div>
 
 - Insert the link to the GitHub repo you want to clone:
 
-      <div style="text-align:center">
-      <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
-      </div>
+<div style="text-align:center">
+<img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
+</div>
 
 ## Manage dependencies for your new notebook
 
@@ -112,21 +112,21 @@ For the purpose of this tutorial you fill find the following steps:
 
     - Select the Runtime Tab (there are more buttons to see Runtimes in the menu tab or in the pipeline editor as well):
 
-          <div style="text-align:center">
-          <img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
-          </div>
+<div style="text-align:center">
+<img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
+</div>
 
     - Start creating new Runtime:
 
-          <div style="text-align:center">
-          <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
-          </div>
+<div style="text-align:center">
+<img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
+</div>
 
     - Insert all inputs for the Runtime:
 
-          <div style="text-align:center">
-          <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
-          </div>
+<div style="text-align:center">
+<img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
+</div>
 
     (WIP) Show inputs for Kubeflow pipeline.
 
