@@ -7,7 +7,7 @@ The demo application used is the "hello world" for AI: MNIST Classication
 
 ## Project templates
 
-The project template used can be found here: [project-template].
+The project template used can be found here: [project-template][1].
 It shows correlation between data scientists (e.g. data, notebooks, models) requirements and AI dev ops engineers ones (e.g. manifests).
 Using a project template allows for shareability because anyone taking the project or look for something specific about the project can immediately identify
 all the resources needed.
@@ -35,7 +35,7 @@ which can be reused in another projects and shared safely with other Data Scient
 
 (WIP) If you want to know more about this issue in the data science domain, have a look at this [article](https://github.com/thoth-station/jupyterlab-requirements).
 
-[Project Thoth][1] helps developers keep these dependencies up to date integrating its recommendation in developers daily tools. If you want to know more have a look [here](https://thoth-station.ninja/docs/developers/adviser/integration.html).
+[Project Thoth][6] helps developers keep these dependencies up to date integrating its recommendation in developers daily tools. If you want to know more have a look [here](https://thoth-station.ninja/docs/developers/adviser/integration.html).
 Thanks to these tooling, the developers (including data scientists) do not have to worry about dependency management, which can be handled by bot and automated pipelines.
 Moreover having AI support can lead to improvement in the developer of AI project, speeding up steps due to performance improvements or avoiding security issues due to the introduction
 of libraries that should not be used production.
@@ -44,9 +44,9 @@ of libraries that should not be used production.
 
 - [Kebechet Bot][7] to keep your dependencies fresh and up to date receiving recommendations and justifications using AI.
 
-- [AICoE CI Pipeline](https://github.com/AICoE/aicoe-ci) to support your AI project lifecycle.
+- [AICoE Pipeline][8] to support your AI project lifecycle.
 
-All these tools are integrated with the [project-template][3], therefore most of the things are already set for you.
+All these tools are integrated with the [project-template][1], therefore most of the things are already set for you.
 One important task in order to mantain your code is to create tag on your project development lifecycle. Moreover in order to deploy your application you need to create a container image.
 The use of github templates integrated with bots can provide you with automated pipelines triggered depending on what you need (e.g. release (patch, minor, major), deliver container image, dependency updates).
 
@@ -58,15 +58,15 @@ This tutorial wants to highlight that Data Scientists are not so different from 
 
 ## 1. Set your project using a template
 
-In this tutorial we rely on [project-template][3] as described above to have a common structures that can be easily used by data scientists and devops in order to find all the bits required from ML lifecycle and from the DevOps lifecycle.
+In this tutorial we rely on [project-template][1] as described above to have a common structures that can be easily used by data scientists and devops in order to find all the bits required from ML lifecycle and from the DevOps lifecycle.
 
 ## 2. Start the environment
 
 Get access to Operate First environment and become a user there, so that you can benefit from all the tools and support and you can focus on your AI project.
 
-1. Get familiar with [Operate First][4] environment.
+1. Get familiar with [Operate First][2] environment.
 
-2. Access [JupyterHub][6] and select Elyra image.
+2. Access [JupyterHub][4] and select Elyra image.
 
         <div style="text-align:center">
         <img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubUI.png">
@@ -102,7 +102,7 @@ For the purpose of this tutorial you fill find the following steps:
 
 2. Train the model in a [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/training.ipynb) and store model locally;
 
-3. Create your [AI pipeline](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/tutorial.pipeline) on Elyra to retrain your model automatically using step 1. and 2;
+3. Create your [Elyra AI pipeline](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/tutorial.pipeline) on Elyra to retrain your model automatically using step 1. and 2;
 
         <div style="text-align:center">
         <img alt="Elyra AI Pipeline example" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AI-pipeline.png">
@@ -228,6 +228,7 @@ If you want to test the application deployed you need to provide the URL:
 * [Elyra][5]
 * [Project Thoth][6]
 * [Kebechet Bot][7]
+* [AICoE Pipeline][8]
 
 [1]: https://github.com/aicoe-aiops/project-template
 [2]: https://www.operate-first.cloud/
@@ -236,3 +237,4 @@ If you want to test the application deployed you need to provide the URL:
 [5]: https://github.com/elyra-ai/elyra
 [6]: https://thoth-station.ninja/
 [7]: https://github.com/marketplace/khebhut
+[8]: https://github.com/marketplace/khebhut
