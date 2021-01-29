@@ -92,7 +92,7 @@ Once you are logged in into Elyra image provided by ODH, you can use the Git ext
 
 ## Manage dependencies for your new notebook
 
-(WIP) Use Jupyterlab requirements. For each notebook you can follow similar pattern, in this way you can guarantee all notebooks are in sync with their dependencies and you are using the correct kernel.
+(WIP) Use Jupyterlab extension for dependency management enhanced by AI. For each notebook you can follow similar pattern, in this way you can guarantee all notebooks are in sync with their dependencies and you are using the correct kernel.
 
 ## Start working on your notebooks
 
@@ -144,28 +144,44 @@ For more examples on how to create an AI pipeline in Elyra, you can use this [li
 
 - You can use your Github token.
 
-## 4. Create an application to expose your model (simple case using Flask for example)
-
-Once you trained your model and you stored it (locally in this case), you can start working on your application to expose your model.
-
-For the purpose of this tutorial we show how to create a simple [application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/wsgi.py) using Flask
-exposing some useful endpoints (e.g `/predict` and `/metrics`).
-
 ## Use automated pipelines and benefit from AI and bots
 
 Using AICoE tooling you can rely on bots helping you as described above:
 
 When you install [Kebechet Bot][7] you can benefit from automatic pipelines and dependency management updates:
 
+### Checks on Pull Request opened
+
+1. (WIP) Verify .aicoe.yaml is correctly created and you have checks set.
+
+- (WIP) you get checks on your Pull Requests (have a look at [.aicoe.yaml](https://github.com/AICoE/aicoe-ci) description);
+
+2. (WIP) Monitor Tekton pipelines using dashboard to check why any of your check failed.
+
+### Create a release
+
+1. (WIP) Verify .aicoe.yaml is correctly created and you have registry where to push your images.
+
 - (WIP) you can use Kebechet to create release about your project (have a look at [.thoth.yaml](https://github.com/thoth-station/thamos) description);
 
 - (WIP) you can use Kebechet to create image on registry (e.g. quay) (have a look at [.aicoe.yaml](https://github.com/AICoE/aicoe-ci) description);
 
-- (WIP) you get checks on your Pull Requests (have a look at [.aicoe.yaml](https://github.com/AICoE/aicoe-ci) description);
+- (WIP) you get smart changelog creation using AI model in Kebechet after you ask for release.
+
+2. (WIP) Use github templates to ask for new release and trigger an automated pipeline.
+
+3. (WIP) Monitor Tekton pipelines using dashboard
+
+### Receive contributions from Bots
 
 - (WIP) you get automatic updates for your dependencies in case of CVE, new releases, performance changes;
 
-- (WIP) you get smart changelog creation using AI model in Kebechet after you ask for release.
+## 4. Create an application to expose your model (simple case using Flask for example)
+
+Once you trained your model and you stored it (locally in this case), you can start working on your application to expose your model.
+
+For the purpose of this tutorial we show how to create a simple [application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/wsgi.py) using Flask
+exposing some useful endpoints (e.g `/predict` and `/metrics`).
 
 ## 5. Deploy your model on Operate First
 
