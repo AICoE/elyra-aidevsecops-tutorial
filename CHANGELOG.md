@@ -28,3 +28,8 @@
 ### Features
 * Update wsgi.py (#42)
 * :ship: Deploy the Tag v0.2.1 for elyra-aidevsecops-tutorial
+
+## Release 0.2.3 (2021-02-01T14:50:58)
+### Features
+* Fix broken link. (#51)
+* :ship: Deploy the Tag v0.2.2 for elyra-aidevsecops-tutorial (#50)
