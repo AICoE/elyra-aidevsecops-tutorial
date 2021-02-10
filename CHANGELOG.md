@@ -33,3 +33,9 @@
 ### Features
 * Fix broken link. (#51)
 * :ship: Deploy the Tag v0.2.2 for elyra-aidevsecops-tutorial (#50)
+
+## Release 0.3.0 (2021-02-10T15:51:32)
+### Features
+* Include option to use Ceph for Kubeflow Pipeline on Tekton (#57)
+* Update download dataset notebook (#54)
+* :ship: Deploy the Tag v0.2.3 for elyra-aidevsecops-tutorial
