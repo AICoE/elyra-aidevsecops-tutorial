@@ -16,7 +16,7 @@
             "filename": "notebooks/download_dataset.ipynb",
             "runtime_image": "tensorflow/tensorflow:2.3.0",
             "env_vars": [
-              "DESTINATION_DATASET=/data/raw"
+              "DESTINATION_DATASET=data/raw"
             ],
             "include_subdirectories": false,
             "invalidNodeError": null,
