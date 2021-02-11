@@ -191,19 +191,21 @@ Using Operate First you can request one once you get access to your namespace:
 
 ## Create runtime to be used in Kubeflow pipeline
 
-Select the Runtime Tab (there are more buttons to see Runtimes in the menu tab or in the pipeline editor as well):
+1. Select the Runtime Tab
+
+NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline editor as well.
 
 <div style="text-align:center">
 <img alt="Elyra Runtime Tab" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraRuntimeTab.png">
 </div>
 
-Start creating new Runtime:
+2. Create new Runtime
 
 <div style="text-align:center">
 <img alt="Create new Runtime" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CreateNewElyraRuntime.png">
 </div>
 
-Insert all inputs for the Runtime:
+3. Insert all inputs for the Runtime:
 
 <div style="text-align:center">
 <img alt="Insert inputs in Elyra Runtime" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/InsertInputsElyraRuntime.png">
@@ -211,11 +213,19 @@ Insert all inputs for the Runtime:
 
 ## Create Elyra AI Pipeline
 
-Create your [Elyra AI pipeline](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/tutorial.pipeline) on Elyra to retrain your model automatically using step 1. and 2;
+1. Insert all steps you want and connect them using Elyra UI.
+
+2. Insert inputs for each step/notebook in terms of image runtime, environment variables and resources.
+
+3. Add comments and describe your steps (Optional)
+
+4. Save your AI Pipeline
 
 <div style="text-align:center">
 <img alt="Elyra AI Pipeline example" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipeline.png">
 </div>
+
+You can find the above pipeline [here](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/tutorial.pipeline).
 
 ## Run AI Pipeline
 
@@ -231,7 +241,7 @@ Once the pipeline finished you will you have your model stored on Ceph, you can 
 
 where `moc-pipeline-kfp` is the aws profile containing `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to access your bucket.
 
-## 9. Create an application to expose your model (simple case using Flask for example)
+## 9. Create an application to expose your model (simple case using Flask)
 
 Once you trained your model and you stored it on Ceph, you can start working on your application to expose your model.
 
