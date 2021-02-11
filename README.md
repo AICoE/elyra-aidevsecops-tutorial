@@ -249,7 +249,7 @@ where `moc-pipeline-kfp` is the aws profile containing `AWS_ACCESS_KEY_ID` and `
 
 Once you trained your model and you stored it on Ceph, you can start working on your application to expose your model.
 
-For the purpose of this tutorial you can reuse the [application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/wsgi.py) created using Flask, that 
+For the purpose of this tutorial you can reuse the [application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/wsgi.py) created using Flask, that
 exposes some useful endpoints (e.g `/predict` and `/metrics`).
 
 ## 10. Deploy your model on Operate First
