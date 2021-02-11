@@ -217,9 +217,13 @@ NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline 
 
 2. Insert inputs for each step/notebook in terms of image runtime, environment variables and resources.
 
-3. Add comments and describe your steps (Optional)
+<div style="text-align:center">
+<img alt="Pipeline Steps Inputs" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipelineStepInputs.png">
+</div>
 
-4. Save your AI Pipeline
+3. Add comments and describe your steps (Optional).
+
+4. Save your AI Pipeline.
 
 <div style="text-align:center">
 <img alt="Elyra AI Pipeline example" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipeline.png">
@@ -276,7 +280,7 @@ If you want to test the application created in this tutorial from your local mac
 
 PRE-REQUISITE: Make sure you are logged in the cluster where the model is deployed.
 
-1. Install dependencies using [Pipenv](https://github.com/pypa/pipenv)
+1. Install dependencies using [Pipenv](https://github.com/pypa/pipenv).
 
 ```bash
   pipenv install
