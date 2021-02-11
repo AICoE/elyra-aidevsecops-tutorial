@@ -213,17 +213,23 @@ NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline 
 
 ## Create Elyra AI Pipeline
 
-1. Insert all steps you want and connect them using Elyra UI.
+1. Open new Elyra Pipeline Editor
 
-2. Insert inputs for each step/notebook in terms of image runtime, environment variables and resources.
+<div style="text-align:center">
+<img alt="New Elyra Pipeline Editor" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/NewElyraPipelineEditor.png">
+</div>
+
+2. Insert all steps you want, moving notebooks to the editor and connect them using Elyra UI.
+
+3. Insert inputs for each step/notebook in terms of image runtime, environment variables and resources.
 
 <div style="text-align:center">
 <img alt="Pipeline Steps Inputs" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipelineStepInputs.png">
 </div>
 
-3. Add comments and describe your steps (Optional).
+4. Add comments and describe your steps (Optional).
 
-4. Save your AI Pipeline.
+5. Save your AI Pipeline.
 
 <div style="text-align:center">
 <img alt="Elyra AI Pipeline example" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipeline.png">
