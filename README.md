@@ -239,6 +239,18 @@ You can find the above pipeline [here](https://github.com/thoth-station/elyra-ai
 
 ## Run AI Pipeline
 
+1. Use play button to run the AI Pipeline.
+
+<div style="text-align:center">
+<img alt="Elyra AI Pipeline play" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PlayAIPipeline.png">
+</div>
+
+2. Before starting the pipeline you need to select which runtime environment to use and add a name for your pipeline.
+
+<div style="text-align:center">
+<img alt="Elyra AI Pipeline run inputs" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipelineRunInputs.png">
+</div>
+
 Run your pipeline and move to [Kubeflow Pipeline UI](http://ml-pipeline-ui-kubeflow.apps.cnv.massopen.cloud/#/pipelines) to see what is happening.
 
 For more examples on how to create an AI pipeline in Elyra, you can use this [link](https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world_kubeflow_pipelines).
