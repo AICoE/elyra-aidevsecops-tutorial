@@ -255,7 +255,7 @@ Run your pipeline and move to [Kubeflow Pipeline UI](http://ml-pipeline-ui-kubef
 
 For more examples on how to create an AI pipeline in Elyra, you can use this [link](https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world_kubeflow_pipelines).
 
-Once the pipeline finished you will you have your model stored on Ceph, you can check from your terminal using:
+Once the pipeline finished you will have your model stored on Ceph, you can check from your terminal using:
 
 ```bash
   ws s3 --profile moc-pipeline-kfp --endpoint https://rgw-openshift-storage.apps.cnv.massopen.cloud/ ls s3://{your_bucket}/{your_project_name}/models/
