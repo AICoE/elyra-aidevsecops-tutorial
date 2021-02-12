@@ -253,6 +253,10 @@ You can find the above pipeline [here](https://github.com/thoth-station/elyra-ai
 
 Run your pipeline and move to [Kubeflow Pipeline UI](http://ml-pipeline-ui-kubeflow.apps.cnv.massopen.cloud/#/pipelines) to see what is happening.
 
+<div style="text-align:center">
+<img alt="Kubeflow Pipeline UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/KFPUI.png">
+</div>
+
 For more examples on how to create an AI pipeline in Elyra, you can use this [link](https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world_kubeflow_pipelines).
 
 Once the pipeline finished you will have your model stored on Ceph, you can check from your terminal using:
@@ -288,7 +292,7 @@ In this way [ArgoCD](https://argoproj.github.io/argo-cd/) will be used to mainta
 
 If you want to test your application deployed in the cluster from JH you can use the following notebook:
 
-- Test model [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/training.ipynb);
+- Test model [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/test_deployed_model.ipynb);
 
 (You need to have credentials for the access to Operate First Openshift cluster and have access to the namespace you deployed your model to run the above notebook)
 
