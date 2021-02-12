@@ -3,7 +3,7 @@ tls_verify: true
 requirements_format: pipenv
 
 runtime_environments:
-  - name: processing
+  - name: download_dataset
     operating_system:
       name: rhel
       version: "8"
@@ -17,7 +17,7 @@ runtime_environments:
     python_version: "3.8"
     recommendation_type: performance
 
-  - name: inference
+  - name: test_model
     operating_system:
       name: rhel
       version: "8"
