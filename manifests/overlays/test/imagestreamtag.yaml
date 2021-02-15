@@ -4,10 +4,10 @@ metadata:
   name: elyra-aidevsecops-tutorial
 spec:
   tags:
-  - name: latest
-    from:
-      kind: DockerImage
-      name: quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.3.0
-    importPolicy: {}
-    referencePolicy:
-      type: Source
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.4.0
+      importPolicy: {}
+      referencePolicy:
+        type: Source
