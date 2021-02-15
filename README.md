@@ -125,7 +125,7 @@ If you don't have a GitHub token, you can create one following GitHub docs: [cre
 
 ## Use automated pipelines and benefit from AI and bots
 
-Using AICoE tooling you can rely on bots helping you as described above"
+Using AICoE tooling you can rely on bots helping you as described above:
 
 1. Verify that [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.aicoe-ci.yaml) is correctly created and you have checks set.
 Have a look at [AICoE Pipeline][8] description docs for more information.
@@ -147,6 +147,11 @@ Once the image has been created you can find it in your registry (e.g. Quay):
 <div style="text-align:center">
 <img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ImageRegistry.png">
 </div>
+
+## Overlays
+
+If you have overlays directory present, you can perform overlays builds. In this way you can create different images optimized for your steps in pipelines.
+In this case the AICoE tooling would create many images as number of overlays.
 
 ## Dependencies updates in the repo
 
