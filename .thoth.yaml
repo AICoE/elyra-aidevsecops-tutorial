@@ -3,7 +3,7 @@ tls_verify: true
 requirements_format: pipenv
 
 runtime_environments:
-  - name: download_dataset
+  - name: download-dataset
     operating_system:
       name: rhel
       version: "8"
