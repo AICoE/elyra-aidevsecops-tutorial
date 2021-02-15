@@ -39,3 +39,19 @@
 * Include option to use Ceph for Kubeflow Pipeline on Tekton (#57)
 * Update download dataset notebook (#54)
 * :ship: Deploy the Tag v0.2.3 for elyra-aidevsecops-tutorial
+
+## Release 0.4.0 (2021-02-15T14:56:19)
+### Features
+* update ci config to support build and delivery from overlay (#70)
+* Restore overlay for training (#71)
+* adjust-overlays (#69)
+* Correct notebook link and add one image in docs (#67)
+* Correct sentence (#66)
+* Add screenshots on how to run the Elyra AI Pipeline (#65)
+* Add image and step on how to start new pipeline editor in Elyra (#64)
+* Correct name image (#62)
+* Improve doc tutorial (#46)
+* :ship: Deploy the Tag v0.3.0 for elyra-aidevsecops-tutorial
+### Improvements
+* Add notebook dependencies in notebooks and overlays matchin notebook kernels and dependencies using jupyterlab-requirements (#68)
+* Add notebook to test deployed model (#61)
