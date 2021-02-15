@@ -14,7 +14,7 @@ prometheus-flask-exporter = "*"
 boto3 = "*"
 
 [dev-packages]
-jupyterlab-requirements = ">=0.3.5"
+jupyterlab-requirements = ">=0.3.7"
 flake8 = "*"
 coverage = "*"
 Sphinx = "*"
