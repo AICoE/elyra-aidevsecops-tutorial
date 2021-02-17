@@ -169,11 +169,13 @@ If you have overlays directory present, as for this tutorial, you can perform ov
 
 You can find the images required for tutorial named after the overlays requested:
 
-- [download-dataset overlay]() -> [download-dataset image]()
+- [download-dataset overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/download-dataset) -> [download-dataset image](quay.io/thoth-station/elyra-aidevsecops-dataset:v0.4.0)
 
-- [training]() -> [training image]()
+- [training overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/training) -> [training image](quay.io/thoth-station/elyra-aidevsecops-training:v0.4.0)
 
-- [inference]()  -> [inference image]()
+- [inference overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/inference)  -> [inference image](quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.4.0)
+
+All requirements for the overlay are created using Thoth resolution engine, you can find the inputs used for Thoth recommender in the [.thoth.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/.thoth.yaml#L5).
 
 ## Dependencies updates in the repo
 
