@@ -133,6 +133,7 @@ If you don't have a GitHub token, you can create one following GitHub docs: [cre
 
 The folowing sub-sections of step 6 can be performed only if you have set your project with your pipelines.
 For the purpose of the tutorial the images required are already created using these pipelines, therefore here you can will find a description on how they have been created and where they are availbale.
+
 ## Ask for new release
 
 Using pipelines like the AICoE tooling you can rely on bots helping you, as described above in the initial description.
@@ -215,9 +216,11 @@ We repear the same steps to add `download-dateset` image and `training` image as
 
 You can use your own bucket credentials, setting them as env variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
 
-If you want a bucket from [Operate First][2], you can request one once you get access to your namespace:
+If you want a bucket from [Operate First][2], you need to follow the next steps:
 
-- [create a new bucket](https://github.com/operate-first/support/blob/main/docs/claiming_object_store.md).
+1. [Request access to a namespace](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_to_cluster.md&title=) where you want to deploy your application.
+
+2. [Request a new bucket](https://github.com/operate-first/support/issues/new?assignees=&labels=user-support&template=ceph_bucket_request.md&title=).
 
 ## Create runtime to be used in Kubeflow pipeline
 
@@ -310,11 +313,11 @@ These are the typical steps you need to follow to have a new application deploye
 
 1. Create all manifests for your project (e.g. deployment, service, routes, workflows, pipelines) and place them in your repo under `/manifests`.
 
-2. [Request access to a namespace](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_to_cluster.md&title=) where you want to deploy your application.
+2. [Request support for deployment of your application](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=).
 
-3. [Request support for deployment of your application](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=).
+In this way [ArgoCD](https://argoproj.github.io/argo-cd/) will be used to maintain your application always in sync with your current changes. Once you create a new release of your application (e.g. you changed your model, you added a new metric, you added a new feature) and a new image is available, you need to update the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
 
-In this way [ArgoCD](https://argoproj.github.io/argo-cd/) will be used to maintain your application always in sync with your current changes once you make a new release (e.g. you changed your model, you added a new metric, you added a new feature).
+Note: [AICoE Pipeline][8] can also update automatically the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
 
 ## 10. Test prediction from deployed application
 
@@ -364,9 +367,9 @@ If you want to test the application deployed you need to provide the URL:
 
 ## 11. Monitor your model and application with Prometheus and Grafana
 
-1. (WIP) Request Prometheus scraping the model endpoint `/metrics`.
+1. Open issue in Operate First [Support] and equest Prometheus scraping the model endpoint `/metrics` for the application deployed in your namespace.
 
-2. (WIP) Create new Grafana dashbord for the model to see how the application and model are performing.
+2. Create new Grafana dashbord for the metrics to see how the application and model are performing and open issue in Operate First [Support] on how to have your dashboard deployed.
 
 ## References
 
