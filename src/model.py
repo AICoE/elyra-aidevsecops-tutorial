@@ -19,6 +19,7 @@
 """Define Model class."""
 
 import os
+import boto3
 
 from pathlib import Path
 
@@ -31,6 +32,8 @@ class Model:
     def __init__(self):
         """Load model once when app starts."""
         # Path to data
+        use_ceph = bool(int(os.getenv("TUTORIAL_USE_CEPH", 0)))
+
         directory_path = Path.cwd()
         trained_model_path = directory_path.joinpath(
             str(os.environ.get("THOTH_AIDEVSECOPS_TRAINED_MODEL_PATH", "models"))
@@ -41,9 +44,39 @@ class Model:
             )
         )
 
+        if use_ceph:
+            project_name = os.environ.get("PROJECT_NAME", "elyra-aidevsecops-tutorial")
+
+            s3_endpoint_url = os.getenv(
+                "ENDPOINT_URL",
+                "https://rgw-openshift-storage.apps.cnv.massopen.cloud/",
+            )
+            s3_access_key = os.environ["AWS_ACCESS_KEY_ID"]
+            s3_secret_key = os.environ["AWS_SECRET_ACCESS_KEY"]
+            s3_bucket = os.getenv(
+                "BUCKET_NAME",
+                "test-new-elyra-kfp-79f9251e-19c3-4d80-8b68-969e8495dd34",
+            )
+
+            # Create an S3 client
+            s3 = boto3.client(
+                service_name="s3",
+                aws_access_key_id=s3_access_key,
+                aws_secret_access_key=s3_secret_key,
+                endpoint_url=s3_endpoint_url,
+            )
+
+            key = f"{project_name}/models/{model_version}"
+            file_downloaded_path = f"{trained_model_path}/{model_version}"
+
+            s3.upload_file(
+                Bucket=s3_bucket, Key=key, Filename=str(file_downloaded_path)
+            )
+
         loaded_model = tf.keras.models.load_model(
             f"{trained_model_path}/{model_version}", compile=False
         )
+
         self.model = loaded_model
         self.model_version = model_version
 
