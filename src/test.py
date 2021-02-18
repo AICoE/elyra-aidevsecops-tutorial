@@ -55,4 +55,4 @@ plt.close()
 response = requests.post(test_url, data=data, headers=headers)
 
 # decode response
-print(response.text)
+print(json.loads(response.text))
