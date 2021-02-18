@@ -99,11 +99,13 @@ def predict():
     prediction, probability = model.predict(image_array=image_array)
     latency = time.monotonic() - start
 
-    return json.dumps({
-        "prediction": int(prediction),
-        "latency": latency,
-        "probability": float(probability),
-        }) 
+    return json.dumps(
+        {
+            "prediction": int(prediction),
+            "latency": latency,
+            "probability": float(probability),
+        }
+    )
 
 
 @application.route("/metrics")
