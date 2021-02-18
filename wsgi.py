@@ -20,6 +20,8 @@
 
 import os
 import logging
+import time
+import json
 
 from version import __version__
 
@@ -93,11 +95,17 @@ def predict():
     # reshape
     image_array = np.array(image_list)
 
+    start = time.monotonic()
     prediction, probability = model.predict(image_array=image_array)
-    return {
-        "response": f"The number in the image is {str(prediction)}"
-        f" with probability {str(probability)}"
-    }
+    latency = time.monotonic() - start
+
+    return json.dumps(
+        {
+            "prediction": int(prediction),
+            "latency": latency,
+            "probability": float(probability),
+        }
+    )
 
 
 @application.route("/metrics")
