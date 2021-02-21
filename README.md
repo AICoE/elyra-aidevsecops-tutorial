@@ -298,7 +298,7 @@ Run your pipeline and move to [Kubeflow Pipeline UI](http://ml-pipeline-ui-kubef
 
 For more examples on how to create an AI pipeline in Elyra, you can use this [link](https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world_kubeflow_pipelines).
 
-Once the pipeline finished you will see the steps are completed:
+You can check the status of each step in the pipeline directly from the UI and debug from logs if any problems occur:
 
 <div style="text-align:center">
 <img alt="Successfull Kubeflow Pipeline" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/SuccessfullKubeflowPipeline.png">
