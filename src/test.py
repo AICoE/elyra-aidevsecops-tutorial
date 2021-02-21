@@ -62,4 +62,6 @@ prediction = json_response["prediction"]
 latency = json_response["latency"]
 probability = json_response["probability"]
 
-print(f"Model predicted {int(prediction)} in {latency} s with probability:{probability}")
+print(
+    f"Model predicted {int(prediction)} in {latency} s with probability:{probability}"
+)
