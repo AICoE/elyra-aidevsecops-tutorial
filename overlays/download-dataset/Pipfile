@@ -3,6 +3,7 @@ source = []
 [packages]
 boto3 = "*"
 matplotlib = "*"
+tensorflow = "*"
 
 [dev-packages]
 
