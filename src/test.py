@@ -23,7 +23,6 @@ import json
 import os
 
 from tensorflow.keras.datasets import mnist
-import matplotlib.pyplot as plt
 import numpy as np
 
 
@@ -45,14 +44,22 @@ headers = {"content-type": "application/json"}
 img = x_test[5890]
 data = json.dumps({"inputs": img.tolist()})
 
-# Check which image is sent
-plt.imshow(img, cmap="gray")
-plt.show(block=False)
-plt.pause(1)
-plt.close()
+# # Check which image is sent
+# plt.imshow(img, cmap="gray")
+# plt.show(block=False)
+# plt.pause(1)
+# plt.close()
+
+print(f"input image number: {y_test[5890]}")
 
 # send http request with image and receive response
 response = requests.post(test_url, data=data, headers=headers)
 
 # decode response
-print(json.loads(response.text))
+json_response = response.json()
+
+prediction = json_response["prediction"]
+latency = json_response["latency"]
+probability = json_response["probability"]
+
+print(f"Model predicted {int(prediction)} in {latency} s with probability:{probability}")
