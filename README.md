@@ -184,9 +184,19 @@ All requirements for the overlay are created using Thoth resolution engine, you 
 When you install [Kebechet Bot][7] you can benefit from automatic pipelines and dependency management updates.
 You get automatic updates for your dependencies in case of CVE, new packages releases, performance changes.
 
-## 7. Run Elyra AI Pipeline
+## 7. Run AI Pipeline (using Elyra UI)
 
-## Add runtime images
+### Pre-requisites: Bucket to run Kubeflow pipeline
+
+You can use your own bucket credentials, setting them as env variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+
+If you want a bucket from [Operate First][2], you need to follow the next steps:
+
+1. [Request access to a namespace](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_to_cluster.md&title=) where you want to deploy your application.
+
+2. [Request a new bucket](https://github.com/operate-first/support/issues/new?assignees=&labels=user-support&template=ceph_bucket_request.md&title=).
+
+### Add runtime images
 
 Now that your images are available we need to add them to Elyra:
 
@@ -216,17 +226,7 @@ The image is now available and can be used into your AI pipeline
 
 We repear the same steps to add `download-dateset` image and `training` image as we need them for the Elyra Pipeline.
 
-## Bucket required for running the pipeline
-
-You can use your own bucket credentials, setting them as env variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
-
-If you want a bucket from [Operate First][2], you need to follow the next steps:
-
-1. [Request access to a namespace](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_to_cluster.md&title=) where you want to deploy your application.
-
-2. [Request a new bucket](https://github.com/operate-first/support/issues/new?assignees=&labels=user-support&template=ceph_bucket_request.md&title=).
-
-## Create runtime to be used in Kubeflow pipeline
+### Create runtime to be used in Kubeflow pipeline
 
 1. Select the Runtime Tab
 
@@ -248,7 +248,7 @@ NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline 
 <img alt="Insert inputs in Elyra Runtime" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/InsertInputsElyraRuntime.png">
 </div>
 
-## Create Elyra AI Pipeline
+### Create Elyra AI Pipeline using the UI
 
 1. Open new Elyra Pipeline Editor
 
@@ -274,7 +274,9 @@ NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline 
 
 You can find the above pipeline [here](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/tutorial.pipeline).
 
-## Run AI Pipeline
+### Run AI Pipeline
+
+Using UI:
 
 1. Use play button to run the AI Pipeline.
 
@@ -296,7 +298,13 @@ Run your pipeline and move to [Kubeflow Pipeline UI](http://ml-pipeline-ui-kubef
 
 For more examples on how to create an AI pipeline in Elyra, you can use this [link](https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world_kubeflow_pipelines).
 
-Once the pipeline finished you will have your model stored in your bucket, for example you can check from your terminal using aws CLI:
+Once the pipeline finished you will see the steps are completed:
+
+<div style="text-align:center">
+<img alt="Successfull Kubeflow Pipeline" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/SuccessfullKubeflowPipeline.png">
+</div>
+
+The model is stored in your bucket, you can check from your terminal using [aws CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html):
 
 ```bash
   aws s3 --profile moc-pipeline-kfp --endpoint https://rgw-openshift-storage.apps.cnv.massopen.cloud/ ls s3://{your_bucket}/{your_project_name}/models/
