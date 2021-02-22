@@ -123,7 +123,19 @@ For the purpose of this tutorial you fill find the following notebooks:
 
 Whenever you finish working on your project or you need to stop, push your changes to GitHub, so that all your work can be saved. In order to do that:
 
-- You can use your Github token directly from Elyra UI.
+1. Go to Git Box panel on the left and select Push Changs.
+
+<div style="text-align:center">
+<img alt="Use Button to Push Changes" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/UseButtonToPushChanges.png">
+</div>
+
+2. Insert username and token that to push to the GitHub repo.
+
+<div style="text-align:center">
+<img alt="Push Changes with GitHub token" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PushGitHubToken.png">
+</div>
+
+Then go to your repo and open a Pull Request.
 
 ### Create GitHub token
 
@@ -131,8 +143,8 @@ If you don't have a GitHub token, you can create one following GitHub docs: [cre
 
 ## 6. Create a first release and image of your project
 
-The folowing sub-sections of step 6 can be performed only if you have set your project with your pipelines.
-For the purpose of the tutorial the images required are already created using these pipelines, therefore here you can will find a description on how they have been created and where they are availbale.
+The following sub-sections of step 6 can be performed only if you have set your project with your pipelines.
+For the purpose of the tutorial the images required are already created using these pipelines, therefore here you can find a description of how they have been created and where they are available.
 
 ## Ask for new release
 
