@@ -55,3 +55,19 @@
 ### Improvements
 * Add notebook dependencies in notebooks and overlays matchin notebook kernels and dependencies using jupyterlab-requirements (#68)
 * Add notebook to test deployed model (#61)
+
+## Release 0.5.0 (2021-02-22T07:45:11)
+### Features
+* Update description of successfull pipeline (#88)
+* Add store model ceph (#86)
+* Add completed pipeline (#85)
+* Connect once to S3 (#84)
+* adjust-notebook (#83)
+* Add missing package to overlay (#82)
+* Optional loading of the model from Ceph (#79)
+* Add latency to output of predicted model (#78)
+* Add link to AICOE yaml for clarification (#77)
+* Adjust image links (#76)
+* Updated steps in the tutorial (#75)
+### Improvements
+* Adjust test script and test notebook (#87)
