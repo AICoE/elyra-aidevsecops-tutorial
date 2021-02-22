@@ -17,10 +17,12 @@ all the resources needed.
 This tutorial has been created using [Operate First][2] infrustructure and the tools provided in [Open Data Hub][3], which is deployed on [Operate First][2].
 If you are interested in using it, just get in touch, it's an open source initiative.
 
-From [Open Data Hub][3] tools in particular we will use:
+In particular in this tutorial we are going to use:
 
 - [JupyterHub][4], to launch images with Jupyter tooling.
 - [Elyra][5], which is a set of AI-centric extensions to JupyterLab Notebooks (e.g. interface with Kubeflow Pipeline, Git, Python scripts).
+- [Kubeflow Pipelines][9], to allow end to end experiment using pipelines.
+- [Tekton][10], used in CI/CD systems, can be adopted as backend of Kubeflow pipelines.
 
 The use of the JupyterLab notebook is powered by Thoth Extension for Dependency Management on JupyterLab.
 If you want to know more, have a look at this [repo]((https://github.com/thoth-station/jupyterlab-requirements)).
@@ -405,6 +407,8 @@ If you want to test the application deployed you need to provide the URL:
 * [Project Thoth][6]
 * [Kebechet Bot][7]
 * [AICoE Pipeline][8]
+* [Kubeflow Pipelines][9]
+* [Tekton][10]
 
 [1]: https://github.com/aicoe-aiops/project-template
 [2]: https://www.operate-first.cloud/
@@ -414,3 +418,5 @@ If you want to test the application deployed you need to provide the URL:
 [6]: https://thoth-station.ninja/
 [7]: https://github.com/marketplace/khebhut
 [8]: https://github.com/AICoE/aicoe-ci
+[9]: https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/
+[10]: https://tekton.dev/
