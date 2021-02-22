@@ -200,10 +200,10 @@ If you want a bucket from [Operate First][2], you need to follow the next steps:
 
 Now that your images are available we need to add them to Elyra:
 
-1. Open tab to manage image runtime for Elyra
+1. Open command palette (Cntrl + Shift + C)
 
 <div style="text-align:center">
-<img alt="Manage Image Runtime Elyra" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ManageRuntimeImageSettings.png">
+<img alt="Manage Image Runtime Elyra" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ManageRuntimeImageSettingsCM.png">
 </div>
 
 2. Click add button to create new image
