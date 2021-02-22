@@ -2,15 +2,8 @@
 # Elyra AIDevSecOps Tutorial
 
 This tutorial is used to discuss the interface between Data Science and Dev/DevOps using project templates, pipelines and bots.
-
+Moreover, it wants to highlight that Data Scientists are not so different from developers and DevSecOps practices and tools can be applied to MLOps ones.
 The demo application used is the "hello world" for AI: MNIST Classication
-
-## Project templates
-
-The project template used can be found here: [project-template][1].
-It shows correlation between data scientists (e.g. data, notebooks, models) requirements and AI dev ops engineers ones (e.g. manifests).
-Using a project template allows for shareability because anyone taking the project or look for something specific about the project can immediately identify
-all the resources needed.
 
 ## Environment and tools
 
@@ -50,9 +43,12 @@ All these tools are integrated with the [project-template][1], therefore most of
 One important task in order to mantain your code is to create tag on your project development lifecycle. Moreover in order to deploy your application you need to create a container image.
 The use of github templates integrated with bots can provide you with automated pipelines triggered depending on what you need (e.g. release (patch, minor, major), deliver container image, dependency updates).
 
-## AIDevSecOps
+## Project templates
 
-This tutorial wants to highlight that Data Scientists are not so different from developers and DevSecOps practices and tools can be applied to MLOps ones.
+The project template used can be found here: [project-template][1].
+It shows correlation between data scientists (e.g. data, notebooks, models) requirements and AI dev ops engineers ones (e.g. manifests).
+Using a project template allows for shareability because anyone taking the project or look for something specific about the project can immediately identify
+all the resources needed.
 
 # Tutorial
 
