@@ -1,9 +1,12 @@
-source = []
+[[source]]
+url = "https://pypi.org/simple"
+verify_ssl = true
+name = "pypi"
 
 [packages]
-boto3 = "*"
-matplotlib = "*"
-tensorflow = "*"
+tensorflow = ">=2.4.0"
+boto3 = "==1.17.12"
+matplotlib = ">=3.3.4"
 
 [dev-packages]
 
