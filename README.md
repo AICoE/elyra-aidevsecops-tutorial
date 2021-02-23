@@ -255,7 +255,7 @@ The image is now available and can be used into your AI pipeline
 <img alt="Updated Runtime Images List" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/UpdatedRuntimeImageList.png">
 </div>
 
-4. Repeat the same step 3 to add `training` image using the following inputs:
+4. Repeat the same step 2, 3 to add `training` image using the following inputs:
 
 - Name: `Tutorial Training Step`
 
@@ -263,7 +263,7 @@ The image is now available and can be used into your AI pipeline
 
 ### Create runtime to be used in Kubeflow pipeline
 
-1. Select the Runtime Tab
+1. Select the Kubeflow Pipeline Runtime Tab on the left panel of Jupyterlab UI or use the command palette (Cntrl + Shift + C) and select "Manage Kubeflow Pipelines Runtimes".
 
 NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline editor as well.
 
@@ -271,13 +271,29 @@ NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline 
 <img alt="Elyra Runtime Tab" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraRuntimeTab.png">
 </div>
 
-2. Create new Runtime
+2. Once the new panel has been opened on the left of the UI, click add button to create new Kubeflow Pipeline Runtime
 
 <div style="text-align:center">
 <img alt="Create new Runtime" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CreateNewElyraRuntime.png">
 </div>
 
 3. Insert all inputs for the Runtime:
+
+- Name: `Elyra AIDevSecOps Tutorial`
+
+- Kubeflow Pipeline API Endpoint: `http://ml-pipeline-ui-kubeflow.apps.cnv.massopen.cloud/pipeline`
+
+- Kubeflow Pipeline Engine: `Tekton`
+
+- Cloud Object Storage Endpoint: `STORAGE_ENDPOINT`
+
+- Cloud Object Storage Username: `AWS_ACCESS_KEY_ID`
+
+- Cloud Object Storage Password: `AWS_SECRET_ACCESS_KEY`
+
+- Cloud Object Storage Bucket Name: `BUCKET_NAME`
+
+where `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `STORAGE_ENDPOINT`, `BUCKET_NAME` are specific to the user cloud object storage selected.
 
 <div style="text-align:center">
 <img alt="Insert inputs in Elyra Runtime" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/InsertInputsElyraRuntime.png">
