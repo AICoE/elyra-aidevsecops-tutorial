@@ -93,13 +93,13 @@ NOTE: Each of the following steps is iterative if you are following ML Ops lifec
 
 Once you are logged in into Elyra image provided by ODH, you can use the Git extension provided to clone [this repo](https://github.com/thoth-station/elyra-aidevsecops-tutorial.git).
 
-- Click the Git extension button:
+- Click the Git extension button from Jupyterlab UI:
 
 <div style="text-align:center">
 <img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
 </div>
 
-- Insert the link to the GitHub repo you want to clone:
+- Insert the link to the GitHub repo you want to clone: `https://github.com/thoth-station/elyra-aidevsecops-tutorial.git`
 
 <div style="text-align:center">
 <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
