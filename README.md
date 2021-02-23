@@ -151,7 +151,7 @@ These pipelines are described in [AICoE Pipeline][8] and you can use them for yo
 
 In this case the [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.aicoe-ci.yaml) is created with all information relative to build (e.g. base image, build strategy, registry where to push) as described in [AICoE Pipeline][8] documentation.
 
-The pipelines used in Thoth project are maintained by bots. Therefore you can open an issue asking for release (e.g patch, minor, major) and the bots will handle your request. One the request will be completed the bot will automatically close the issue as you can see from the images below:
+Some of the pipelines used in Thoth project are maintained by bots. Therefore you can open an issue asking for release (e.g patch, minor, major) and the bots will handle your request. One the request will be completed the bot will automatically close the issue as you can see from the images below:
 
 <div style="text-align:center">
 <img alt="Open Issue Release" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/OpenIssueRelease.png">
@@ -165,9 +165,11 @@ The changelog after the release is created using AI model that cluster pull requ
 
 Once the issue is closed by the bot, a tag is created in the GitHub project and a pipeline starts in order to build and push the image on the registry according to the requirements inserted in the [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.aicoe-ci.yaml).
 
+Once the new tag is created, Tekton pipelines from the AICoE are triggered.
+
 ## Image available on quay
 
-Once the image has been created you can find it in your registry (e.g. Quay):
+Once the image has been created by the Tekton pipeline, you can find it in your registry (e.g. Quay):
 
 <div style="text-align:center">
 <img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ImageRegistry.png">
@@ -175,7 +177,17 @@ Once the image has been created you can find it in your registry (e.g. Quay):
 
 ## Overlays
 
-If you have overlays directory present, as for this tutorial, you can perform overlays builds thanks to the [AICoE Pipeline][8]. In this way you can create different images optimized for your steps in pipelines. In this case the AICoE tooling would create many images as number of overlays.
+If you have overlays directory present, as for this tutorial, you can perform overlays builds thanks to the [AICoE Pipeline][8]. In this way you can create different images optimized for your steps in pipelines. In this case the AICoE tooling would create many images as number of overlays, as you can see from the following images:
+
+<div style="text-align:center">
+<img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/TagReleasePipeline.png">
+</div>
+
+<div style="text-align:center">
+<img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/OverlaysBuildsPipeline.png">
+</div>
+
+Once the pipelines are completed the images will be available on quay.
 
 You can find the images required for tutorial named after the overlays requested:
 
