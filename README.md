@@ -120,6 +120,12 @@ For the purpose of this tutorial you fill find the following notebooks:
 
 ## 5. Store your changes on your GitHub repo
 
+### Pre-requisite: Create GitHub token
+
+If you don't have a GitHub token, you can create one following GitHub docs: [create GitHub token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+
+### Push your changes to GitHub repo
+
 Whenever you finish working on your project or you need to stop, push your changes to GitHub, so that all your work can be saved. In order to do that:
 
 1. Go to Git Box panel on the left and select Push Changs.
@@ -128,17 +134,13 @@ Whenever you finish working on your project or you need to stop, push your chang
 <img alt="Use Button to Push Changes" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/UseButtonToPushChanges.png">
 </div>
 
-2. Insert username and token that to push to the GitHub repo.
+2. Insert your Github account name and your GitHub token to push to the GitHub repo you cloned.
 
 <div style="text-align:center">
 <img alt="Push Changes with GitHub token" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PushGitHubToken.png">
 </div>
 
 Then go to your repo and open a Pull Request.
-
-### Create GitHub token
-
-If you don't have a GitHub token, you can create one following GitHub docs: [create GitHub token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 
 ## 6. Create a first release and image of your project
 
@@ -216,12 +218,19 @@ You get automatic updates for your dependencies in case of CVE, new packages rel
 ### Pre-requisites: Bucket to run Kubeflow pipeline
 
 You can use your own bucket credentials, setting them as env variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
+You also need to have `STORAGE_ENDPOINT`, `BUCKET_NAME`.
 
 If you want a bucket from [Operate First][2], you need to follow the next steps:
 
 1. [Request access to a namespace](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_to_cluster.md&title=) where you want to deploy your application.
 
 2. [Request a new bucket](https://github.com/operate-first/support/issues/new?assignees=&labels=user-support&template=ceph_bucket_request.md&title=).
+
+Once you created a new bucket in your namespace, you can login in the cluster using the following [link](https://console-openshift-console.apps.cnv.massopen.cloud/k8s/cluster/projects) and in your namespace you will find:
+
+- `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`in a Secret Object with the bucket name you crated.
+
+- `STORAGE_ENDPOINT`, `BUCKET_NAME` in a ConfigMap Object with the bucket name you crated.
 
 ### Add runtime images
 
