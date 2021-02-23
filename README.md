@@ -413,11 +413,11 @@ Once everything is synced to the cluster, you can monitor your application from 
 
 2. Insert your credentials `USERNAME` and `PASSWORD`.
 
-3. Create Service using `oc apply -f path-to-service`.
+3. Create Service using `oc apply -f ./manifests/base/service.yaml`.
 
-4. Create Route using `oc apply -f path-to-route`.
+4. Create Route using `oc apply -f ./manifests/base/route.yaml`.
 
-5. Create DeploymentConfig using `oc apply -f path-to-dc`.
+5. Create DeploymentConfig using `oc apply -f ./manifests/base/deploymentconfig.yaml`.
 
 ## 10. Test prediction from deployed application
 
