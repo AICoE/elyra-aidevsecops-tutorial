@@ -385,7 +385,11 @@ Once you trained your model and it is stored on Ceph, you can start working on y
 For the purpose of this tutorial you can reuse the [application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/wsgi.py) created using Flask, that
 exposes some useful endpoints (e.g `/predict` and `/metrics`).
 
-## 9. Deploy your model on Operate First
+## 9. Deploy your model
+
+- Image Name: `quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0`
+
+### On Operate First using ArgoCD
 
 These are the typical steps you need to follow to have a new application deployed on [Operate First][2]:
 
@@ -402,6 +406,18 @@ Once everything is synced to the cluster, you can monitor your application from 
 <div style="text-align:center">
 <img alt="Argo CD UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ArgoCDUI.png">
 </div>
+
+### Using Openshift CLI (testing purpose)
+
+1. Login from the terminal in JupyterLab `oc login $CLUSTER_URL`.
+
+2. Insert your credentials `USERNAME` and `PASSWORD`.
+
+3. Create Service using `oc apply -f path-to-service`.
+
+4. Create Route using `oc apply -f path-to-route`.
+
+5. Create DeploymentConfig using `oc apply -f path-to-dc`.
 
 ## 10. Test prediction from deployed application
 
