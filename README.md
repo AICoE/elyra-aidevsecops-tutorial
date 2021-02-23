@@ -15,9 +15,10 @@ In particular in this tutorial we are going to use:
 - [JupyterHub][4], to launch images with Jupyter tooling.
 - [Elyra][5], which is a set of AI-centric extensions to JupyterLab Notebooks (e.g. interface with Kubeflow Pipeline, Git, Python scripts).
 - [Kubeflow Pipelines][9], to allow end to end experiment using pipelines.
-- [Tekton][10], used in CI/CD systems, can be adopted as backend of Kubeflow pipelines.
+- [Tekton][10], used in CI/CD systems, to run pipelines created by humans or machines.
+- [ArgoCD][11], used for Continuous Deployment of your applications.
 
-The use of the JupyterLab notebook is powered by Thoth Extension for Dependency Management on JupyterLab.
+The use of the JupyterLab notebook is powered by [Project Thoth][6] Extension for Dependency Management on JupyterLab.
 If you want to know more, have a look at this [repo]((https://github.com/thoth-station/jupyterlab-requirements)).
 
 ## GitOps, reproducibility, portability and traceability with AI support
@@ -349,19 +350,25 @@ These are the typical steps you need to follow to have a new application deploye
 
 2. [Request support for deployment of your application](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=).
 
-In this way [ArgoCD](https://argoproj.github.io/argo-cd/) will be used to maintain your application always in sync with your current changes. Once you create a new release of your application (e.g. you changed your model, you added a new metric, you added a new feature) and a new image is available, you need to update the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
+In this way [ArgoCD][11] will be used to maintain your application always in sync with your current changes. Once you create a new release of your application (e.g. you changed your model, you added a new metric, you added a new feature) and a new image is available, you need to update the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
 
 Note: [AICoE Pipeline][8] can also update automatically the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
+
+Once everything is synced to the cluster, you can monitor your application from the [ArgoCD][11] using this [link](https://argocd-server-argocd.apps.cnv.massopen.cloud/applications) as shown in the image below:
+
+<div style="text-align:center">
+<img alt="Argo CD UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ArgoCDUI.png">
+</div>
 
 ## 10. Test prediction from deployed application
 
 ### Using notebook in JupyterHub
 
-If you want to test your application deployed in the cluster from JH you can use the following notebook:
+If you want to test your application deployed in the cluster from JH image you can use the following notebook:
 
 - Test model [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/test_deployed_model.ipynb);
 
-(You need to have credentials for the access to Operate First Openshift cluster and have access to the namespace you deployed your model to run the above notebook)
+(You need to have credentials (token) for the access to [Operate First][2] cluster and have access to the namespace where the application is deployed to run the above notebook)
 
 ### From your local machine
 
@@ -416,7 +423,7 @@ If you want to test the application deployed you need to provide the URL:
 * [Kebechet Bot][7]
 * [AICoE Pipeline][8]
 * [Kubeflow Pipelines][9]
-* [Tekton][10]
+* [ArgoCD][11]
 
 [1]: https://github.com/aicoe-aiops/project-template
 [2]: https://www.operate-first.cloud/
@@ -428,3 +435,4 @@ If you want to test the application deployed you need to provide the URL:
 [8]: https://github.com/AICoE/aicoe-ci
 [9]: https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/
 [10]: https://tekton.dev/
+[11]: https://argoproj.github.io/argo-cd/
