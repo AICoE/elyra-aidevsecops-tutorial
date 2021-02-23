@@ -255,7 +255,7 @@ The image is now available and can be used into your AI pipeline
 <img alt="Updated Runtime Images List" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/UpdatedRuntimeImageList.png">
 </div>
 
-4. Repeat the same step 2, 3 to add `training` image using the following inputs:
+4. Repeat steps 2, 3 to add `training` image using the following inputs:
 
 - Name: `Tutorial Training Step`
 
