@@ -192,11 +192,11 @@ Once the pipelines are completed the images will be available on quay.
 
 You can find the images required for tutorial named after the overlays requested:
 
-- [download-dataset overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/download-dataset) -> quay.io/thoth-station/elyra-aidevsecops-dataset:v0.4.0 (download-dataset image)
+- [download-dataset overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/download-dataset) -> quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0 (download-dataset image)
 
-- [training overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/training) -> quay.io/thoth-station/elyra-aidevsecops-training:v0.4.0 (training image)
+- [training overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/training) -> quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0 (training image)
 
-- [inference overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/inference)  -> quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.4.0 (inference image)
+- [inference overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/inference)  -> quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0 (inference image)
 
 You can check the overlays build requirement in the [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/c86ce9c08665c12df0adf829db31bd19e8c61455/.aicoe-ci.yaml#L5).
 
@@ -227,19 +227,23 @@ If you want a bucket from [Operate First][2], you need to follow the next steps:
 
 Now that your images are available we need to add them to Elyra:
 
-1. Open command palette (Cntrl + Shift + C)
+1. Open command palette (Cntrl + Shift + C) and select "Manage Runtime Images".
 
 <div style="text-align:center">
 <img alt="Manage Image Runtime Elyra" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ManageRuntimeImageSettingsCM.png">
 </div>
 
-2. Click add button to create new image
+2. Once the new panel has been opened on the left of the UI, click add button to create new image.
 
 <div style="text-align:center">
 <img alt="Manage Image Runtime Elyra" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AddRuntimeImage.png">
 </div>
 
-3. Fill all required fields to create image and save
+3. Fill all required fields to create image for download dataset step:
+
+- Name: `Tutorial Download Dataset Step`
+
+- Image Name: `quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0`
 
 <div style="text-align:center">
 <img alt="Fill inputs Image Runtime Elyra" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/FillInputsRuntimeImage.png">
@@ -251,7 +255,11 @@ The image is now available and can be used into your AI pipeline
 <img alt="Updated Runtime Images List" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/UpdatedRuntimeImageList.png">
 </div>
 
-We repear the same steps to add `download-dateset` image and `training` image as we need them for the Elyra Pipeline.
+4. Repeat the same step 3 to add `training` image using the following inputs:
+
+- Name: `Tutorial Training Step`
+
+- Image Name: `quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0`
 
 ### Create runtime to be used in Kubeflow pipeline
 
