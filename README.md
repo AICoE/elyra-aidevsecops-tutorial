@@ -89,7 +89,7 @@ Resources required for the tutorial: `default` for container size.
 
 NOTE: Each of the following steps is iterative if you are following ML Ops lifecycle (e.g. you need to change your model, new dependency is added). Having the tools described allows you to rely on AI, bots and automated pipelines to off load lot of work from developers (including data scientists) that can be focused on other more important aspects of the AI project.
 
-## 3. Clone your repo from Elyra
+## 3. Clone your repo using Jupyterlab Git Extension
 
 Once you are logged in into Elyra image provided by ODH, you can use the Git extension provided to clone [this repo](https://github.com/thoth-station/elyra-aidevsecops-tutorial.git).
 
@@ -99,7 +99,13 @@ Once you are logged in into Elyra image provided by ODH, you can use the Git ext
 <img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
 </div>
 
-- Insert the link to the GitHub repo you want to clone: `https://github.com/thoth-station/elyra-aidevsecops-tutorial.git`
+- create HTTPS link of the GitHub repo you want to clone. From your forked repo for example:
+
+<div style="text-align:center">
+<img alt="Take link from forked repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/TakeLinkForkedRepo.png">
+</div>
+
+- Insert the link taken from your forked repo in the JupyterLab Git Extension: e.g. `https://github.com/thoth-station/elyra-aidevsecops-tutorial.git`
 
 <div style="text-align:center">
 <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
