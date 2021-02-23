@@ -120,6 +120,12 @@ For the purpose of this tutorial you fill find the following notebooks:
 
 ## 5. Store your changes on your GitHub repo
 
+### Pre-requisite: Create GitHub token
+
+If you don't have a GitHub token, you can create one following GitHub docs: [create GitHub token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
+
+### Push your changes to GitHub repo
+
 Whenever you finish working on your project or you need to stop, push your changes to GitHub, so that all your work can be saved. In order to do that:
 
 1. Go to Git Box panel on the left and select Push Changs.
@@ -135,10 +141,6 @@ Whenever you finish working on your project or you need to stop, push your chang
 </div>
 
 Then go to your repo and open a Pull Request.
-
-### Create GitHub token
-
-If you don't have a GitHub token, you can create one following GitHub docs: [create GitHub token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 
 ## 6. Create a first release and image of your project
 
