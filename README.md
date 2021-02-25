@@ -15,12 +15,12 @@ This tutorial has the following environment requirements to be run:
 - Cloud Object Storage (e.g. Ceph, minio).
 - Tutorial [container image](https://quay.io/repository/thoth-station/s2i-lab-elyra?tag=ml-prague-workshop&tab=tags):
 
-  ```bash
-  jupyterhub==1.2.1
-  jupyterlab>= 3.*
-  elyra>=2*
-  jupyterlab-requiremnts>0.4.3.
-  ```
+```bash
+jupyterhub==1.2.1
+jupyterlab>=3.*
+elyra>=2*
+jupyterlab-requiremnts>=0.4.5
+```
 
 ### Operate First Open Environment
 
