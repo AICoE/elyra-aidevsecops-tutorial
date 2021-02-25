@@ -13,6 +13,8 @@ This tutorial has the following environment requirements to be run:
 - [Open Data Hub][3] v1.0,
 - [Openshift][11] (Enterprise Kubernetes),
 - Cloud Object Storage (e.g. Ceph, minio).
+- [Tekton][10], used in CI/CD systems, to run pipelines created by humans or machines.
+- [ArgoCD][12], used for Continuous Deployment of your applications.
 - Tutorial [container image](https://quay.io/repository/thoth-station/s2i-lab-elyra?tag=ml-prague-workshop&tab=tags):
 
 ```bash
@@ -36,7 +38,6 @@ In this tutorial the following technologies are going to be used:
 - [Elyra][5], which is a set of AI-centric extensions to JupyterLab Notebooks (e.g. interface with Kubeflow Pipeline, Git, Python scripts).
 - [Project Thoth][6] Extension for Dependency Management on JupyterLab. If you want to know more, have a look at this [repo]((https://github.com/thoth-station/jupyterlab-requirements)).
 - [Kubeflow Pipelines][9], to allow end to end experiment using pipelines.
-- [Tekton][10], used in CI/CD systems, to run pipelines created by humans or machines.
 
 ## GitOps, reproducibility, portability and traceability with AI support
 
@@ -107,6 +108,7 @@ NOTE: Each of the steps above can be repetaed if you are following ML lifecycle 
 * [Kubeflow Pipelines][9]
 * [Tekton][10]
 * [Openshift][11]
+* [ArgoCD][12]
 
 [1]: https://github.com/aicoe-aiops/project-template
 [2]: https://www.operate-first.cloud/
@@ -119,3 +121,4 @@ NOTE: Each of the steps above can be repetaed if you are following ML lifecycle 
 [9]: https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/
 [10]: https://tekton.dev/
 [11]: https://www.openshift.com/
+[12]: https://argoproj.github.io/argo-cd/
