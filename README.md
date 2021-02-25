@@ -10,8 +10,8 @@ The demo application used is the "hello world" for AI: MNIST Classification.
 
 This tutorial has the following environment requirements to be run:
 
-- [Open Data Hub][3] (1.0),
-- [Openshift][12] (Enterprise Kubernetes),
+- [Open Data Hub][3] v1.0,
+- [Openshift][11] (Enterprise Kubernetes),
 - Cloud Object Storage (e.g. Ceph, minio).
 - Tutorial [container image](https://quay.io/repository/thoth-station/s2i-lab-elyra?tag=ml-prague-workshop&tab=tags):
 
