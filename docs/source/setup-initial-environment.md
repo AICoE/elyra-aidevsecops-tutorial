@@ -16,7 +16,7 @@ If you want to use this template for your AI project, go to [project-template][1
 
 ### Operate First access JupyterHub
 
-1. You can get access [JupyterHub] on [Operate First][2] using the following [link](https://jupyterhub-opf-jupyterhub.apps.cnv.massopen.cloud/)
+1. You can get access [JupyterHub][3] on [Operate First][2] using the following [link](https://jupyterhub-opf-jupyterhub.apps.cnv.massopen.cloud/)
 
 <div style="text-align:center">
 <img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubUI.png">
@@ -54,3 +54,11 @@ Once your image is ready and you are in the Jupyterlab UI, you can use the Git e
 <div style="text-align:center">
 <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
 </div>
+
+* [project-template][1]
+* [Operate First][2]
+* [JupyterHub][3]
+
+[1]: https://github.com/aicoe-aiops/project-template
+[2]: https://www.operate-first.cloud/
+[3]: https://jupyter.org/hub
