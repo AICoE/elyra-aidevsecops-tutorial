@@ -27,7 +27,7 @@ exposes some useful endpoints (e.g `/predict` and `/metrics`).
 
 ### On Operate First using ArgoCD
 
-[ArgoCD][11], used for Continuous Deployment of your applications, is available on Operate First and you can request the Operate First team to be used for your application.
+[ArgoCD][2], used for Continuous Deployment of your applications, is available on Operate First and you can request the Operate First team to be used for your application.
 
 There are typically two steps you need to follow in order to have a new application deployed on [Operate First][1]:
 
