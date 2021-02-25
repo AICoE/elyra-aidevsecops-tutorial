@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: elyra-aidevsecops-tutorial
-          image: elyra-aidevsecops-tutorial
+          image: quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0
           ports:
             - containerPort: 8080
               protocol: TCP
