@@ -3,23 +3,40 @@
 
 This tutorial is used to discuss the interface between Data Science and Dev/DevOps using project templates, pipelines and bots.
 Moreover, it wants to highlight that Data Scientists are not so different from developers and DevSecOps practices and tools can be applied to MLOps ones.
-The demo application used is the "hello world" for AI: MNIST Classication
 
-## Environment and tools
+The demo application used is the "hello world" for AI: MNIST Classification.
 
-This tutorial has been created using [Operate First][2] infrustructure and the tools provided in [Open Data Hub][3], which is deployed on [Operate First][2].
-If you are interested in using it, just get in touch, it's an open source initiative.
+## Environment required
 
-In particular in this tutorial we are going to use:
+This tutorial has the following environment requirements to be run:
+
+- [Open Data Hub][3] (1.0),
+- [Openshift][12] (Enterprise Kubernetes),
+- Cloud Object Storage (e.g. Ceph, minio).
+- Tutorial [container image](https://quay.io/repository/thoth-station/s2i-lab-elyra?tag=ml-prague-workshop&tab=tags):
+
+  ```bash
+  jupyterhub==1.2.1
+  jupyterlab>= 3.*
+  elyra>=2*
+  jupyterlab-requiremnts>0.4.3.
+  ```
+
+### Operate First Open Environment
+
+[Operate First][2] Open Infrastructure environment has been selected to run this tutorial. It fullfills all the requirement stated above. If you are interested in using it, just get in touch with Operate First team, it's an open source initiative.
+
+You can find some notes also regarding other environments in the different sections of the tutorial.
+
+## Tools
+
+In this tutorial the following technologies are going to be used:
 
 - [JupyterHub][4], to launch images with Jupyter tooling.
 - [Elyra][5], which is a set of AI-centric extensions to JupyterLab Notebooks (e.g. interface with Kubeflow Pipeline, Git, Python scripts).
+- [Project Thoth][6] Extension for Dependency Management on JupyterLab. If you want to know more, have a look at this [repo]((https://github.com/thoth-station/jupyterlab-requirements)).
 - [Kubeflow Pipelines][9], to allow end to end experiment using pipelines.
 - [Tekton][10], used in CI/CD systems, to run pipelines created by humans or machines.
-- [ArgoCD][11], used for Continuous Deployment of your applications.
-
-The use of the JupyterLab notebook is powered by [Project Thoth][6] Extension for Dependency Management on JupyterLab.
-If you want to know more, have a look at this [repo]((https://github.com/thoth-station/jupyterlab-requirements)).
 
 ## GitOps, reproducibility, portability and traceability with AI support
 
@@ -51,427 +68,31 @@ It shows correlation between data scientists (e.g. data, notebooks, models) requ
 Using a project template allows for shareability because anyone taking the project or look for something specific about the project can immediately identify
 all the resources needed.
 
-# Tutorial
+# Tutorial Steps
 
-## 0. Pre-requisites
+0. [Pre-requisities](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/pre-requisite.md)
 
-There are two basics requirements for this tutorial:
+1. [Setup your initial environment](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/setup-initial-environment.md)
 
-- Gmail account required to login to [JupyterHub][4].
+2. [Explore notebooks and manage dependencies](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/explore-notebooks-and-manage-dependencies.md)
 
-- GitHub account.
+3. [Push changes to GitHub](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/push-changes.md)
 
-## 1. Fork this repo from GitHub into your account
+4. [Create release, build image or overlays builds for different images](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/build-images.md)
 
-Check [Fork a repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) from GitHub docs.
+4.1 [Benefit from bots to keep your dependencies fresh and up to date](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/use-bots.md)
 
-In this tutorial we rely on [project-template][1], as described above, in order to have a common structures that can be easily used by data scientists and devops. Have a structure for the projects in general allows others to find all the bits required for the ML lifecycle and from the DevOps lifecycle.
+5. [Create an AI Pipeline](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/create-ai-pipeline.md)
 
-If you want to use this template for your AI project, go to [project-template][1] and select `use the template` from the button provided in template repositories.
+6. [Run and debug AI Pipeline](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/run-ai-pipeline.md)
 
-<div style="text-align:center">
-<img alt="AI Project Template" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIProjectTemplate.png">
-</div>
+7. [Deploy Inference Application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/deploy-model.md)
 
-## 2. Get access to Operate First and open JupyterHub to spawn the Elyra image
+8. [Test Deployed inference application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/test-model.md)
 
-Get access to Operate First environment and become a user there, so that you can benefit from all the tools and support and you can focus on your AI project.
+8. [Monitor your inference application deployed](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/monitor-model.md)
 
-1. Get familiar with [Operate First][2] environment.
-
-2. Access [JupyterHub][4] and select Elyra image called `ml-prague-workshop:latest` from the list of images.
-
-Resources required for the tutorial: `default` for container size.
-
-<div style="text-align:center">
-<img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubUI.png">
-</div>
-
-NOTE: Each of the following steps is iterative if you are following ML Ops lifecycle (e.g. you need to change your model, new dependency is added). Having the tools described allows you to rely on AI, bots and automated pipelines to off load lot of work from developers (including data scientists) that can be focused on other more important aspects of the AI project.
-
-## 3. Clone your repo using Jupyterlab Git Extension
-
-Once you are logged in into Elyra image provided by ODH, you can use the Git extension provided to clone [this repo](https://github.com/thoth-station/elyra-aidevsecops-tutorial.git).
-
-- Click the Git extension button from Jupyterlab UI:
-
-<div style="text-align:center">
-<img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
-</div>
-
-- create HTTPS link of the GitHub repo you want to clone. From your forked repo for example:
-
-<div style="text-align:center">
-<img alt="Take link from forked repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/TakeLinkForkedRepo.png">
-</div>
-
-- Insert the link taken from your forked repo in the JupyterLab Git Extension: e.g. `https://github.com/thoth-station/elyra-aidevsecops-tutorial.git`
-
-<div style="text-align:center">
-<img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
-</div>
-
-## 4. Start working on your notebooks
-
-## Manage dependencies for your new notebook
-
-Use [jupyterlab extension for dependency management enhanced by AI](https://github.com/thoth-station/jupyterlab-requirements).
-For each notebook you can follow similar pattern, in this way you can guarantee all notebooks are in sync with their dependencies and you are using the correct kernel.
-
-For the purpose of this tutorial you fill find the following notebooks:
-
-1. Download your data with a [Python script](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/src/data/download_dataset_from_tf.py) or [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/notebooks/download_dataset.ipynb);
-
-2. Train the model in a [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/training.ipynb) and store model locally or Ceph;
-
-## 5. Store your changes on your GitHub repo
-
-### Pre-requisite: Create GitHub token
-
-If you don't have a GitHub token, you can create one following GitHub docs: [create GitHub token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
-
-### Push your changes to GitHub repo
-
-Whenever you finish working on your project or you need to stop, push your changes to GitHub, so that all your work can be saved. In order to do that:
-
-1. Go to Git Box panel on the left and select Push Changs.
-
-<div style="text-align:center">
-<img alt="Use Button to Push Changes" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/UseButtonToPushChanges.png">
-</div>
-
-2. Insert your Github account name and your GitHub token to push to the GitHub repo you cloned.
-
-<div style="text-align:center">
-<img alt="Push Changes with GitHub token" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PushGitHubToken.png">
-</div>
-
-Then go to your repo and open a Pull Request.
-
-## 6. Create a first release and image of your project
-
-The following sub-sections of step 6 can be performed only if you have set your project with your pipelines.
-For the purpose of the tutorial the images required are already created using these pipelines, therefore here you can find a description of how they have been created and where they are available.
-
-## Ask for new release
-
-Using pipelines like the AICoE tooling you can rely on bots helping you, as described above in the initial description.
-These pipelines are described in [AICoE Pipeline][8] and you can use them for you projects if you are interested.
-
-In this case the [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.aicoe-ci.yaml) is created with all information relative to build (e.g. base image, build strategy, registry where to push) as described in [AICoE Pipeline][8] documentation.
-
-Some of the pipelines used in Thoth project are maintained by bots. Therefore you can open an issue asking for release (e.g patch, minor, major) and the bots will handle your request. One the request will be completed the bot will automatically close the issue as you can see from the images below:
-
-<div style="text-align:center">
-<img alt="Open Issue Release" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/OpenIssueRelease.png">
-</div>
-
-<div style="text-align:center">
-<img alt="Pull Request Release" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PullRequestRelease.png">
-</div>
-
-The changelog after the release is created using AI model that cluster pull requests. You can find more information about `glyph project` [here](https://github.com/thoth-station/glyph).
-
-Once the issue is closed by the bot, a tag is created in the GitHub project and a pipeline starts in order to build and push the image on the registry according to the requirements inserted in the [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.aicoe-ci.yaml).
-
-Once the new tag is created, Tekton pipelines from the AICoE are triggered.
-
-## Image available on quay
-
-Once the image has been created by the Tekton pipeline, you can find it in your registry (e.g. Quay):
-
-<div style="text-align:center">
-<img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ImageRegistry.png">
-</div>
-
-## Overlays
-
-If you have overlays directory present, as for this tutorial, you can perform overlays builds thanks to the [AICoE Pipeline][8]. In this way you can create different images optimized for your steps in pipelines. In this case the AICoE tooling would create many images as number of overlays, as you can see from the following images:
-
-<div style="text-align:center">
-<img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/TagReleasePipeline.png">
-</div>
-
-<div style="text-align:center">
-<img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/OverlaysBuildsPipeline.png">
-</div>
-
-Once the pipelines are completed the images will be available on quay.
-
-You can find the images required for tutorial named after the overlays requested:
-
-- [download-dataset overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/download-dataset) -> quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0 (download-dataset image)
-
-- [training overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/training) -> quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0 (training image)
-
-- [inference overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/inference)  -> quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0 (inference image)
-
-You can check the overlays build requirement in the [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/c86ce9c08665c12df0adf829db31bd19e8c61455/.aicoe-ci.yaml#L5).
-
-All requirements for the overlay are created using Thoth resolution engine, you can find the inputs used for Thoth recommender in the [.thoth.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/.thoth.yaml#L5).
-
-## Dependencies updates in the repo
-
-When you install [Kebechet Bot][7] you can benefit from automatic pipelines and dependency management updates.
-You get automatic updates for your dependencies in case of CVE, new packages releases, performance changes.
-
-<div style="text-align:center">
-<img alt="Kebechet Automatic Update" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/KebechetAutomaticUpdate.png">
-</div>
-
-## 7. Run AI Pipeline (using Elyra UI)
-
-### Pre-requisites: Bucket to run Kubeflow pipeline
-
-You can use your own bucket credentials, setting them as env variables `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
-You also need to have `STORAGE_ENDPOINT`, `BUCKET_NAME`.
-
-If you want a bucket from [Operate First][2], you need to follow the next steps:
-
-1. [Request access to a namespace](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_to_cluster.md&title=) where you want to deploy your application.
-
-2. [Request a new bucket](https://github.com/operate-first/support/issues/new?assignees=&labels=user-support&template=ceph_bucket_request.md&title=).
-
-Once you created a new bucket in your namespace, you can login in the cluster using the following [link](https://console-openshift-console.apps.cnv.massopen.cloud/k8s/cluster/projects) and in your namespace you will find:
-
-- `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`in a Secret Object with the bucket name you crated.
-
-- `STORAGE_ENDPOINT`, `BUCKET_NAME` in a ConfigMap Object with the bucket name you crated.
-
-### Add runtime images
-
-Now that your images are available we need to add them to Elyra:
-
-1. Open command palette (Cntrl + Shift + C) and select "Manage Runtime Images".
-
-<div style="text-align:center">
-<img alt="Manage Image Runtime Elyra" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ManageRuntimeImageSettingsCM.png">
-</div>
-
-2. Once the new panel has been opened on the left of the UI, click add button to create new image.
-
-<div style="text-align:center">
-<img alt="Manage Image Runtime Elyra" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AddRuntimeImage.png">
-</div>
-
-3. Fill all required fields to create image for download dataset step:
-
-- Name: `Tutorial Download Dataset Step`
-
-- Image Name: `quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0`
-
-<div style="text-align:center">
-<img alt="Fill inputs Image Runtime Elyra" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/FillInputsRuntimeImage.png">
-</div>
-
-The image is now available and can be used into your AI pipeline
-
-<div style="text-align:center">
-<img alt="Updated Runtime Images List" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/UpdatedRuntimeImageList.png">
-</div>
-
-4. Repeat steps 2, 3 to add `training` image using the following inputs:
-
-- Name: `Tutorial Training Step`
-
-- Image Name: `quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0`
-
-### Create runtime to be used in Kubeflow pipeline
-
-1. Select the Kubeflow Pipeline Runtime Tab on the left panel of Jupyterlab UI or use the command palette (Cntrl + Shift + C) and select "Manage Kubeflow Pipelines Runtimes".
-
-NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline editor as well.
-
-<div style="text-align:center">
-<img alt="Elyra Runtime Tab" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraRuntimeTab.png">
-</div>
-
-2. Once the new panel has been opened on the left of the UI, click add button to create new Kubeflow Pipeline Runtime
-
-<div style="text-align:center">
-<img alt="Create new Runtime" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CreateNewElyraRuntime.png">
-</div>
-
-3. Insert all inputs for the Runtime:
-
-- Name: `Elyra AIDevSecOps Tutorial`
-
-- Kubeflow Pipeline API Endpoint: `http://ml-pipeline-ui-kubeflow.apps.cnv.massopen.cloud/pipeline`
-
-- Kubeflow Pipeline Engine: `Tekton`
-
-- Cloud Object Storage Endpoint: `STORAGE_ENDPOINT`
-
-- Cloud Object Storage Username: `AWS_ACCESS_KEY_ID`
-
-- Cloud Object Storage Password: `AWS_SECRET_ACCESS_KEY`
-
-- Cloud Object Storage Bucket Name: `BUCKET_NAME`
-
-where `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `STORAGE_ENDPOINT`, `BUCKET_NAME` are specific to the user cloud object storage selected.
-
-<div style="text-align:center">
-<img alt="Insert inputs in Elyra Runtime" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/InsertInputsElyraRuntime.png">
-</div>
-
-### Create Elyra AI Pipeline using the UI
-
-1. Open new Elyra Pipeline Editor
-
-<div style="text-align:center">
-<img alt="New Elyra Pipeline Editor" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/NewElyraPipelineEditor.png">
-</div>
-
-2. Insert all steps you want, moving notebooks to the editor and connect them using Elyra UI.
-
-3. Insert inputs for each step/notebook in terms of image runtime, environment variables and resources.
-
-<div style="text-align:center">
-<img alt="Pipeline Steps Inputs" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipelineStepInputs.png">
-</div>
-
-4. Add comments and describe your steps (Optional).
-
-5. Save your AI Pipeline.
-
-<div style="text-align:center">
-<img alt="Elyra AI Pipeline example" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipeline.png">
-</div>
-
-You can find the above pipeline [here](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/tutorial.pipeline).
-
-### Run AI Pipeline
-
-Using UI:
-
-1. Use play button to run the AI Pipeline.
-
-<div style="text-align:center">
-<img alt="Elyra AI Pipeline play" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PlayAIPipeline.png">
-</div>
-
-2. Before starting the pipeline you need to select which runtime environment to use and add a name for your pipeline.
-
-<div style="text-align:center">
-<img alt="Elyra AI Pipeline run inputs" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipelineRunInputs.png">
-</div>
-
-Run your pipeline and move to [Kubeflow Pipeline UI](http://ml-pipeline-ui-kubeflow.apps.cnv.massopen.cloud/#/pipelines) to see what is happening.
-
-<div style="text-align:center">
-<img alt="Kubeflow Pipeline UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/KFPUI.png">
-</div>
-
-For more examples on how to create an AI pipeline in Elyra, you can use this [link](https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world_kubeflow_pipelines).
-
-You can check the status of each step in the pipeline directly from the UI and debug from logs if any problems occur:
-
-<div style="text-align:center">
-<img alt="Successfull Kubeflow Pipeline" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/SuccessfullKubeflowPipeline.png">
-</div>
-
-The model is stored in your bucket, you can check from your terminal using [aws CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html):
-
-```bash
-  aws s3 --profile moc-pipeline-kfp --endpoint https://rgw-openshift-storage.apps.cnv.massopen.cloud/ ls s3://{your_bucket}/{your_project_name}/models/
-```
-
-where `moc-pipeline-kfp` is the aws profile containing `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to access your bucket.
-
-## 8. Create an application to expose your model (simple case using Flask)
-
-Once you trained your model and it is stored on Ceph, you can start working on your inference application to expose your model.
-
-For the purpose of this tutorial you can reuse the [application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/wsgi.py) created using Flask, that
-exposes some useful endpoints (e.g `/predict` and `/metrics`).
-
-## 9. Deploy your model
-
-- Image Name: `quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0`
-
-### On Operate First using ArgoCD
-
-These are the typical steps you need to follow to have a new application deployed on [Operate First][2]:
-
-1. Create all manifests for your project (e.g. deployment, service, routes, workflows, pipelines) and place them in your repo under `/manifests`.
-
-2. [Request support for deployment of your application](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=).
-
-In this way [ArgoCD][11] will be used to maintain your application always in sync with your current changes. Once you create a new release of your application (e.g. you changed your model, you added a new metric, you added a new feature) and a new image is available, you need to update the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
-
-Note: [AICoE Pipeline][8] can also update automatically the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
-
-Once everything is synced to the cluster, you can monitor your application from the [ArgoCD][11] using this [link](https://argocd-server-argocd.apps.cnv.massopen.cloud/applications) as shown in the image below:
-
-<div style="text-align:center">
-<img alt="Argo CD UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ArgoCDUI.png">
-</div>
-
-### Using Openshift CLI (testing purpose)
-
-1. Login from the terminal in JupyterLab `oc login $CLUSTER_URL`.
-
-2. Insert your credentials `USERNAME` and `PASSWORD`.
-
-3. Make sure you are in `elyra-aidevsecops-tutorial` directory.
-
-4. Create Service using `oc apply -f ./manifests/base/service.yaml`.
-
-5. Create Route using `oc apply -f ./manifests/base/route.yaml`.
-
-6. Create DeploymentConfig using `oc apply -f ./manifests/base/deploymentconfig.yaml`.
-
-## 10. Test prediction from deployed application
-
-### Using notebook in JupyterHub
-
-If you want to test your application deployed in the cluster from JH image you can use the following notebook:
-
-- Test model [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/test_deployed_model.ipynb);
-
-(You need to have credentials (token) for the access to [Operate First][2] cluster and have access to the namespace where the application is deployed to run the above notebook)
-
-### From your local machine
-
-If you want to test the application created in this tutorial from your local machine:
-
-PRE-REQUISITE: Make sure you are logged in the cluster where the model is deployed.
-
-1. Install dependencies using [Pipenv](https://github.com/pypa/pipenv).
-
-```bash
-  pipenv install
-```
-
-or [micropipenv](https://pypi.org/project/micropipenv/):
-
-```bash
-  micropipenv install
-```
-
-2. Start application.
-
-```bash
-  pipenv run python3 wsgi.py
-```
-
-3. Run test that will show the input image and then return the prediction from the model.
-
-```bash
-  pipenv run python3 src/test.py
-```
-
-If you want to test the application deployed you need to provide the URL:
-
-```bash
-  THOTH_AIDEVSECOPS_TUTORIAL_MODEL_URL=<MODEL_DEPLOYED_URL> pipenv run python3 src/test.py
-```
-
-## 11. Monitor your model and application with Prometheus and Grafana
-
-1. Open issue in Operate First [Support] and equest Prometheus scraping the model endpoint `/metrics` for the application deployed in your namespace.
-
-2. Create new Grafana dashbord for the metrics to see how the application and model are performing and open issue in Operate First [Support] on how to have your dashboard deployed.
+NOTE: Each of the steps above can be repetaed if you are following ML lifecycle (e.g. changes in the dependencies, changes in the notebooks, new model stored).
 
 ## References
 
@@ -484,7 +105,8 @@ If you want to test the application deployed you need to provide the URL:
 * [Kebechet Bot][7]
 * [AICoE Pipeline][8]
 * [Kubeflow Pipelines][9]
-* [ArgoCD][11]
+* [Tekton][10]
+* [Openshift][11]
 
 [1]: https://github.com/aicoe-aiops/project-template
 [2]: https://www.operate-first.cloud/
@@ -496,4 +118,4 @@ If you want to test the application deployed you need to provide the URL:
 [8]: https://github.com/AICoE/aicoe-ci
 [9]: https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/
 [10]: https://tekton.dev/
-[11]: https://argoproj.github.io/argo-cd/
+[11]: https://www.openshift.com/
