@@ -71,3 +71,31 @@
 * Updated steps in the tutorial (#75)
 ### Improvements
 * Adjust test script and test notebook (#87)
+
+## Release 0.6.0 (2021-02-26T14:43:24)
+### Features
+* Correct requirements (#114)
+* Add missing references
+* Update reference (#112)
+* Refactor and correct errors (#111)
+* Configure overlays directory (#109)
+* Add links manifest (#108)
+* Add Openshift example (#107)
+* Final changes (#106)
+* Describe where to find information for the bucket (#104)
+* Add URL GitHub repo to be cloned (#103)
+* Make pre-commit happy (#102)
+* Add inputs for Kubeflow Pipeline inputs (#101)
+* Improve Runtime images part (#100)
+* Add Kebechet update image (#99)
+* Add Tekton pipelines overlays builds images (#97)
+* Change section order (#96)
+* :ship: Deploy the Tag v0.5.0 for elyra-aidevsecops-tutorial
+* Add description on how to Push changes to GitHub (#93)
+* Update image for runtime images creation using command palette (#92)
+* Update notebook dependencies (#91)
+### Improvements
+* Describe Git Extenstion use (#105)
+* Add ArgoCD image and description (#98)
+* Add links to KFP and Tekton (#94)
+* Adjust software stack not to use * (#95)
