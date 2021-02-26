@@ -5,6 +5,8 @@ approvers:
   - sub-mod
   - sesheta
   - sefkhet-abwy[bot]
+  - app/sefkhet-abwy
+  - sefkhet-abwy
 reviewers:
   - fridex
   - harshad16
