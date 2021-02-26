@@ -1,5 +1,4 @@
 check:
-  - thoth-precommit
   - overlays-build
 overlays_dir: overlays
 overlays:
