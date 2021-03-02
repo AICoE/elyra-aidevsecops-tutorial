@@ -35,9 +35,9 @@ There are typically two steps you need to follow in order to have a new applicat
 
 2. [Request support for deployment of your application](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=).
 
-In this way [ArgoCD][11] will be used to maintain your application always in sync with your current changes. Once you create a new release of your application (e.g. you changed your model, you added a new metric, you added a new feature) and a new image is available, you need to update the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
+In this way [ArgoCD][2] will be used to maintain your application always in sync with your current changes. Once you create a new release of your application (e.g. you changed your model, you added a new metric, you added a new feature) and a new image is available, you need to update the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
 
-Note: [AICoE Pipeline][8] can also update automatically the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
+Note: [AICoE Pipeline][3] can also update automatically the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
 
 Once everything is synced to the cluster, you can monitor your application from the [ArgoCD][2] using this [link](https://argocd-server-argocd.apps.cnv.massopen.cloud/applications) as shown in the image below:
 
@@ -65,6 +65,8 @@ Once everything is synced to the cluster, you can monitor your application from 
 
 * [Operate First][1]
 * [ArgoCD][2]
+* [AICoE Pipeline][3]
 
 [1]: https://www.operate-first.cloud/
 [2]: https://argoproj.github.io/argo-cd/
+[3]: https://github.com/AICoE/aicoe-ci

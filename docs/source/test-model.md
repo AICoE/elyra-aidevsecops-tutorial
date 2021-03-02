@@ -6,7 +6,7 @@ If you want to test your application deployed in the cluster from JH image you c
 
 - Test model [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/test_deployed_model.ipynb);
 
-(You need to have credentials (token) for the access to [Operate First][1] cluster and have access to the namespace where the application is deployed to run the above notebook)
+(You need to have credentials (token) for the access to [Operate First][1] cluster and have access to the namespace where the application is deployed to run the above notebook).
 
 ## From your local machine
 
