@@ -53,7 +53,7 @@ You also need to have `OBJECT_STORAGE_ENDPOINT_URL`, `OBJECT_STORAGE_BUCKET_NAME
 
 ### Operate First KFP endpoint
 
-For Operate First[1] you can find the Kubeflow Pipeline UI at this [link](http://ml-pipeline-ui-kubeflow.apps.cnv.massopen.cloud/#/pipelines).
+For [Operate First][1] you can find the Kubeflow Pipeline UI at this [link](http://ml-pipeline-ui-kubeflow.apps.cnv.massopen.cloud/#/pipelines).
 
 ## References
 

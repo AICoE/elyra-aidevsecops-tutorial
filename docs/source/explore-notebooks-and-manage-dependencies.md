@@ -9,9 +9,9 @@ For each notebook you can follow similar pattern, in this way you can guarantee 
 
 The notebooks that will be used in an AI Pipeline are:
 
-1. [download_dataset.ipynb](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/download_dataset.ipynb) -> Download MNIST dataset from Tensorflow (NOTE in [Elyra][5] a step in a pipeline can also be performed with a [Python script](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/src/data/download_dataset_from_tf.py);
+1. [download_dataset.ipynb](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/download_dataset.ipynb) -> Download MNIST dataset from Tensorflow (NOTE in [Elyra][2] a step in a pipeline can also be performed with a [Python script](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/src/data/download_dataset_from_tf.py);
 
-2. [test_deployed_model.ipynb](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/training.ipynb) Train the model for MNIST Classification and store it locally or in the Cloud Object Storage;
+2. [training.ipynb](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/training.ipynb) Train the model for MNIST Classification and store it locally or in the Cloud Object Storage;
 
 ## References
 
