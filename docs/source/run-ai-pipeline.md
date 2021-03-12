@@ -31,7 +31,7 @@ You can check the status of each step in the pipeline directly from the UI and d
 The model is stored in your bucket, you can check from your terminal using [aws CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html):
 
 ```bash
-  aws s3 --profile moc-pipeline-kfp --endpoint https://rgw-openshift-storage.apps.zero.massopen.cloud/ ls s3://{your_bucket}/{your_project_name}/models/
+  aws s3 --profile moc-pipeline-kfp --endpoint https://s3-openshift-storage.apps.zero.massopen.cloud/ ls s3://{your_bucket}/{your_project_name}/models/
 ```
 
 where `moc-pipeline-kfp` is the aws profile containing `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY` to access your bucket.
