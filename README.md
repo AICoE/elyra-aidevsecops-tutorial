@@ -73,6 +73,8 @@ all the resources needed.
 
 0. [Pre-requisities](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/pre-requisite.md)
 
+## ML Lifecycle/Source Lifecycle
+
 1. [Setup your initial environment](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/setup-initial-environment.md)
 
 2. [Explore notebooks and manage dependencies](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/explore-notebooks-and-manage-dependencies.md)
@@ -87,11 +89,13 @@ all the resources needed.
 
 6. [Run and debug AI Pipeline](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/run-ai-pipeline.md)
 
+## DevOps Lifecycle
+
 7. [Deploy Inference Application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/deploy-model.md)
 
 8. [Test Deployed inference application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/test-model.md)
 
-8. [Monitor your inference application deployed](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/monitor-model.md)
+9. [Monitor your inference application deployed](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/monitor-model.md)
 
 NOTE: Each of the steps above can be repetaed if you are following ML lifecycle (e.g. changes in the dependencies, changes in the notebooks, new model stored).
 
