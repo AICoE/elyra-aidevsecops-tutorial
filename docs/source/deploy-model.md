@@ -39,7 +39,7 @@ In this way [ArgoCD][2] will be used to maintain your application always in sync
 
 Note: [AICoE Pipeline][3] can also update automatically the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
 
-Once everything is synced to the cluster, you can monitor your application from the [ArgoCD][2] using this [link](https://argocd-server-argocd.apps.cnv.massopen.cloud/applications) as shown in the image below:
+Once everything is synced to the cluster, you can monitor your application from the [ArgoCD][2] using this [link](https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications) as shown in the image below:
 
 <div style="text-align:center">
 <img alt="Argo CD UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ArgoCDUI.png">

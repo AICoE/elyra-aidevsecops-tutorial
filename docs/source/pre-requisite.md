@@ -38,7 +38,7 @@ If you have a different environment, you usually receive one by default or you n
 
 Using [Operate First][1] you can `request a new bucket` once you get a namespace. In order to do that, use the following [link](https://github.com/operate-first/support/issues/new?assignees=&labels=user-support&template=ceph_bucket_request.md&title=).
 
-Once you created a new bucket in your namespace, you can login in the cluster using the following [link](https://console-openshift-console.apps.cnv.massopen.cloud/k8s/cluster/projects) and in your namespace you will find:
+Once you created a new bucket in your namespace, you can login in the cluster using the following [link](https://console-openshift-console.apps.zero.massopen.cloud/k8s/cluster/projects) and in your namespace you will find:
 
 - `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`in a Secret Object with the bucket name you crated.
 
@@ -53,7 +53,7 @@ You also need to have `OBJECT_STORAGE_ENDPOINT_URL`, `OBJECT_STORAGE_BUCKET_NAME
 
 ### Operate First KFP endpoint
 
-For [Operate First][1] you can find the Kubeflow Pipeline UI at this [link](http://ml-pipeline-ui-kubeflow.apps.cnv.massopen.cloud/#/pipelines).
+For [Operate First][1] you can find the Kubeflow Pipeline UI at this [link](http://istio-ingressgateway-istio-system.apps.zero.massopen.cloud/_/pipeline/#/pipelines).
 
 ## References
 

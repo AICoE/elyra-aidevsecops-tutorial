@@ -49,7 +49,7 @@ class Model:
 
             s3_endpoint_url = os.getenv(
                 "ENDPOINT_URL",
-                "https://rgw-openshift-storage.apps.cnv.massopen.cloud/",
+                "https://s3-openshift-storage.apps.zero.massopen.cloud/",
             )
             s3_access_key = os.environ["AWS_ACCESS_KEY_ID"]
             s3_secret_key = os.environ["AWS_SECRET_ACCESS_KEY"]
