@@ -1,6 +1,6 @@
 # Create AI Pipeline (using Elyra UI)
 
-## Add runtime images
+## Add runtime images (using UI)
 
 Now that your images are available on the registry, we need to add them to [Elyra][1] metadata:
 
@@ -38,7 +38,21 @@ The image is now available and can be used into your AI pipeline
 
 - Image Name: `quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0`
 
-### Create runtime to be used in Kubeflow pipeline
+### Add runtime images (using CLI)
+
+If you are more familiar with using CLI from the terminal you can use the following steps to create a runtime to run an AI Pipeline.
+
+1. Open Terminal in JupyterLab
+
+2. Run the following command with your specific inputs (CLOUD_OBJECT_STORAGE_ENDPOINT, CLOUD_OBJECT_STORAGE_USERNAME, CLOUD_OBJECT_STORAGE_PASSWORD, CLOUD_OBJECT_BUCKET_NAME)
+
+```bash
+elyra-metadata install runtime-images --display_name="Tutorial Training Step" --description="Training Step Tutorial" --image_name="quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0"
+```
+
+If you want to know more, check the following [link](https://elyra.readthedocs.io/en/v2.0.1/user_guide/runtime-image-conf.html).
+
+### Create runtime to be used in Kubeflow pipeline (using UI)
 
 1. Select the Kubeflow Pipeline Runtime Tab on the left panel of Jupyterlab UI or use the command palette (Cntrl + Shift + C) and select `"Manage Kubeflow Pipelines Runtimes"`.
 
@@ -75,6 +89,20 @@ where `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `OBJECT_STORAGE_ENDPOINT_URL
 <div style="text-align:center">
 <img alt="Insert inputs in Elyra Runtime" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/InsertInputsElyraRuntime.png">
 </div>
+
+### Create runtime to be used in Kubeflow pipeline (using CLI)
+
+If you are more familiar with using CLI from the terminal you can use the following steps to create a runtime to run an AI Pipeline.
+
+1. Open Terminal in JupyterLab
+
+2. Run the following command with your specific inputs (CLOUD_OBJECT_STORAGE_ENDPOINT, CLOUD_OBJECT_STORAGE_USERNAME, CLOUD_OBJECT_STORAGE_PASSWORD, CLOUD_OBJECT_BUCKET_NAME)
+
+```bash
+elyra-metadata install runtimes --display_name="KFP operate first" --api_endpoint="http://istio-ingressgateway-istio-system.apps.zero.massopen.cloud/pipeline" --engine=Tekton --cos_endpoint=CLOUD_OBJECT_STORAGE_ENDPOINT --cos_username=CLOUD_OBJECT_STORAGE_USERNAME --cos_password=CLOUD_OBJECT_STORAGE_PASSWORD --cos_bucket=CLOUD_OBJECT_BUCKET_NAME
+```
+
+If you want to know more, check the following [link](https://elyra.readthedocs.io/en/v2.0.1/user_guide/runtime-conf.html).
 
 ### Create Elyra AI Pipeline using the UI
 
