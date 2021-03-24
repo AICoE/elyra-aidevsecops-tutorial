@@ -44,7 +44,7 @@ If you are more familiar with using CLI from the terminal you can use the follow
 
 1. Open Terminal in JupyterLab
 
-2. Run the following command with your specific inputs (CLOUD_OBJECT_STORAGE_ENDPOINT, CLOUD_OBJECT_STORAGE_USERNAME, CLOUD_OBJECT_STORAGE_PASSWORD, CLOUD_OBJECT_BUCKET_NAME)
+2. Run the following command with your specific inputs:
 
 ```bash
 elyra-metadata install runtime-images --display_name="Tutorial Training Step" --description="Training Step Tutorial" --image_name="quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0"
@@ -96,7 +96,7 @@ If you are more familiar with using CLI from the terminal you can use the follow
 
 1. Open Terminal in JupyterLab
 
-2. Run the following command with your specific inputs (CLOUD_OBJECT_STORAGE_ENDPOINT, CLOUD_OBJECT_STORAGE_USERNAME, CLOUD_OBJECT_STORAGE_PASSWORD, CLOUD_OBJECT_BUCKET_NAME)
+2. Run the following command with your specific inputs (CLOUD_OBJECT_STORAGE_ENDPOINT, CLOUD_OBJECT_STORAGE_USERNAME, CLOUD_OBJECT_STORAGE_PASSWORD, CLOUD_OBJECT_BUCKET_NAME):
 
 ```bash
 elyra-metadata install runtimes --display_name="KFP operate first" --api_endpoint="http://istio-ingressgateway-istio-system.apps.zero.massopen.cloud/pipeline" --engine=Tekton --cos_endpoint=CLOUD_OBJECT_STORAGE_ENDPOINT --cos_username=CLOUD_OBJECT_STORAGE_USERNAME --cos_password=CLOUD_OBJECT_STORAGE_PASSWORD --cos_bucket=CLOUD_OBJECT_BUCKET_NAME
