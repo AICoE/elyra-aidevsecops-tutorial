@@ -14,7 +14,7 @@ Using [Elyra][1] UI:
 <img alt="Elyra AI Pipeline run inputs" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipelineRunInputs.png">
 </div>
 
-Run your pipeline and move to [Kubeflow Pipeline UI](http://ml-pipeline-ui-kubeflow.apps.zero.massopen.cloud/#/pipelines) to see what is happening.
+Run your pipeline and move to [Kubeflow Pipeline UI](http://istio-ingressgateway-istio-system.apps.zero.massopen.cloud/pipeline/#/experiments) to see what is happening.
 
 <div style="text-align:center">
 <img alt="Kubeflow Pipeline UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/KFPUI.png">
