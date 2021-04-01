@@ -72,7 +72,7 @@ NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline 
 
 - Name: `Elyra AIDevSecOps Tutorial`
 
-- Kubeflow Pipeline API Endpoint: `http://ml-pipeline-ui-kubeflow.apps.zero.massopen.cloud/pipeline`
+- Kubeflow Pipeline API Endpoint: `http://istio-ingressgateway-istio-system.apps.zero.massopen.cloud/pipeline`
 
 - Kubeflow Pipeline Engine: `Tekton`
 
