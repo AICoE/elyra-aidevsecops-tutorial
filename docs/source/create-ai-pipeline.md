@@ -128,7 +128,7 @@ If you want to know more, check the following [link](https://elyra.readthedocs.i
 <img alt="Elyra AI Pipeline example" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipeline.png">
 </div>
 
-You can find the above pipeline [here](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/elyra-aidevsecops-tutorial..pipeline).
+You can find the above pipeline [here](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/elyra-aidevsecops-tutorial.pipeline).
 
 ## References
 
