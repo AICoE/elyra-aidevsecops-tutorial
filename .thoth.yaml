@@ -4,23 +4,30 @@ requirements_format: pipenv
 overlays_dir: overlays
 
 runtime_environments:
+  - name: experiment
+    operating_system:
+      name: ubi
+      version: "8"
+    python_version: "3.8"
+    recommendation_type: latest
+
   - name: download-dataset
     operating_system:
-      name: rhel
+      name: ubi
       version: "8"
     python_version: "3.8"
     recommendation_type: latest
 
   - name: training
     operating_system:
-      name: rhel
+      name: ubi
       version: "8"
     python_version: "3.8"
     recommendation_type: performance
 
   - name: inference
     operating_system:
-      name: rhel
+      name: ubi
       version: "8"
     python_version: "3.8"
     recommendation_type: security

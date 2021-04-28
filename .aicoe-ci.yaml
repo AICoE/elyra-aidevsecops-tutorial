@@ -20,6 +20,17 @@ overlays:
       registry-project: elyra-aidevsecops-training
       registry-secret: thoth-station-thoth-pusher-secret
 
+  - name: experiment
+    build:
+      base-image: quay.io/thoth-station/s2i-elyra-custom-notebook:latest
+      build-source-script: "image:///opt/app-root/builder"
+      custom-tag: latest
+      build-stratergy: Source
+      registry: quay.io
+      registry-org: thoth-station
+      registry-project: elyra-aidevsecops-experiment
+      registry-secret: thoth-station-thoth-pusher-secret
+
   - name: inference
     build:
       base-image: quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.20.1
