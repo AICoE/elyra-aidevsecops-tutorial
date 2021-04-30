@@ -29,88 +29,87 @@ import numpy as np
 
 _LOGGER = logging.getLogger(__name__)
 
-dataset = [
-    "xtestdata.pkl",
-    "ytestdata.pkl"
-]
 
-directory_path = Path.cwd().parents[1]
+def main_test():
+    """Run main test to gather metrics for data scientists and AI DevOps Engineers."""
+    dataset = ["xtestdata.pkl", "ytestdata.pkl"]
 
-dataset_path = directory_path.joinpath(
-    str(os.environ.get("DATASET_PATH", "data/raw/mnist_datasets_tf"))
-)
+    directory_path = Path.cwd().parents[1]
 
-# Retrieve test dataset.
-with open(destination_path.joinpath(dataset[0]), 'rb') as pklxtest_file:
-    x_test = pickle.load(pklxtest_file)
+    dataset_path = directory_path.joinpath(
+        str(os.environ.get("DATASET_PATH", "data/raw/mnist_datasets_tf"))
+    )
 
-with open(destination_path.joinpath(dataset[1]), 'rb') as pklytest_file:
-    y_test = pickle.load(pklytest_file)
+    # Retrieve test dataset.
+    with open(dataset_path.joinpath(dataset[0]), "rb") as pklxtest_file:
+        x_test = pickle.load(pklxtest_file)
 
-# Convert to float32.
-x_test = np.array(x_test, np.float32)
+    with open(dataset_path.joinpath(dataset[1]), "rb") as pklytest_file:
+        y_test = pickle.load(pklytest_file)
 
-# Normalize images value from [0, 255] to [0, 1].
-x_test = x_test / 255.0
+    # Convert to float32.
+    x_test = np.array(x_test, np.float32)
 
-addr = os.getenv("DEPLOYED_MODEL_URL", "http://localhost:8080")
-test_url = addr + "/predict"
+    # Normalize images value from [0, 255] to [0, 1].
+    x_test = x_test / 255.0
 
-# prepare headers for http request
-headers = {"content-type": "application/json"}
+    addr = os.getenv("DEPLOYED_MODEL_URL", "http://localhost:8080")
+    test_url = addr + "/predict"
 
-results = []
+    # prepare headers for http request
+    headers = {"content-type": "application/json"}
 
-total_tests = len(x_test)
-n = 1
+    results = []
 
-for img, number in zip(x_test, y_test):
-    _LOGGER.info(f"test number {n}/{total_tests}")
-    data = json.dumps({"inputs": img.tolist()})
+    total_tests = len(x_test)
+    n = 1
 
-    try:
-        # send http request with image and receive response
-        response = requests.post(test_url, data=data, headers=headers)
-    except Exception as model_test_error:
-        _LOGGER.error(f"Error during gathering of metrics: {model_test_error}")
-        break
+    for img, number in zip(x_test, y_test):
+        _LOGGER.info(f"test number {n}/{total_tests}")
+        data = json.dumps({"inputs": img.tolist()})
 
-    # decode response
-    json_response = response.json()
+        try:
+            # send http request with image and receive response
+            response = requests.post(test_url, data=data, headers=headers)
+        except Exception as model_test_error:
+            _LOGGER.error(f"Error during gathering of metrics: {model_test_error}")
+            break
 
-    prediction = json_response["prediction"]
-    latency = json_response["latency"]
-    probability = json_response["probability"]
+        # decode response
+        json_response = response.json()
 
-    if int(number) == int(prediction):
-        error = 1
-    else:
-        error = 0
+        prediction = json_response["prediction"]
+        latency = json_response["latency"]
+        probability = json_response["probability"]
 
-    results.append({
-        "error": error,
-        "latency": latency,
-        "probability": probability
-    })
+        if int(number) == int(prediction):
+            error = 1
+        else:
+            error = 0
 
-    n += 1
+        results.append({"error": error, "latency": latency, "probability": probability})
+
+        n += 1
+
+    report = {
+        "average_latency": np.mean([r["latency"] for r in results]),
+        "average_error": np.mean([r["error"] for r in results]),
+    }
+
+    _LOGGER.info(f"Result from script is: \n {report}")
+
+    output = json.dumps(report, sort_keys=True, indent=2)
+
+    output_fp = os.environ.get("SCRIPT_OUTPUT_PATH")
+
+    if output_fp:
+        dir_name = os.path.dirname(output_fp)
+        if dir_name:
+            os.makedirs(dir_name, exist_ok=True)
+
+        with open(output_fp, "w") as output_file:
+            output_file.write(output)
 
 
-report = {
-    "average_latency": np.mean([r["latency"] for r in results]),
-    "average_error": np.mean([r["error"] for r in results])
-}
-
-_LOGGER.info(f"Result from script is: \n {report}")
-
-output = json.dumps(report, sort_keys=True, indent=2)
-
-output_fp = os.environ.get("SCRIPT_OUTPUT_PATH")
-
-if output_fp:
-    dir_name = os.path.dirname(output_fp)
-    if dir_name:
-        os.makedirs(dir_name, exist_ok=True)
-
-    with open(output_fp, "w") as output_file:
-        output_file.write(output)
+if __name__ == "__main__":
+    main_test()
