@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright(C) 2020 Red Hat, Thoth Team
+# Copyright(C) 2020, 2021 Red Hat, Thoth Team
 #
 # This program is free software: you can redistribute it and / or modify
 # it under the terms of the GNU General Public License as published by
@@ -18,15 +18,34 @@
 
 """Test model."""
 
+import pickle
+import logging
 import requests
 import json
 import os
+from pathlib import Path
 
-from tensorflow.keras.datasets import mnist
 import numpy as np
 
+_LOGGER = logging.getLogger(__name__)
 
-(x_train, y_train), (x_test, y_test) = mnist.load_data()
+dataset = [
+    "xtestdata.pkl",
+    "ytestdata.pkl"
+]
+
+directory_path = Path.cwd().parents[1]
+
+dataset_path = directory_path.joinpath(
+    str(os.environ.get("DATASET_PATH", "data/raw/mnist_datasets_tf"))
+)
+
+# Retrieve test dataset.
+with open(destination_path.joinpath(dataset[0]), 'rb') as pklxtest_file:
+    x_test = pickle.load(pklxtest_file)
+
+with open(destination_path.joinpath(dataset[1]), 'rb') as pklytest_file:
+    y_test = pickle.load(pklytest_file)
 
 # Convert to float32.
 x_test = np.array(x_test, np.float32)
@@ -34,34 +53,64 @@ x_test = np.array(x_test, np.float32)
 # Normalize images value from [0, 255] to [0, 1].
 x_test = x_test / 255.0
 
-addr = os.getenv("THOTH_AIDEVSECOPS_TUTORIAL_MODEL_URL", "http://localhost:8080")
+addr = os.getenv("DEPLOYED_MODEL_URL", "http://localhost:8080")
 test_url = addr + "/predict"
 
 # prepare headers for http request
 headers = {"content-type": "application/json"}
 
-# select one test image
-img = x_test[5890]
-data = json.dumps({"inputs": img.tolist()})
+results = []
 
-# # Check which image is sent
-# plt.imshow(img, cmap="gray")
-# plt.show(block=False)
-# plt.pause(1)
-# plt.close()
+total_tests = len(x_test)
+n = 1
 
-print(f"input image number: {y_test[5890]}")
+for img, number in zip(x_test, y_test):
+    _LOGGER.info(f"test number {n}/{total_tests}")
+    data = json.dumps({"inputs": img.tolist()})
 
-# send http request with image and receive response
-response = requests.post(test_url, data=data, headers=headers)
+    try:
+        # send http request with image and receive response
+        response = requests.post(test_url, data=data, headers=headers)
+    except Exception as model_test_error:
+        _LOGGER.error(f"Error during gathering of metrics: {model_test_error}")
+        break
 
-# decode response
-json_response = response.json()
+    # decode response
+    json_response = response.json()
 
-prediction = json_response["prediction"]
-latency = json_response["latency"]
-probability = json_response["probability"]
+    prediction = json_response["prediction"]
+    latency = json_response["latency"]
+    probability = json_response["probability"]
 
-print(
-    f"Model predicted {int(prediction)} in {latency} s with probability:{probability}"
-)
+    if int(number) == int(prediction):
+        error = 1
+    else:
+        error = 0
+
+    results.append({
+        "error": error,
+        "latency": latency,
+        "probability": probability
+    })
+
+    n += 1
+
+
+report = {
+    "average_latency": np.mean([r["latency"] for r in results]),
+    "average_error": np.mean([r["error"] for r in results])
+}
+
+_LOGGER.info(f"Result from script is: \n {report}")
+
+output = json.dumps(report, sort_keys=True, indent=2)
+
+output_fp = os.environ.get("SCRIPT_OUTPUT_PATH")
+
+if output_fp:
+    dir_name = os.path.dirname(output_fp)
+    if dir_name:
+        os.makedirs(dir_name, exist_ok=True)
+
+    with open(output_fp, "w") as output_file:
+        output_file.write(output)
