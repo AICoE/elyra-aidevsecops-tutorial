@@ -32,18 +32,6 @@ import numpy as np
 
 _LOGGER = logging.getLogger(__name__)
 
-DATASET = ["xtestdata.pkl", "ytestdata.pkl"]
-
-
-def _is_file_downloaded(file_downloaded_path: Path) -> bool:
-    """Check if file is already downloaded."""
-    if os.path.exists(file_downloaded_path):
-        _LOGGER.info(
-            "{} already exists, skipping ...".format(file_downloaded_path)
-        )
-        return True
-
-    return False
 
 
 def download_test_dataset()
@@ -111,27 +99,12 @@ def main_test():
 
         n += 1
 
-    if results:
-        report = {
-            "average_latency": np.mean([r["latency"] for r in results]),
-            "average_error": np.mean([r["error"] for r in results]),
-        }
+    report = {
+        "average_latency": np.mean([r["latency"] for r in results]),
+        "average_error": np.mean([r["error"] for r in results]),
+    }
 
-        _LOGGER.info(f"Result from script is: \n {report}")
-
-        output = json.dumps(report, sort_keys=True, indent=2)
-
-        output_fp = os.environ.get("SCRIPT_OUTPUT_PATH")
-
-        if output_fp:
-            dir_name = os.path.dirname(output_fp)
-            if dir_name:
-                os.makedirs(dir_name, exist_ok=True)
-
-            with open(output_fp, "w") as output_file:
-                output_file.write(output)
-    else:
-        sys.exit(1)
+    json.dump(report, sys.stdout, indent=2)
 
 if __name__ == "__main__":
     main_test()
