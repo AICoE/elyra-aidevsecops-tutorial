@@ -23,29 +23,49 @@ import logging
 import requests
 import json
 import os
+import sys
 from pathlib import Path
+
+from tensorflow.keras.datasets import mnist as tf_dataset
 
 import numpy as np
 
 _LOGGER = logging.getLogger(__name__)
 
+DATASET = ["xtestdata.pkl", "ytestdata.pkl"]
+
+
+def _is_file_downloaded(file_downloaded_path: Path) -> bool:
+    """Check if file is already downloaded."""
+    if os.path.exists(file_downloaded_path):
+        _LOGGER.info(
+            "{} already exists, skipping ...".format(file_downloaded_path)
+        )
+        return True
+
+    return False
+
+
+def download_test_dataset()
+    "Download test dataset to run script."
+    # Prepare MNIST data.
+    _, (x_test, y_test) = tf_dataset.load_data()
+
+    dataset = {
+        "x_test": x_test,
+        "y_test": y_test,
+    }
+
+    return dataset
+
 
 def main_test():
     """Run main test to gather metrics for data scientists and AI DevOps Engineers."""
-    dataset = ["xtestdata.pkl", "ytestdata.pkl"]
+    dataset = download_test_dataset(h)
 
-    directory_path = Path.cwd().parents[1]
+    x_test = dataset["x_test"]
 
-    dataset_path = directory_path.joinpath(
-        str(os.environ.get("DATASET_PATH", "data/raw/mnist_datasets_tf"))
-    )
-
-    # Retrieve test dataset.
-    with open(dataset_path.joinpath(dataset[0]), "rb") as pklxtest_file:
-        x_test = pickle.load(pklxtest_file)
-
-    with open(dataset_path.joinpath(dataset[1]), "rb") as pklytest_file:
-        y_test = pickle.load(pklytest_file)
+    y_test = dataset["y_test"]
 
     # Convert to float32.
     x_test = np.array(x_test, np.float32)
@@ -91,25 +111,27 @@ def main_test():
 
         n += 1
 
-    report = {
-        "average_latency": np.mean([r["latency"] for r in results]),
-        "average_error": np.mean([r["error"] for r in results]),
-    }
+    if results:
+        report = {
+            "average_latency": np.mean([r["latency"] for r in results]),
+            "average_error": np.mean([r["error"] for r in results]),
+        }
 
-    _LOGGER.info(f"Result from script is: \n {report}")
+        _LOGGER.info(f"Result from script is: \n {report}")
 
-    output = json.dumps(report, sort_keys=True, indent=2)
+        output = json.dumps(report, sort_keys=True, indent=2)
 
-    output_fp = os.environ.get("SCRIPT_OUTPUT_PATH")
+        output_fp = os.environ.get("SCRIPT_OUTPUT_PATH")
 
-    if output_fp:
-        dir_name = os.path.dirname(output_fp)
-        if dir_name:
-            os.makedirs(dir_name, exist_ok=True)
+        if output_fp:
+            dir_name = os.path.dirname(output_fp)
+            if dir_name:
+                os.makedirs(dir_name, exist_ok=True)
 
-        with open(output_fp, "w") as output_file:
-            output_file.write(output)
-
+            with open(output_fp, "w") as output_file:
+                output_file.write(output)
+    else:
+        sys.exit(1)
 
 if __name__ == "__main__":
     main_test()
