@@ -18,13 +18,11 @@
 
 """Test model and gather metrics."""
 
-import pickle
 import logging
 import requests
 import json
 import os
 import sys
-from pathlib import Path
 
 from tensorflow.keras.datasets import mnist as tf_dataset
 
@@ -33,9 +31,8 @@ import numpy as np
 _LOGGER = logging.getLogger(__name__)
 
 
-
-def download_test_dataset()
-    "Download test dataset to run script."
+def download_test_dataset():
+    """Download test dataset to run script."""
     # Prepare MNIST data.
     _, (x_test, y_test) = tf_dataset.load_data()
 
@@ -49,7 +46,7 @@ def download_test_dataset()
 
 def main_test():
     """Run main test to gather metrics for data scientists and AI DevOps Engineers."""
-    dataset = download_test_dataset(h)
+    dataset = download_test_dataset()
 
     x_test = dataset["x_test"]
 
@@ -105,6 +102,7 @@ def main_test():
     }
 
     json.dump(report, sys.stdout, indent=2)
+
 
 if __name__ == "__main__":
     main_test()
