@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-# 
+#
 # Copyright(C) 2021 Francesco Murdaca
 #
 # This program is free software: you can redistribute it and / or modify
@@ -26,11 +26,12 @@ from tensorflow.keras.datasets import mnist as tf_dataset
 
 import numpy as np
 
-from behave import given
+from behave import given, when, then
 
 
-@given(u'dataset is available')
+@given("dataset is available")
 def dataset_availability(context):
+    """Check availability of dataset and retrieves it."""
     # Prepare MNIST data.
     _, (x_test, y_test) = tf_dataset.load_data()
 
@@ -42,7 +43,7 @@ def dataset_availability(context):
     assert context.dataset
 
 
-@given(u'deployment is accessible')
+@given("deployment is accessible")
 def deployment_accessible(context):
     """Check the deployment is accessible."""
     context.result = {}
@@ -57,8 +58,10 @@ def deployment_accessible(context):
 
     assert response.text, f"Empty response from server for {context.model_api_url}"
 
-@when(u'I run test to gather metrics on predict endpoint')
+
+@when("I run test to gather metrics on predict endpoint")
 def gather_metrics(context):
+    """Gather metrics from the deployed ML model."""
     x_test = context.dataset["x_test"]
 
     y_test = context.dataset["y_test"]
@@ -112,8 +115,9 @@ def gather_metrics(context):
     assert context.results
 
 
-@then(u'I should get model and application metrics')
-def step_impl(context):
+@then("I should get model and application metrics")
+def get_model_metrics_report(context):
+    """Get report from metrics collected."""
     report = {
         "average_latency": np.mean([r["latency"] for r in context.results]),
         "average_error": np.mean([r["error"] for r in context.results]),
