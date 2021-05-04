@@ -42,25 +42,20 @@ def dataset_availability(context):
     assert context.dataset
 
 
-@given("deployment is accessible using {scheme}")
-def deployment_accessible(context, scheme):
-    """Check the deployment is accessible using HTTP or HTTPS."""
-    if scheme not in ("HTTPS", "HTTP"):
-        raise ValueError(f"Invalid scheme {scheme!r}, has to be HTTP or HTTPS")
-
+@given(u'deployment is accessible')
+def deployment_accessible(context):
+    """Check the deployment is accessible."""
     context.result = {}
 
-    context.model_api = os.environ["DEPLOYED_MODEL_URL"]
+    context.model_api_url = os.environ["DEPLOYED_MODEL_URL"]
 
-    context.scheme = scheme.lower()
-
-    response = requests.get(f"{context.scheme}://{context.model_api}")
+    response = requests.get(f"{context.model_api_url}")
 
     assert (
         response.status_code == 200
-    ), f"Invalid response when accessing {context.model_api}: {response.status_code!r}: {response.text}"
+    ), f"Invalid response when accessing {context.model_api_url}: {response.status_code!r}: {response.text}"
 
-    assert response.text, f"Empty response from server for {context.model_api}"
+    assert response.text, f"Empty response from server for {context.model_api_url}"
 
 @when(u'I run test to gather metrics on predict endpoint')
 def gather_metrics(context):
@@ -74,7 +69,7 @@ def gather_metrics(context):
     # Normalize images value from [0, 255] to [0, 1].
     x_test = x_test / 255.0
 
-    addr = f"{context.scheme}://{context.model_api}"
+    addr = f"{context.model_api_url}"
     test_url = addr + "/predict"
 
     # prepare headers for http request
@@ -85,7 +80,7 @@ def gather_metrics(context):
     total_tests = len(x_test)
     n = 1
 
-    for img, number in zip(x_test, y_test):
+    for img, number in zip(x_test[:2], y_test[:2]):
         print(f"test number {n}/{total_tests}")
         data = json.dumps({"inputs": img.tolist()})
 
