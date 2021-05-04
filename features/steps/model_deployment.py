@@ -20,7 +20,6 @@
 import requests
 import json
 import os
-import sys
 import logging
 
 from tensorflow.keras.datasets import mnist as tf_dataset
@@ -28,6 +27,9 @@ from tensorflow.keras.datasets import mnist as tf_dataset
 import numpy as np
 
 from behave import given, when, then
+
+_LOGGER = logging.getLogger(__name__)
+
 
 @given("dataset is available")
 def dataset_availability(context):
@@ -83,14 +85,15 @@ def gather_metrics(context):
     total_tests = len(x_test)
     n = 1
 
-    for img, number in zip(x_test[:2], y_test[:2]):
+    for img, number in zip(x_test, y_test):
+        _LOGGER.info(f"test number {n}/{total_tests}")
         data = json.dumps({"inputs": img.tolist()})
 
         try:
             # send http request with image and receive response
             response = requests.post(test_url, data=data, headers=headers)
         except Exception as model_test_error:
-            print(f"Error during gathering of metrics: {model_test_error}")
+            _LOGGER.error(f"Error during gathering of metrics: {model_test_error}")
             break
 
         # decode response
@@ -125,7 +128,7 @@ def get_model_metrics_report(context):
     context.report = report
 
     # TODO: embed in behave report once feature is available > 1.2.6
-    with open('metrics.json', 'w') as metrics:
+    with open("metrics.json", "w") as metrics:
         json.dump(report, metrics, indent=2)
 
     return context.report
