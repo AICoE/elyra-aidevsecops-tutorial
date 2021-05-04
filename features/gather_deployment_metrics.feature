@@ -1,4 +1,4 @@
-Feature: Model Deployed Test
+Feature: Gather metrics deployed model
     Scenario: Deployment metrics gathering
         Given dataset is available
         Given deployment is accessible using HTTP
