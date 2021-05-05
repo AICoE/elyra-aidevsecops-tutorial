@@ -111,9 +111,9 @@ def gather_metrics(context):
         probability = json_response["probability"]
 
         if int(number) == int(prediction):
-            error = 1
-        else:
             error = 0
+        else:
+            error = 1
 
         results.append({"error": error, "latency": latency, "probability": probability})
 
