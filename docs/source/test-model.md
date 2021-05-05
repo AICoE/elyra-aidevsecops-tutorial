@@ -10,7 +10,7 @@ Behave uses Behavior-driven development (or BDD), an agile software development 
   pip install thamos
 ```
 
-2. Create an env and install dependencies using dependencies using [thamos][2] from the root directory of the tutorial.
+2. Create an env and install dependencies using [thamos][2] from the root directory of the tutorial, selecting the appropriate overlays `test-model`.
 
 ```bash
   python3 -m venv venv/ && . venv/bin/activate && thamos install -r test-model
