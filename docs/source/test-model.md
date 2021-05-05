@@ -19,7 +19,7 @@ Behave uses Behavior-driven development (or BDD), an agile software development 
 3. Run [behave][1] command from the root directory of the tutorial.
 
 ```bash
-  DEPLOYED_MODEL_URL=<MODEL_DEPLOYED_URL> behave
+  DEPLOYED_MODEL_URL=http://elyra-aidevsecops-tutorial-thoth-deployment-examples.apps.zero.massopen.cloud behave
 ```
 
 Example of the output received:
