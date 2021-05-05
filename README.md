@@ -47,7 +47,7 @@ GitOps best practices help reproducibility and traceability for all projects ava
 One of the most important requirement for reproducibility is dependencies management. Having dependencies clearly stated allow for reusability and portability of notebooks,
 which can be reused in another projects and shared safely with other Data Scientists.
 
-(WIP) If you want to know more about this issue in the data science domain, have a look at this [article](https://github.com/thoth-station/jupyterlab-requirements).
+If you want to know more about this issue in the data science domain, have a look at this [article](https://developers.redhat.com/blog/2021/03/19/managing-python-dependencies-with-the-thoth-jupyterlab-extension/) or this [video](https://www.youtube.com/watch?v=ifyQ2oSxjnU).
 
 [Project Thoth][6] helps developers keep these dependencies up to date integrating its recommendation in developers daily tools. If you want to know more have a look [here](https://thoth-station.ninja/docs/developers/adviser/integration.html).
 Thanks to this tooling, the developers (including data scientists) do not have to worry too much about dependency management (they still need to select their dependencies), which can be handled by a bot and automated pipelines.Hence, having AI support can lead to improvement in the development of AI project, speeding up steps due to performance improvements coming from dependencies and keeping your application secure because insecure libs cannot be introduced.
