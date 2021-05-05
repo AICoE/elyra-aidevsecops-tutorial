@@ -28,6 +28,13 @@ import numpy as np
 
 from behave import given, when, then
 
+_DEBUG_LEVEL = bool(int(os.getenv("DEBUG_LEVEL", 0)))
+
+if _DEBUG_LEVEL:
+    logging.basicConfig(level=logging.DEBUG)
+else:
+    logging.basicConfig(level=logging.INFO)
+
 _LOGGER = logging.getLogger(__name__)
 
 
@@ -125,10 +132,12 @@ def get_model_metrics_report(context):
         "average_error": np.mean([r["error"] for r in context.results]),
     }
 
+    context.store_metrics_path = os.environ["STORE_METRICS_PATH"]
+
     context.report = report
 
     # TODO: embed in behave report once feature is available > 1.2.6
-    with open("metrics.json", "w") as metrics:
+    with open(context.store_metrics_path, "w") as metrics:
         json.dump(report, metrics, indent=2)
 
     return context.report
