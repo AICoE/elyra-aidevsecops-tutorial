@@ -1,51 +1,29 @@
 # Test inference application deployed
 
-## Using notebook in JupyterHub
+If you want to test your application deployed in the cluster you can run the following integration test using [behave][1] package.
 
-If you want to test your application deployed in the cluster from JH image you can use the following notebook:
-
-- Test model [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/test_deployed_model.ipynb);
-
-(You need to have credentials (token) for the access to [Operate First][1] cluster and have access to the namespace where the application is deployed to run the above notebook).
-
-## From your local machine
-
-If you want to test the application created in this tutorial from your local machine:
-
-PRE-REQUISITE: Make sure you are logged in the cluster where the model is deployed.
-
-1. Install dependencies using [Pipenv](https://github.com/pypa/pipenv).
+1. Install [thamos][2] using pip:
 
 ```bash
-  pipenv install
+  pip install thamos
 ```
 
-or [micropipenv](https://pypi.org/project/micropipenv/):
+1. Create an env and install dependencies using dependencies using [thamos][2] from the root directory of the tutorial.
 
 ```bash
-  micropipenv install
+  python3 -m venv venv/ && . venv/bin/activate && thamos install -r test-model
 ```
 
-2. Start application.
+2. Run behave command from the root directory of the tutorial.
 
 ```bash
-  pipenv run python3 wsgi.py
-```
-
-3. Run test that will show the input image and then return the prediction from the model.
-
-```bash
-  pipenv run python3 src/test.py
-```
-
-If you want to test the application deployed you need to provide the URL:
-
-```bash
-  THOTH_AIDEVSECOPS_TUTORIAL_MODEL_URL=<MODEL_DEPLOYED_URL> pipenv run python3 src/test.py
+  DEPLOYED_MODEL_URL=<MODEL_DEPLOYED_URL> behave
 ```
 
 ## References
 
-* [Operate First][1]
+* [behave][1]
+* [thamos][2]
 
-[1]: https://www.operate-first.cloud/
+[1]: https://behave.readthedocs.io/en/stable/
+[2]: https://github.com/thoth-station/thamos

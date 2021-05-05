@@ -132,7 +132,7 @@ def get_model_metrics_report(context):
         "average_error": np.mean([r["error"] for r in context.results]),
     }
 
-    context.store_metrics_path = os.environ["STORE_METRICS_PATH"]
+    context.store_metrics_path = os.getenv("STORE_METRICS_PATH", "metrics.json")
 
     context.report = report
 
