@@ -123,3 +123,15 @@
 * use only overlays (#127)
 ### Other
 * remove unusued env variables
+
+## Release 0.8.0 (2021-05-06T08:33:29)
+### Features
+* Add missing references (#153)
+* Add variable to store metrics (#152)
+* Update the aicoe-ci config file with proper image (#151)
+* add datasets for pipeline (#144)
+### Improvements
+* Describe Integration test (#154)
+* Use behave for gathering metrics and running integration test (#148)
+* Download and test script (#146)
+* Add test (#145)
