@@ -40,8 +40,8 @@ from src.model import Model
 _LOGGER = logging.getLogger("aidevsecops-tutorial")
 _LOGGER.info("Thoth AIDevSecOps Tutorial v%s", __version__)
 
-_GRAFANA_REDIRECT_URL = os.getenv(
-    "THOTH_AIDEVSECOPS_GRAFANA_REDIRECT_URL",
+_REDIRECT_URL = os.getenv(
+    "THOTH_AIDEVSECOPS_REDIRECT_URL",
     "https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/README.md",
 )
 
@@ -84,7 +84,7 @@ def extend_response_headers(response):
 @application.route("/")
 def main():
     """Show this to humans."""
-    return redirect(_GRAFANA_REDIRECT_URL, code=308)
+    return redirect(_REDIRECT_URL, code=308)
 
 
 @application.route("/predict", methods=["POST"])

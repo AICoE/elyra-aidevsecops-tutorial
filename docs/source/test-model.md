@@ -1,51 +1,56 @@
 # Test inference application deployed
 
-## Using notebook in JupyterHub
+If you want to test your application deployed in the cluster you can run the [integration test](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/features) using [behave][1] package.
 
-If you want to test your application deployed in the cluster from JH image you can use the following notebook:
+Behave uses Behavior-driven development (or BDD), an agile software development technique that encourages and faciliate collaboration between developers, QA and non-technical or business participants.
 
-- Test model [Jupyter notebook](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/test_deployed_model.ipynb);
-
-(You need to have credentials (token) for the access to [Operate First][1] cluster and have access to the namespace where the application is deployed to run the above notebook).
-
-## From your local machine
-
-If you want to test the application created in this tutorial from your local machine:
-
-PRE-REQUISITE: Make sure you are logged in the cluster where the model is deployed.
-
-1. Install dependencies using [Pipenv](https://github.com/pypa/pipenv).
+1. Install [thamos][2] using pip:
 
 ```bash
-  pipenv install
+  pip install thamos
 ```
 
-or [micropipenv](https://pypi.org/project/micropipenv/):
+2. Create an env and install dependencies using [thamos][2] from the root directory of the tutorial, selecting the appropriate overlays `test-model`.
 
 ```bash
-  micropipenv install
+  python3 -m venv venv/ && . venv/bin/activate && thamos install -r test-model
 ```
 
-2. Start application.
+3. Run [behave][1] command from the root directory of the tutorial.
 
 ```bash
-  pipenv run python3 wsgi.py
+  DEPLOYED_MODEL_URL=http://elyra-aidevsecops-tutorial-thoth-deployment-examples.apps.zero.massopen.cloud behave
 ```
 
-3. Run test that will show the input image and then return the prediction from the model.
+Example of the output received:
 
 ```bash
-  pipenv run python3 src/test.py
+  Scenario: Deployment metrics gathering                    # features/gather_deployment_metrics.feature:2
+      Given dataset is available                            # features/steps/model_deployment.py:42
+      Given deployment is accessible                        # features/steps/model_deployment.py:56
+      When I run test to gather metrics on predict endpoint # features/steps/model_deployment.py:72
+      Then I should get model and application metrics       # features/steps/model_deployment.py:128
+
+  1 feature passed, 0 failed, 0 skipped
+  1 scenario passed, 0 failed, 0 skipped
+  4 steps passed, 0 failed, 0 skipped, 0 undefined
+  Took 0m3.394s
 ```
 
-If you want to test the application deployed you need to provide the URL:
+4. Checking metrics produced running
 
 ```bash
-  THOTH_AIDEVSECOPS_TUTORIAL_MODEL_URL=<MODEL_DEPLOYED_URL> pipenv run python3 src/test.py
+  cat metrics.json
+```
+
+```python
+{'average_latency': 0.03846242621075362, 'average_error': 0.001}
 ```
 
 ## References
 
-* [Operate First][1]
+* [behave][1]
+* [thamos][2]
 
-[1]: https://www.operate-first.cloud/
+[1]: https://behave.readthedocs.io/en/stable/
+[2]: https://github.com/thoth-station/thamos

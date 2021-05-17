@@ -99,3 +99,39 @@
 * Add ArgoCD image and description (#98)
 * Add links to KFP and Tekton (#94)
 * Adjust software stack not to use * (#95)
+
+## Release 0.7.0 (2021-04-28T06:28:23)
+### Features
+* Make tutorial an exeriment to be spawned by JH on Operate First (#138)
+* Delete CODEOWNERS
+* Fix pipeline GitHub URL (#135)
+* Add correct KFP URL to run pipeline (#128)
+* Adjust KFP UI URL (#134)
+* Add alternative to create runtime images and runtime through CLI
+* Split cases for model deployment
+* Separate personas
+* update link for KFP
+* Use correct Ceph URL
+* Update ArgoCD URL
+* make-pre-commit happy
+* Reaplace cnv with zero
+* Post workshop errors correction (#120)
+* :sparkles: let's run pre-commit
+* Update .aicoe-ci.yaml
+* Update OWNERS
+### Improvements
+* use only overlays (#127)
+### Other
+* remove unusued env variables
+
+## Release 0.8.0 (2021-05-06T08:33:29)
+### Features
+* Add missing references (#153)
+* Add variable to store metrics (#152)
+* Update the aicoe-ci config file with proper image (#151)
+* add datasets for pipeline (#144)
+### Improvements
+* Describe Integration test (#154)
+* Use behave for gathering metrics and running integration test (#148)
+* Download and test script (#146)
+* Add test (#145)
