@@ -111,15 +111,18 @@ def gather_metrics(context):
         probability = json_response["probability"]
 
         if int(number) == int(prediction):
-            error = 0
+            answer = 0
         else:
-            error = 1
+            answer = 1
 
-        results.append({"error": error, "latency": latency, "probability": probability})
+        results.append({"error": answer, "latency": latency, "probability": probability})
 
         n += 1
 
     context.results = results
+    context.custom_inputs = {
+        "number_requests": total_tests
+    }
 
     assert context.results
 
@@ -130,6 +133,8 @@ def get_model_metrics_report(context):
     report = {
         "average_latency": np.mean([r["latency"] for r in context.results]),
         "average_error": np.mean([r["error"] for r in context.results]),
+        "average_probability": np.mean([r["probability"] for r in context.results]),
+        "number_requests": context.custom_inputs["number_requests"]
     }
 
     context.store_metrics_path = os.getenv("STORE_METRICS_PATH", "metrics.json")
