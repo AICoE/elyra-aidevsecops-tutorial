@@ -92,7 +92,7 @@ def gather_metrics(context):
     total_tests = len(x_test)
     n = 1
 
-    for img, number in zip(x_test[:5], y_test[:5]):
+    for img, number in zip(x_test[:10], y_test[:10]):
         _LOGGER.info(f"test number {n}/{total_tests}")
         data = json.dumps({"inputs": img.tolist()})
 
@@ -119,10 +119,12 @@ def gather_metrics(context):
 
         n += 1
 
-    context.results = results
     context.custom_inputs = {
-        "number_requests": total_tests
+        "number_requests": n
     }
+
+    context.results = results
+
 
     assert context.results
 
