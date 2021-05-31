@@ -108,20 +108,20 @@ def predict():
         }
     )
 
-def _healthiness():
-    return jsonify({"status": "ready", "version": model.model_version}), 200, {"ContentType": "application/json"}
+# def _healthiness():
+#     return jsonify({"status": "ready", "version": model.model_version}), 200, {"ContentType": "application/json"}
 
 
-@application.route("/readiness")
-def api_readiness():
-    """Report readiness for OpenShift readiness probe."""
-    return _healthiness()
+# @application.route("/readiness")
+# def api_readiness():
+#     """Report readiness for OpenShift readiness probe."""
+#     return _healthiness()
 
 
-@application.route("/liveness")
-def api_liveness():
-    """Report liveness for OpenShift readiness probe."""
-    return _healthiness()
+# @application.route("/liveness")
+# def api_liveness():
+#     """Report liveness for OpenShift readiness probe."""
+#     return _healthiness()
 
 
 @application.route("/metrics")
