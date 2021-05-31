@@ -28,7 +28,8 @@ from version import __version__
 from flask_cors import CORS
 from flask import Flask
 from flask import request
-from flask import redirect
+from flask import redirect, jsonify
+
 
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import generate_latest
@@ -106,6 +107,21 @@ def predict():
             "probability": float(probability),
         }
     )
+
+def _healthiness():
+    return jsonify({"status": "ready", "version": model.model_version}), 200, {"ContentType": "application/json"}
+
+
+@application.route("/readiness")
+def api_readiness():
+    """Report readiness for OpenShift readiness probe."""
+    return _healthiness()
+
+
+@application.route("/liveness")
+def api_liveness():
+    """Report liveness for OpenShift readiness probe."""
+    return _healthiness()
 
 
 @application.route("/metrics")
