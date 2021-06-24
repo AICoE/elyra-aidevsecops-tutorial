@@ -135,3 +135,14 @@
 * Use behave for gathering metrics and running integration test (#148)
 * Download and test script (#146)
 * Add test (#145)
+
+## Release 0.8.1 (2021-06-24T14:37:34)
+### Features
+* add dependencies for experiment (#171)
+* :ship: Deploy the Tag v0.8.0 for elyra-aidevsecops-tutorial
+* :ship: Deploy the Tag v0.7.0 for elyra-aidevsecops-tutorial
+* :ship: Deploy the Tag v0.6.0 for elyra-aidevsecops-tutorial
+* Update .aicoe-ci.yaml (#163)
+* :arrow_down_small: set the resource requirements as per usage (#162)
+* add more metrics (#157)
+* :hatched_chick: update the prow resource limits (#159)
