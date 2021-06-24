@@ -4,20 +4,17 @@ url = "https://pypi.org/simple"
 verify_ssl = true
 
 [packages]
+pandas = "*"
+tensorflow = "==2.4.0"
+matplotlib = "*"
+prometheus-client = "*"
+flask-cors = "*"
+gunicorn = "*"
+prometheus-flask-exporter = "*"
+boto3 = "*"
+behave = "*"
 
 [dev-packages]
-jupyterlab-requirements = ">=0.5.0"
-flake8 = "*"
-coverage = "*"
-Sphinx = "*"
-pytest = "*"
-pytest-timeout = "*"
-pytest-cov = "*"
-hypothesis-auto = "*"
-hypothesis = "*"
-pytest-mypy = "*"
-mypy = "*"
-pre-commit = "==2.0.1"
 
 [requires]
 python_version = "3.8"
