@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.8.0
+        name: quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.8.1
       importPolicy: {}
       referencePolicy:
         type: Source
