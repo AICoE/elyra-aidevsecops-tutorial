@@ -146,3 +146,8 @@
 * :arrow_down_small: set the resource requirements as per usage (#162)
 * add more metrics (#157)
 * :hatched_chick: update the prow resource limits (#159)
+
+## Release 0.9.0 (2021-07-01T13:22:05)
+### Features
+* Updated Training Notebook (#167)
+* :ship: Deploy the Tag v0.8.1 for elyra-aidevsecops-tutorial
