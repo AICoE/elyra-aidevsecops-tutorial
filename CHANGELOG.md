@@ -151,3 +151,8 @@
 ### Features
 * Updated Training Notebook (#167)
 * :ship: Deploy the Tag v0.8.1 for elyra-aidevsecops-tutorial
+
+## Release 0.9.1 (2021-07-03T17:33:02)
+### Features
+* Add library
+* :ship: Deploy the Tag v0.9.0 for elyra-aidevsecops-tutorial
