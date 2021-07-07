@@ -1,0 +1,5 @@
+format: jb-book
+root: README
+chapters:
+- file: notebooks/training.ipynb
+- file: notebooks/test_deployed_model

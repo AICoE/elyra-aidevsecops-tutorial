@@ -1,0 +1,5 @@
+title: Elyra AIDevSecOps Tutorial
+author: Project Meteor
+execute:
+  execute_notebooks: false
+only_build_toc_files: true
