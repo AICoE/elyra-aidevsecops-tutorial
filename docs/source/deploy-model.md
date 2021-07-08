@@ -4,7 +4,7 @@ There are different ways to deploy a model and different tools that can be used 
 
 ## Flask application
 
-[Deploy Inference Application using Flask](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/model-deployment/flask-application.md)
+[Deploy Inference Application using Flask](./model-deployment/flask-application.md)
 
 ## KFServing
 

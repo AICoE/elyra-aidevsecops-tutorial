@@ -1,6 +1,6 @@
 # Test inference application deployed
 
-If you want to test your application deployed in the cluster you can run the [integration test](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/features) using [behave][1] package.
+If you want to test your application deployed in the cluster you can run the [integration test](../../features) using [behave][1] package.
 
 Behave uses Behavior-driven development (or BDD), an agile software development technique that encourages and faciliate collaboration between developers, QA and non-technical or business participants.
 

@@ -10,7 +10,7 @@ For the purpose of the tutorial the images required are already created using th
 Using pipelines like the AICoE tooling you can rely on bots helping you, as described above in the initial description.
 These pipelines are described in [AICoE Pipeline][1] and you can use them for you projects if you are interested.
 
-In this case the [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.aicoe-ci.yaml) is created with all information relative to build (e.g. base image, build strategy, registry where to push) as described in [AICoE Pipeline][1] documentation.
+In this case the [.aicoe.yaml](../../.aicoe-ci.yaml) is created with all information relative to build (e.g. base image, build strategy, registry where to push) as described in [AICoE Pipeline][1] documentation.
 
 Some of the pipelines used in Thoth project are maintained by bots. Therefore you can open an issue asking for release (e.g patch, minor, major) and the bots will handle your request. One the request will be completed the bot will automatically close the issue as you can see from the images below:
 
@@ -24,7 +24,7 @@ Some of the pipelines used in Thoth project are maintained by bots. Therefore yo
 
 The `CHANGELOG` after the release is created using AI model that cluster pull requests. You can find more information about `glyph project` [here](https://github.com/thoth-station/glyph).
 
-Once the issue is closed by the bot, a tag is created in the GitHub project and a pipeline starts in order to build and push the image on the registry according to the requirements inserted in the [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.aicoe-ci.yaml).
+Once the issue is closed by the bot, a tag is created in the GitHub project and a pipeline starts in order to build and push the image on the registry according to the requirements inserted in the [.aicoe.yaml](../../.aicoe-ci.yaml).
 
 Once the new tag is created, Tekton pipelines from the AICoE are triggered.
 
@@ -52,15 +52,15 @@ Once the pipelines are completed the images will be available on quay.
 
 You can find the images required for tutorial named after the overlays requested:
 
-- [download-dataset overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/download-dataset) -> quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0 (download-dataset image)
+- [download-dataset overlay](../../overlays/download-dataset) -> quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0 (download-dataset image)
 
-- [training overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/training) -> quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0 (training image)
+- [training overlay](../../overlays/training/Pipfile) -> quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0 (training image)
 
-- [inference overlay](https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/inference)  -> quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0 (inference image)
+- [inference overlay](../../overlays/inference/Pipfile)  -> quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0 (inference image)
 
-You can check the overlays build requirement in the [.aicoe.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/c86ce9c08665c12df0adf829db31bd19e8c61455/.aicoe-ci.yaml#L5).
+You can check the overlays build requirement in the [.aicoe.yaml](../../.aicoe-ci.yaml#L5).
 
-All requirements for the overlay are created using Thoth resolution engine, you can find the inputs used for Thoth recommender in the [.thoth.yaml](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/.thoth.yaml#L5).
+All requirements for the overlay are created using Thoth resolution engine, you can find the inputs used for Thoth recommender in the [.thoth.yaml](../../.thoth.yaml#L5).
 
 ## References
 
