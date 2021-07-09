@@ -1,0 +1,22 @@
+format: jb-book
+root: README
+parts:
+  - caption: Behind the Scenes
+    chapters:
+    - file: docs/source/setup-initial-environment
+    - file: docs/source/explore-notebooks-and-manage-dependencies
+    - file: docs/source/push-changes
+    - file: docs/source/build-images
+    - file: docs/source/use-bots
+  - caption: AI Lifecycle
+    chapters:
+    - file: notebooks/download_dataset
+    - file: notebooks/training
+    - file: notebooks/test_deployed_model
+    - file: docs/source/create-ai-pipeline
+    - file: docs/source/run-ai-pipeline
+  - caption: DevOps Lifecycle
+    chapters:
+    - file: docs/source/deploy-model
+    - file: docs/source/test-model
+    - file: docs/source/monitor-model

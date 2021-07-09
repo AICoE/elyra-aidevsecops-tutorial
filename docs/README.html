@@ -1,0 +1,505 @@
+
+<!DOCTYPE html>
+
+<html>
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Elyra AIDevSecOps Tutorial &#8212; Project Meteor</title>
+
+  <link href="_static/css/theme.css" rel="stylesheet" />
+  <link href="_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
+
+
+  <link rel="stylesheet"
+    href="_static/vendor/fontawesome/5.13.0/css/all.min.css">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-solid-900.woff2">
+  <link rel="preload" as="font" type="font/woff2" crossorigin
+    href="_static/vendor/fontawesome/5.13.0/webfonts/fa-brands-400.woff2">
+
+
+
+
+
+    <link rel="stylesheet" href="_static/pygments.css" type="text/css" />
+    <link rel="stylesheet" href="_static/sphinx-book-theme.acff12b8f9c144ce68a297486a2fa670.css" type="text/css" />
+    <link rel="stylesheet" type="text/css" href="_static/togglebutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/copybutton.css" />
+    <link rel="stylesheet" type="text/css" href="_static/mystnb.css" />
+    <link rel="stylesheet" type="text/css" href="_static/sphinx-thebe.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-main.c949a650a448cc0ae9fd3441c0e17fb0.css" />
+    <link rel="stylesheet" type="text/css" href="_static/panels-variables.06eb56fa6e07937060861dad626602ad.css" />
+
+  <link rel="preload" as="script" href="_static/js/index.1c5a1a01449ed65a7b51.js">
+
+    <script id="documentation_options" data-url_root="./" src="_static/documentation_options.js"></script>
+    <script src="_static/jquery.js"></script>
+    <script src="_static/underscore.js"></script>
+    <script src="_static/doctools.js"></script>
+    <script src="_static/togglebutton.js"></script>
+    <script src="_static/clipboard.min.js"></script>
+    <script src="_static/copybutton.js"></script>
+    <script >var togglebuttonSelector = '.toggle, .admonition.dropdown, .tag_hide_input div.cell_input, .tag_hide-input div.cell_input, .tag_hide_output div.cell_output, .tag_hide-output div.cell_output, .tag_hide_cell.cell, .tag_hide-cell.cell';</script>
+    <script src="_static/sphinx-book-theme.12a9622fbb08dcb3a2a40b2c02b83a57.js"></script>
+    <script async="async" src="https://unpkg.com/thebelab@latest/lib/index.js"></script>
+    <script >
+        const thebe_selector = ".thebe"
+        const thebe_selector_input = "pre"
+        const thebe_selector_output = ".output"
+    </script>
+    <script async="async" src="_static/sphinx-thebe.js"></script>
+    <link rel="index" title="Index" href="genindex.html" />
+    <link rel="search" title="Search" href="search.html" />
+    <link rel="next" title="Setup initial environment" href="docs/source/setup-initial-environment.html" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="docsearch:language" content="en" />
+
+  </head>
+  <body data-spy="scroll" data-target="#bd-toc-nav" data-offset="80">
+
+    <div class="container-fluid" id="banner"></div>
+
+
+
+    <div class="container-xl">
+      <div class="row">
+
+<div class="col-12 col-md-3 bd-sidebar site-navigation show" id="site-navigation">
+
+        <div class="navbar-brand-box">
+    <a class="navbar-brand text-wrap" href="index.html">
+
+      <img src="_static/logo.png" class="logo" alt="logo">
+
+
+      <h1 class="site-logo" id="site-title">Project Meteor</h1>
+
+    </a>
+</div><form class="bd-search d-flex align-items-center" action="search.html" method="get">
+  <i class="icon fas fa-search"></i>
+  <input type="search" class="form-control" name="q" id="search-input" placeholder="Search this book..." aria-label="Search this book..." autocomplete="off" >
+</form><nav class="bd-links" id="bd-docs-nav" aria-label="Main navigation">
+    <div class="bd-toc-item active">
+        <ul class="nav bd-sidenav">
+ <li class="toctree-l1 current">
+  <a class="reference internal" href="#">
+   Elyra AIDevSecOps Tutorial
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  Behind the Scenes
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/setup-initial-environment.html">
+   Setup initial environment
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/explore-notebooks-and-manage-dependencies.html">
+   Start working on your notebooks
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/push-changes.html">
+   Store your changes on your GitHub repo
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/build-images.html">
+   Create a first release and image of your project
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/use-bots.html">
+   Dependencies updates in the repo
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  AI Lifecycle
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/download_dataset.html">
+   Download Dataset
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/training.html">
+   Training model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="notebooks/test_deployed_model.html">
+   Test Deployed Model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/create-ai-pipeline.html">
+   Create AI Pipeline (using Elyra UI)
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/run-ai-pipeline.html">
+   Run AI Pipeline
+  </a>
+ </li>
+</ul>
+<p class="caption">
+ <span class="caption-text">
+  DevOps Lifecycle
+ </span>
+</p>
+<ul class="nav bd-sidenav">
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/deploy-model.html">
+   Deploy your model
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/test-model.html">
+   Test inference application deployed
+  </a>
+ </li>
+ <li class="toctree-l1">
+  <a class="reference internal" href="docs/source/monitor-model.html">
+   Monitor your model and application with Prometheus and Grafana
+  </a>
+ </li>
+</ul>
+
+    </div>
+</nav> <!-- To handle the deprecated key -->
+
+<div class="navbar_extra_footer">
+  Powered by <a href="https://jupyterbook.org">Jupyter Book</a>
+</div>
+
+</div>
+
+
+
+
+
+
+<main class="col py-md-3 pl-md-4 bd-content overflow-auto" role="main">
+
+    <div class="topbar container-xl fixed-top">
+    <div class="topbar-contents row">
+        <div class="col-12 col-md-3 bd-topbar-whitespace site-navigation show"></div>
+        <div class="col pl-md-4 topbar-main">
+
+            <button id="navbar-toggler" class="navbar-toggler ml-0" type="button" data-toggle="collapse"
+                data-toggle="tooltip" data-placement="bottom" data-target=".site-navigation" aria-controls="navbar-menu"
+                aria-expanded="true" aria-label="Toggle navigation" aria-controls="site-navigation"
+                title="Toggle navigation" data-toggle="tooltip" data-placement="left">
+                <i class="fas fa-bars"></i>
+                <i class="fas fa-arrow-left"></i>
+                <i class="fas fa-arrow-up"></i>
+            </button>
+
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn" aria-label="Download this page"><i
+            class="fas fa-download"></i></button>
+
+    <div class="dropdown-buttons">
+        <!-- ipynb file if we had a myst markdown file -->
+
+        <!-- Download raw file -->
+        <a class="dropdown-buttons" href="_sources/README.md"><button type="button"
+                class="btn btn-secondary topbarbtn" title="Download source file" data-toggle="tooltip"
+                data-placement="left">.md</button></a>
+        <!-- Download PDF via print -->
+        <button type="button" id="download-print" class="btn btn-secondary topbarbtn" title="Print to PDF"
+            onClick="window.print()" data-toggle="tooltip" data-placement="left">.pdf</button>
+    </div>
+</div>
+
+            <!-- Source interaction buttons -->
+
+<div class="dropdown-buttons-trigger">
+    <button id="dropdown-buttons-trigger" class="btn btn-secondary topbarbtn"
+        aria-label="Connect with source repository"><i class="fab fa-github"></i></button>
+    <div class="dropdown-buttons sourcebuttons">
+        <a class="repository-button"
+            href="https://github.com/AICoE/elyra-aidevsecops-tutorial"><button type="button" class="btn btn-secondary topbarbtn"
+                data-toggle="tooltip" data-placement="left" title="Source repository"><i
+                    class="fab fa-github"></i>repository</button></a>
+        <a class="issues-button"
+            href="https://github.com/AICoE/elyra-aidevsecops-tutorial/issues/new?title=Issue%20on%20page%20%2FREADME.html&body=Your%20issue%20content%20here."><button
+                type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip" data-placement="left"
+                title="Open an issue"><i class="fas fa-lightbulb"></i>open issue</button></a>
+
+    </div>
+</div>
+
+            <!-- Full screen (wrap in <a> to have style consistency -->
+
+<a class="full-screen-button"><button type="button" class="btn btn-secondary topbarbtn" data-toggle="tooltip"
+        data-placement="bottom" onclick="toggleFullScreen()" aria-label="Fullscreen mode"
+        title="Fullscreen mode"><i
+            class="fas fa-expand"></i></button></a>
+
+            <!-- Launch buttons -->
+
+        </div>
+
+        <!-- Table of contents -->
+        <div class="d-none d-md-block col-md-2 bd-toc show">
+
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#">
+   Elyra AIDevSecOps Tutorial
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#environment-required">
+     Environment required
+    </a>
+    <ul class="nav section-nav flex-column">
+     <li class="toc-h3 nav-item toc-entry">
+      <a class="reference internal nav-link" href="#operate-first-open-environment">
+       Operate First Open Environment
+      </a>
+     </li>
+    </ul>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#tools">
+     Tools
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#gitops-reproducibility-portability-and-traceability-with-ai-support">
+     GitOps, reproducibility, portability and traceability with AI support
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#automated-pipelines-and-bots-for-your-github-project">
+     Automated pipelines and bots for your GitHub project
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#project-templates">
+     Project templates
+    </a>
+   </li>
+  </ul>
+ </li>
+ <li class="toc-h1 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#tutorial-steps">
+   Tutorial Steps
+  </a>
+  <ul class="visible nav section-nav flex-column">
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#ml-lifecycle-source-lifecycle">
+     ML Lifecycle/Source Lifecycle
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#devops-lifecycle">
+     DevOps Lifecycle
+    </a>
+   </li>
+   <li class="toc-h2 nav-item toc-entry">
+    <a class="reference internal nav-link" href="#references">
+     References
+    </a>
+   </li>
+  </ul>
+ </li>
+</ul>
+
+            </nav>
+        </div>
+    </div>
+</div>
+    <div id="main-content" class="row">
+        <div class="col-12 col-md-9 pl-md-3 pr-md-0">
+
+              <div>
+
+  <div class="section" id="elyra-aidevsecops-tutorial">
+<h1>Elyra AIDevSecOps Tutorial<a class="headerlink" href="#elyra-aidevsecops-tutorial" title="Permalink to this headline">¶</a></h1>
+<p>This tutorial is used to discuss the interface between Data Science and Dev/DevOps using project templates, pipelines and bots.
+Moreover, it wants to highlight that Data Scientists are not so different from developers and DevSecOps practices and tools can be applied to MLOps ones.</p>
+<p>The demo application used is the “hello world” for AI: MNIST Classification.</p>
+<div class="section" id="environment-required">
+<h2>Environment required<a class="headerlink" href="#environment-required" title="Permalink to this headline">¶</a></h2>
+<p>This tutorial has the following environment requirements to be run:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://opendatahub.io/">Open Data Hub</a> v1.0,</p></li>
+<li><p><a class="reference external" href="https://www.openshift.com/">Openshift</a> (Enterprise Kubernetes),</p></li>
+<li><p>Cloud Object Storage (e.g. Ceph, minio).</p></li>
+<li><p><a class="reference external" href="https://tekton.dev/">Tekton</a>, used in CI/CD systems, to run pipelines created by humans or machines.</p></li>
+<li><p><a class="reference external" href="https://argoproj.github.io/argo-cd/">ArgoCD</a>, used for Continuous Deployment of your applications.</p></li>
+<li><p>Tutorial <a class="reference external" href="https://quay.io/repository/thoth-station/s2i-lab-elyra?tag=ml-prague-workshop&amp;tab=tags">container image</a>:</p></li>
+</ul>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span><span class="nv">jupyterhub</span><span class="o">==</span><span class="m">1</span>.2.1
+jupyterlab&gt;<span class="o">=</span><span class="m">3</span>.*
+elyra&gt;<span class="o">=</span><span class="m">2</span>*
+jupyterlab-requiremnts&gt;<span class="o">=</span><span class="m">0</span>.4.5
+</pre></div>
+</div>
+<div class="section" id="operate-first-open-environment">
+<h3>Operate First Open Environment<a class="headerlink" href="#operate-first-open-environment" title="Permalink to this headline">¶</a></h3>
+<p><a class="reference external" href="https://www.operate-first.cloud/">Operate First</a> Open Infrastructure environment has been selected to run this tutorial. It fullfills all the requirement stated above. If you are interested in using it, just get in touch with Operate First team, it’s an open source initiative.</p>
+<p>You can find some notes also regarding other environments in the different sections of the tutorial.</p>
+</div>
+</div>
+<div class="section" id="tools">
+<h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
+<p>In this tutorial the following technologies are going to be used:</p>
+<ul class="simple">
+<li><p><a class="reference external" href="https://jupyter.org/hub">JupyterHub</a>, to launch images with Jupyter tooling.</p></li>
+<li><p><a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a>, which is a set of AI-centric extensions to JupyterLab Notebooks (e.g. interface with Kubeflow Pipeline, Git, Python scripts).</p></li>
+<li><p><a class="reference external" href="https://thoth-station.ninja/">Project Thoth</a> Extension for Dependency Management on JupyterLab. If you want to know more, have a look at this <span class="xref myst">repo</span>.</p></li>
+<li><p><a class="reference external" href="https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/">Kubeflow Pipelines</a>, to allow end to end experiment using pipelines.</p></li>
+</ul>
+</div>
+<div class="section" id="gitops-reproducibility-portability-and-traceability-with-ai-support">
+<h2>GitOps, reproducibility, portability and traceability with AI support<a class="headerlink" href="#gitops-reproducibility-portability-and-traceability-with-ai-support" title="Permalink to this headline">¶</a></h2>
+<p>Nowadays, developers (including Data Scientists) use Git and GitOps practices to store, share all code (e.g. notebooks, models) on development platforms (e.g. GitHub).
+GitOps best practices help reproducibility and traceability for all projects available.</p>
+<p>One of the most important requirement for reproducibility is dependencies management. Having dependencies clearly stated allow for reusability and portability of notebooks,
+which can be reused in another projects and shared safely with other Data Scientists.</p>
+<p>If you want to know more about this issue in the data science domain, have a look at this <a class="reference external" href="https://developers.redhat.com/blog/2021/03/19/managing-python-dependencies-with-the-thoth-jupyterlab-extension/">article</a> or this <a class="reference external" href="https://www.youtube.com/watch?v=ifyQ2oSxjnU">video</a>.</p>
+<p><a class="reference external" href="https://thoth-station.ninja/">Project Thoth</a> helps developers keep these dependencies up to date integrating its recommendation in developers daily tools. If you want to know more have a look <a class="reference external" href="https://thoth-station.ninja/docs/developers/adviser/integration.html">here</a>.
+Thanks to this tooling, the developers (including data scientists) do not have to worry too much about dependency management (they still need to select their dependencies), which can be handled by a bot and automated pipelines.Hence, having AI support can lead to improvement in the development of AI project, speeding up steps due to performance improvements coming from dependencies and keeping your application secure because insecure libs cannot be introduced.</p>
+</div>
+<div class="section" id="automated-pipelines-and-bots-for-your-github-project">
+<h2>Automated pipelines and bots for your GitHub project<a class="headerlink" href="#automated-pipelines-and-bots-for-your-github-project" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/marketplace/khebhut">Kebechet Bot</a> to keep your dependencies fresh and up to date receiving recommendations and justifications using AI.</p></li>
+<li><p><a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE Pipeline</a> to support your AI project lifecycle.</p></li>
+</ul>
+<p>All these tools are integrated with the <a class="reference external" href="https://github.com/aicoe-aiops/project-template">project-template</a>, therefore most of the things are already set for you.
+One important task in order to mantain your code is to create tag on your project development lifecycle. Moreover in order to deploy your application you need to create a container image.
+The use of github templates integrated with bots can provide you with automated pipelines triggered depending on what you need (e.g. release (patch, minor, major), deliver container image, dependency updates).</p>
+</div>
+<div class="section" id="project-templates">
+<h2>Project templates<a class="headerlink" href="#project-templates" title="Permalink to this headline">¶</a></h2>
+<p>The project template used can be found here: <a class="reference external" href="https://github.com/aicoe-aiops/project-template">project-template</a>.
+It shows correlation between data scientists (e.g. data, notebooks, models) requirements and AI dev ops engineers ones (e.g. manifests).
+Using a project template allows for shareability because anyone taking the project or look for something specific about the project can immediately identify
+all the resources needed.</p>
+</div>
+</div>
+<div class="section" id="tutorial-steps">
+<h1>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h1>
+<ol class="simple">
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/pre-requisite.md">Pre-requisities</a></p></li>
+</ol>
+<div class="section" id="ml-lifecycle-source-lifecycle">
+<h2>ML Lifecycle/Source Lifecycle<a class="headerlink" href="#ml-lifecycle-source-lifecycle" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/setup-initial-environment.md">Setup your initial environment</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/explore-notebooks-and-manage-dependencies.md">Explore notebooks and manage dependencies</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/push-changes.md">Push changes to GitHub</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/build-images.md">Create release, build image or overlays builds for different images</a></p></li>
+</ol>
+<p>4.1 <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/use-bots.md">Benefit from bots to keep your dependencies fresh and up to date</a></p>
+<ol class="simple">
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/create-ai-pipeline.md">Create an AI Pipeline</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/run-ai-pipeline.md">Run and debug AI Pipeline</a></p></li>
+</ol>
+</div>
+<div class="section" id="devops-lifecycle">
+<h2>DevOps Lifecycle<a class="headerlink" href="#devops-lifecycle" title="Permalink to this headline">¶</a></h2>
+<ol class="simple">
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/deploy-model.md">Deploy Inference Application</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/test-model.md">Test Deployed inference application</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/monitor-model.md">Monitor your inference application deployed</a></p></li>
+</ol>
+<p>NOTE: Each of the steps above can be repetaed if you are following ML lifecycle (e.g. changes in the dependencies, changes in the notebooks, new model stored).</p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/aicoe-aiops/project-template">project-template</a></p></li>
+<li><p><a class="reference external" href="https://www.operate-first.cloud/">Operate First</a></p></li>
+<li><p><a class="reference external" href="https://opendatahub.io/">Open Data Hub</a></p></li>
+<li><p><a class="reference external" href="https://jupyter.org/hub">JupyterHub</a></p></li>
+<li><p><a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a></p></li>
+<li><p><a class="reference external" href="https://thoth-station.ninja/">Project Thoth</a></p></li>
+<li><p><a class="reference external" href="https://github.com/marketplace/khebhut">Kebechet Bot</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE Pipeline</a></p></li>
+<li><p><a class="reference external" href="https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/">Kubeflow Pipelines</a></p></li>
+<li><p><a class="reference external" href="https://tekton.dev/">Tekton</a></p></li>
+<li><p><a class="reference external" href="https://www.openshift.com/">Openshift</a></p></li>
+<li><p><a class="reference external" href="https://argoproj.github.io/argo-cd/">ArgoCD</a></p></li>
+</ul>
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+<div class="toctree-wrapper compound">
+</div>
+</div>
+
+    <script type="text/x-thebe-config">
+    {
+        requestKernel: true,
+        binderOptions: {
+            repo: "binder-examples/jupyter-stacks-datascience",
+            ref: "master",
+        },
+        codeMirrorConfig: {
+            theme: "abcdef",
+            mode: "python"
+        },
+        kernelOptions: {
+            kernelName: "python3",
+            path: "./."
+        },
+        predefinedOutput: true
+    }
+    </script>
+    <script>kernelName = 'python3'</script>
+
+              </div>
+
+
+        <div class='prev-next-bottom'>
+
+    <a class='right-next' id="next-link" href="docs/source/setup-initial-environment.html" title="next page">Setup initial environment</a>
+
+        </div>
+
+        </div>
+    </div>
+    <footer class="footer mt-5 mt-md-0">
+    <div class="container">
+      <p>
+
+          By Shooting Star<br/>
+
+            &copy; Copyright 2021.<br/>
+      </p>
+    </div>
+  </footer>
+</main>
+
+
+      </div>
+    </div>
+
+  <script src="_static/js/index.1c5a1a01449ed65a7b51.js"></script>
+
+
+  </body>
+</html>
