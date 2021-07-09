@@ -35,7 +35,7 @@ If you want to use this template for your AI project, go to [project-template][1
 
 ## 3. Clone your repo using Jupyterlab Git Extension
 
-Once your image is ready and you are in the Jupyterlab UI, you can use the Git extension provided to clone [this repo](https://github.com/thoth-station/elyra-aidevsecops-tutorial.git).
+Once your image is ready and you are in the Jupyterlab UI, you can use the Git extension provided to clone this repo.
 
 1. Click the Git extension button from Jupyterlab UI:
 

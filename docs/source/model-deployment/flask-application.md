@@ -4,12 +4,12 @@
 
 Once you trained your model and it is stored on Ceph, you can start working on your inference application to expose your model.
 
-For the purpose of this tutorial you can reuse the [application](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/wsgi.py) created using Flask, that
+For the purpose of this tutorial you can reuse the [application](../../../wsgi.py) created using Flask, that
 exposes some useful endpoints (e.g `/predict` and `/metrics`).
 
 ## Make new release
 
-[Create release and build image](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/build-images.md)
+[Create release and build image](../build-images.md)
 
 ## Deploy application
 
@@ -17,11 +17,11 @@ exposes some useful endpoints (e.g `/predict` and `/metrics`).
 
 - Image Name: `quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0`
 
-- [DeploymentConfig](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/manifests/base/deploymentconfig.yaml)
+- [DeploymentConfig](../../../manifests/base/deploymentconfig.yaml)
 
-- [Route](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/manifests/base/route.yaml)
+- [Route](../../../manifests/base/route.yaml)
 
-- [Service](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/manifests/base/service.yaml)
+- [Service](../../../manifests/base/service.yaml)
 
 ### On Operate First using ArgoCD
 
@@ -33,9 +33,9 @@ There are typically two steps you need to follow in order to have a new applicat
 
 2. [Request support for deployment of your application](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=).
 
-In this way [ArgoCD][2] will be used to maintain your application always in sync with your current changes. Once you create a new release of your application (e.g. you changed your model, you added a new metric, you added a new feature) and a new image is available, you need to update the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
+In this way [ArgoCD][2] will be used to maintain your application always in sync with your current changes. Once you create a new release of your application (e.g. you changed your model, you added a new metric, you added a new feature) and a new image is available, you need to update the [imagestreamtag](../../../manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
 
-Note: [AICoE Pipeline][3] can also update automatically the [imagestreamtag](https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
+Note: [AICoE Pipeline][3] can also update automatically the [imagestreamtag](../../../manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
 
 Once everything is synced to the cluster, you can monitor your application from the [ArgoCD][2] using this [link](https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications) as shown in the image below:
 
