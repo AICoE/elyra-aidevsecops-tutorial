@@ -2,11 +2,12 @@
 
 approvers:
   - pacospace
-  - sub-mod
+  - MichaelClifford
   - sesheta
   - sefkhet-abwy[bot]
   - app/sefkhet-abwy
   - sefkhet-abwy
 reviewers:
-  - fridex
-  - harshad16
+  - isabelizimm
+  - oindrillac
+  - Shreyanand
