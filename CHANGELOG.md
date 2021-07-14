@@ -156,3 +156,12 @@
 ### Features
 * Add library
 * :ship: Deploy the Tag v0.9.0 for elyra-aidevsecops-tutorial
+
+## Release 0.10.0 (2021-07-14T18:14:56)
+### Features
+* Use new elyra custom image for build
+* add relative links in md (#186)
+* add configs and html for jupyterbook (#184)
+* :ship: Deploy the Tag v0.9.1 for elyra-aidevsecops-tutorial
+### Improvements
+* Modify approvers and reviewers (#187)
