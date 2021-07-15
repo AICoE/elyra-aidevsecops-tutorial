@@ -13,7 +13,6 @@ gunicorn = "*"
 prometheus-flask-exporter = "*"
 boto3 = "*"
 behave = "*"
-jupyterlab-requirements = ">=0.7.4"
 
 [dev-packages]
 
