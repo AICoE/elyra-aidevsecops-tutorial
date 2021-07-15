@@ -165,3 +165,7 @@
 * :ship: Deploy the Tag v0.9.1 for elyra-aidevsecops-tutorial
 ### Improvements
 * Modify approvers and reviewers (#187)
+
+## Release 0.10.1 (2021-07-15T16:01:46)
+### Other
+* remove package present in base image
