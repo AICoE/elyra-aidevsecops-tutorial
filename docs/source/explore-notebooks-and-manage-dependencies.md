@@ -4,18 +4,27 @@ For the purpose of this tutorial, the notebooks have been created already.
 
 ## Manage dependencies for your new notebook
 
-Use [jupyterlab extension for dependency management][1].
-For each notebook you can follow similar pattern, in this way you can guarantee all notebooks are in sync with their dependencies and you are using the correct kernel.
+Click on the `Manage Dependencies` button to interact with the JupyterLab extension for dependency management. For more documentation how to use this tool, [click here][1].
+
+<div style="text-align:center">
+<img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterLabRequirementsExtension.jpg">
+</div>
+
+You can use this extension for each notebook to guarantee all notebooks have the correct dependencies and kernel.
 
 The notebooks that will be used in an AI Pipeline are:
 
-1. [download_dataset.ipynb](../../notebooks/download_dataset.ipynb) -> Download MNIST dataset from Tensorflow (NOTE in [Elyra][2] a step in a pipeline can also be performed with a [Python script](../../data/download_dataset_from_tf.py);
+1. [download_dataset.ipynb](../../notebooks/download_dataset.ipynb) for downloading the MNIST dataset from Tensorflow. _NOTE: in [Elyra][2] this step can also be performed with the provided [Python script](../../data/download_dataset_from_tf.py)_
 
-2. [training.ipynb](../../notebooks/training.ipynb) Train the model for MNIST Classification and store it locally or in the Cloud Object Storage;
+2. [training.ipynb](../../notebooks/training.ipynb) for training the model for MNIST Classification and storing it locally or in cloud object storage
+
+## Next Step
+
+[Push changes to GitHub](./push-changes.md)
 
 ## References
 
-* [jupyterlab extension for dependency management][1]
+* [JupyterLab extension for dependency management][1]
 * [Elyra][2]
 
 [1]: https://github.com/thoth-station/jupyterlab-requirements
