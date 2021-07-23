@@ -74,7 +74,7 @@ The project template used can be found here: [project template][1]. It shows cor
 
 4. [Create release, build image or overlays builds for different images](./docs/source/build-images.md)
 
-4.1 [Benefit from bots to keep your dependencies fresh and up to date](./docs/source/use-bots.md)
+    * [Benefit from bots to keep your dependencies fresh and up to date](./docs/source/use-bots.md)
 
 5. [Create an AI Pipeline](./docs/source/create-ai-pipeline.md)
 
