@@ -1,14 +1,13 @@
 
 # Elyra AIDevSecOps Tutorial
 
-This tutorial is used to discuss the interface between Data Science and Dev/DevOps using project templates, pipelines and bots.
-Moreover, it wants to highlight that Data Scientists are not so different from developers and DevSecOps practices and tools can be applied to MLOps ones.
+This tutorial is used to discuss the interface between data science and DevOps using project templates, pipelines and bots. It looks to highlight that data scientists are not so different from developers, and many MLOps practices and tools can be enhanced by DevSecOps techniques.
 
 The demo application used is the "hello world" for AI: MNIST Classification.
 
 ## Environment required
 
-This tutorial has the following environment requirements to be run:
+This tutorial has the following environment requirements to be run. If you're running on Project Meteor which uses the Operate First environment, the environment requirements are already setup for you (see note below).
 
 - [Open Data Hub][3] v1.0,
 - [Openshift][11] (Enterprise Kubernetes),
@@ -26,31 +25,27 @@ jupyterlab-requiremnts>=0.4.5
 
 ### Operate First Open Environment
 
-[Operate First][2] Open Infrastructure environment has been selected to run this tutorial. It fullfills all the requirement stated above. If you are interested in using it, just get in touch with Operate First team, it's an open source initiative.
+[Operate First][2] is an open infrastructure environment started at Red Hat's Office of the CTO. It has been selected to run this tutorial since it is an open source initiative that fulfills all the requirements stated above. Anyone with a Google account can log in and start developing. To learn more about Operate First, visit the [website](https://www.operate-first.cloud/) or [GitHub community](https://github.com/operate-first).
 
-You can find some notes also regarding other environments in the different sections of the tutorial.
 
 ## Tools
 
 In this tutorial the following technologies are going to be used:
 
-- [JupyterHub][4], to launch images with Jupyter tooling.
-- [Elyra][5], which is a set of AI-centric extensions to JupyterLab Notebooks (e.g. interface with Kubeflow Pipeline, Git, Python scripts).
-- [Project Thoth][6] Extension for Dependency Management on JupyterLab. If you want to know more, have a look at this [repo]((https://github.com/thoth-station/jupyterlab-requirements)).
-- [Kubeflow Pipelines][9], to allow end to end experiment using pipelines.
+- [JupyterHub][4] to launch images with Jupyter tooling
+- [Elyra][5] supplies a set of extensions to JupyterLab notebooks to support AI projects
+- [Project Thoth][6] extension for dependency management on JupyterLab
+- [Kubeflow Pipelines][9] for end to end experiments using pipelines
 
-## GitOps, reproducibility, portability and traceability with AI support
+## GitOps for reproducibility, portability, traceability with AI support
 
-Nowadays, developers (including Data Scientists) use Git and GitOps practices to store, share all code (e.g. notebooks, models) on development platforms (e.g. GitHub).
-GitOps best practices help reproducibility and traceability for all projects available.
+Nowadays, developers (including data scientists) use Git and GitOps practices to store and share code on development platforms such as GitHub. GitOps best practices allow for reproducibility and traceability in projects.
 
-One of the most important requirement for reproducibility is dependencies management. Having dependencies clearly stated allow for reusability and portability of notebooks,
-which can be reused in another projects and shared safely with other Data Scientists.
+One of the most important requirements for reproducibility is dependency management. Having dependencies clearly stated allows portability of notebooks, so they can be shared safely with others and reused in other projects.
 
 If you want to know more about this issue in the data science domain, have a look at this [article](https://developers.redhat.com/blog/2021/03/19/managing-python-dependencies-with-the-thoth-jupyterlab-extension/) or this [video](https://www.youtube.com/watch?v=ifyQ2oSxjnU).
 
-[Project Thoth][6] helps developers keep these dependencies up to date integrating its recommendation in developers daily tools. If you want to know more have a look [here](https://thoth-station.ninja/docs/developers/adviser/integration.html).
-Thanks to this tooling, the developers (including data scientists) do not have to worry too much about dependency management (they still need to select their dependencies), which can be handled by a bot and automated pipelines.Hence, having AI support can lead to improvement in the development of AI project, speeding up steps due to performance improvements coming from dependencies and keeping your application secure because insecure libs cannot be introduced.
+[Project Thoth][6] keeps dependencies up to date by giving recommendations for a developer's daily tools. Thanks to this tooling, developers (including data scientists) do not have to worry about managing the dependencies after they are selected, since conflicts can be handled by Thoth bots and automated pipelines. Having this AI support can benefit AI projects, offering improvements such as performance improvements due to optimized dependencies and additional security since insecure libraries cannot be introduced. If you want to know more, have a look at this [repo](https://github.com/thoth-station/jupyterlab-requirements) or Thoth's [website](https://thoth-station.ninja/docs/developers/adviser/integration.html).
 
 ## Automated pipelines and bots for your GitHub project
 
@@ -58,16 +53,12 @@ Thanks to this tooling, the developers (including data scientists) do not have t
 
 - [AICoE Pipeline][8] to support your AI project lifecycle.
 
-All these tools are integrated with the [project-template][1], therefore most of the things are already set for you.
-One important task in order to mantain your code is to create tag on your project development lifecycle. Moreover in order to deploy your application you need to create a container image.
-The use of github templates integrated with bots can provide you with automated pipelines triggered depending on what you need (e.g. release (patch, minor, major), deliver container image, dependency updates).
+All these tools are integrated with the [project template][1], so most additions are already set for you.
+These bots and pipelines exist to automate many of the manual GitOps tasks. For example, in order to deploy your application, you may need to create a container image. GitHub templates integrated with bots can provide you with automated pipelines triggered depending on what you need (e.g. release (patch, minor, major), deliver a container image, or update your dependencies).
 
 ## Project templates
 
-The project template used can be found here: [project-template][1].
-It shows correlation between data scientists (e.g. data, notebooks, models) requirements and AI dev ops engineers ones (e.g. manifests).
-Using a project template allows for shareability because anyone taking the project or look for something specific about the project can immediately identify
-all the resources needed.
+The project template used can be found here: [project template][1]. It shows correlation between data scientist needs (e.g. data, notebooks, models) and AI DevOps engineers ones (e.g. manifests). Having structure in a project ensures all the pieces required for the ML and DevOps lifecycles are present and easily discoverable.
 
 # Tutorial Steps
 
@@ -96,8 +87,6 @@ all the resources needed.
 8. [Test Deployed inference application](./docs/source/test-model.md)
 
 9. [Monitor your inference application deployed](./docs/source/monitor-model.md)
-
-NOTE: Each of the steps above can be repeated if you are following ML lifecycle (e.g. changes in the dependencies, changes in the notebooks, new model stored).
 
 ## References
 
