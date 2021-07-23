@@ -1,6 +1,6 @@
 # Deploy your model
 
-There are different ways to deploy a model and different tools that can be used for that (e.g. Seldon, Tf-Serving, TensorRT), but for this tutorial we created a simple Flask application that can be easily deployed.
+There are different ways to deploy a model and there are different tools that can be used to do so (e.g. Seldon, Tf-Serving, TensorRT). But for this tutorial,  we created a simple Flask application that can be easily deployed.
 
 ## Flask application
 
