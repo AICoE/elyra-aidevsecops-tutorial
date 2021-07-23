@@ -1,37 +1,37 @@
 # Setup initial environment
 
-## 1. Fork this repo from GitHub into your account
+In this tutorial we rely on a [project template][1] in order to have a common structure that can be easily used by data scientists and devops engineers. Having structure in a project ensures all the pieces required for the ML and DevOps lifecycles are present and easily discoverable.
 
-Check [Fork a repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) from GitHub docs.
-
-In this tutorial we rely on [project-template][1], as described above, in order to have a common structures that can be easily used by data scientists and devops. Have a structure for the projects in general allows others to find all the bits required for the ML lifecycle and from the DevOps lifecycle.
-
-If you want to use this template for your AI project, go to [project-template][1] and select `use the template` from the button provided in template repositories.
+If you want to use this template for your AI project, go to the project template [here][1] and click the `Use the template` button provided in the repository.
 
 <div style="text-align:center">
 <img alt="AI Project Template" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIProjectTemplate.png">
 </div>
 
+## 1. Fork this repo from GitHub into your account
+
+To begin, you'll need to fork this repository to create your own copy. If you're unsure how, look at [Fork a Repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) from GitHub docs.
+
 ## 2. Access JupyterHub and spawn the Elyra image
 
 ### Operate First access JupyterHub
 
-1. You can get access [JupyterHub][3] on [Operate First][2] using the following [link](https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/)
+1. You can get access to [JupyterHub][3] on [Operate First][2] using the following [link](https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/)
 
 <div style="text-align:center">
-<img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubUI.png">
+<img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubNewUI.png">
 </div>
 
-2. Select Elyra image called `ml-prague-workshop:latest` from the list of images.
+2. Select the image called `AICoE Elyra AIDevSecOps Tutorial Notebook Image`.
 
 3. Select `Large` for container size.
 
 4. Insert the environment variables required using add button in JupyterLab UI:
 
 - `AWS_ACCESS_KEY_ID`
-- `AWS_SECRET_ACCESS_KEY`.
+- `AWS_SECRET_ACCESS_KEY`
 - `OBJECT_STORAGE_ENDPOINT_URL`
-- `OBJECT_STORAGE_BUCKET_NAME`.
+- `OBJECT_STORAGE_BUCKET_NAME`
 
 ## 3. Clone your repo using Jupyterlab Git Extension
 
@@ -55,7 +55,13 @@ Once your image is ready and you are in the Jupyterlab UI, you can use the Git e
 <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
 </div>
 
-* [project-template][1]
+## Next Step
+
+[Explore notebooks and manage dependencies](./docs/source/explore-notebooks-and-manage-dependencies.md)
+
+## References
+
+* [Project template][1]
 * [Operate First][2]
 * [JupyterHub][3]
 
