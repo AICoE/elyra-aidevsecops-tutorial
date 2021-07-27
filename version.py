@@ -17,4 +17,4 @@
 
 """This file carries the version of the project."""
 
-__version__ = "0.10.1"
+__version__ = "0.11.0"

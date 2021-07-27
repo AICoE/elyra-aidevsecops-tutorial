@@ -169,3 +169,19 @@
 ## Release 0.10.1 (2021-07-15T16:01:46)
 ### Other
 * remove package present in base image
+
+## Release 0.11.0 (2021-07-27T13:22:00)
+### Features
+* Update build images documentation. (#209)
+* proofread `README.md` (#203)
+* modified create ai pipeline doc (#207)
+* modifying notebooks for automation (#197)
+* update model deployment docs (#208)
+* proofread `setup-initial-environment.md` (#201)
+* update `explore nb` markdown (#206)
+* update pre-req.md (#205)
+* proofread test-model.md (#200)
+* :ship: Deploy the Tag v0.10.1 for elyra-aidevsecops-tutorial
+### Improvements
+* Update use-bots documentation and reference in README (#204)
+* polish run-ai-pipeline.md (#202)
