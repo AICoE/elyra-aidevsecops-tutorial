@@ -149,7 +149,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="run-ai-pipeline.html">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="test-model.html">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -277,6 +277,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-steps">
+   Next Steps
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -294,55 +299,55 @@
 
   <div class="section" id="create-a-first-release-and-image-of-your-project">
 <h1>Create a first release and image of your project<a class="headerlink" href="#create-a-first-release-and-image-of-your-project" title="Permalink to this headline">¶</a></h1>
-<p>The following sub-sections of step 6 can be performed only if you have set your project with your pipelines.
-In order to do that you can followin these instructions: <a class="reference external" href="https://github.com/AICoE/aicoe-ci#setting-aicoe-ci-on-github-organizationrepository">Setting AICoE CI and Thoth on your repo</a>.</p>
-<p>For the purpose of the tutorial the images required are already created using these pipelines, therefore here you can find a description on how they have been created and where they are available.</p>
+<p>This document describes how the <a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE CI</a> and Thoth pipelines can be used to create the images, and where you can find the images for this project. For the purpose of this tutorial, the required images have already been created using these pipelines.</p>
+<p>Please note that in order to execute the steps below for your own repo, you will first need to configure your repo to use AICoE CI and Thoth. To do that, you can follow the instructions <a class="reference external" href="https://github.com/AICoE/aicoe-ci#setting-aicoe-ci-on-github-organizationrepository">here</a>.</p>
 <div class="section" id="ask-for-new-release">
 <h2>Ask for new release<a class="headerlink" href="#ask-for-new-release" title="Permalink to this headline">¶</a></h2>
-<p>Using pipelines like the AICoE tooling you can rely on bots helping you, as described above in the initial description.
-These pipelines are described in <a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE Pipeline</a> and you can use them for you projects if you are interested.</p>
-<p>In this case the <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.aicoe-ci.yaml">.aicoe.yaml</a> is created with all information relative to build (e.g. base image, build strategy, registry where to push) as described in <a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE Pipeline</a> documentation.</p>
-<p>Some of the pipelines used in Thoth project are maintained by bots. Therefore you can open an issue asking for release (e.g patch, minor, major) and the bots will handle your request. One the request will be completed the bot will automatically close the issue as you can see from the images below:</p>
+<p>Some of the pipelines used in Thoth project are maintained by bots. Therefore you can simply open an issue asking for a release (e.g patch, minor, major) and the bots will handle your request. Once the request is completed, the bot will also automatically close the issue, as you can see from the images below:</p>
 <div style="text-align:center">
 <img alt="Open Issue Release" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/OpenIssueRelease.png">
 </div>
 <div style="text-align:center">
 <img alt="Pull Request Release" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PullRequestRelease.png">
 </div>
-<p>The <code class="docutils literal notranslate"><span class="pre">CHANGELOG</span></code> after the release is created using AI model that cluster pull requests. You can find more information about <code class="docutils literal notranslate"><span class="pre">glyph</span> <span class="pre">project</span></code> <a class="reference external" href="https://github.com/thoth-station/glyph">here</a>.</p>
-<p>Once the issue is closed by the bot, a tag is created in the GitHub project and a pipeline starts in order to build and push the image on the registry according to the requirements inserted in the <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/.aicoe-ci.yaml">.aicoe.yaml</a>.</p>
-<p>Once the new tag is created, Tekton pipelines from the AICoE are triggered.</p>
+<p>Fun fact, the <code class="docutils literal notranslate"><span class="pre">CHANGELOG</span></code> in the release is also created using an AI model that clusters pull requests. You can find more information about this model in our <a class="reference external" href="https://github.com/thoth-station/glyph">glyph</a> project.</p>
+<p>Once the issue is closed by the bot, a new tag is created in the GitHub repo. This in turn triggers the Tekton pipelines in AICoE CI to start the build process and push the image on the registry according to the configuration defined in the <span class="xref myst">.aicoe-ci.yaml</span>.</p>
+<p>In this case, the <span class="xref myst">.aicoe-ci.yaml</span> has been populated with all information (e.g. base image, build strategy, registry where to push) related to building the image for the Elyra AIDevSecOps tutorial. To learn more about the configuration options available for the <code class="docutils literal notranslate"><span class="pre">.aicoe-ci.yaml</span></code>, please check out the <a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE CI</a> documentation.</p>
 </div>
 <div class="section" id="image-available-on-quay">
 <h2>Image available on quay<a class="headerlink" href="#image-available-on-quay" title="Permalink to this headline">¶</a></h2>
-<p>Once the image has been created by the Tekton pipeline, you can find it in your registry (e.g. Quay):</p>
+<p>Once the image has been created by the Tekton pipelines, you can find it in your registry (e.g. Quay):</p>
 <div style="text-align:center">
 <img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ImageRegistry.png">
 </div>
 </div>
 <div class="section" id="use-of-overlays">
 <h2>Use of Overlays<a class="headerlink" href="#use-of-overlays" title="Permalink to this headline">¶</a></h2>
-<p>If you have overlays directory present, as for this tutorial, you can perform overlays builds thanks to the <a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE Pipeline</a>. In this way you can create different images optimized for your steps in pipelines. In this case the AICoE tooling would create many images as number of overlays, as you can see from the following images:</p>
+<p>If you have an <code class="docutils literal notranslate"><span class="pre">overlays</span></code> directory present in your repo, like this tutorial does, you can perform overlays builds using the <a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE Pipeline</a>. This allows you to create different images optimized for the different steps in your AI pipeline. To see how the overlays build requirement can be set up, please check out the <a class="reference external" href="../../.aicoe-ci.yaml#L5">.aicoe.yaml</a> config file in this project. Based on this configuration, the AICoE tooling would create as many images as the number of overlays, as you can see from the following images:</p>
 <div style="text-align:center">
 <img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/TagReleasePipeline.png">
 </div>
 <div style="text-align:center">
 <img alt="Image on Registry" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/OverlaysBuildsPipeline.png">
 </div>
-<p>Once the pipelines are completed the images will be available on quay.</p>
-<p>You can find the images required for tutorial named after the overlays requested:</p>
+<p>Note that all the requirements for the overlay are created using the Thoth resolution engine. You can find the inputs used for Thoth recommender in the <a class="reference external" href="../../.thoth.yaml#L5">.thoth.yaml</a> config file.</p>
+<p>Once the pipelines have finished execution, the images will be available on quay. You can find the images built for this tutorial at the links provided below. Note that these images have been named according to the overlays requested.</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/download-dataset">download-dataset overlay</a> -&gt; <a class="reference external" href="http://quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0">quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0</a> (download-dataset image)</p></li>
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/training">training overlay</a> -&gt; <a class="reference external" href="http://quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0">quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0</a> (training image)</p></li>
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/overlays/inference">inference overlay</a>  -&gt; <a class="reference external" href="http://quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0">quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0</a> (inference image)</p></li>
+<li><p><span class="xref myst">download-dataset overlay</span> -&gt; <a class="reference external" href="http://quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0">quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0</a> (download-dataset image)</p></li>
+<li><p><span class="xref myst">training overlay</span> -&gt; <a class="reference external" href="http://quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0">quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0</a> (training image)</p></li>
+<li><p><span class="xref myst">inference overlay</span>  -&gt; <a class="reference external" href="http://quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0">quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0</a> (inference image)</p></li>
 </ul>
-<p>You can check the overlays build requirement in the <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/c86ce9c08665c12df0adf829db31bd19e8c61455/.aicoe-ci.yaml#L5">.aicoe.yaml</a>.</p>
-<p>All requirements for the overlay are created using Thoth resolution engine, you can find the inputs used for Thoth recommender in the <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/bb6fad2441e8df8aa56c2c0e6b5ac45a2cda42eb/.thoth.yaml#L5">.thoth.yaml</a>.</p>
+</div>
+<div class="section" id="next-steps">
+<h2>Next Steps<a class="headerlink" href="#next-steps" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="use-bots.html"><span class="doc std std-doc">Benefit from bots to keep your dependencies fresh and up to date</span></a></p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE Pipeline</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE CI Pipeline</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AICoE/aicoe-ci#setting-aicoe-ci-on-github-organizationrepository">Setting AICoE CI on a GitHub repo/org</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thoth-station/glyph">Project Glyph</a></p></li>
 </ul>
 </div>
 </div>

@@ -149,7 +149,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../docs/source/run-ai-pipeline.html">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../docs/source/test-model.html">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -344,15 +344,16 @@
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">import</span> <span class="nn">boto3</span>
 <span class="kn">import</span> <span class="nn">os</span>
 <span class="kn">import</span> <span class="nn">tensorflow</span> <span class="k">as</span> <span class="nn">tf</span>
+<span class="kn">from</span> <span class="nn">datetime</span> <span class="kn">import</span> <span class="n">datetime</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 
-<span class="c1"># import pickle</span>
+<span class="kn">import</span> <span class="nn">pickle</span>
 
-<span class="kn">from</span> <span class="nn">pathlib</span> <span class="k">import</span> <span class="n">Path</span>
+<span class="kn">from</span> <span class="nn">pathlib</span> <span class="kn">import</span> <span class="n">Path</span>
 
 <span class="c1"># Importing the required Keras modules containing model and layers</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="k">import</span> <span class="n">Sequential</span>
-<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="k">import</span> <span class="p">(</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.models</span> <span class="kn">import</span> <span class="n">Sequential</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.layers</span> <span class="kn">import</span> <span class="p">(</span>
     <span class="n">Dense</span><span class="p">,</span>
     <span class="n">Conv2D</span><span class="p">,</span>
     <span class="n">Dropout</span><span class="p">,</span>
@@ -361,9 +362,8 @@
 <span class="p">)</span>
 
 <span class="kn">import</span> <span class="nn">matplotlib.pyplot</span> <span class="k">as</span> <span class="nn">plt</span>
-<span class="kn">import</span> <span class="nn">random</span>
 
-<span class="kn">from</span> <span class="nn">datetime</span> <span class="k">import</span> <span class="n">datetime</span>
+<span class="kn">import</span> <span class="nn">random</span>
 </pre></div>
 </div>
 </div>
@@ -373,73 +373,77 @@
 <h2>Load data<a class="headerlink" href="#load-data" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="k">import</span> <span class="n">mnist</span> <span class="k">as</span> <span class="n">tf_dataset</span>
-
-<span class="c1"># Prepare MNIST data.</span>
-<span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y_train</span><span class="p">),</span> <span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">y_test</span><span class="p">)</span> <span class="o">=</span> <span class="n">tf_dataset</span><span class="o">.</span><span class="n">load_data</span><span class="p">()</span>
-
-<span class="n">use_ceph</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;USE_CEPH&quot;</span><span class="p">,</span> <span class="kc">False</span><span class="p">)</span>
-
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="n">use_ceph</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;USE_CEPH&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
+<span class="n">automation</span> <span class="o">=</span> <span class="nb">bool</span><span class="p">(</span><span class="nb">int</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">getenv</span><span class="p">(</span><span class="s2">&quot;AUTOMATION&quot;</span><span class="p">,</span> <span class="mi">0</span><span class="p">)))</span>
 <span class="n">project_name</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;PROJECT_NAME&quot;</span><span class="p">,</span> <span class="s2">&quot;elyra-aidevsecops-tutorial&quot;</span><span class="p">)</span>
 
-<span class="c1"># # Path to data</span>
-<span class="c1"># directory_path = Path.cwd().parents[0]</span>
-<span class="c1"># raw_dataset_path = directory_path.joinpath(</span>
-<span class="c1">#     str(os.environ.get(&quot;RAW_DATASET&quot;, &quot;data/raw&quot;))</span>
-<span class="c1"># )</span>
+<span class="k">if</span> <span class="n">automation</span><span class="p">:</span>
 
-<span class="c1"># if use_ceph:</span>
-<span class="c1">#     # Download files from S3</span>
-<span class="c1">#     s3_endpoint_url = os.environ[&quot;OBJECT_STORAGE_ENDPOINT_URL&quot;]</span>
-<span class="c1">#     s3_access_key = os.environ[&quot;AWS_ACCESS_KEY_ID&quot;]</span>
-<span class="c1">#     s3_secret_key = os.environ[&quot;AWS_SECRET_ACCESS_KEY&quot;]</span>
-<span class="c1">#     s3_bucket = os.environ[&quot;OBJECT_STORAGE_BUCKET_NAME&quot;]</span>
+    <span class="c1"># Get file path relative to notebook</span>
+    <span class="n">raw_dataset_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DATASET&quot;</span><span class="p">,</span> <span class="s2">&quot;data/raw&quot;</span><span class="p">))</span>
+
+<span class="k">else</span><span class="p">:</span>
+
+    <span class="c1"># Download and store in project&#39;s data directory</span>
+    <span class="n">directory_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
+    <span class="n">raw_dataset_path</span> <span class="o">=</span> <span class="n">directory_path</span><span class="o">.</span><span class="n">joinpath</span><span class="p">(</span>
+        <span class="nb">str</span><span class="p">(</span><span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="o">.</span><span class="n">get</span><span class="p">(</span><span class="s2">&quot;DATASET&quot;</span><span class="p">,</span> <span class="s2">&quot;data/raw&quot;</span><span class="p">))</span>
+    <span class="p">)</span>
+
+<span class="k">if</span> <span class="n">use_ceph</span><span class="p">:</span>
+
+    <span class="c1"># Download files from S3</span>
+    <span class="n">s3_endpoint_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OBJECT_STORAGE_ENDPOINT_URL&quot;</span><span class="p">]</span>
+    <span class="n">s3_access_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_ACCESS_KEY_ID&quot;</span><span class="p">]</span>
+    <span class="n">s3_secret_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_SECRET_ACCESS_KEY&quot;</span><span class="p">]</span>
+    <span class="c1">#     s3_access_key = &#39;v3FnruQ78kfeULDjejUB&#39;</span>
+    <span class="c1">#     s3_secret_key= &#39;kJiDiHXncLJOXbaL7Zeb5Ok+gkLt9sWIa1rWAJa0&#39;</span>
+    <span class="n">s3_bucket</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OBJECT_STORAGE_BUCKET_NAME&quot;</span><span class="p">]</span>
+
+    <span class="c1"># Create an S3 client</span>
+    <span class="n">s3</span> <span class="o">=</span> <span class="n">boto3</span><span class="o">.</span><span class="n">client</span><span class="p">(</span>
+        <span class="n">service_name</span><span class="o">=</span><span class="s2">&quot;s3&quot;</span><span class="p">,</span>
+        <span class="n">aws_access_key_id</span><span class="o">=</span><span class="n">s3_access_key</span><span class="p">,</span>
+        <span class="n">aws_secret_access_key</span><span class="o">=</span><span class="n">s3_secret_key</span><span class="p">,</span>
+        <span class="n">endpoint_url</span><span class="o">=</span><span class="n">s3_endpoint_url</span><span class="p">,</span>
+    <span class="p">)</span>
+
+    <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">/data/raw/xdata.pkl&quot;</span>
+    <span class="n">filename_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">raw_dataset_path</span><span class="si">}</span><span class="s2">/xdata.pkl&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> into </span><span class="si">{</span><span class="n">filename_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">s3</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">s3_bucket</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">Filename</span><span class="o">=</span><span class="n">filename_path</span><span class="p">)</span>
+
+    <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">/data/raw/ydata.pkl&quot;</span>
+    <span class="n">filename_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">raw_dataset_path</span><span class="si">}</span><span class="s2">/ydata.pkl&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> into </span><span class="si">{</span><span class="n">filename_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">s3</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">s3_bucket</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">Filename</span><span class="o">=</span><span class="n">filename_path</span><span class="p">)</span>
+
+    <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">/data/raw/xtestdata.pkl&quot;</span>
+    <span class="n">filename_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">raw_dataset_path</span><span class="si">}</span><span class="s2">/xtestdata.pkl&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> into </span><span class="si">{</span><span class="n">filename_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">s3</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">s3_bucket</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">Filename</span><span class="o">=</span><span class="n">filename_path</span><span class="p">)</span>
+
+    <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">/data/raw/ytestdata.pkl&quot;</span>
+    <span class="n">filename_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">raw_dataset_path</span><span class="si">}</span><span class="s2">/ytestdata.pkl&quot;</span><span class="p">)</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Downloading </span><span class="si">{</span><span class="n">key</span><span class="si">}</span><span class="s2"> into </span><span class="si">{</span><span class="n">filename_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+    <span class="n">s3</span><span class="o">.</span><span class="n">download_file</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">s3_bucket</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">Filename</span><span class="o">=</span><span class="n">filename_path</span><span class="p">)</span>
 
 
-<span class="c1">#     # Create an S3 client</span>
-<span class="c1">#     s3 = boto3.client(</span>
-<span class="c1">#         service_name=&quot;s3&quot;,</span>
-<span class="c1">#         aws_access_key_id=s3_access_key,</span>
-<span class="c1">#         aws_secret_access_key=s3_secret_key,</span>
-<span class="c1">#         endpoint_url=s3_endpoint_url,</span>
-<span class="c1">#     )</span>
+<span class="n">pkl_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">raw_dataset_path</span><span class="si">}</span><span class="s2">/xdata.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">x_train</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pkl_file</span><span class="p">)</span>
+<span class="n">pkl_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="c1">#     key = f&quot;{project_name}/data/raw/xdata.pkl&quot;</span>
-<span class="c1">#     filename_path = str(f&quot;{raw_dataset_path}/xdata.pkl&quot;)</span>
-<span class="c1">#     print(f&quot;Downloading {key} into {filename_path}&quot;)</span>
-<span class="c1">#     s3.download_file(Bucket=s3_bucket, Key=key, Filename=filename_path)</span>
+<span class="n">pkly_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">raw_dataset_path</span><span class="si">}</span><span class="s2">/ydata.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">y_train</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pkly_file</span><span class="p">)</span>
+<span class="n">pkly_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="c1">#     key = f&quot;{project_name}/data/raw/ydata.pkl&quot;</span>
-<span class="c1">#     filename_path = str(f&quot;{raw_dataset_path}/ydata.pkl&quot;)</span>
-<span class="c1">#     print(f&quot;Downloading {key} into {filename_path}&quot;)</span>
-<span class="c1">#     s3.download_file(Bucket=s3_bucket, Key=key, Filename=filename_path)</span>
+<span class="n">pklxtest_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">raw_dataset_path</span><span class="si">}</span><span class="s2">/xtestdata.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">x_test</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pklxtest_file</span><span class="p">)</span>
+<span class="n">pklxtest_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 
-<span class="c1">#     key = f&quot;{project_name}/data/raw/xtestdata.pkl&quot;</span>
-<span class="c1">#     filename_path = str(f&quot;{raw_dataset_path}/xtestdata.pkl&quot;)</span>
-<span class="c1">#     print(f&quot;Downloading {key} into {filename_path}&quot;)</span>
-<span class="c1">#     s3.download_file(Bucket=s3_bucket, Key=key, Filename=filename_path)</span>
-
-<span class="c1">#     key = f&quot;{project_name}/data/raw/ytestdata.pkl&quot;</span>
-<span class="c1">#     filename_path = str(f&quot;{raw_dataset_path}/ytestdata.pkl&quot;)</span>
-<span class="c1">#     print(f&quot;Downloading {key} into {filename_path}&quot;)</span>
-<span class="c1">#     s3.download_file(Bucket=s3_bucket, Key=key, Filename=filename_path)</span>
-
-
-<span class="c1"># pkl_file = open(f&quot;{raw_dataset_path}/xdata.pkl&quot;, &quot;rb&quot;)</span>
-<span class="c1"># x_train = pickle.load(pkl_file)</span>
-<span class="c1"># pkl_file.close()</span>
-
-<span class="c1"># pkly_file = open(f&quot;{raw_dataset_path}/ydata.pkl&quot;, &quot;rb&quot;)</span>
-<span class="c1"># y_train = pickle.load(pkly_file)</span>
-<span class="c1"># pkly_file.close()</span>
-
-<span class="c1"># pklxtest_file = open(f&quot;{raw_dataset_path}/xtestdata.pkl&quot;, &quot;rb&quot;)</span>
-<span class="c1"># x_test = pickle.load(pklxtest_file)</span>
-<span class="c1"># pklxtest_file.close()</span>
-
-<span class="c1"># pklytest_file = open(f&quot;{raw_dataset_path}/ytestdata.pkl&quot;, &quot;rb&quot;)</span>
-<span class="c1"># y_test = pickle.load(pklytest_file)</span>
-<span class="c1"># pklytest_file.close()</span>
+<span class="n">pklytest_file</span> <span class="o">=</span> <span class="nb">open</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">raw_dataset_path</span><span class="si">}</span><span class="s2">/ytestdata.pkl&quot;</span><span class="p">,</span> <span class="s2">&quot;rb&quot;</span><span class="p">)</span>
+<span class="n">y_test</span> <span class="o">=</span> <span class="n">pickle</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">pklytest_file</span><span class="p">)</span>
+<span class="n">pklytest_file</span><span class="o">.</span><span class="n">close</span><span class="p">()</span>
 </pre></div>
 </div>
 </div>
@@ -469,11 +473,7 @@
 <h2>Split Data into Train and Test sets<a class="headerlink" href="#split-data-into-train-and-test-sets" title="Permalink to this headline">¶</a></h2>
 <div class="cell docutils container">
 <div class="cell_input docutils container">
-<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Prepare MNIST data.</span>
-<span class="c1"># from tensorflow.keras.datasets import mnist</span>
-<span class="c1"># (x_train, y_train), (x_test, y_test) = mnist.load_data()</span>
-
-<span class="c1"># Convert to float32.</span>
+<div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Convert to float32.</span>
 <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_train</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">),</span> <span class="n">np</span><span class="o">.</span><span class="n">array</span><span class="p">(</span><span class="n">x_test</span><span class="p">,</span> <span class="n">np</span><span class="o">.</span><span class="n">float32</span><span class="p">)</span>
 <span class="c1"># Normalize images value from [0, 255] to [0, 1].</span>
 <span class="n">x_train</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">=</span> <span class="n">x_train</span> <span class="o">/</span> <span class="mf">255.0</span><span class="p">,</span> <span class="n">x_test</span> <span class="o">/</span> <span class="mf">255.0</span>
@@ -539,34 +539,15 @@ Number of images in x_test 10000
     <span class="n">loss</span><span class="o">=</span><span class="s2">&quot;sparse_categorical_crossentropy&quot;</span><span class="p">,</span>
     <span class="n">metrics</span><span class="o">=</span><span class="p">[</span><span class="s2">&quot;accuracy&quot;</span><span class="p">],</span>
 <span class="p">)</span>
-<span class="n">conv_net</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">10</span><span class="p">)</span>
+<span class="n">conv_net</span><span class="o">.</span><span class="n">fit</span><span class="p">(</span><span class="n">x</span><span class="o">=</span><span class="n">x_train</span><span class="p">,</span> <span class="n">y</span><span class="o">=</span><span class="n">y_train</span><span class="p">,</span> <span class="n">epochs</span><span class="o">=</span><span class="mi">1</span><span class="p">)</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>Epoch 1/10
-1875/1875 [==============================] - 59s 31ms/step - loss: 0.2578 - accuracy: 0.9182
-Epoch 2/10
-1875/1875 [==============================] - 59s 31ms/step - loss: 0.0490 - accuracy: 0.9856
-Epoch 3/10
-1875/1875 [==============================] - 59s 31ms/step - loss: 0.0335 - accuracy: 0.9899
-Epoch 4/10
-1875/1875 [==============================] - 59s 32ms/step - loss: 0.0222 - accuracy: 0.9930
-Epoch 5/10
-1875/1875 [==============================] - 59s 32ms/step - loss: 0.0192 - accuracy: 0.9944
-Epoch 6/10
-1875/1875 [==============================] - 59s 32ms/step - loss: 0.0174 - accuracy: 0.9943
-Epoch 7/10
-1875/1875 [==============================] - 59s 32ms/step - loss: 0.0155 - accuracy: 0.9950
-Epoch 8/10
-1875/1875 [==============================] - 59s 32ms/step - loss: 0.0132 - accuracy: 0.9956
-Epoch 9/10
-1875/1875 [==============================] - 60s 32ms/step - loss: 0.0118 - accuracy: 0.9962
-Epoch 10/10
-1875/1875 [==============================] - 59s 32ms/step - loss: 0.0101 - accuracy: 0.9965
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>1875/1875 [==============================] - 118s 63ms/step - loss: 0.1223 - accuracy: 0.9617
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7fe60af142b0&gt;
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>&lt;tensorflow.python.keras.callbacks.History at 0x7f603c025be0&gt;
 </pre></div>
 </div>
 </div>
@@ -578,10 +559,10 @@ Epoch 10/10
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 [==============================] - 3s 8ms/step - loss: 0.0349 - accuracy: 0.9928
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>313/313 [==============================] - 5s 16ms/step - loss: 0.0333 - accuracy: 0.9881
 </pre></div>
 </div>
-<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.03490927815437317, 0.9927999973297119]
+<div class="output text_plain highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>[0.03325576335191727, 0.988099992275238]
 </pre></div>
 </div>
 </div>
@@ -636,7 +617,7 @@ Epoch 10/10
 <div class="highlight-ipython3 notranslate"><div class="highlight"><pre><span></span><span class="c1"># Save the model to file</span>
 <span class="c1"># Fetch the Keras session and save the model</span>
 
-<span class="n">time_version</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;{datetime.now():%y%m</span><span class="si">%d</span><span class="s2">%H%M%S}-{random.getrandbits(64):08x}&quot;</span>
+<span class="n">time_version</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">datetime</span><span class="o">.</span><span class="n">now</span><span class="p">()</span><span class="si">:</span><span class="s2">%y%m%d%H%M%S</span><span class="si">}</span><span class="s2">-</span><span class="si">{</span><span class="n">random</span><span class="o">.</span><span class="n">getrandbits</span><span class="p">(</span><span class="mi">64</span><span class="p">)</span><span class="si">:</span><span class="s2">08x</span><span class="si">}</span><span class="s2">&quot;</span>
 
 <span class="c1"># Path to data</span>
 <span class="n">directory_path</span> <span class="o">=</span> <span class="n">Path</span><span class="o">.</span><span class="n">cwd</span><span class="p">()</span><span class="o">.</span><span class="n">parents</span><span class="p">[</span><span class="mi">0</span><span class="p">]</span>
@@ -646,7 +627,7 @@ Epoch 10/10
 
 <span class="n">tf</span><span class="o">.</span><span class="n">keras</span><span class="o">.</span><span class="n">models</span><span class="o">.</span><span class="n">save_model</span><span class="p">(</span>
     <span class="n">conv_net</span><span class="p">,</span>
-    <span class="n">f</span><span class="s2">&quot;</span><span class="si">{trained_model_path}</span><span class="s2">/</span><span class="si">{time_version}</span><span class="s2">/&quot;</span><span class="p">,</span>
+    <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">trained_model_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">time_version</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">,</span>
     <span class="n">overwrite</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">include_optimizer</span><span class="o">=</span><span class="kc">True</span><span class="p">,</span>
     <span class="n">save_format</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
@@ -654,7 +635,7 @@ Epoch 10/10
     <span class="n">options</span><span class="o">=</span><span class="kc">None</span><span class="p">,</span>
 <span class="p">)</span>
 
-<span class="k">if</span> <span class="n">use_ceph</span><span class="p">:</span>
+<span class="k">if</span> <span class="n">automation</span> <span class="ow">or</span> <span class="n">use_ceph</span><span class="p">:</span>
     <span class="c1"># Download files from S3</span>
     <span class="n">s3_endpoint_url</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;OBJECT_STORAGE_ENDPOINT_URL&quot;</span><span class="p">]</span>
     <span class="n">s3_access_key</span> <span class="o">=</span> <span class="n">os</span><span class="o">.</span><span class="n">environ</span><span class="p">[</span><span class="s2">&quot;AWS_ACCESS_KEY_ID&quot;</span><span class="p">]</span>
@@ -669,18 +650,18 @@ Epoch 10/10
         <span class="n">endpoint_url</span><span class="o">=</span><span class="n">s3_endpoint_url</span><span class="p">,</span>
     <span class="p">)</span>
 
-    <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;</span><span class="si">{trained_model_path}</span><span class="s2">/</span><span class="si">{time_version}</span><span class="s2">/&quot;</span><span class="p">)</span>
+    <span class="n">p</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">trained_model_path</span><span class="si">}</span><span class="s2">/</span><span class="si">{</span><span class="n">time_version</span><span class="si">}</span><span class="s2">/&quot;</span><span class="p">)</span>
     <span class="k">for</span> <span class="n">child</span> <span class="ow">in</span> <span class="n">p</span><span class="o">.</span><span class="n">rglob</span><span class="p">(</span><span class="s2">&quot;*&quot;</span><span class="p">):</span>
         <span class="k">if</span> <span class="ow">not</span> <span class="n">child</span><span class="o">.</span><span class="n">is_dir</span><span class="p">():</span>
             <span class="n">store_file_path</span> <span class="o">=</span> <span class="nb">str</span><span class="p">(</span><span class="n">child</span><span class="p">)</span><span class="o">.</span><span class="n">split</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">trained_model_path</span><span class="p">))[</span><span class="mi">1</span><span class="p">]</span>
-            <span class="n">key</span> <span class="o">=</span> <span class="n">f</span><span class="s2">&quot;</span><span class="si">{project_name}</span><span class="s2">/models</span><span class="si">{store_file_path}</span><span class="s2">&quot;</span>
+            <span class="n">key</span> <span class="o">=</span> <span class="sa">f</span><span class="s2">&quot;</span><span class="si">{</span><span class="n">project_name</span><span class="si">}</span><span class="s2">/models</span><span class="si">{</span><span class="n">store_file_path</span><span class="si">}</span><span class="s2">&quot;</span>
             <span class="nb">print</span><span class="p">(</span><span class="n">key</span><span class="p">)</span>
             <span class="n">s3</span><span class="o">.</span><span class="n">upload_file</span><span class="p">(</span><span class="n">Bucket</span><span class="o">=</span><span class="n">s3_bucket</span><span class="p">,</span> <span class="n">Key</span><span class="o">=</span><span class="n">key</span><span class="p">,</span> <span class="n">Filename</span><span class="o">=</span><span class="nb">str</span><span class="p">(</span><span class="n">child</span><span class="p">))</span>
 </pre></div>
 </div>
 </div>
 <div class="cell_output docutils container">
-<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: /opt/app-root/src/elyra-aidevsecops-tutorial/models/210520190042-bfcc86125b2d9fd7/assets
+<div class="output stream highlight-myst-ansi notranslate"><div class="highlight"><pre><span></span>INFO:tensorflow:Assets written to: /opt/app-root/src/nb-pr/elyra-aidevsecops-tutorial/models/210722200532-a80b8d818a180895/assets
 </pre></div>
 </div>
 </div>
@@ -697,16 +678,16 @@ Epoch 10/10
         },
         codeMirrorConfig: {
             theme: "abcdef",
-            mode: "jupyterlab-requirements"
+            mode: "python"
         },
         kernelOptions: {
-            kernelName: "jupyterlab-requirements",
+            kernelName: "python3",
             path: "./notebooks"
         },
         predefinedOutput: true
     }
     </script>
-    <script>kernelName = 'jupyterlab-requirements'</script>
+    <script>kernelName = 'python3'</script>
 
               </div>
 

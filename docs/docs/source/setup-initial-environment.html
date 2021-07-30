@@ -149,7 +149,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="run-ai-pipeline.html">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="test-model.html">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -283,6 +283,16 @@
    3. Clone your repo using Jupyterlab Git Extension
   </a>
  </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-step">
+   Next Step
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
 </ul>
 
             </nav>
@@ -296,41 +306,41 @@
 
   <div class="section" id="setup-initial-environment">
 <h1>Setup initial environment<a class="headerlink" href="#setup-initial-environment" title="Permalink to this headline">¶</a></h1>
-<div class="section" id="fork-this-repo-from-github-into-your-account">
-<h2>1. Fork this repo from GitHub into your account<a class="headerlink" href="#fork-this-repo-from-github-into-your-account" title="Permalink to this headline">¶</a></h2>
-<p>Check <a class="reference external" href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">Fork a repo</a> from GitHub docs.</p>
-<p>In this tutorial we rely on <a class="reference external" href="https://github.com/aicoe-aiops/project-template">project-template</a>, as described above, in order to have a common structures that can be easily used by data scientists and devops. Have a structure for the projects in general allows others to find all the bits required for the ML lifecycle and from the DevOps lifecycle.</p>
-<p>If you want to use this template for your AI project, go to <a class="reference external" href="https://github.com/aicoe-aiops/project-template">project-template</a> and select <code class="docutils literal notranslate"><span class="pre">use</span> <span class="pre">the</span> <span class="pre">template</span></code> from the button provided in template repositories.</p>
+<p>In this tutorial we rely on a <a class="reference external" href="https://github.com/aicoe-aiops/project-template">project template</a> in order to have a common structure that can be easily used by data scientists and devops engineers. Having structure in a project ensures all the pieces required for the ML and DevOps lifecycles are present and easily discoverable.</p>
+<p>If you want to use this template for your AI project, go to the project template <a class="reference external" href="https://github.com/aicoe-aiops/project-template">here</a> and click the <code class="docutils literal notranslate"><span class="pre">Use</span> <span class="pre">the</span> <span class="pre">template</span></code> button provided in the repository.</p>
 <div style="text-align:center">
 <img alt="AI Project Template" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIProjectTemplate.png">
 </div>
+<div class="section" id="fork-this-repo-from-github-into-your-account">
+<h2>1. Fork this repo from GitHub into your account<a class="headerlink" href="#fork-this-repo-from-github-into-your-account" title="Permalink to this headline">¶</a></h2>
+<p>To begin, you’ll need to fork this repository to create your own copy. If you’re unsure how, look at <a class="reference external" href="https://docs.github.com/en/github/getting-started-with-github/fork-a-repo">Fork a Repo</a> from GitHub docs.</p>
 </div>
 <div class="section" id="access-jupyterhub-and-spawn-the-elyra-image">
 <h2>2. Access JupyterHub and spawn the Elyra image<a class="headerlink" href="#access-jupyterhub-and-spawn-the-elyra-image" title="Permalink to this headline">¶</a></h2>
 <div class="section" id="operate-first-access-jupyterhub">
 <h3>Operate First access JupyterHub<a class="headerlink" href="#operate-first-access-jupyterhub" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
-<li><p>You can get access <a class="reference external" href="https://jupyter.org/hub">JupyterHub</a> on <a class="reference external" href="https://www.operate-first.cloud/">Operate First</a> using the following <a class="reference external" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/">link</a></p></li>
+<li><p>You can get access to <a class="reference external" href="https://jupyter.org/hub">JupyterHub</a> on <a class="reference external" href="https://www.operate-first.cloud/">Operate First</a> using the following <a class="reference external" href="https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/">link</a></p></li>
 </ol>
 <div style="text-align:center">
-<img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubUI.png">
+<img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubNewUI.png">
 </div>
 <ol class="simple">
-<li><p>Select Elyra image called <code class="docutils literal notranslate"><span class="pre">ml-prague-workshop:latest</span></code> from the list of images.</p></li>
+<li><p>Select the image called <code class="docutils literal notranslate"><span class="pre">AICoE</span> <span class="pre">Elyra</span> <span class="pre">AIDevSecOps</span> <span class="pre">Tutorial</span> <span class="pre">Notebook</span> <span class="pre">Image</span></code>.</p></li>
 <li><p>Select <code class="docutils literal notranslate"><span class="pre">Large</span></code> for container size.</p></li>
 <li><p>Insert the environment variables required using add button in JupyterLab UI:</p></li>
 </ol>
 <ul class="simple">
 <li><p><code class="docutils literal notranslate"><span class="pre">AWS_ACCESS_KEY_ID</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">AWS_SECRET_ACCESS_KEY</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">AWS_SECRET_ACCESS_KEY</span></code></p></li>
 <li><p><code class="docutils literal notranslate"><span class="pre">OBJECT_STORAGE_ENDPOINT_URL</span></code></p></li>
-<li><p><code class="docutils literal notranslate"><span class="pre">OBJECT_STORAGE_BUCKET_NAME</span></code>.</p></li>
+<li><p><code class="docutils literal notranslate"><span class="pre">OBJECT_STORAGE_BUCKET_NAME</span></code></p></li>
 </ul>
 </div>
 </div>
 <div class="section" id="clone-your-repo-using-jupyterlab-git-extension">
 <h2>3. Clone your repo using Jupyterlab Git Extension<a class="headerlink" href="#clone-your-repo-using-jupyterlab-git-extension" title="Permalink to this headline">¶</a></h2>
-<p>Once your image is ready and you are in the Jupyterlab UI, you can use the Git extension provided to clone <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial.git">this repo</a>.</p>
+<p>Once your image is ready and you are in the Jupyterlab UI, you can use the Git extension provided to clone this repo.</p>
 <ol class="simple">
 <li><p>Click the Git extension button from Jupyterlab UI:</p></li>
 </ol>
@@ -349,8 +359,15 @@
 <div style="text-align:center">
 <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
 </div>
+</div>
+<div class="section" id="next-step">
+<h2>Next Step<a class="headerlink" href="#next-step" title="Permalink to this headline">¶</a></h2>
+<p><span class="xref myst">Explore notebooks and manage dependencies</span></p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/aicoe-aiops/project-template">project-template</a></p></li>
+<li><p><a class="reference external" href="https://github.com/aicoe-aiops/project-template">Project template</a></p></li>
 <li><p><a class="reference external" href="https://www.operate-first.cloud/">Operate First</a></p></li>
 <li><p><a class="reference external" href="https://jupyter.org/hub">JupyterHub</a></p></li>
 </ul>

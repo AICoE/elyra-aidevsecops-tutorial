@@ -149,7 +149,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../docs/source/run-ai-pipeline.html">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="../docs/source/test-model.html">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -320,7 +320,7 @@
 <span class="kn">import</span> <span class="nn">requests</span>
 <span class="kn">import</span> <span class="nn">json</span>
 
-<span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="k">import</span> <span class="n">mnist</span>
+<span class="kn">from</span> <span class="nn">tensorflow.keras.datasets</span> <span class="kn">import</span> <span class="n">mnist</span>
 <span class="kn">import</span> <span class="nn">numpy</span> <span class="k">as</span> <span class="nn">np</span>
 </pre></div>
 </div>
@@ -427,7 +427,7 @@ elyra-aidevsecops-tutorial   elyra-aidevsecops-tutorial-thoth-deployment-example
 <span class="c1"># plt.show(block=False)</span>
 <span class="c1"># plt.pause(1)</span>
 <span class="c1"># plt.close()</span>
-<span class="nb">print</span><span class="p">(</span><span class="n">f</span><span class="s2">&quot;Input image number: </span><span class="si">{y_test[5890]}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Input image number: </span><span class="si">{</span><span class="n">y_test</span><span class="p">[</span><span class="mi">5890</span><span class="p">]</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
 
 <span class="c1"># send http request with image and receive response</span>
 <span class="n">response</span> <span class="o">=</span> <span class="n">requests</span><span class="o">.</span><span class="n">post</span><span class="p">(</span><span class="n">test_url</span><span class="p">,</span> <span class="n">data</span><span class="o">=</span><span class="n">data</span><span class="p">,</span> <span class="n">headers</span><span class="o">=</span><span class="n">headers</span><span class="p">)</span>
@@ -441,7 +441,7 @@ elyra-aidevsecops-tutorial   elyra-aidevsecops-tutorial-thoth-deployment-example
 <span class="n">probability</span> <span class="o">=</span> <span class="n">json_response</span><span class="p">[</span><span class="s2">&quot;probability&quot;</span><span class="p">]</span>
 
 <span class="nb">print</span><span class="p">(</span>
-    <span class="n">f</span><span class="s2">&quot;Model predicted </span><span class="si">{prediction}</span><span class="s2"> in </span><span class="si">{latency}</span><span class="s2"> s with probability </span><span class="si">{probability}</span><span class="s2">&quot;</span>
+    <span class="sa">f</span><span class="s2">&quot;Model predicted </span><span class="si">{</span><span class="n">prediction</span><span class="si">}</span><span class="s2"> in </span><span class="si">{</span><span class="n">latency</span><span class="si">}</span><span class="s2"> s with probability </span><span class="si">{</span><span class="n">probability</span><span class="si">}</span><span class="s2">&quot;</span>
 <span class="p">)</span>
 </pre></div>
 </div>

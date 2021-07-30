@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Test inference application deployed &#8212; Project Meteor</title>
+    <title>Test your deployed inference application &#8212; Project Meteor</title>
 
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -149,7 +149,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="run-ai-pipeline.html">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -262,6 +262,11 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-step">
+   Next Step:
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -277,29 +282,23 @@
 
               <div>
 
-  <div class="section" id="test-inference-application-deployed">
-<h1>Test inference application deployed<a class="headerlink" href="#test-inference-application-deployed" title="Permalink to this headline">¶</a></h1>
-<p>If you want to test your application deployed in the cluster you can run the <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/tree/master/features">integration test</a> using <a class="reference external" href="https://behave.readthedocs.io/en/stable/">behave</a> package.</p>
-<p>Behave uses Behavior-driven development (or BDD), an agile software development technique that encourages and faciliate collaboration between developers, QA and non-technical or business participants.</p>
+  <div class="section" id="test-your-deployed-inference-application">
+<h1>Test your deployed inference application<a class="headerlink" href="#test-your-deployed-inference-application" title="Permalink to this headline">¶</a></h1>
+<p>If you want to test the application that you just deployed in the cluster, run this <span class="xref myst">integration test</span> using the <a class="reference external" href="https://behave.readthedocs.io/en/stable/">behave</a> package.</p>
+<p>Behave uses behavior-driven development (BDD), an agile software development technique that encourages and facilitates collaboration between developers, QA engineers and business participants.</p>
 <ol class="simple">
-<li><p>Install <a class="reference external" href="https://github.com/thoth-station/thamos">thamos</a> using pip:</p></li>
-</ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  pip install thamos
-</pre></div>
-</div>
-<ol class="simple">
-<li><p>Create an env and install dependencies using <a class="reference external" href="https://github.com/thoth-station/thamos">thamos</a> from the root directory of the tutorial, selecting the appropriate overlays <code class="docutils literal notranslate"><span class="pre">test-model</span></code>.</p></li>
+<li><p>Create a virtual environment and install your dependencies using <a class="reference external" href="https://github.com/thoth-station/thamos">thamos</a>(the CLI tool for interacting with Thoth and included as a dependency to this repo) from the root directory of this tutorial. Be sure to select the appropriate overlay, which in this case is <code class="docutils literal notranslate"><span class="pre">test-model</span></code>.</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  python3 -m venv venv/ <span class="o">&amp;&amp;</span> . venv/bin/activate <span class="o">&amp;&amp;</span> thamos install -r test-model
 </pre></div>
 </div>
 <ol class="simple">
-<li><p>Run <a class="reference external" href="https://behave.readthedocs.io/en/stable/">behave</a> command from the root directory of the tutorial.</p></li>
+<li><p>Run the <a class="reference external" href="https://behave.readthedocs.io/en/stable/">behave</a> command from the root directory of the tutorial.</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  <span class="nv">DEPLOYED_MODEL_URL</span><span class="o">=</span>http://elyra-aidevsecops-tutorial-thoth-deployment-examples.apps.zero.massopen.cloud behave
 </pre></div>
 </div>
-<p>Example of the output received:</p>
+<p>Below is an example of the output you should expect to see if the <a class="reference external" href="https://behave.readthedocs.io/en/stable/">behave</a> command ran correctly:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  Scenario: Deployment metrics gathering                    <span class="c1"># features/gather_deployment_metrics.feature:2</span>
       Given dataset is available                            <span class="c1"># features/steps/model_deployment.py:42</span>
       Given deployment is accessible                        <span class="c1"># features/steps/model_deployment.py:56</span>
@@ -313,13 +312,17 @@
 </pre></div>
 </div>
 <ol class="simple">
-<li><p>Checking metrics produced running</p></li>
+<li><p>You can also check the metrics produced by running the following command:</p></li>
 </ol>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  cat metrics.json
 </pre></div>
 </div>
 <div class="highlight-python notranslate"><div class="highlight"><pre><span></span><span class="p">{</span><span class="s1">&#39;average_latency&#39;</span><span class="p">:</span> <span class="mf">0.03846242621075362</span><span class="p">,</span> <span class="s1">&#39;average_error&#39;</span><span class="p">:</span> <span class="mf">0.001</span><span class="p">}</span>
 </pre></div>
+</div>
+<div class="section" id="next-step">
+<h2>Next Step:<a class="headerlink" href="#next-step" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="monitor-model.html"><span class="doc std std-doc">Monitor your model and application with Prometheus and Grafana</span></a></p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>

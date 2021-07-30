@@ -51,7 +51,7 @@
     <script async="async" src="../../_static/sphinx-thebe.js"></script>
     <link rel="index" title="Index" href="../../genindex.html" />
     <link rel="search" title="Search" href="../../search.html" />
-    <link rel="next" title="Run AI Pipeline" href="run-ai-pipeline.html" />
+    <link rel="next" title="How to run an AI Pipeline with Elyra" href="run-ai-pipeline.html" />
     <link rel="prev" title="Test Deployed Model" href="../../notebooks/test_deployed_model.html" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <meta name="docsearch:language" content="en" />
@@ -149,7 +149,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="run-ai-pipeline.html">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="test-model.html">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -289,6 +289,11 @@
   </ul>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-step">
+   Next Step
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -326,21 +331,21 @@
 </ol>
 <ul class="simple">
 <li><p>Name: <code class="docutils literal notranslate"><span class="pre">Tutorial</span> <span class="pre">Download</span> <span class="pre">Dataset</span> <span class="pre">Step</span></code></p></li>
-<li><p>Image Name: <code class="docutils literal notranslate"><span class="pre">quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0</span></code></p></li>
+<li><p>Image Name: <code class="docutils literal notranslate"><span class="pre">quay.io/thoth-station/elyra-aidevsecops-dataset:v0.10.0</span></code></p></li>
 </ul>
 <div style="text-align:center">
-<img alt="Fill inputs Image Runtime Elyra" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/FillInputsRuntimeImage.png">
+<img alt="Fill inputs Image Runtime Elyra" src="https://raw.githubusercontent.com/AICoE/elyra-aidevsecops-tutorial/master/docs/images/FillInputsRuntimeImage.png">
 </div>
 <p>The image is now available and can be used into your AI pipeline</p>
 <div style="text-align:center">
-<img alt="Updated Runtime Images List" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/UpdatedRuntimeImageList.png">
+<img alt="Updated Runtime Images List" src="https://raw.githubusercontent.com/AICoE/elyra-aidevsecops-tutorial/master/docs/images/UpdatedRuntimeImageList.png">
 </div>
 <ol class="simple">
 <li><p>Repeat steps 2, 3 to add <code class="docutils literal notranslate"><span class="pre">training</span></code> image using the following inputs:</p></li>
 </ol>
 <ul class="simple">
 <li><p>Name: <code class="docutils literal notranslate"><span class="pre">Tutorial</span> <span class="pre">Training</span> <span class="pre">Step</span></code></p></li>
-<li><p>Image Name: <code class="docutils literal notranslate"><span class="pre">quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0</span></code></p></li>
+<li><p>Image Name: <code class="docutils literal notranslate"><span class="pre">quay.io/thoth-station/elyra-aidevsecops-training:v0.10.0</span></code></p></li>
 </ul>
 <div class="section" id="add-runtime-images-using-cli">
 <h3>Add runtime images (using CLI)<a class="headerlink" href="#add-runtime-images-using-cli" title="Permalink to this headline">¶</a></h3>
@@ -349,17 +354,17 @@
 <li><p>Open Terminal in JupyterLab</p></li>
 <li><p>Run the following command with your specific inputs:</p></li>
 </ol>
-<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>elyra-metadata install runtime-images --display_name<span class="o">=</span><span class="s2">&quot;Tutorial Training Step&quot;</span> --description<span class="o">=</span><span class="s2">&quot;Training Step Tutorial&quot;</span> --image_name<span class="o">=</span><span class="s2">&quot;quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0&quot;</span>
+<div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>elyra-metadata install runtime-images --display_name<span class="o">=</span><span class="s2">&quot;Tutorial Training Step&quot;</span> --description<span class="o">=</span><span class="s2">&quot;Training Step Tutorial&quot;</span> --image_name<span class="o">=</span><span class="s2">&quot;quay.io/thoth-station/elyra-aidevsecops-training:v0.10.0&quot;</span>
 </pre></div>
 </div>
-<p>If you want to know more, check the following <a class="reference external" href="https://elyra.readthedocs.io/en/v2.0.1/user_guide/runtime-image-conf.html">link</a>.</p>
+<p>To learn more about adding runtime images, check the following <a class="reference external" href="https://elyra.readthedocs.io/en/v2.0.1/user_guide/runtime-image-conf.html">link</a>.</p>
 </div>
 <div class="section" id="create-runtime-to-be-used-in-kubeflow-pipeline-using-ui">
 <h3>Create runtime to be used in Kubeflow pipeline (using UI)<a class="headerlink" href="#create-runtime-to-be-used-in-kubeflow-pipeline-using-ui" title="Permalink to this headline">¶</a></h3>
 <ol class="simple">
 <li><p>Select the Kubeflow Pipeline Runtime Tab on the left panel of Jupyterlab UI or use the command palette (Cntrl + Shift + C) and select <code class="docutils literal notranslate"><span class="pre">&quot;Manage</span> <span class="pre">Kubeflow</span> <span class="pre">Pipelines</span> <span class="pre">Runtimes&quot;</span></code>.</p></li>
 </ol>
-<p>NOTE: There are more buttons to see Runtimes in the menu tab or in the pipeline editor as well.</p>
+<p>NOTE: There is a button to view Runtimes in the menu tab and in the pipeline editor as well.</p>
 <div style="text-align:center">
 <img alt="Elyra Runtime Tab" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraRuntimeTab.png">
 </div>
@@ -396,10 +401,12 @@
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>elyra-metadata install runtimes --display_name<span class="o">=</span><span class="s2">&quot;KFP operate first&quot;</span> --api_endpoint<span class="o">=</span><span class="s2">&quot;http://istio-ingressgateway-istio-system.apps.zero.massopen.cloud/pipeline&quot;</span> --engine<span class="o">=</span>Tekton --cos_endpoint<span class="o">=</span>CLOUD_OBJECT_STORAGE_ENDPOINT --cos_username<span class="o">=</span>CLOUD_OBJECT_STORAGE_USERNAME --cos_password<span class="o">=</span>CLOUD_OBJECT_STORAGE_PASSWORD --cos_bucket<span class="o">=</span>CLOUD_OBJECT_BUCKET_NAME
 </pre></div>
 </div>
-<p>If you want to know more, check the following <a class="reference external" href="https://elyra.readthedocs.io/en/v2.0.1/user_guide/runtime-conf.html">link</a>.</p>
+<p>To learn more about creating a Kubeflow pipeline runtime, check the following <a class="reference external" href="https://elyra.readthedocs.io/en/v2.0.1/user_guide/runtime-conf.html">link</a>.</p>
 </div>
 <div class="section" id="create-elyra-ai-pipeline-using-the-ui">
 <h3>Create Elyra AI Pipeline using the UI<a class="headerlink" href="#create-elyra-ai-pipeline-using-the-ui" title="Permalink to this headline">¶</a></h3>
+<p>A pre-made pipeline called <span class="xref myst">elyra-aidevsecops-tutorial.pipeline</span> already exists at the root of the repository. You can directly start with the pre-made pipeline and jump to step 3 to make sure that the image runtime for each notebook is selected along with the desired Resources, Environment Variables annd Output Files.</p>
+<p>To create a new pipeline from scratch, go through the following steps:</p>
 <ol class="simple">
 <li><p>Open new Elyra Pipeline Editor</p></li>
 </ol>
@@ -408,11 +415,19 @@
 </div>
 <ol class="simple">
 <li><p>Insert all steps you want, moving notebooks to the editor and connect them using <a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a> UI.</p></li>
-<li><p>Insert inputs for each step/notebook in terms of image runtime, environment variables and resources.</p></li>
+<li><p>Insert inputs for each step/notebook in terms of image runtime, environment variables, resources, file dependencies and output files.</p></li>
 </ol>
 <div style="text-align:center">
 <img alt="Pipeline Steps Inputs" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipelineStepInputs.png">
 </div>
+<p>The notebooks can exchange data using a cloud object storage and also using the Output Files which can be used to make certain files generated during execution available to all subsequent pipeline steps.</p>
+<p>The <code class="docutils literal notranslate"><span class="pre">download_dataset</span></code> and <code class="docutils literal notranslate"><span class="pre">training</span></code> step of the pipeline have some mandatory and optional ennvironment variables for running in automation which need to be set during this step of setting up the pipeline.</p>
+<p>NOTE on notebook properties:</p>
+<ul class="simple">
+<li><p>The <code class="docutils literal notranslate"><span class="pre">download_dataset</span></code> step uses Output Files to make certain files available to the training step during execution. Make sure that the output files <code class="docutils literal notranslate"><span class="pre">data/raw/xdata.pkl</span></code>, <code class="docutils literal notranslate"><span class="pre">data/raw/xtestdata.pkl</span></code>, <code class="docutils literal notranslate"><span class="pre">data/raw/ydata.pkl</span></code>, <code class="docutils literal notranslate"><span class="pre">data/raw/ytestdata.pkl</span></code> are specified for the <code class="docutils literal notranslate"><span class="pre">download_dataset</span></code> step.</p></li>
+<li><p>Env variable <code class="docutils literal notranslate"><span class="pre">AUTOMATION</span></code> must be configured as 1 for both the notebooks to run in the pipeline.</p></li>
+<li><p>The <code class="docutils literal notranslate"><span class="pre">training</span></code> step also needs the cloud storage environment credentials like the <code class="docutils literal notranslate"><span class="pre">AWS_ACCESS_KEY_ID</span></code>, <code class="docutils literal notranslate"><span class="pre">AWS_SECRET_ACCESS_KEY</span></code>, <code class="docutils literal notranslate"><span class="pre">OBJECT_STORAGE_BUCKET_NAME</span></code> and <code class="docutils literal notranslate"><span class="pre">OBJECT_STORAGE_ENDPOINT_URL</span></code> to store the trained model on the S3 bucket.</p></li>
+</ul>
 <ol class="simple">
 <li><p>Add comments and describe your steps (Optional).</p></li>
 <li><p>Save your AI Pipeline.</p></li>
@@ -420,8 +435,12 @@
 <div style="text-align:center">
 <img alt="Elyra AI Pipeline example" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipeline.png">
 </div>
-<p>You can find the above pipeline <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/elyra-aidevsecops-tutorial.pipeline">here</a>.</p>
+<p>You can find the above pipeline <span class="xref myst">here</span>.</p>
 </div>
+</div>
+<div class="section" id="next-step">
+<h2>Next Step<a class="headerlink" href="#next-step" title="Permalink to this headline">¶</a></h2>
+<p><span class="xref myst">Run and Debug AI Pipeline</span></p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
@@ -457,7 +476,7 @@
         <div class='prev-next-bottom'>
 
     <a class='left-prev' id="prev-link" href="../../notebooks/test_deployed_model.html" title="previous page">Test Deployed Model</a>
-    <a class='right-next' id="next-link" href="run-ai-pipeline.html" title="next page">Run AI Pipeline</a>
+    <a class='right-next' id="next-link" href="run-ai-pipeline.html" title="next page">How to run an AI Pipeline with Elyra</a>
 
         </div>
 

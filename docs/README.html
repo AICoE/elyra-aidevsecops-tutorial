@@ -148,7 +148,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="docs/source/run-ai-pipeline.html">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -165,7 +165,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="docs/source/test-model.html">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -283,8 +283,8 @@
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
-    <a class="reference internal nav-link" href="#gitops-reproducibility-portability-and-traceability-with-ai-support">
-     GitOps, reproducibility, portability and traceability with AI support
+    <a class="reference internal nav-link" href="#gitops-for-reproducibility-portability-traceability-with-ai-support">
+     GitOps for reproducibility, portability, traceability with AI support
     </a>
    </li>
    <li class="toc-h2 nav-item toc-entry">
@@ -334,12 +334,11 @@
 
   <div class="section" id="elyra-aidevsecops-tutorial">
 <h1>Elyra AIDevSecOps Tutorial<a class="headerlink" href="#elyra-aidevsecops-tutorial" title="Permalink to this headline">¶</a></h1>
-<p>This tutorial is used to discuss the interface between Data Science and Dev/DevOps using project templates, pipelines and bots.
-Moreover, it wants to highlight that Data Scientists are not so different from developers and DevSecOps practices and tools can be applied to MLOps ones.</p>
+<p>This tutorial is used to discuss the interface between data science and DevOps using project templates, pipelines and bots. It looks to highlight that data scientists are not so different from developers, and many MLOps practices and tools can be enhanced by DevSecOps techniques.</p>
 <p>The demo application used is the “hello world” for AI: MNIST Classification.</p>
 <div class="section" id="environment-required">
 <h2>Environment required<a class="headerlink" href="#environment-required" title="Permalink to this headline">¶</a></h2>
-<p>This tutorial has the following environment requirements to be run:</p>
+<p>This tutorial has the following environment requirements to be run. If you’re running on Project Meteor which uses the Operate First environment, the environment requirements are already setup for you (see note below).</p>
 <ul class="simple">
 <li><p><a class="reference external" href="https://opendatahub.io/">Open Data Hub</a> v1.0,</p></li>
 <li><p><a class="reference external" href="https://www.openshift.com/">Openshift</a> (Enterprise Kubernetes),</p></li>
@@ -356,29 +355,25 @@ jupyterlab-requiremnts&gt;<span class="o">=</span><span class="m">0</span>.4.5
 </div>
 <div class="section" id="operate-first-open-environment">
 <h3>Operate First Open Environment<a class="headerlink" href="#operate-first-open-environment" title="Permalink to this headline">¶</a></h3>
-<p><a class="reference external" href="https://www.operate-first.cloud/">Operate First</a> Open Infrastructure environment has been selected to run this tutorial. It fullfills all the requirement stated above. If you are interested in using it, just get in touch with Operate First team, it’s an open source initiative.</p>
-<p>You can find some notes also regarding other environments in the different sections of the tutorial.</p>
+<p><a class="reference external" href="https://www.operate-first.cloud/">Operate First</a> is an open infrastructure environment started at Red Hat’s Office of the CTO. It has been selected to run this tutorial since it is an open source initiative that fulfills all the requirements stated above. Anyone with a Google account can log in and start developing. To learn more about Operate First, visit the <a class="reference external" href="https://www.operate-first.cloud/">website</a> or <a class="reference external" href="https://github.com/operate-first">GitHub community</a>.</p>
 </div>
 </div>
 <div class="section" id="tools">
 <h2>Tools<a class="headerlink" href="#tools" title="Permalink to this headline">¶</a></h2>
 <p>In this tutorial the following technologies are going to be used:</p>
 <ul class="simple">
-<li><p><a class="reference external" href="https://jupyter.org/hub">JupyterHub</a>, to launch images with Jupyter tooling.</p></li>
-<li><p><a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a>, which is a set of AI-centric extensions to JupyterLab Notebooks (e.g. interface with Kubeflow Pipeline, Git, Python scripts).</p></li>
-<li><p><a class="reference external" href="https://thoth-station.ninja/">Project Thoth</a> Extension for Dependency Management on JupyterLab. If you want to know more, have a look at this <span class="xref myst">repo</span>.</p></li>
-<li><p><a class="reference external" href="https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/">Kubeflow Pipelines</a>, to allow end to end experiment using pipelines.</p></li>
+<li><p><a class="reference external" href="https://jupyter.org/hub">JupyterHub</a> to launch images with Jupyter tooling</p></li>
+<li><p><a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a> supplies a set of extensions to JupyterLab notebooks to support AI projects</p></li>
+<li><p><a class="reference external" href="https://thoth-station.ninja/">Project Thoth</a> extension for dependency management on JupyterLab</p></li>
+<li><p><a class="reference external" href="https://www.kubeflow.org/docs/pipelines/overview/pipelines-overview/">Kubeflow Pipelines</a> for end to end experiments using pipelines</p></li>
 </ul>
 </div>
-<div class="section" id="gitops-reproducibility-portability-and-traceability-with-ai-support">
-<h2>GitOps, reproducibility, portability and traceability with AI support<a class="headerlink" href="#gitops-reproducibility-portability-and-traceability-with-ai-support" title="Permalink to this headline">¶</a></h2>
-<p>Nowadays, developers (including Data Scientists) use Git and GitOps practices to store, share all code (e.g. notebooks, models) on development platforms (e.g. GitHub).
-GitOps best practices help reproducibility and traceability for all projects available.</p>
-<p>One of the most important requirement for reproducibility is dependencies management. Having dependencies clearly stated allow for reusability and portability of notebooks,
-which can be reused in another projects and shared safely with other Data Scientists.</p>
+<div class="section" id="gitops-for-reproducibility-portability-traceability-with-ai-support">
+<h2>GitOps for reproducibility, portability, traceability with AI support<a class="headerlink" href="#gitops-for-reproducibility-portability-traceability-with-ai-support" title="Permalink to this headline">¶</a></h2>
+<p>Nowadays, developers (including data scientists) use Git and GitOps practices to store and share code on development platforms such as GitHub. GitOps best practices allow for reproducibility and traceability in projects.</p>
+<p>One of the most important requirements for reproducibility is dependency management. Having dependencies clearly stated allows portability of notebooks, so they can be shared safely with others and reused in other projects.</p>
 <p>If you want to know more about this issue in the data science domain, have a look at this <a class="reference external" href="https://developers.redhat.com/blog/2021/03/19/managing-python-dependencies-with-the-thoth-jupyterlab-extension/">article</a> or this <a class="reference external" href="https://www.youtube.com/watch?v=ifyQ2oSxjnU">video</a>.</p>
-<p><a class="reference external" href="https://thoth-station.ninja/">Project Thoth</a> helps developers keep these dependencies up to date integrating its recommendation in developers daily tools. If you want to know more have a look <a class="reference external" href="https://thoth-station.ninja/docs/developers/adviser/integration.html">here</a>.
-Thanks to this tooling, the developers (including data scientists) do not have to worry too much about dependency management (they still need to select their dependencies), which can be handled by a bot and automated pipelines.Hence, having AI support can lead to improvement in the development of AI project, speeding up steps due to performance improvements coming from dependencies and keeping your application secure because insecure libs cannot be introduced.</p>
+<p><a class="reference external" href="https://thoth-station.ninja/">Project Thoth</a> keeps dependencies up to date by giving recommendations for a developer’s daily tools. Thanks to this tooling, developers (including data scientists) do not have to worry about managing the dependencies after they are selected, since conflicts can be handled by Thoth bots and automated pipelines. Having this AI support can benefit AI projects, offering improvements such as performance improvements due to optimized dependencies and additional security since insecure libraries cannot be introduced. If you want to know more, have a look at this <a class="reference external" href="https://github.com/thoth-station/jupyterlab-requirements">repo</a> or Thoth’s <a class="reference external" href="https://thoth-station.ninja/docs/developers/adviser/integration.html">website</a>.</p>
 </div>
 <div class="section" id="automated-pipelines-and-bots-for-your-github-project">
 <h2>Automated pipelines and bots for your GitHub project<a class="headerlink" href="#automated-pipelines-and-bots-for-your-github-project" title="Permalink to this headline">¶</a></h2>
@@ -386,45 +381,41 @@ Thanks to this tooling, the developers (including data scientists) do not have t
 <li><p><a class="reference external" href="https://github.com/marketplace/khebhut">Kebechet Bot</a> to keep your dependencies fresh and up to date receiving recommendations and justifications using AI.</p></li>
 <li><p><a class="reference external" href="https://github.com/AICoE/aicoe-ci">AICoE Pipeline</a> to support your AI project lifecycle.</p></li>
 </ul>
-<p>All these tools are integrated with the <a class="reference external" href="https://github.com/aicoe-aiops/project-template">project-template</a>, therefore most of the things are already set for you.
-One important task in order to mantain your code is to create tag on your project development lifecycle. Moreover in order to deploy your application you need to create a container image.
-The use of github templates integrated with bots can provide you with automated pipelines triggered depending on what you need (e.g. release (patch, minor, major), deliver container image, dependency updates).</p>
+<p>All these tools are integrated with the <a class="reference external" href="https://github.com/aicoe-aiops/project-template">project template</a>, so most additions are already set for you.
+These bots and pipelines exist to automate many of the manual GitOps tasks. For example, in order to deploy your application, you may need to create a container image. GitHub templates integrated with bots can provide you with automated pipelines triggered depending on what you need (e.g. release (patch, minor, major), deliver a container image, or update your dependencies).</p>
 </div>
 <div class="section" id="project-templates">
 <h2>Project templates<a class="headerlink" href="#project-templates" title="Permalink to this headline">¶</a></h2>
-<p>The project template used can be found here: <a class="reference external" href="https://github.com/aicoe-aiops/project-template">project-template</a>.
-It shows correlation between data scientists (e.g. data, notebooks, models) requirements and AI dev ops engineers ones (e.g. manifests).
-Using a project template allows for shareability because anyone taking the project or look for something specific about the project can immediately identify
-all the resources needed.</p>
+<p>The project template used can be found here: <a class="reference external" href="https://github.com/aicoe-aiops/project-template">project template</a>. It shows correlation between data scientist needs (e.g. data, notebooks, models) and AI DevOps engineers ones (e.g. manifests). Having structure in a project ensures all the pieces required for the ML and DevOps lifecycles are present and easily discoverable.</p>
 </div>
 </div>
 <div class="section" id="tutorial-steps">
 <h1>Tutorial Steps<a class="headerlink" href="#tutorial-steps" title="Permalink to this headline">¶</a></h1>
 <ol class="simple">
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/pre-requisite.md">Pre-requisities</a></p></li>
+<li><p><span class="xref myst">Pre-requisities</span></p></li>
 </ol>
 <div class="section" id="ml-lifecycle-source-lifecycle">
 <h2>ML Lifecycle/Source Lifecycle<a class="headerlink" href="#ml-lifecycle-source-lifecycle" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/setup-initial-environment.md">Setup your initial environment</a></p></li>
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/explore-notebooks-and-manage-dependencies.md">Explore notebooks and manage dependencies</a></p></li>
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/push-changes.md">Push changes to GitHub</a></p></li>
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/build-images.md">Create release, build image or overlays builds for different images</a></p></li>
-</ol>
-<p>4.1 <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/use-bots.md">Benefit from bots to keep your dependencies fresh and up to date</a></p>
-<ol class="simple">
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/create-ai-pipeline.md">Create an AI Pipeline</a></p></li>
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/run-ai-pipeline.md">Run and debug AI Pipeline</a></p></li>
+<li><p><a class="reference internal" href="docs/source/setup-initial-environment.html"><span class="doc std std-doc">Setup your initial environment</span></a></p></li>
+<li><p><a class="reference internal" href="docs/source/explore-notebooks-and-manage-dependencies.html"><span class="doc std std-doc">Explore notebooks and manage dependencies</span></a></p></li>
+<li><p><a class="reference internal" href="docs/source/push-changes.html"><span class="doc std std-doc">Push changes to GitHub</span></a></p></li>
+<li><p><a class="reference internal" href="docs/source/build-images.html"><span class="doc std std-doc">Create release, build image or overlays builds for different images</span></a></p>
+<ul class="simple">
+<li><p><a class="reference internal" href="docs/source/use-bots.html"><span class="doc std std-doc">Benefit from bots to keep your dependencies fresh and up to date</span></a></p></li>
+</ul>
+</li>
+<li><p><a class="reference internal" href="docs/source/create-ai-pipeline.html"><span class="doc std std-doc">Create an AI Pipeline</span></a></p></li>
+<li><p><a class="reference internal" href="docs/source/run-ai-pipeline.html"><span class="doc std std-doc">Run and debug AI Pipeline</span></a></p></li>
 </ol>
 </div>
 <div class="section" id="devops-lifecycle">
 <h2>DevOps Lifecycle<a class="headerlink" href="#devops-lifecycle" title="Permalink to this headline">¶</a></h2>
 <ol class="simple">
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/deploy-model.md">Deploy Inference Application</a></p></li>
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/test-model.md">Test Deployed inference application</a></p></li>
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/docs/source/monitor-model.md">Monitor your inference application deployed</a></p></li>
+<li><p><a class="reference internal" href="docs/source/deploy-model.html"><span class="doc std std-doc">Deploy Inference Application</span></a></p></li>
+<li><p><a class="reference internal" href="docs/source/test-model.html"><span class="doc std std-doc">Test Deployed inference application</span></a></p></li>
+<li><p><a class="reference internal" href="docs/source/monitor-model.html"><span class="doc std std-doc">Monitor your inference application deployed</span></a></p></li>
 </ol>
-<p>NOTE: Each of the steps above can be repetaed if you are following ML lifecycle (e.g. changes in the dependencies, changes in the notebooks, new model stored).</p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>

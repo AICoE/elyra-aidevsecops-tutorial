@@ -149,7 +149,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="run-ai-pipeline.html">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="test-model.html">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -267,6 +267,11 @@
   </a>
  </li>
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-step">
+   Next Step
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -287,18 +292,25 @@
 <p>For the purpose of this tutorial, the notebooks have been created already.</p>
 <div class="section" id="manage-dependencies-for-your-new-notebook">
 <h2>Manage dependencies for your new notebook<a class="headerlink" href="#manage-dependencies-for-your-new-notebook" title="Permalink to this headline">¶</a></h2>
-<p>Use <a class="reference external" href="https://github.com/thoth-station/jupyterlab-requirements">jupyterlab extension for dependency management</a>.
-For each notebook you can follow similar pattern, in this way you can guarantee all notebooks are in sync with their dependencies and you are using the correct kernel.</p>
+<p>Click on the <code class="docutils literal notranslate"><span class="pre">Manage</span> <span class="pre">Dependencies</span></code> button to interact with the JupyterLab extension for dependency management. For more documentation how to use this tool, <a class="reference external" href="https://github.com/thoth-station/jupyterlab-requirements">click here</a>.</p>
+<div style="text-align:center">
+<img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterLabRequirementsExtension.jpg">
+</div>
+<p>You can use this extension for each notebook to guarantee all notebooks have the correct dependencies and kernel.</p>
 <p>The notebooks that will be used in an AI Pipeline are:</p>
 <ol class="simple">
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/download_dataset.ipynb">download_dataset.ipynb</a> -&gt; Download MNIST dataset from Tensorflow (NOTE in <a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a> a step in a pipeline can also be performed with a <a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/src/data/download_dataset_from_tf.py">Python script</a>;</p></li>
-<li><p><a class="reference external" href="https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/notebooks/training.ipynb">training.ipynb</a> Train the model for MNIST Classification and store it locally or in the Cloud Object Storage;</p></li>
+<li><p><a class="reference internal" href="../../notebooks/download_dataset.html"><span class="doc std std-doc">download_dataset.ipynb</span></a> for downloading the MNIST dataset from Tensorflow. <em>NOTE: in <a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a> this step can also be performed with the provided <span class="xref myst">Python script</span></em></p></li>
+<li><p><a class="reference internal" href="../../notebooks/training.html"><span class="doc std std-doc">training.ipynb</span></a> for training the model for MNIST Classification and storing it locally or in cloud object storage</p></li>
 </ol>
+</div>
+<div class="section" id="next-step">
+<h2>Next Step<a class="headerlink" href="#next-step" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="push-changes.html"><span class="doc std std-doc">Push changes to GitHub</span></a></p>
 </div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
-<li><p><a class="reference external" href="https://github.com/thoth-station/jupyterlab-requirements">jupyterlab extension for dependency management</a></p></li>
+<li><p><a class="reference external" href="https://github.com/thoth-station/jupyterlab-requirements">JupyterLab extension for dependency management</a></p></li>
 <li><p><a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a></p></li>
 </ul>
 </div>

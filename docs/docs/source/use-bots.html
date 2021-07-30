@@ -149,7 +149,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="run-ai-pipeline.html">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="test-model.html">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -256,6 +256,24 @@
         <!-- Table of contents -->
         <div class="d-none d-md-block col-md-2 bd-toc show">
 
+            <div class="tocsection onthispage pt-5 pb-3">
+                <i class="fas fa-list"></i> Contents
+            </div>
+            <nav id="bd-toc-nav">
+                <ul class="visible nav section-nav flex-column">
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-step">
+   Next Step
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#references">
+   References
+  </a>
+ </li>
+</ul>
+
+            </nav>
         </div>
     </div>
 </div>
@@ -266,11 +284,22 @@
 
   <div class="section" id="dependencies-updates-in-the-repo">
 <h1>Dependencies updates in the repo<a class="headerlink" href="#dependencies-updates-in-the-repo" title="Permalink to this headline">¶</a></h1>
-<p>When you install [Kebechet Bot][7] you can benefit from automatic pipelines and dependency management updates.
-You get automatic updates for your dependencies in case of CVE, new packages releases, performance changes.
-If you want to know more about Thoth bots and services have a look <a class="reference external" href="https://github.com/AICoE/aicoe-ci/blob/master/docs/thoth-bots-setup.md#instructions-to-setup-bots-and-ci-services">here</a>.</p>
+<p>If you want to manage your project dependency updates automatically, you can install and set up the <a class="reference external" href="https://github.com/thoth-station/kebechet">Kebechet bot</a> in your repo. Kebechet regularly checks if your project is using the optimal set of dependencies in terms of  CVE vulnerabilities, newer package releases, and performance changes. If it finds that the dependencies can be updated, it automatically opens a PR on your repo to make the required updates!</p>
+<p>An example of the Kebechet bot in action can be seen below.</p>
 <div style="text-align:center">
 <img alt="Kebechet Automatic Update" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/KebechetAutomaticUpdate.png">
+</div>
+<p>To learn more about Thoth bots and services, please check out the guide <a class="reference external" href="https://github.com/AICoE/aicoe-ci/blob/master/docs/thoth-bots-setup.md#instructions-to-setup-bots-and-ci-services">here</a>.</p>
+<div class="section" id="next-step">
+<h2>Next Step<a class="headerlink" href="#next-step" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="create-ai-pipeline.html"><span class="doc std std-doc">Create an AI Pipeline</span></a></p>
+</div>
+<div class="section" id="references">
+<h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
+<ul class="simple">
+<li><p><a class="reference external" href="https://github.com/thoth-station/kebechet">Kebechet</a></p></li>
+<li><p><a class="reference external" href="https://github.com/AICoE/aicoe-ci/blob/master/docs/thoth-bots-setup.md#instructions-to-setup-bots-and-ci-services">Bots and CI Services Setup Instructions</a></p></li>
+</ul>
 </div>
 </div>
 

@@ -5,7 +5,7 @@
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Run AI Pipeline &#8212; Project Meteor</title>
+    <title>How to run an AI Pipeline with Elyra &#8212; Project Meteor</title>
 
   <link href="../../_static/css/theme.css" rel="stylesheet" />
   <link href="../../_static/css/index.c5995385ac14fb8791e8eb36b4908be2.css" rel="stylesheet" />
@@ -149,7 +149,7 @@
  </li>
  <li class="toctree-l1 current active">
   <a class="current reference internal" href="#">
-   Run AI Pipeline
+   How to run an AI Pipeline with Elyra
   </a>
  </li>
 </ul>
@@ -166,7 +166,7 @@
  </li>
  <li class="toctree-l1">
   <a class="reference internal" href="test-model.html">
-   Test inference application deployed
+   Test your deployed inference application
   </a>
  </li>
  <li class="toctree-l1">
@@ -262,6 +262,16 @@
             <nav id="bd-toc-nav">
                 <ul class="visible nav section-nav flex-column">
  <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#additional-resources">
+   Additional Resources
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
+  <a class="reference internal nav-link" href="#next-step">
+   Next Step
+  </a>
+ </li>
+ <li class="toc-h2 nav-item toc-entry">
   <a class="reference internal nav-link" href="#references">
    References
   </a>
@@ -277,35 +287,45 @@
 
               <div>
 
-  <div class="section" id="run-ai-pipeline">
-<h1>Run AI Pipeline<a class="headerlink" href="#run-ai-pipeline" title="Permalink to this headline">¶</a></h1>
-<p>Using <a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a> UI:</p>
+  <div class="section" id="how-to-run-an-ai-pipeline-with-elyra">
+<h1>How to run an AI Pipeline with Elyra<a class="headerlink" href="#how-to-run-an-ai-pipeline-with-elyra" title="Permalink to this headline">¶</a></h1>
 <ol class="simple">
-<li><p>Use play button to run the AI Pipeline.</p></li>
+<li><p>Access the <a class="reference external" href="https://github.com/elyra-ai/elyra">Elyra</a> UI by opening the <code class="docutils literal notranslate"><span class="pre">*.pipeline</span></code> file you created in the previous step. Click the “Run” button in the upper left of the UI to start the AI Pipeline.</p></li>
 </ol>
 <div style="text-align:center">
 <img alt="Elyra AI Pipeline play" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PlayAIPipeline.png">
 </div>
 <ol class="simple">
-<li><p>Before starting the pipeline you need to select which runtime environment to use and add a name for your pipeline.</p></li>
+<li><p>After clicking “Run”, you will be presented with a dialogue box where you need to select which runtime environments to use as well as add a name for your pipeline. Click “OK” to submit your pipeline.</p></li>
 </ol>
 <div style="text-align:center">
 <img alt="Elyra AI Pipeline run inputs" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipelineRunInputs.png">
 </div>
-<p>Run your pipeline and move to <a class="reference external" href="http://istio-ingressgateway-istio-system.apps.zero.massopen.cloud/pipeline/#/experiments">Kubeflow Pipeline UI</a> to see what is happening.</p>
+<ol class="simple">
+<li><p>Now your pipeline has been submitted, move to the <a class="reference external" href="http://istio-ingressgateway-istio-system.apps.zero.massopen.cloud/pipeline/#/experiments">Kubeflow Pipeline UI</a> to see what is happening.</p></li>
+</ol>
 <div style="text-align:center">
 <img alt="Kubeflow Pipeline UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/KFPUI.png">
 </div>
-<p>For more examples on how to create an AI pipeline in Elyra, you can use this <a class="reference external" href="https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world_kubeflow_pipelines">link</a>.</p>
-<p>You can check the status of each step in the pipeline directly from the UI and debug from logs if any problems occur:</p>
+<ol class="simple">
+<li><p>From here you can check the status of each step in the pipeline directly from the UI and debug from the logs if any problems occur.</p></li>
+</ol>
 <div style="text-align:center">
 <img alt="Successfull Kubeflow Pipeline" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/SuccessfullKubeflowPipeline.png">
 </div>
-<p>The model is stored in your bucket, you can check from your terminal using <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">aws CLI</a>:</p>
+<p>Once the pipeline completes successfully, the model is stored in your bucket. You can check from your terminal with the <a class="reference external" href="https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html">aws CLI</a> using the following command:</p>
 <div class="highlight-bash notranslate"><div class="highlight"><pre><span></span>  aws s3 --profile moc-pipeline-kfp --endpoint https://s3-openshift-storage.apps.zero.massopen.cloud/ ls s3://<span class="o">{</span>your_bucket<span class="o">}</span>/<span class="o">{</span>your_project_name<span class="o">}</span>/models/
 </pre></div>
 </div>
 <p>where <code class="docutils literal notranslate"><span class="pre">moc-pipeline-kfp</span></code> is the aws profile containing <code class="docutils literal notranslate"><span class="pre">AWS_ACCESS_KEY_ID</span></code> and <code class="docutils literal notranslate"><span class="pre">AWS_SECRET_ACCESS_KEY</span></code> to access your bucket.</p>
+<div class="section" id="additional-resources">
+<h2>Additional Resources<a class="headerlink" href="#additional-resources" title="Permalink to this headline">¶</a></h2>
+<p>For more examples on how to create AI pipelines with Elyra, you can use this <a class="reference external" href="https://github.com/elyra-ai/examples/tree/master/pipelines/hello_world_kubeflow_pipelines">link</a>.</p>
+</div>
+<div class="section" id="next-step">
+<h2>Next Step<a class="headerlink" href="#next-step" title="Permalink to this headline">¶</a></h2>
+<p><a class="reference internal" href="deploy-model.html"><span class="doc std std-doc">Deploy your model</span></a></p>
+</div>
 <div class="section" id="references">
 <h2>References<a class="headerlink" href="#references" title="Permalink to this headline">¶</a></h2>
 <ul class="simple">
