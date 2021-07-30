@@ -20,7 +20,7 @@ Now that your images are available on the registry, we need to add them to [Elyr
 
 - Name: `Tutorial Download Dataset Step`
 
-- Image Name: `quay.io/thoth-station/elyra-aidevsecops-dataset:v0.10.0`
+- Image Name: `quay.io/thoth-station/elyra-aidevsecops-dataset:v0.11.0`
 
 <div style="text-align:center">
 <img alt="Fill inputs Image Runtime Elyra" src="https://raw.githubusercontent.com/AICoE/elyra-aidevsecops-tutorial/master/docs/images/FillInputsRuntimeImage.png">
@@ -36,7 +36,7 @@ The image is now available and can be used into your AI pipeline
 
 - Name: `Tutorial Training Step`
 
-- Image Name: `quay.io/thoth-station/elyra-aidevsecops-training:v0.10.0`
+- Image Name: `quay.io/thoth-station/elyra-aidevsecops-training:v0.11.0`
 
 ### Add runtime images (using CLI)
 
@@ -145,7 +145,7 @@ You can find the above pipeline [here](../../elyra-aidevsecops-tutorial.pipeline
 
 ## Next Step
 
-[Run and Debug AI Pipeline](./run-ai-pipeline.md.md)
+[Run and Debug AI Pipeline](./run-ai-pipeline.md)
 
 ## References
 

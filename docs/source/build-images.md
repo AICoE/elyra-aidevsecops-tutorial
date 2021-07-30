@@ -46,11 +46,11 @@ Note that all the requirements for the overlay are created using the Thoth resol
 
 Once the pipelines have finished execution, the images will be available on quay. You can find the images built for this tutorial at the links provided below. Note that these images have been named according to the overlays requested.
 
-- [download-dataset overlay](../../overlays/download-dataset) -> quay.io/thoth-station/elyra-aidevsecops-dataset:v0.5.0 (download-dataset image)
+- [download-dataset overlay](../../overlays/download-dataset) -> quay.io/thoth-station/elyra-aidevsecops-dataset:v0.11.0 (download-dataset image)
 
-- [training overlay](../../overlays/training/Pipfile) -> quay.io/thoth-station/elyra-aidevsecops-training:v0.5.0 (training image)
+- [training overlay](../../overlays/training/Pipfile) -> quay.io/thoth-station/elyra-aidevsecops-training:v0.11.0 (training image)
 
-- [inference overlay](../../overlays/inference/Pipfile)  -> quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0 (inference image)
+- [inference overlay](../../overlays/inference/Pipfile)  -> quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.11.0 (inference image)
 
 ## Next Steps
 

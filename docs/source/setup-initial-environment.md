@@ -16,7 +16,7 @@ To begin, you'll need to fork this repository to create your own copy. If you're
 
 ### Operate First access JupyterHub
 
-1. You can get access to [JupyterHub][3] on [Operate First][2] using the following [link](https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/)
+1. You can get access to [JupyterHub][3] on [Operate First][2] using the following [link](https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/).
 
 <div style="text-align:center">
 <img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubNewUI.png">
@@ -26,7 +26,7 @@ To begin, you'll need to fork this repository to create your own copy. If you're
 
 3. Select `Large` for container size.
 
-4. Insert the environment variables required using add button in JupyterLab UI:
+4. Insert the environment variables required using the add button in JupyterLab UI:
 
 - `AWS_ACCESS_KEY_ID`
 - `AWS_SECRET_ACCESS_KEY`
@@ -57,7 +57,7 @@ Once your image is ready and you are in the Jupyterlab UI, you can use the Git e
 
 ## Next Step
 
-[Explore notebooks and manage dependencies](./docs/source/explore-notebooks-and-manage-dependencies.md)
+[Explore notebooks and manage dependencies](./explore-notebooks-and-manage-dependencies.md)
 
 ## References
 

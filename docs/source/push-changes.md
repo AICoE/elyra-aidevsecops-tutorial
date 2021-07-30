@@ -17,3 +17,7 @@ Whenever you finish working on your project or you need to stop, push your chang
 </div>
 
 Then go to your repo and open a Pull Request.
+
+## Next Step
+
+[Create release, build image or overlays builds for different images](./build-images.md)
