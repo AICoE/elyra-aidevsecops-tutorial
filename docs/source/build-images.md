@@ -1,12 +1,59 @@
 # Create a first release and image of your project
 
-This document describes how the [AICoE CI][1] and Thoth pipelines can be used to create the images, and where you can find the images for this project. For the purpose of this tutorial, the required images have already been created using these pipelines.
+This document describes how the [AICoE CI][1] and [Thoth](https://github.com/thoth-station) pipelines can be used to create the images for this project. **For the purpose of this tutorial, we have created the required images of the upstream repo. No action is required.** If you want to build these resources from your own fork, use the following instructions for image builds.
 
-Please note that in order to execute the steps below for your own repo, you will first need to configure your repo to use AICoE CI and Thoth. To do that, you can follow the instructions [here][2].
+## Set up AICoE CI and Thoth bots on your fork
+
+You will first need to configure your repo to use AICoE CI and Thoth. The [AICoE-CI tooling](https://github.com/AICoE/aicoe-ci) can be set up in just a few steps. Start by installing the AICoE CI GitHub application by [following this link](https://github.com/apps/aicoe-ci). When installing this application, select your profile for the organization, and specify the `elyra-aidevsecops-tutorial` as the repository.
+
+### Invite Sesheta
+
+Once the application is installed, you will need to add Thoth's bots as collaborators. Navigate to your fork of `elyra-aidevsecops-tutorial`. Under the repository's **Settings**, go to **Manage Access** and click on "Invite a collaborator" and add Sesheta. Sesheta is a friendly Thoth bot who is used to help automate tasks. Please note: Sesheta's invite acceptance is not instantaneous. [Follow this link](https://github.com/AICoE/aicoe-ci/issues/new?assignees=goern%2Charshad16&labels=area%2Fcyborgs%2Cbot%2Csig%2Fcyborgs&template=request_sesheta.yaml&title=Help+with+Sesheta+invite) and fill out the form to have Sesheta accept your invitation.
+
+<div style="text-align:center">
+<img alt="Invite Sesheta" src="https://raw.githubusercontent.com/aicoe/elyra-aidevsecops-tutorial/master/docs/images/InviteSesheta.png">
+</div>
+
+### Enable issues on your fork
+
+Sesheta, the bot that will assist you in this tutorial, communicates through issues. On your fork, the issues tab may not be enabled automatically. In order to enable issues, go to the **Settings** tab and check the box next to "Issues".
+
+<div style="text-align:center">
+<img alt="Enable Fork Issues" src="https://raw.githubusercontent.com/aicoe/elyra-aidevsecops-tutorial/master/docs/images/EnableForkIssues.png">
+</div>
+
+### Set up robot account in Quay
+
+The next step involves setting up a robot account on the image registry [Quay.io](https://quay.io/) and requires the user to have a Quay account.
+
+First, you will need to create a robot in the organization or individual account. Under **Account Settings** on Quay, click on **Robot Accounts** tab, and "Create Robot Account" button. Enter a name for the account. The username will become namespace+accountname where namespace is the name of the user or organization.
+
+<div style="text-align:center">
+<img alt="Create Robot Account" src="https://raw.githubusercontent.com/AICoE/aicoe-ci/master/docs/quay-robots.png">
+</div>
+
+Once created, click on the robot account name. Find the "Kubernetes Secret" secret tab in the robot account popup, and copy the secret. [Open an issue](https://github.com/AICoE/aicoe-ci/issues/new/choose) including your Kubernetes secret requesting for it to be configured. Once the secret is passed, it is ready to be used in the `.aicoe-ci.yaml` file in the next step.
+
+### Edit up `.aicoe-ci.yaml`
+
+The last step is to add the [aicoe-ci configuration file](https://github.com/AICoE/aicoe-ci#aicoe-ci-configuration-file). Configuration files allows user assign details about the build requirements and specify base image and registry details for build and push. For the purpose of this tutorial, the [.aicoe-ci.yaml](../../.aicoe-ci.yaml) file is already present. However, you may need to edit some of the fields for your personal access, namely `registry-org`, `registry-project`, and `registry-secret`.
+
+```yaml
+build:
+  build-stratergy: Dockerfile # Allowed values: Source, Dockerfile, Containerfile
+  base-image: registry.access.redhat.com/ubi8/ubi:latest
+  dockerfile-path: Dockerfile
+  registry: quay.io # Image registry to be used. (default: quay.io)
+  registry-org: thoth-station # Organization in Image Registry. (default: thoth-station)
+  registry-project: example # project repository in Image Registry (ie, Quay) used to push image.
+  registry-secret: thoth-station-thoth-pusher-secret # comes from robot account
+```
+
+For more detailed information on the config file and robot accounts, visit the [AICoE CI documentation](https://github.com/AICoE/aicoe-ci#configuring-build-requirements).
 
 ## Ask for new release
 
-Some of the pipelines used in Thoth project are maintained by bots. Therefore you can simply open an issue asking for a release (e.g patch, minor, major) and the bots will handle your request. Once the request is completed, the bot will also automatically close the issue, as you can see from the images below:
+Some of the pipelines used in the Thoth project are maintained by bots. Therefore you can simply open an issue asking for a release (e.g patch, minor, major) and the bots will handle your request. Once the request is completed, the bot will also automatically close the issue, as you can see from the images below:
 
 <div style="text-align:center">
 <img alt="Open Issue Release" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/OpenIssueRelease.png">
