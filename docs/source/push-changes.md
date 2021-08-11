@@ -2,7 +2,7 @@
 
 ## Push your changes to GitHub repo
 
-Whenever you finish working on your project or you need to stop, push your changes to GitHub, so that all your work can be saved. In order to do that:
+If you are running this tutorial on Operate First your work-in-progress notebooks can be saved in your JupyterHub PVC by hitting the save button on the top panel. If you are running this turorial on the Meteor environment, when you finish working on your project you can push your changes to your GitHub fork so that all your work can be saved. In order to do that from within JupyterHub you can:
 
 1. Go to Git Box panel on the left and select Push Changes.
 
