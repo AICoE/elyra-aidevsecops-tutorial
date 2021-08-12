@@ -2,28 +2,43 @@
 
 
 
-1. Access the [Elyra][1] UI by opening the `*.pipeline` file you created in the previous step. Click the "Run" button in the upper left of the UI to start the AI Pipeline.
+1. To run the [Elyra][1] pipeline created in the previous step, click the "Run" button in the upper left of the UI to start the AI Pipeline.
 
 <div style="text-align:center">
 <img alt="Elyra AI Pipeline play" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PlayAIPipeline.png">
 </div>
 
-2. After clicking "Run", you will be presented with a dialogue box where you need to select which runtime environments to use as well as add a name for your pipeline. Click "OK" to submit your pipeline.
+2. After clicking "Run", you will be presented with a dialogue box where you need to select which runtime environments to use as well as add a name for your pipeline.
+
+- Pipeline Name:  give it whatever name you want
+- Runtime Platform: select Kubeflow Pipelines runtime.
+- Runtime Configuration: the runtime you defined in the last section.
+
+
+Click "OK" to submit your pipeline.
 
 <div style="text-align:center">
 <img alt="Elyra AI Pipeline run inputs" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipelineRunInputs.png">
 </div>
 
-3. Now your pipeline has been submitted, move to the [Kubeflow Pipeline UI](http://istio-ingressgateway-istio-system.apps.zero.massopen.cloud/pipeline/#/experiments) to see what is happening.
+3. Now your pipeline has been submitted, you will see the following dialogue box.
 
 <div style="text-align:center">
-<img alt="Kubeflow Pipeline UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/KFPUI.png">
+<img alt="Elyra AI Pipeline run details" src="https://raw.githubusercontent.com/AICoE/elyra-aidevsecops-tutorial/master/docs/images/RunDetails.png">
 </div>
 
-4. From here you can check the status of each step in the pipeline directly from the UI and debug from the logs if any problems occur.
+Click Run details to  move to the Kubeflow Pipeline UI to see what is happening
+
+4. From here you can check the status of each step in the pipeline directly from the UI and debug from the logs if any problems occur. To view the logs, click on the node and go to the Logs tab.
 
 <div style="text-align:center">
-<img alt="Successfull Kubeflow Pipeline" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/SuccessfullKubeflowPipeline.png">
+<img alt="Notebook Logs" src="https://raw.githubusercontent.com/AICoE/elyra-aidevsecops-tutorial/master/docs/images/NotebookLogs.png">
+</div>
+
+Once the pipeline executes succesfully, you should see a green check mark next to each step.
+
+<div style="text-align:center">
+<img alt="Successful Kubeflow Pipeline" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/SuccessfullKubeflowPipeline.png">
 </div>
 
 Once the pipeline completes successfully, the model is stored in your bucket. You can check from your terminal with the [aws CLI](https://docs.aws.amazon.com/cli/latest/userguide/cli-chap-install.html) using the following command:
