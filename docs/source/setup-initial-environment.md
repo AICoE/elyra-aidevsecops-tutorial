@@ -12,11 +12,17 @@ If you want to use this template for your AI project, go to the project template
 
 To begin, you'll need to fork this repository to create your own copy. If you're unsure how, look at [Fork a Repo](https://docs.github.com/en/github/getting-started-with-github/fork-a-repo) from GitHub docs.
 
-## 2. Access JupyterHub and spawn the Elyra image
+## 2. Access the Elyra image in JupyterHub
 
-### Operate First access JupyterHub
+### Access JupyterHub set up by Project Meteor
 
-1. You can get access to [JupyterHub][3] on [Operate First][2] using the following [link](https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/).
+If you are viewing this tutorial in the Jupyter Book rendered by [Project Meteor][2], you can simply hover over the rocket icon on the top right of the page, and click on the `JupyterHub` option. This will take you to a JupyterLab environment spawned with the Elyra AIDevSecOps Tutorial image. Alternatively, you can also access this environment by clicking the `JupyterHub` button on the spawning page of the Meteor web application.
+
+### Access JupyterHub set up by Operate First
+
+If you're viewing this tutorial outside of the Jupyter Book rendered by Project Meteor, you can instead access the [JupyterHub][3] deployed on the [Operate First][4] cluster.
+
+1. Click this [link](https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/) to visit the Operate First JupyterHub.
 
 <div style="text-align:center">
 <img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubNewUI.png">
@@ -62,9 +68,11 @@ Once your image is ready and you are in the Jupyterlab UI, you can use the Git e
 ## References
 
 * [Project template][1]
-* [Operate First][2]
+* [Project Meteor][2]
 * [JupyterHub][3]
+* [Operate First][4]
 
 [1]: https://github.com/aicoe-aiops/project-template
-[2]: https://www.operate-first.cloud/
+[2]: https://github.com/AICoE/meteor
 [3]: https://jupyter.org/hub
+[4]: https://www.operate-first.cloud/
