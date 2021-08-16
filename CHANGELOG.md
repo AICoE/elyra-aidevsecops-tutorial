@@ -185,3 +185,15 @@
 ### Improvements
 * Update use-bots documentation and reference in README (#204)
 * polish run-ai-pipeline.md (#202)
+
+## Release 0.12.0 (2021-08-16T08:10:21)
+### Features
+* new base custom image
+* add prose to set up aicoe-ci (#233)
+* Update initial setup doc to specify when to use which JH instance. (#220)
+* modified push changes doc (#221)
+* :ship: Deploy the Tag v0.11.0 for elyra-aidevsecops-tutorial
+### Bug Fixes
+* fixing broken links (#214)
+### Improvements
+* added more instructions to run ai pipeline (#242)
