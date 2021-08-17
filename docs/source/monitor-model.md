@@ -4,6 +4,10 @@
 
 2. Create new Grafana dashbord for the metrics to see how the application and model are performing and open issue in [Operate First support](https://github.com/operate-first/support/issues/new) on how to have your dashboard deployed.
 
+## Next Step
+
+[Conclusion](./conclusion.md)
+
 ## References
 
 * [Operate First][1]
