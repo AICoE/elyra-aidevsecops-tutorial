@@ -23,7 +23,7 @@ If you use a different environment, you will need to provide your own OpenShift 
 
 ### Namespace for deployment
 
-Using [Operate First][1] you can `request access to a namespace` where you want to deploy your application using this [link](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_to_cluster.md&title=).
+Using [Operate First][1] you can `request access to a namespace` where you want to deploy your application using this [link](https://github.com/operate-first/support/issues/new?assignees=first-operator&labels=kind%2Fonboarding%2Carea%2Fcluster&template=onboarding_to_cluster.yaml&title=NEW+PROJECT%3A+%3Cname%3E).
 
 If you have a different environment, you usually receive one by default or you need to ask admins to create a namespace for you.
 
@@ -31,7 +31,7 @@ If you have a different environment, you usually receive one by default or you n
 
 #### Operate First Cloud object storage
 
-Using [Operate First][1] you can `request a new bucket` once you get a namespace. In order to do that, use the following [link](https://github.com/operate-first/support/issues/new?assignees=&labels=user-support&template=ceph_bucket_request.md&title=).
+Using [Operate First][1] you can `request a new bucket` once you get a namespace. In order to do that, use the following [link](https://github.com/operate-first/support/issues/new?assignees=first-operator&labels=kind%2Fonboarding%2Carea%2Fbucket&template=ceph_bucket_request.yaml&title=BUCKET%3A+%3Cname%3E).
 
 Once you created a new bucket in your namespace, you can login in the cluster using the following [link](https://console-openshift-console.apps.zero.massopen.cloud/k8s/cluster/projects) and in your namespace you will find:
 
