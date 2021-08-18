@@ -14,10 +14,9 @@
           "op": "execute-notebook-node",
           "app_data": {
             "filename": "notebooks/download_dataset.ipynb",
-            "runtime_image": "quay.io/thoth-station/elyra-aidevsecops-dataset:v0.9.1",
+            "runtime_image": "quay.io/thoth-station/elyra-aidevsecops-dataset:v0.12.0",
             "env_vars": [
-              "AUTOMATION=1",
-              "DEBUG_LEVEL=1"
+              "AUTOMATION=1"
             ],
             "include_subdirectories": false,
             "outputs": [
@@ -73,12 +72,10 @@
           "op": "execute-notebook-node",
           "app_data": {
             "filename": "notebooks/training.ipynb",
-            "runtime_image": "quay.io/thoth-station/elyra-aidevsecops-training:v0.9.1",
+            "runtime_image": "quay.io/thoth-station/elyra-aidevsecops-training:v0.12.0",
             "env_vars": [
               "AUTOMATION=1",
-              "OBJECT_STORAGE_ENDPOINT_URL=",
-              "AWS_ACCESS_KEY_ID=",
-              "AWS_SECRET_ACCESS_KEY=",
+              "OBJECT_STORAGE_ENDPOINT_URL=http://s3.openshift-storage.svc/",
               "OBJECT_STORAGE_BUCKET_NAME=opf-datacatalog"
             ],
             "include_subdirectories": false,
