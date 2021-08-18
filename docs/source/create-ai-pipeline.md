@@ -1,5 +1,11 @@
 # Create AI Pipeline (using Elyra UI)
 
+Creating an AI Pipeline consists of 3 steps:
+
+* [Adding runtime images](#add-runtime-images-using-ui)
+* [Creating runtime to be used in Kubeflow pipeline](#create-runtime-to-be-used-in-kubeflow-pipeline-using-ui)
+* [Creating Elyra AI Pipeline](#create-elyra-ai-pipeline-using-the-ui)
+
 ## Add runtime images (using UI)
 
 Now that your images are available on the registry, we need to add them to [Elyra][1] metadata. For that, we need to create a runtime image configuration which identifies the container image that Elyra can pull from our registry and utilize to run the Jupyter notebooks.
@@ -52,7 +58,7 @@ elyra-metadata install runtime-images --display_name="Tutorial Training Step" --
 
 To learn more about adding runtime images, check the following [link](https://elyra.readthedocs.io/en/v2.0.1/user_guide/runtime-image-conf.html).
 
-### Create runtime to be used in Kubeflow pipeline (using UI)
+## Create runtime to be used in Kubeflow pipeline (using UI)
 
 We also need to create a Kubeflow Pipeline Runtime configuration. This is configuration adds any additional information to the pipeline metadata that it will need to run on the external Kubeflow Pipeline instance and access any other data that may be required. This includes the KubeFlow endpoint and cloud object storage secrets.
 
@@ -92,6 +98,12 @@ where `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `OBJECT_STORAGE_ENDPOINT_URL
 <img alt="Insert inputs in Elyra Runtime" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/InsertInputsElyraRuntime.png">
 </div>
 
+⚠️ Please note, if you're using a secure bucket, to avoid exposing your Cloud Object Storage credentials, you can use the `Cloud Object Storage Credentials Secret` which is a Kubernetes secret that’s defined in the Kubeflow namespace, containing the Cloud Object Storage username and password. This secret must exist on the Kubernetes cluster hosting your pipeline runtime in order to successfully execute pipelines.
+
+Refer to this [template](https://elyra.readthedocs.io/en/stable/user_guide/runtime-conf.html#cloud-object-storage-credentials-secret-cos-secret) for an example of how to define your secret on the Kubernetes cluster hosting your runtime.
+
+We have a secret defined on the Operate First Kubeflow Namespace called `opf-datacatalog-bucket` available for the `opf-datacatalog` bucket which can be used for the `Cloud Object Storage Credentials Secret` field if you are using the `opf-datacatalog` bucket here.
+
 ### Create runtime to be used in Kubeflow pipeline (using CLI)
 
 If you are more familiar with using CLI from the terminal you can use the following steps to create a runtime to run an AI Pipeline.
@@ -106,7 +118,7 @@ elyra-metadata install runtimes --display_name="KFP operate first" --api_endpoin
 
 To learn more about creating a Kubeflow pipeline runtime, check the following [link](https://elyra.readthedocs.io/en/v2.0.1/user_guide/runtime-conf.html).
 
-### Create Elyra AI Pipeline using the UI
+## Create Elyra AI Pipeline using the UI
 
 A pre-made pipeline called [elyra-aidevsecops-tutorial.pipeline](../../elyra-aidevsecops-tutorial.pipeline) already exists at the root of the repository. You can directly start with the pre-made pipeline and jump to step 3 to make sure that the image runtime for each notebook is selected along with the desired Resources, Environment Variables and Output Files.
 
@@ -128,12 +140,12 @@ To create a new pipeline from scratch, go through the following steps:
 
 4. Here is what each field in the node properties can be used for:
 
-- Filename: This is the name of the node. this would be pre-filled when selecting a script or a notebook's properties.
-- Runtime Image: Select the runtime image that was created in the previous steps. This identifies the container image required to run this node.
-- CPU, GPU, RAM: Specify the resource requirements needed to run this script or notebook.
-- File Dependencies: Any files that the notebook is dependent on (notebooks and scripts) such as for importing methods from can be specified here.
-- Environment Variables: Specify the environment variables which are utilized within the notebooks and scripts here.
-- Output Files: You can specify any files which are created during the execution and which might be needed by subsequent steps here.
+- **Filename**: This is the name of the node. this would be pre-filled when selecting a script or a notebook's properties.
+- **Runtime Image**: Select the runtime image that was created in the previous steps. This identifies the container image required to run this node.
+- **CPU, GPU, RAM**: Specify the resource requirements needed to run this script or notebook.
+- **File Dependencies**: Any files that the notebook is dependent on (notebooks and scripts) such as for importing methods from can be specified here.
+- **Environment Variables**: Specify the environment variables which are utilized within the notebooks and scripts here. To avoid exposing credentials of your secure bucket, you can use the Kubernetes Secret provided above in the Kubeflow Pipelines Runtime Configuration.
+- **Output Files**: You can specify any files which are created during the execution and which might be needed by subsequent steps here.
 
 
 <div style="text-align:center">
@@ -147,7 +159,9 @@ The `download_dataset` and `training` step of the pipeline have some mandatory a
 List of Environment Variables that need to be configured for the notebooks to run:
 - The `download_dataset` step uses Output Files to make certain files available to the training step during execution. Make sure that the output files `data/raw/xdata.pkl`, `data/raw/xtestdata.pkl`, `data/raw/ydata.pkl`, `data/raw/ytestdata.pkl` are specified for the `download_dataset` step.
 - Env variable `AUTOMATION` must be configured as 1 for both the notebooks to run in the pipeline.
-- The `training` step also needs the cloud storage environment credentials like the `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY`, `OBJECT_STORAGE_BUCKET_NAME` and `OBJECT_STORAGE_ENDPOINT_URL` to store the trained model on the S3 bucket.
+- The `training` step also needs the cloud storage environment credentials like the `OBJECT_STORAGE_BUCKET_NAME` and `OBJECT_STORAGE_ENDPOINT_URL` to store the trained model on the S3 bucket.
+
+  Please note, the `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` environment variables needed to run the `training` notebook are already defined in the Kubeflow Pipelines Runtime Configuration and can be accessed from there. If you are using the `Cloud Object Storage Credentials Secret`, that would contain both the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
 
 The following images show the minimum list of environment variables that need to be configured for the `download_dataset` and `training` notebooks to run in Automation as outlined above.
 
