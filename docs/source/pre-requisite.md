@@ -8,6 +8,8 @@ In this section, the user can find the requirements needed for the tutorial:
 - Namespace for deployment
 - Cloud object storage
 
+If you are using the [Meteor](https://github.com/AICoE/meteor) environment, some of these will already be setup for you.
+
 ### GitHub account
 
 The project is based on GitHub, if you don't have one just following this [link](https://docs.github.com/en/github/getting-started-with-github/signing-up-for-a-new-github-account).
@@ -18,7 +20,7 @@ If you don't have a GitHub token, you can create one following GitHub docs: [cre
 
 ### OpenShift Environment
 
-Using [Operate First][1] you just need a Google account to login to [JupyterHub][2]. Using Operate First is encouraged.
+If you are using Meteor, it will build a [JupyterHub][2] environment for your project from the GitHub repository URL you provide to it. Otherwise, we recommend using [Operate First][1], where you will just need a Google account to login to [JupyterHub][2].
 If you use a different environment, you will need to provide your own OpenShift credentials.
 
 ### Namespace for deployment
