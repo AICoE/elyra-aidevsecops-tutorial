@@ -3,6 +3,7 @@ root: README
 parts:
   - caption: Behind the Scenes
     chapters:
+    - file: docs/source/pre-requisite
     - file: docs/source/setup-initial-environment
     - file: docs/source/explore-notebooks-and-manage-dependencies
     - file: docs/source/push-changes
@@ -18,5 +19,6 @@ parts:
   - caption: DevOps Lifecycle
     chapters:
     - file: docs/source/deploy-model
+    - file: docs/source/model-deployment/flask-application
     - file: docs/source/test-model
     - file: docs/source/monitor-model
