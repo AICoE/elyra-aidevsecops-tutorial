@@ -2,13 +2,13 @@
 
 ## Create your Flask app
 
-Once you've trained your model and it's stored on Ceph, you can start working on an inference application to make your model available for use by others.
+Once you've trained your model and it's stored on Ceph, you can start to work on an inference application to make your model accessible. In this tutorial, we will make a minimal [Flask application](https://flask.palletsprojects.com/en/2.0.x/) that we can deploy on OpenShift to serve model inferences. We will also use [ArgoCD][2] for continuous deployment of our application as we make changes.
 
-For the purpose of this tutorial you can reuse the [application](../../../wsgi.py) created with Flask. This app exposes some useful endpoints for serving and monitoring our model (e.g `/predict` and `/metrics`).
+For the purpose of the tutorial you can reuse this [application script](../../../wsgi.py) created with Flask. This app exposes critical endpoints for serving and monitoring our model, such as `/predict` for generating model predictions from user provided inputs and `/metrics` to measure usage and model performance.
 
 ### 1. Make a new release
 
-[Create a new release and build the image](../build-images.md)
+When you make any changes to your model, typically through retraining, and add a new one to Ceph, you will need to [create a new release and build the image](../build-images.md) again. This is because you have made new changes to the model that are not reflected in the current image. Once the new tag is created, the pipeline will automatically update the tag where ArgoCD is looking for changes, and your new image will be rebuilt to include your new model and will be seamlessly redeployed.
 
 ### 2. Deploy your application
 
@@ -16,15 +16,15 @@ For the purpose of this tutorial you can reuse the [application](../../../wsgi.p
 
 - Image Name: `quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0`
 
-- [DeploymentConfig](../../../manifests/base/deploymentconfig.yaml)
+- [DeploymentConfig](../../../manifests/base/deploymentconfig.yaml): Deployment configs are templates for running applications on OpenShift. This will give the cluster the necessary information to deploy your Flask application.
 
-- [Route](../../../manifests/base/route.yaml)
+- [Service](../../../manifests/base/service.yaml): A service manifest allows for an application running on a set of OpenShift pods to be exposed as a network service.
 
-- [Service](../../../manifests/base/service.yaml)
+- [Route](../../../manifests/base/route.yaml): Routes are used to expose services. This route will give your model deployment a reachable hostname to interact with.
 
 #### **Using Operate First with ArgoCD**
 
-[ArgoCD][2] is a tool used for Continuous Deployment of applications and is available for use on the Operate First. You can make a request to the Operate First team to use ArgoCD for your application.
+You can make a request to the Operate First team to use ArgoCD for your application.
 
 There are two steps you need to follow in order to have a new application deployed on [Operate First][1]:
 
@@ -58,7 +58,7 @@ Alternatively, you can also deploy your app manually to a cluster using the foll
 
 6. Create the Route using: `oc apply -f ./manifests/base/route.yaml`.
 
-7. Create the DeploymentConfig using: `oc apply -f ./manifests/deploymentconfig.yaml`.
+7. Create the DeploymentConfig using: `oc apply -f ./manifests/base/deploymentconfig.yaml`.
 
 Once your pods deploy your Flask app should be ready to serve inference requests from the exposed Route.
 
