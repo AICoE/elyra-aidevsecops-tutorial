@@ -41,8 +41,7 @@ runtime_environments:
 
 
 managers:
-  - name: pipfile-requirements
-  - name: update
+  - name: thoth-advise
     configuration:
       labels: [bot]
   - name: info
