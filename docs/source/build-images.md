@@ -32,7 +32,7 @@ First, you will need to create a robot in the organization or individual account
 <img alt="Create Robot Account" src="https://raw.githubusercontent.com/AICoE/aicoe-ci/master/docs/quay-robots.png">
 </div>
 
-Once created, click on the robot account name. Find the "Kubernetes Secret" secret tab in the robot account popup, and copy the secret. Currently, you will have to pass it on by contacting us. Once the secret is passed, it is ready to be used in the `.aicoe-ci.yaml` file in the next step.
+Once created, click on the robot account name. Find the "Docker Configuration" tab in the robot account popup, and copy the .json. Currently, you will have to pass it on by contacting us. Once the secret is passed, it is ready to be used in the `.aicoe-ci.yaml` file in the next step.
 
 ### Edit up `.aicoe-ci.yaml`
 
