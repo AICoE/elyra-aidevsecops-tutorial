@@ -19,6 +19,7 @@ parts:
   - caption: DevOps Lifecycle
     chapters:
     - file: docs/source/deploy-model
-    - file: docs/source/model-deployment/flask-application
+      sections:
+        - file: docs/source/model-deployment/flask-application
     - file: docs/source/test-model
     - file: docs/source/monitor-model
