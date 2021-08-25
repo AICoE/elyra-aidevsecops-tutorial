@@ -24,9 +24,9 @@ If you're viewing this tutorial outside of the Jupyter Book rendered by Project 
 
 1. Click this [link](https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/) to visit the Operate First JupyterHub.
 
-<div style="text-align:center">
-<img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubNewUI.png">
-</div>
+    <div style="text-align:center">
+    <img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubNewUI.png">
+    </div>
 
 2. Select the image called `AICoE Elyra AIDevSecOps Tutorial Notebook Image`.
 
@@ -34,10 +34,10 @@ If you're viewing this tutorial outside of the Jupyter Book rendered by Project 
 
 4. Insert the environment variables required using the add button in JupyterLab UI:
 
-- `AWS_ACCESS_KEY_ID`
-- `AWS_SECRET_ACCESS_KEY`
-- `OBJECT_STORAGE_ENDPOINT_URL`
-- `OBJECT_STORAGE_BUCKET_NAME`
+    - `AWS_ACCESS_KEY_ID`
+    - `AWS_SECRET_ACCESS_KEY`
+    - `OBJECT_STORAGE_ENDPOINT_URL`
+    - `OBJECT_STORAGE_BUCKET_NAME`
 
 ## 3. Clone your repo using Jupyterlab Git Extension
 
@@ -45,21 +45,21 @@ Once your image is ready and you are in the Jupyterlab UI, you can use the Git e
 
 1. Click the Git extension button from Jupyterlab UI:
 
-<div style="text-align:center">
-<img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
-</div>
+    <div style="text-align:center">
+    <img alt="Look for Git extension button" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ElyraGitExtension.png">
+    </div>
 
 2. Take HTTPS link of the GitHub repo you want to clone, for this tutorial use your forked one from this repo:
 
-<div style="text-align:center">
-<img alt="Take link from forked repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/TakeLinkForkedRepo.png">
-</div>
+    <div style="text-align:center">
+    <img alt="Take link from forked repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/TakeLinkForkedRepo.png">
+    </div>
 
 3. Insert the link taken from your forked repo in the JupyterLab Git Extension: e.g. `https://github.com/thoth-station/elyra-aidevsecops-tutorial.git`
 
-<div style="text-align:center">
-<img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
-</div>
+    <div style="text-align:center">
+    <img alt="Clone your repo" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CloneYourRepo.png">
+    </div>
 
 ## Next Step
 
