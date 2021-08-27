@@ -24,23 +24,43 @@ When you make any changes to your model, typically through retraining, and add a
 
 #### **Using Operate First with ArgoCD**
 
-You can make a request to the Operate First team to use ArgoCD for your application.
-
-There are two steps you need to follow in order to have a new application deployed on [Operate First][1]:
-
-1. Create all the manifests for your project (e.g. deployment, service, routes, workflows, pipelines) and place them in your repo under `/manifests`.
-
-2. Submit an issue to [operate-first/support](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=) to request deployment of your application.
+Once all manifests for your project (e.g. deployment, service, routes, workflows, pipelines) are created and placed in your repo under `/manifests` folde, you can make a request to the Operate First team to use ArgoCD for your application.
 
 This way [ArgoCD][2] will be used to maintain your application and keep it in sync with all of your current changes. Once you create a new release of your application (e.g. you change your model, you add a new metric, you add a new feature, etc.) and a new image is available, all you need to do is update the [imagestreamtag](../../../manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
 
 Note: An [AICoE Pipeline][3] can also automatically update the [imagestreamtag](../../../manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
 
-Once everything is synced to the cluster, you can monitor your application from the [ArgoCD][2] UI using this [link](https://argocd-server-argocd.apps.moc-infra.massopen.cloud/applications) as shown in the image below:
+Once everything is synced to the cluster, you can monitor your application from the [ArgoCD][2] UI using this [link](https://argocd.operate-first.cloud/applications) as shown in the image below:
 
 <div style="text-align:center">
 <img alt="Argo CD UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/ArgoCDUI.png">
 </div>
+
+##### **During an Operate First based workshop**
+There are two steps you need to follow in order to have a new application deployed on [Operate First][1] and maintained by ArgoCD.
+
+1. Fork [workshop-apps](https://github.com/operate-first/workshop-apps) and clone it from the terminal of your image.
+
+2. Modify the ApplicationSet manifest from apps folder named after the event you're attending (e.g. if you're attending DevConf US 2021, open apps/devconf-us-2021.yaml) adding your Github username to the users list:
+
+```
+spec:
+    generators:
+        - list:
+              elements:
+                  - user: some
+                  - user: other
+                  - user: attendees
+                  ...
+                  - user: MY_USERNAME
+
+```
+
+3. Commit, push to your fork of [workshop-apps](https://github.com/operate-first/workshop-apps) and create a PR.
+
+##### **For application staying in Operate First**
+Submit an issue to [operate-first/support](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=) to request deployment of your application.
+
 
 #### **Using OpenShift CLI**
 
