@@ -2,7 +2,7 @@
 
 If you don't have a GitHub token, you can create one following GitHub docs: [create GitHub token](https://docs.github.com/en/github/authenticating-to-github/creating-a-personal-access-token).
 
-## Push your changes to GitHub repo
+## Push your changes using JupyterLab Git extension
 
 If you are running this tutorial on Operate First your work-in-progress notebooks can be saved in your JupyterHub PVC by hitting the save button on the top panel. 
 Nevertheless, it is a good practice to push your changes to the GitHub repo when you finish working on your project, so that all your work can be saved. 
@@ -41,7 +41,7 @@ _NOTE: If you are doing this for the first time, git requires user email and use
     <img alt="Push Changes with GitHub token" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/PushGitHubToken.png">
     </div>
 
-### Push changes using the terminal in JupyterLab
+## Push your changes using the terminal in JupyterLab
 
 [Jupyterlab Git extension](https://github.com/jupyterlab/jupyterlab-git) is limited to one repository at the moment. Therefore if you want to clone another repo and push changes you need to use the git commands from the Terminal.
 
