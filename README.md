@@ -19,8 +19,8 @@ This tutorial has the following environment requirements to be run. If you're ru
 ```bash
 jupyterhub==1.2.1
 jupyterlab>=3.*
-elyra>=2*
-jupyterlab-requiremnts>=0.4.5
+elyra>=2*,<3.*
+jupyterlab-requiremnts>=0.10.9
 ```
 
 ### Operate First Open Environment
