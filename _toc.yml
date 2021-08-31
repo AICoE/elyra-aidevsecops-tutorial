@@ -6,8 +6,7 @@ parts:
     - file: docs/source/setup-initial-environment
     - file: docs/source/explore-notebooks-and-manage-dependencies
     - file: docs/source/push-changes
-    - file: docs/source/build-images
-    - file: docs/source/use-bots
+    - file: docs/source/thoth-aicoe-services
   - caption: AI Lifecycle
     chapters:
     - file: notebooks/download_dataset
