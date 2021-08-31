@@ -17,6 +17,7 @@ To begin, you'll need to fork this repository to create your own copy. If you're
 ### Access JupyterHub set up by Project Meteor
 
 If you are viewing this tutorial in the Jupyter Book rendered by [Project Meteor][2], you can simply hover over the rocket icon on the top right of the page, and click on the `JupyterHub` option. This will take you to a JupyterLab environment spawned with the Elyra AIDevSecOps Tutorial image. Alternatively, you can also access this environment by clicking the `JupyterHub` button on the spawning page of the Meteor web application.
+Moreover, using Meteor, the URL of your GitHub repo already add your repo to [JupyterLab Git](https://github.com/jupyterlab/jupyterlab-git) extension. Therefore that repo is already synced and managed by the extension.
 
 ### Access JupyterHub set up by Operate First
 
