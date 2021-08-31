@@ -76,4 +76,4 @@ Once you are satisfied with your changes you can open a Pull Request directly fr
 
 ## Next Step
 
-[Create release, build image or overlays builds for different images](./build-images.md)
+[Set bots and pipelines to create releases, build images and enable dependency management](./thoth-aicoe-services.md)
