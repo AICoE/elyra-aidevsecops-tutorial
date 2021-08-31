@@ -58,13 +58,13 @@ For the notebooks in this tutorial, the dependencies have already been set.
 You can check the status of your notebook by running `%horus check`:
 
 <div style="text-align:center">
-<img alt="Horus check command" src="https://raw.githubusercontent.com/AICoE/elyra-aidevsecops-tutorial/master/docs/images/JupyterLabHorusCheck.jpg">
+<img alt="Horus check command" src="https://raw.githubusercontent.com/AICoE/elyra-aidevsecops-tutorial/master/docs/images/JupyterLabHorusCheck.png">
 </div>
 
 You can check the dependencies content of your notebook by running `%horus show`:
 
 <div style="text-align:center">
-<img alt="Horus show command" src="https://raw.githubusercontent.com/AICoE/elyra-aidevsecops-tutorial/master/docs/images/JupyterLabHorusShow.jpg">
+<img alt="Horus show command" src="https://raw.githubusercontent.com/AICoE/elyra-aidevsecops-tutorial/master/docs/images/JupyterLabHorusShow.png">
 </div>
 
 If you want to create the kernels to successfully run the notebooks, the only thing you have to do is run `%horus set-kernel` in one cell of the notebook.
