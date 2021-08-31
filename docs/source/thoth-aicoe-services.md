@@ -20,23 +20,23 @@ Thoth services require a configuration file ([.thoth.yaml](../../.thoth.yaml)) a
 
 An example snippet of `.thoth.yaml` highlightling the changes to be made is shown below.
 
-      ```yaml
-      managers:
-        - name: pipfile-requirements
-        - name: update
-          configuration:
-            labels: [bot]
-        - name: info
-        - name: version
-          configuration:
-            maintainers:
-              - goern   # UPDATE TO HAVE YOUR OWN USERNAME
-              - fridex
-            assignees:
-              - sesheta
-            labels: [bot]
-            changelog_file: true
-      ```
+```yaml
+managers:
+  - name: pipfile-requirements
+  - name: update
+    configuration:
+      labels: [bot]
+  - name: info
+  - name: version
+    configuration:
+      maintainers:
+        - goern   # UPDATE TO HAVE YOUR OWN USERNAME
+        - fridex
+      assignees:
+        - sesheta
+      labels: [bot]
+      changelog_file: true
+```
 
 To learn more about Thoth bots and services, please check out the guide [here][2].
 
