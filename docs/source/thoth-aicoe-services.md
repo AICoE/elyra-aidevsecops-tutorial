@@ -8,9 +8,9 @@ You will first need to configure your repo to use AICoE CI and Thoth. The [AICoE
 
 ## Set up Thoth bots
 
-Adding Thoth's bots takes just a few steps! Start by installing the Kebechet GitHub application, called Khebut by [following this link](https://github.com/apps/khebhut). It can be configured on an organization or on a single repository. To test out the Kebechet bot in this tutorial, select your profile for the organization, and specify the `elyra-aidevsecops-tutorial` as the repository.
+Adding Thoth's bots takes just a few steps! Start by installing the Kebechet GitHub application, called Khebut by [following this link](https://github.com/apps/khebhut). It can be configured on an organization or on a single repository. 
 
-Once the application is installed, you will need to add Thoth's bot (Sesheta) as collaborator. Navigate to your fork of `elyra-aidevsecops-tutorial`. Under the repository's **Settings**, go to **Manage Access** and click on "Invite a collaborator" and add Thoth Bot Sesheta. Sesheta is a friendly Thoth bot who is used to help automate tasks. You might have already done this step when [building an image](build-images.md), in which case you do not have to invite Sesheta again. Please note: there is sometimes a delay in Sesheta's invite acceptance. Please note: Sesheta does not accept invites instantaneously and automatically (see [this issue](https://github.com/AICoE/aicoe-ci/issues/126) for more details). [Follow this link](https://github.com/AICoE/aicoe-ci/issues/new?assignees=goern%2Charshad16&labels=area%2Fcyborgs%2Cbot%2Csig%2Fcyborgs&template=request_sesheta.yaml&title=Help+with+Sesheta+invite) and fill out the form to have Sesheta accept your invitation.
+Once the application is installed, you will need to add Thoth's bot (Sesheta) as collaborator. Navigate to your fork of `elyra-aidevsecops-tutorial`. Under the repository's **Settings**, go to **Manage Access** and click on "Invite a collaborator" and add Thoth Bot Sesheta. Sesheta is a friendly Thoth bot who is used to help automate tasks. [Follow this link](https://github.com/AICoE/aicoe-ci/issues/new?assignees=goern%2Charshad16&labels=area%2Fcyborgs%2Cbot%2Csig%2Fcyborgs&template=request_sesheta.yaml&title=Help+with+Sesheta+invite) and fill out the form to have Sesheta accept your invitation. Please note: there is sometimes a delay in Sesheta's invite acceptance.
 
 <div style="text-align:center">
 <img alt="Invite Sesheta" src="https://raw.githubusercontent.com/aicoe/elyra-aidevsecops-tutorial/master/docs/images/InviteSesheta.png">
@@ -127,6 +127,8 @@ Once the pipelines have finished execution, the images will be available on quay
 - [inference overlay](../../overlays/inference/Pipfile)  -> quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.11.0 (inference image)
 
 # Dependencies updates in the repo
+
+Once you install Khebut in your repo, you can benefit from different [services](https://github.com/thoth-station/kebechet#kebechet) just setting correctly the configuration file.
 
 Thoth bots regularly checks if your project is using the optimal set of dependencies in terms of CVE vulnerabilities, newer package releases, and performance changes. If it finds that the dependencies can be updated, it automatically opens a PR on your repo to make the required updates!
 

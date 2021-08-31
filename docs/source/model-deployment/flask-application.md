@@ -8,7 +8,7 @@ For the purpose of the tutorial you can reuse this [application script](../../..
 
 ### 1. Make a new release
 
-When you make any changes to your model, typically through retraining, and add a new one to Ceph, you will need to [create a new release and build the image](../build-images.md) again. This is because you have made new changes to the model that are not reflected in the current image. Once the new tag is created, the pipeline will automatically update the tag where ArgoCD is looking for changes, and your new image will be rebuilt to include your new model and will be seamlessly redeployed.
+When you make any changes to your model, typically through retraining, and add a new one to Ceph, you will need to [create a new release and build the image](../thoth-aicoe-services.md) again. This is because you have made new changes to the model that are not reflected in the current image. Once the new tag is created, the pipeline will automatically update the tag where ArgoCD is looking for changes, and your new image will be rebuilt to include your new model and will be seamlessly redeployed.
 
 ### 2. Deploy your application
 
