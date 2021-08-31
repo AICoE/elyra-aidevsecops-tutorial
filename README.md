@@ -72,9 +72,7 @@ The project template used can be found here: [project template][1]. It shows cor
 
 3. [Push changes to GitHub](./docs/source/push-changes.md)
 
-4. [Create release, build image or overlays builds for different images](./docs/source/build-images.md)
-
-    * [Benefit from bots to keep your dependencies fresh and up to date](./docs/source/use-bots.md)
+4. [Set bots and pipelines to create releases, build images and enable dependency management](./docs/source/build-images.md)
 
 5. [Create an AI Pipeline](./docs/source/create-ai-pipeline.md)
 
