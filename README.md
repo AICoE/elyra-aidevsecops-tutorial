@@ -72,7 +72,7 @@ The project template used can be found here: [project template][1]. It shows cor
 
 3. [Push changes to GitHub](./docs/source/push-changes.md)
 
-4. [Set bots and pipelines to create releases, build images and enable dependency management](./docs/source/thoth-aicoe-services.md)
+4. [Setup bots and pipelines to create releases, build images and enable dependency management](./docs/source/thoth-aicoe-services.md)
 
 5. [Create an AI Pipeline](./docs/source/create-ai-pipeline.md)
 
