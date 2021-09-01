@@ -4,8 +4,8 @@ If you don't have a GitHub token, you can create one following GitHub docs: [cre
 
 ## Push your changes using JupyterLab Git extension
 
-If you are running this tutorial on Operate First your work-in-progress notebooks can be saved in your JupyterHub PVC by hitting the save button on the top panel. 
-Nevertheless, it is a good practice to push your changes to the GitHub repo when you finish working on your project, so that all your work can be saved. 
+If you are running this tutorial on Operate First your work-in-progress notebooks can be saved in your JupyterHub PVC by hitting the save button on the top panel.
+Nevertheless, it is a good practice to push your changes to the GitHub repo when you finish working on your project, so that all your work can be saved.
 
 In order to do that from within JupyterHub using the [Jupyterlab Git extension](https://github.com/jupyterlab/jupyterlab-git):
 

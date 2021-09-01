@@ -41,22 +41,14 @@ There are two steps you need to follow in order to have a new application deploy
 
 1. Fork [workshop-apps](https://github.com/operate-first/workshop-apps) and clone it from the terminal of your image.
 
-2. Modify the ApplicationSet manifest from apps folder named after the event you're attending (e.g. if you're attending DevConf US 2021, open apps/devconf-us-2021.yaml) adding your Github username to the users list:
+2. Run ./devconf-us-2021.sh script with your GitHub username as parameter:
 
 ```
-spec:
-    generators:
-        - list:
-              elements:
-                  - user: some
-                  - user: other
-                  - user: attendees
-                  ...
-                  - user: MY_USERNAME
-
+$ ./devconf-us-2021.sh USERNAME
+Generating 'apps/devconf-us-2021/USERNAME.yaml'
 ```
 
-3. Commit, push to your fork of [workshop-apps](https://github.com/operate-first/workshop-apps) and create a PR.
+3. Commit, push to your fork of [workshop-apps](https://github.com/operate-first/workshop-apps) and create a PR against orginal repo.
 
 ##### **For application staying in Operate First**
 Submit an issue to [operate-first/support](https://github.com/operate-first/support/issues/new?assignees=&labels=onboarding&template=onboarding_argocd.md&title=) to request deployment of your application.
