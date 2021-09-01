@@ -27,7 +27,12 @@ In order to do that from within JupyterHub using the [Jupyterlab Git extension](
     <img alt="Commit Changes" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/CommitChanges.png">
     </div>
 
-_NOTE: If you are doing this for the first time, git requires user email and user name to be set._
+    NOTE: _If you are doing this for the first time, git requires user email and user name to be set.(The extension will open a Dialog Form to insert them)_
+
+    <div style="text-align:center">
+    <img alt="Insert User Name and Email" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/InsertUserNameEmail.png">
+    </div>
+
 
 4. Select Push Changes.
 
