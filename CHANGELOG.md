@@ -1,4 +1,41 @@
 
+## Release 0.12.1 (2021-09-02T16:03:22)
+### Features
+* Use v0.3.3 custom elyra image
+* Update deploy model with ArgoCD
+* Add details on Git dialog form
+* Merge content for book
+* update TOC
+* Adjust yaml
+* Rename subsection
+* rename section
+* Update release
+* Remove section
+* Update push changes
+* Update bots and release section
+* Correct requirements
+* Fix file format link
+* Update manage dependencies section
+* Update ArgoCD section (#263)
+* update branding (#266)
+* update which robot key is needed (#261)
+* Use thoth-advise manager
+* contact us prose (#255)
+* update flask-app prose (#254)
+* define prereqs with meteor (#252)
+* add conclusion (#247)
+* add instructions for kebechet (#235)
+* :ship: Deploy the Tag v0.12.0 for elyra-aidevsecops-tutorial
+### Bug Fixes
+* fix env creds handling (#270)
+* Fix incorrect instruction number rendering error (#262)
+* fix links in pre-requisite.md (#251)
+### Improvements
+* added documentation for using secrets (#250)
+* added more instructions to create pipeline (#237)
+### Other
+* Apply suggestions from code review
+
 ## Release 0.1.0 (2021-01-26T08:49:31)
 ### Features
 * Remove jupyter from dev package (#22)
