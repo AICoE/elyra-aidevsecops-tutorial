@@ -5,6 +5,8 @@ This tutorial is used to discuss the interface between data science and DevOps u
 
 The demo application used is the "hello world" for AI: MNIST Classification.
 
+You can find recording from last workshop where this tutorial was used at DevConf.US 2021 at this [link](https://www.youtube.com/watch?v=s52dKDQEiZw&t=2s).
+
 ## Environment required
 
 This tutorial has the following environment requirements to be run. If you're running on Project Meteor which uses the Operate First environment, the environment requirements are already setup for you (see note below).
