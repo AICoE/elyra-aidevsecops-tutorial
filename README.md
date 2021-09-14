@@ -12,7 +12,7 @@ You can find recording from last workshop where this tutorial was used at DevCon
 This tutorial has the following environment requirements to be run. If you're running on Project Meteor which uses the Operate First environment, the environment requirements are already setup for you (see note below).
 
 - [Open Data Hub][3] v1.0,
-- [Openshift][11] (Enterprise Kubernetes),
+- [OpenShift][11] (Enterprise Kubernetes),
 - Cloud Object Storage (e.g. Ceph, minio).
 - [Tekton][10], used in CI/CD systems, to run pipelines created by humans or machines.
 - [ArgoCD][12], used for Continuous Deployment of your applications.
