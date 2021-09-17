@@ -1,7 +1,7 @@
 
-# Elyra AIDevSecOps Tutorial - from 0 to model in production
+# Elyra AIDevSecOps Tutorial
 
-This tutorial is used to discuss the interface between Data Science and DevOps. It is made to highlight that data scientists are not so different from developers, therefore they need to know Git and follow best practices to maintain their dependencies and code, add tests and make release. All these tasks can be supported through pipelines and bots so that data scientists can focus on the main problem to solve. In other words in this tutorial you will learn how the ML lifecycle, practices and tools can be enhanced by DevSecOps techniques.
+This tutorial is used to discuss the interface between Data Science and DevOps. It looks to highlight that data scientists are not so different from developers, therefore they need to know Git and follow best practices to maintain their dependencies and code, add tests and make release. All these tasks can be supported through pipelines and bots so that data scientists can focus on the main problem to solve. In other words in this tutorial you will learn how the ML lifecycle, practices and tools can be enhanced by DevSecOps techniques.
 
 
 ## What you will learn with this tutorial?
@@ -9,7 +9,6 @@ This tutorial is used to discuss the interface between Data Science and DevOps. 
 At the end of this tutorial you will be able to spawn images from [JupyterHub][1], manage dependencies for Jupyter Notebook using [Project Thoth][2] extension for dependency management on JupyterLab, learn about `overlays` concept, setup [AICoE CI][3] and [Kebechet Bot][4] to automate creation of images for overlays and maintenance of software stacks. Then you will learn how to create and run an [Elyra][5] AI pipeline with [Kubeflow Pipelines][6] using the images created. Finally, you will learn how to leverage [ArgoCD][7] and deploy AI model automatically.
 
 The demo application selected for this tutorial is the `MNIST Classification`. The `MNIST Dataset` is described [here](http://yann.lecun.com/exdb/mnist/).
-During the tutorial you will notice variants of the same application (e.g. using [Neural Magic](https://neuralmagic.com/) tools).
 
 
 ## Where you will run this tutorial?
