@@ -5,7 +5,7 @@ verify_ssl = true
 
 [packages]
 pandas = "*"
-tensorflow = "==2.4.0"
+tensorflow = ">=2.4.0"
 matplotlib = "*"
 prometheus-client = "*"
 flask-cors = "*"

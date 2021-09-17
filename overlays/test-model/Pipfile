@@ -6,7 +6,7 @@ name = "pypi"
 [packages]
 requests = "*"
 numpy = "*"
-tensorflow = "*"
+tensorflow = ">=2.4.0"
 behave = "*"
 
 [dev-packages]
