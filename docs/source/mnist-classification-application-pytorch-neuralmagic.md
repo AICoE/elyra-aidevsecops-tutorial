@@ -8,9 +8,9 @@ In particular, the notebooks that will be used are:
 
 2. [training.ipynb](../../notebooks/neural-magic-torch-mnist/training.ipynb) for training the model for MNIST Classification and storing it locally or in cloud object storage.
 
-3. [convert_model_to_onnx.ipynb](../../notebooks/neural-magic-torch-mnist/training.ipynb) for converting the trained Pytorch model to [ONNX][6] model.
+3. [convert_model_to_onnx.ipynb](../../notebooks/neural-magic-torch-mnist/convert_model_to_onnx.ipynb) for converting the trained Pytorch model to [ONNX][2] model.
 
-4. [sparsify.ipynb](../../notebooks/neural-magic-torch-mnist/training.ipynb) for sparsifying the model using [Neural Magic][1] Optimizer and recipe.
+4. [sparsify.ipynb](../../notebooks/neural-magic-torch-mnist/sparsify.ipynb) for sparsifying the model using [Neural Magic][1] Optimizer and recipe.
 
 
 ## Manage dependencies
@@ -19,7 +19,7 @@ Reproducibility and shareability of notebooks is very important if you want to a
 When using `pip install <package_name>` is not possible to verify which software stack was used to run the notebook and therefore another user cannot repeat the same experiment.
 Check the video [here](https://www.youtube.com/watch?v=ifyQ2oSxjnU) if you want to know more.
 
-In order to avoid this issues, dependencies for jupyter notebooks in this tutorial are managed using the JupyterLab extension [jupyterlab-requirements][2].
+In order to avoid this issues, dependencies for jupyter notebooks in this tutorial are managed using the JupyterLab extension [jupyterlab-requirements][3].
 
 You can use this extension for each of your notebook to guarantee they have the correct dependencies and kernel.
 This extension is able to add/remove dependencies, lock them and store them in the notebook metadata.
