@@ -2,25 +2,30 @@
 kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
-  name: elyra-aidevsecops-tutorial
+  name: pytorch-inference
 spec:
   replicas: 1
   selector:
-    service: elyra-aidevsecops-tutorial
+    service: pytorch-inference
     app.kubernetes.io/name: thoth
-    app.kubernetes.io/component: elyra-aidevsecops-tutorial
+    app.kubernetes.io/component: pytorch-inference
     app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
-        service: elyra-aidevsecops-tutorial
+        service: pytorch-inference
         app.kubernetes.io/name: thoth
-        app.kubernetes.io/component: elyra-aidevsecops-tutorial
+        app.kubernetes.io/component: pytorch-inference
         app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       containers:
-        - name: elyra-aidevsecops-tutorial
-          image: quay.io/thoth-station/elyra-aidevsecops-tutorial
+        - name: pytorch-inference
+          image: quay.io/thoth-station/elyra-aidevsecops-pytorch-inference
+          env:
+            - name: USE_PYTORCH
+              value: "1"
+            - name: THOTH_AIDEVSECOPS_MODEL_VERSION
+              value: "torch-210921163030-5341ad0f6f389a55"
           ports:
             - containerPort: 8080
               protocol: TCP

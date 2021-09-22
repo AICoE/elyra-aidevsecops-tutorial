@@ -4,3 +4,6 @@ resources:
   - ../../base
 patchesStrategicMerge:
   - imagestreamtag.yaml
+  - deploymentconfig.yaml
+  - route.yaml
+  - service.yaml

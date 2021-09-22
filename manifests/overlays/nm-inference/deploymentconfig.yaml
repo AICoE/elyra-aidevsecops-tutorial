@@ -2,25 +2,30 @@
 kind: DeploymentConfig
 apiVersion: apps.openshift.io/v1
 metadata:
-  name: elyra-aidevsecops-tutorial
+  name: neural-magic-deepsparse
 spec:
   replicas: 1
   selector:
-    service: elyra-aidevsecops-tutorial
+    service: neural-magic-deepsparse
     app.kubernetes.io/name: thoth
-    app.kubernetes.io/component: elyra-aidevsecops-tutorial
+    app.kubernetes.io/component: neural-magic-deepsparse
     app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
-        service: elyra-aidevsecops-tutorial
+        service: neural-magic-deepsparse
         app.kubernetes.io/name: thoth
-        app.kubernetes.io/component: elyra-aidevsecops-tutorial
+        app.kubernetes.io/component: neural-magic-deepsparse
         app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       containers:
-        - name: elyra-aidevsecops-tutorial
-          image: quay.io/thoth-station/elyra-aidevsecops-tutorial
+        - name: neural-magic-deepsparse
+          image: quay.io/thoth-station/neural-magic-deepsparse
+          env:
+            - name: TUTORIAL_USE_NEURAL_MAGIC
+              value: "1"
+            - name: THOTH_AIDEVSECOPS_MODEL_VERSION
+              value: "torch-210921164335-c352fe9b17e2f837_mnist_classification_pruned"
           ports:
             - containerPort: 8080
               protocol: TCP
