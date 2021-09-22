@@ -1,5 +1,13 @@
 # Test your deployed inference application
 
+## From JupyterLab in Operate First
+
+In order to test the predictions from a deployed model/s, you can use the notebook [here](../../notebooks/test_deployed_model.ipynb).
+
+## From your local laptop
+
+NOTE:_Make sure you are logged in into the cluster where the model is deployed._
+
 If you want to test the application that you just deployed in the cluster, run this [integration test](../../features) using the [behave][1] package.
 
 Behave uses behavior-driven development (BDD), an agile software development technique that encourages and facilitates collaboration between developers, QA engineers and business participants.
@@ -13,7 +21,7 @@ Behave uses behavior-driven development (BDD), an agile software development tec
 2. Run the [behave][1] command from the root directory of the tutorial.
 
     ```bash
-    DEPLOYED_MODEL_URL=http://elyra-aidevsecops-tutorial-thoth-deployment-examples.apps.zero.massopen.cloud behave
+    DEPLOYED_MODEL_URL=http://elyra-aidevsecops-tutorial-thoth-deployment-examples.apps.zero.massopen.cloud behave -i gather_deployment_metrics.feature
     ```
 
     Below is an example of the output you should expect to see if the [behave][1] command ran correctly:
@@ -30,6 +38,8 @@ Behave uses behavior-driven development (BDD), an agile software development tec
     4 steps passed, 0 failed, 0 skipped, 0 undefined
     Took 0m3.394s
     ```
+
+NOTE:_If you use Pytorch+Flask+gunicorn you need to add the flag `-i gather_deployment_metrics_using_pytorch.feature`_
 
 3. You can also check the metrics produced by running the following command:
 

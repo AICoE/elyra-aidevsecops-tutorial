@@ -1,7 +1,6 @@
 # How to run an AI Pipeline with Elyra
 
 
-
 1. To run the [Elyra][1] pipeline created in the previous step, click the "Run" button in the upper left of the UI to start the AI Pipeline.
 
 <div style="text-align:center">

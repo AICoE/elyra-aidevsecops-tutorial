@@ -118,13 +118,32 @@ If you have an `overlays` directory present in your repo, like this tutorial doe
 
 Note that all the requirements for the overlay are created using the Thoth resolution engine. You can find the inputs used for Thoth recommender in the [.thoth.yaml](../../.thoth.yaml#L5) config file.
 
-Once the pipelines have finished execution, the images will be available on quay. You can find the images built for this tutorial at the links provided below. Note that these images have been named according to the overlays requested.
+Once the pipelines have finished execution, the images will be available on quay. 
 
-- [download-dataset overlay](../../overlays/download-dataset) -> quay.io/thoth-station/elyra-aidevsecops-dataset:v0.11.0 (download-dataset image)
+## Images for MNIST Classification with Tensorflow
+
+You can find the images built for this tutorial at the links provided below. Note that these images have been named according to the overlays requested.
+
+- [download-dataset overlay](../../overlays/download-dataset/Pipfile) -> quay.io/thoth-station/elyra-aidevsecops-dataset:v0.11.0 (download-dataset image)
 
 - [training overlay](../../overlays/training/Pipfile) -> quay.io/thoth-station/elyra-aidevsecops-training:v0.11.0 (training image)
 
 - [inference overlay](../../overlays/inference/Pipfile)  -> quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.11.0 (inference image)
+
+## Images for MNIST Classification with Pytorch and Neural Magic
+
+You can find the images built for this tutorial at the links provided below. Note that these images have been named according to the overlays requested.
+
+- [nm-download overlay](../../overlays/nm-download) -> quay.io/thoth-station/neural-magic-download:v0.13.0 (download-dataset image)
+
+- [pytorch-training overlay](../../overlays/training/Pipfile) -> quay.io/thoth-station/pytorch-training:v0.13.0 (training image)
+
+- [nm-convert-onnx overlay](../../overlays/nm-convert-onnx/Pipfile)  -> quay.io/thoth-station/neural-magic-convert-onnx:v0.13.0 (convert-to-onnx image)
+
+- [nm-sparseml overlay](../../overlays/nm-sparseml/Pipfile)  -> quay.io/thoth-station/neural-magic-sparseml:v0.13.0 (sparsify image)
+
+- [nm-inference overlay](../../overlays/nm-inference/Pipfile)  -> quay.io/thoth-station/neural-magic-deepsparse:v0.13.0 (inference image)
+
 
 # Dependencies updates in the repo
 
@@ -141,7 +160,11 @@ An example of the Khebut bot in action can be seen below.
 
 ## Next Steps
 
-[Create an AI Pipeline](./create-ai-pipeline.md)
+As mentioned before, we have different versions for the MNIST application (you can just pick one and go ahead).
+
+- [Create an AI Pipeline](./create-ai-pipeline.md)
+
+- [Create an AI Pipeline using Neural Magic](./create-ai-pipeline-neural-magic.md)
 
 ## References
 

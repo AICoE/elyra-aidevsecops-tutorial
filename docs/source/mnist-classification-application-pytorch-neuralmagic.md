@@ -4,9 +4,14 @@ For the purpose of this tutorial, the notebooks have been created already.
 
 In particular, the notebooks that will be used are:
 
-1. [download_dataset.ipynb](../../notebooks/download_dataset.ipynb) for downloading the MNIST dataset from Tensorflow. _NOTE: in [Elyra][2] this step can also be performed with the provided [Python script](../../data/download_dataset_from_tf.py)_.
+1. [download_dataset.ipynb](../../notebooks/neural-magic-torch-mnist/download_dataset.ipynb) for downloading the MNIST dataset from Pytorch.
 
-2. [training.ipynb](../../notebooks/training.ipynb) for training the model for MNIST Classification and storing it locally or in cloud object storage.
+2. [training.ipynb](../../notebooks/neural-magic-torch-mnist/training.ipynb) for training the model for MNIST Classification and storing it locally or in cloud object storage.
+
+3. [convert_model_to_onnx.ipynb](../../notebooks/neural-magic-torch-mnist/training.ipynb) for converting the trained Pytorch model to [ONNX][6] model.
+
+4. [sparsify.ipynb](../../notebooks/neural-magic-torch-mnist/training.ipynb) for sparsifying the model using [Neural Magic][1] Optimizer and recipe.
+
 
 ## Manage dependencies
 
@@ -14,7 +19,7 @@ Reproducibility and shareability of notebooks is very important if you want to a
 When using `pip install <package_name>` is not possible to verify which software stack was used to run the notebook and therefore another user cannot repeat the same experiment.
 Check the video [here](https://www.youtube.com/watch?v=ifyQ2oSxjnU) if you want to know more.
 
-In order to avoid this issues, dependencies for jupyter notebooks in this tutorial are managed using the JupyterLab extension [jupyterlab-requirements][1].
+In order to avoid this issues, dependencies for jupyter notebooks in this tutorial are managed using the JupyterLab extension [jupyterlab-requirements][2].
 
 You can use this extension for each of your notebook to guarantee they have the correct dependencies and kernel.
 This extension is able to add/remove dependencies, lock them and store them in the notebook metadata.
@@ -81,8 +86,10 @@ Now you are ready to run your notebook with the same environment that was used w
 
 ## References
 
-* [JupyterLab extension for dependency management][1]
-* [Elyra][2]
+* [Neural Magic][1]
+* [ONNX][2]
+* [JupyterLab extension for dependency management][3]
 
-[1]: https://github.com/thoth-station/jupyterlab-requirements
-[2]: https://github.com/elyra-ai/elyra
+[1]: https://neuralmagic.com/
+[2]: https://onnx.ai/
+[3]: https://github.com/thoth-station/jupyterlab-requirements

@@ -1,4 +1,4 @@
-# Create AI Pipeline (using Elyra UI)
+# Create AI Pipeline with Neural Magic tools (using Elyra UI)
 
 Creating an AI Pipeline consists of 3 steps:
 
@@ -104,6 +104,7 @@ We also need to create a Kubeflow Pipeline Runtime configuration. This is config
 
     We have a secret defined on the Operate First Kubeflow Namespace called `opf-datacatalog-bucket` available for the `opf-datacatalog` bucket which can be used for the `Cloud Object Storage Credentials Secret` field if you are using the `opf-datacatalog` bucket here.
 
+
 ### Create runtime to be used in Kubeflow pipeline (using CLI)
 
 If you are more familiar with using CLI from the terminal you can use the following steps to create a runtime to run an AI Pipeline.
@@ -154,12 +155,12 @@ To create a new pipeline from scratch, go through the following steps:
 
     The notebooks can exchange data using a cloud object storage and also using the Output Files which can be used to make certain files generated during execution available to all subsequent pipeline steps.
 
-    The `download_dataset` and `training` step of the pipeline have some mandatory and optional environment variables for running in automation which need to be set during this step of setting up the pipeline.
+    The `download_dataset` and `training-sparsify` step of the pipeline have some mandatory and optional environment variables for running in automation which need to be set during this step of setting up the pipeline.
 
     List of Environment Variables that need to be configured for the notebooks to run:
-    - The `download_dataset` step uses Output Files to make certain files available to the training step during execution. Make sure that the output files `data/raw/mnist_datasets_tf/xdata.pkl`, `data/raw/mnist_datasets_tf/xtestdata.pkl`, `data/raw/mnist_datasets_tf/ydata.pkl`, `data/raw/mnist_datasets_tf/ytestdata.pkl` are specified for the `download_dataset` step.
+    - The `download_dataset` step uses Output Files to make certain files available to the training step during execution. Make sure that all the output files in `data/raw/pytorch-mnist-dataset/*` are specified for the `download_dataset` step.
     - Env variable `AUTOMATION` must be configured as 1 for both the notebooks to run in the pipeline.
-    - The `training` step also needs the cloud storage environment credentials like the `OBJECT_STORAGE_BUCKET_NAME` and `OBJECT_STORAGE_ENDPOINT_URL` to store the trained model on the S3 bucket.
+    - The `training-sparsify` step also needs the cloud storage environment credentials like the `OBJECT_STORAGE_BUCKET_NAME` and `OBJECT_STORAGE_ENDPOINT_URL` to store the trained model on the S3 bucket.
 
     Please note, the `AWS_ACCESS_KEY_ID`, `AWS_SECRET_ACCESS_KEY` environment variables needed to run the `training` notebook are already defined in the Kubeflow Pipelines Runtime Configuration and can be accessed from there. If you are using the `Cloud Object Storage Credentials Secret`, that would contain both the `AWS_ACCESS_KEY_ID` and `AWS_SECRET_ACCESS_KEY`.
 
@@ -185,7 +186,7 @@ To create a new pipeline from scratch, go through the following steps:
     <img alt="Elyra AI Pipeline example" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/AIPipeline.png">
     </div>
 
-You can find the above pipeline [here](../../elyra-aidevsecops-tutorial.pipeline).
+You can find the above pipeline [here](../../elyra-aidevsecops-tutorial-neural-magic.pipeline).
 
 ## Next Step
 

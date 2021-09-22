@@ -4,7 +4,8 @@ There are different ways to deploy a model and there are different tools that ca
 
 ## Flask application
 
-[Deploy Inference Application using Flask](./model-deployment/flask-application.md)
+[Deploy Inference Application using Flask+gunicorn](./model-deployment/flask-application.md)
+
 
 ## KFServing
 
