@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright(C) 2020 Red Hat, Thoth Team
+# Copyright(C) 2020, 2021 Red Hat, Thoth Team
 #
 # This program is free software: you can redistribute it and / or modify
 # it under the terms of the GNU General Public License as published by
@@ -90,13 +90,10 @@ def main():
 @application.route("/predict", methods=["POST"])
 def predict():
     """Evaluate prediction."""
-    image_list = request.get_json()["inputs"]
-
-    # reshape
-    image_array = np.array(image_list)
+    image = request.get_json()["inputs"]
 
     start = time.monotonic()
-    prediction, probability = model.predict(image_array=image_array)
+    prediction, probability = model.predict(image=image)
     latency = time.monotonic() - start
 
     return json.dumps(
