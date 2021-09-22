@@ -118,7 +118,7 @@ If you have an `overlays` directory present in your repo, like this tutorial doe
 
 Note that all the requirements for the overlay are created using the Thoth resolution engine. You can find the inputs used for Thoth recommender in the [.thoth.yaml](../../.thoth.yaml#L5) config file.
 
-Once the pipelines have finished execution, the images will be available on quay. 
+Once the pipelines have finished execution, the images will be available on quay.
 
 ## Images for MNIST Classification with Tensorflow
 

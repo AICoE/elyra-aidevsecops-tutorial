@@ -6,10 +6,10 @@
 
 Sparsification through pruning is a broadly studied ML technique, allowing reductions of 10x or more in the size and the theoretical compute needed to execute a neural network, without losing much accuracy. So, while a GPU runs networks faster using more FLOPs, [Neural Magic][1] runs them faster via a reduction in the necessary FLOPs.
 
-## Sparsification 
+## Sparsification
 Sparsification is the process of taking a trained deep learning model and removing redundant information from the overprecise and over-parameterized network resulting in a faster and smaller model. Techniques for sparsification are all encompassing including everything from inducing sparsity using pruning and quantization to enabling naturally occurring sparsity using activation sparsity or winograd/FFT . When implemented correctly, these techniques result in significantly more performant and smaller models with limited to no effect on the baseline metrics.
 
-## Software Components 
+## Software Components
 The Deep Sparse product suite builds on top of sparsification enabling you to easily apply the techniques to your datasets and models using recipe-driven approaches. Recipes encode the directions for how to sparsify a model into a simple, easily editable format.
 
 - Download a sparsification recipe and sparsified model from the [SparseZoo][2].

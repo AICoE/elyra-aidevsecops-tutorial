@@ -29,7 +29,6 @@ from tensorflow.keras.datasets import mnist as tf_dataset
 import torch
 from torchvision import datasets
 from torchvision.transforms import ToTensor
-from torch.utils.data import DataLoader
 
 import numpy as np
 
@@ -66,19 +65,18 @@ def main_test():
     if USE_PYTORCH:
         # Prepare MNIST data.
         test_data = datasets.MNIST(
-            root = './data/raw/pytorch-mnist-dataset', 
-            train = False, 
-            transform = ToTensor(),
+            root="./data/raw/pytorch-mnist-dataset",
+            train=False,
+            transform=ToTensor(),
         )
 
         loaders = {
-            'test'  : torch.utils.data.DataLoader(test_data, 
-                                                batch_size=1, 
-                                                shuffle=True, 
-                                                num_workers=1),
+            "test": torch.utils.data.DataLoader(
+                test_data, batch_size=1, shuffle=True, num_workers=1
+            ),
         }
 
-        test_data = loaders['test']
+        test_data = loaders["test"]
 
         total_tests = int(os.getenv("TUTORIAL_MAX_REQUESTS_TEST", len(test_data)))
 
@@ -124,7 +122,9 @@ def main_test():
         else:
             answer = 1
 
-        results.append({"error": answer, "latency": latency, "probability": probability})
+        results.append(
+            {"error": answer, "latency": latency, "probability": probability}
+        )
 
         n += 1
 

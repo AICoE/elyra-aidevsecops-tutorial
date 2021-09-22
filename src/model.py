@@ -34,8 +34,6 @@ if USE_NEURAL_MAGIC:
 elif USE_PYTORCH:
     import torch
     import torch.nn as nn
-    from torch.autograd import Variable
-    from torchvision import transforms as transforms
 
 elif USE_PYTORCH_ONNX_IN_TF:
     import onnx
@@ -43,7 +41,6 @@ elif USE_PYTORCH_ONNX_IN_TF:
 
 else:
     import tensorflow as tf
-
 
 
 class Model:
@@ -109,27 +106,27 @@ class Model:
             class CNN(nn.Module):
                 def __init__(self):
                     super(CNN, self).__init__()
-                    self.conv1 = nn.Sequential(         
+                    self.conv1 = nn.Sequential(
                         nn.Conv2d(
-                            in_channels=1,              
-                            out_channels=32,            
-                            kernel_size=5,              
-                            stride=1,                   
-                            padding=2,                  
-                        ),                              
-                        nn.ReLU(),                      
-                        nn.MaxPool2d(kernel_size=2),    
+                            in_channels=1,
+                            out_channels=32,
+                            kernel_size=5,
+                            stride=1,
+                            padding=2,
+                        ),
+                        nn.ReLU(),
+                        nn.MaxPool2d(kernel_size=2),
                     )
-                    self.conv2 = nn.Sequential(         
+                    self.conv2 = nn.Sequential(
                         nn.Conv2d(
-                            in_channels=32,              
-                            out_channels=64,            
-                            kernel_size=5,              
-                            stride=1,                   
-                            padding=2
-                        ),     
-                        nn.ReLU(),                      
-                        nn.MaxPool2d(kernel_size=2),                
+                            in_channels=32,
+                            out_channels=64,
+                            kernel_size=5,
+                            stride=1,
+                            padding=2,
+                        ),
+                        nn.ReLU(),
+                        nn.MaxPool2d(kernel_size=2),
                     )
 
                     # fully connected layer, output 10 classes
@@ -141,14 +138,18 @@ class Model:
                     # flatten the output of conv2 to (batch_size, 32 * 7 * 7)
                     x = x.view(x.size(0), -1)
                     output = self.out(x)
-                    return output, x    # return x for visualization
+                    return output, x  # return x for visualization
 
             loaded_model = CNN()
-            loaded_model.load_state_dict(torch.load(f"{trained_model_path}/{model_version}/pytorch_model.pt"))
+            loaded_model.load_state_dict(
+                torch.load(f"{trained_model_path}/{model_version}/pytorch_model.pt")
+            )
             # loaded_model = torch.load(f"{trained_model_path}/{model_version}/pytorch_model.pt")
 
         elif USE_PYTORCH_ONNX_IN_TF:
-            loaded_model = onnx.load(f"{trained_model_path}/{model_version}")  # load onnx model
+            loaded_model = onnx.load(
+                f"{trained_model_path}/{model_version}"
+            )  # load onnx model
 
         else:
             loaded_model = tf.keras.models.load_model(
@@ -181,7 +182,10 @@ class Model:
             image_ = image.reshape(1, 1, 28, 28).astype(np.float32)
 
             prediction = prepare(self.model).run(image_)
-            return prediction._0.argmax(), prediction._0.tolist()[0][prediction._0.argmax()]
+            return (
+                prediction._0.argmax(),
+                prediction._0.tolist()[0][prediction._0.argmax()],
+            )
 
         else:
             # Default is TensorFlow model

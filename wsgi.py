@@ -33,8 +33,6 @@ from flask import redirect
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import generate_latest
 
-import numpy as np
-
 from src.model import Model
 
 _LOGGER = logging.getLogger("aidevsecops-tutorial")
