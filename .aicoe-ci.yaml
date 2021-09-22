@@ -44,3 +44,80 @@ overlays:
       project-name: "elyra-aidevsecops-tutorial"
       image-name: "elyra-aidevsecops-tutorial"
       overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
+    test:
+      overlay-name: test-model
+      name: gather_deployment_metrics
+
+  - name: nm-download
+    build:
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      build-stratergy: Source
+      registry: quay.io
+      registry-org: thoth-station
+      registry-project: neural-magic-download
+      registry-secret: thoth-station-thoth-pusher-secret
+
+  - name: pytorch-training
+    build:
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      build-stratergy: Source
+      registry: quay.io
+      registry-org: thoth-station
+      registry-project: pytorch-training
+      registry-secret: thoth-station-thoth-pusher-secret
+
+  - name: nm-convert-onnx
+    build:
+      base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.3.3"
+      build-source-script: "image:///opt/app-root/builder"
+      custom-tag: latest
+      build-stratergy: Source
+      registry: quay.io
+      registry-org: thoth-station
+      registry-project: neural-magic-convert-onnx
+      registry-secret: thoth-station-thoth-pusher-secret
+
+  - name: nm-sparseml
+    build:
+      base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.3.3"
+      build-source-script: "image:///opt/app-root/builder"
+      custom-tag: latest
+      build-stratergy: Source
+      registry: quay.io
+      registry-org: thoth-station
+      registry-project: neural-magic-sparseml
+      registry-secret: thoth-station-thoth-pusher-secret
+
+  - name: nm-inference
+    build:
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      build-stratergy: Source
+      registry: quay.io
+      registry-org: thoth-station
+      registry-project: neural-magic-deepsparse
+      registry-secret: thoth-station-thoth-pusher-secret
+    deploy:
+      project-org: "thoth-station"
+      project-name: "elyra-aidevsecops-tutorial"
+      image-name: "neural-magic-deepsparse"
+      overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
+    test:
+      overlay-name: test-model
+      name: gather_deployment_metrics
+
+  - name: pytorch-inference
+    build:
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      build-stratergy: Source
+      registry: quay.io
+      registry-org: thoth-station
+      registry-project: elyra-aidevsecops-pytorch-inference
+      registry-secret: thoth-station-thoth-pusher-secret
+    deploy:
+      project-org: "thoth-station"
+      project-name: "elyra-aidevsecops-tutorial"
+      image-name: "elyra-aidevsecops-pytorch-inference"
+      overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
+    test:
+      overlay-name: test-model
+      name: gather_deployment_metrics_using_pytorch
