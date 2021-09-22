@@ -5,6 +5,7 @@ verify_ssl = true
 
 [packages]
 pandas = "*"
+numpy = "*"
 tensorflow = ">=2.4.0"
 matplotlib = "*"
 prometheus-client = "*"

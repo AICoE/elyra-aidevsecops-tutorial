@@ -6,6 +6,11 @@ verify_ssl = true
 [packages]
 pandas = "*"
 tensorflow = ">=2.4.0"
+torchvision = "*"
+torch = "*"
+torchinfo = "*"
+sparseml = "*"
+deepsparse = "*"
 matplotlib = "*"
 prometheus-client = "*"
 flask-cors = "*"
