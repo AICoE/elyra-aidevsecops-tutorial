@@ -9,6 +9,10 @@ This tutorial is used to discuss the interface between Data Science and DevOps. 
 At the end of this tutorial you will be able to spawn images from [JupyterHub][1], manage dependencies for Jupyter Notebook using [Project Thoth][2] extension for dependency management on JupyterLab, learn about `overlays` concept, setup [AICoE CI][3] and [Kebechet Bot][4] to automate creation of images for overlays and maintenance of software stacks. Then you will learn how to create and run an [Elyra][5] AI pipeline with [Kubeflow Pipelines][6] using the images created. Finally, you will learn how to leverage [ArgoCD][7] and deploy AI model automatically.
 
 The demo application selected for this tutorial is the `MNIST Classification`. The `MNIST Dataset` is described [here](http://yann.lecun.com/exdb/mnist/).
+In this tutorial there are different variations:
+
+- one using TensorFlow
+- one using Pytorch and [Neural Magic](https://neuralmagic.com/) tools.
 
 
 ## Where you will run this tutorial?
