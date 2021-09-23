@@ -44,7 +44,7 @@ overlays:
       project-name: "elyra-aidevsecops-tutorial"
       image-name: "elyra-aidevsecops-tutorial"
       overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
-    test:
+    gather:
       overlay-name: test-model
       name: gather_deployment_metrics
 
@@ -101,7 +101,7 @@ overlays:
       project-name: "elyra-aidevsecops-tutorial"
       image-name: "neural-magic-deepsparse"
       overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
-    test:
+    gather:
       overlay-name: test-model
       name: gather_deployment_metrics
 
@@ -118,6 +118,6 @@ overlays:
       project-name: "elyra-aidevsecops-tutorial"
       image-name: "elyra-aidevsecops-pytorch-inference"
       overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
-    test:
+    gather:
       overlay-name: test-model
       name: gather_deployment_metrics_using_pytorch
