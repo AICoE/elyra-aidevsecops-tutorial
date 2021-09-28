@@ -33,7 +33,9 @@ from flask import redirect
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import generate_latest
 
-from src.model import Model
+from src.model import Model as TensorflowModel
+from src.pytorch_model import Model as PytorchModel
+from src.neuralmagic import Model as NeuralMagicModel
 
 _LOGGER = logging.getLogger("aidevsecops-tutorial")
 _LOGGER.info("Thoth AIDevSecOps Tutorial v%s", __version__)
@@ -42,6 +44,9 @@ _REDIRECT_URL = os.getenv(
     "THOTH_AIDEVSECOPS_REDIRECT_URL",
     "https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/README.md",
 )
+
+USE_NEURAL_MAGIC = bool(int(os.getenv("TUTORIAL_USE_NEURAL_MAGIC", 0)))
+USE_PYTORCH = bool(int(os.getenv("TUTORIAL_USE_PYTORCH", 0)))
 
 application = Flask("aidevsecops-tutorial")
 
@@ -55,7 +60,12 @@ prometheus_metrics.info(
     "aidevsecops_tutorial_app_info", "App version deployed", version=__version__
 )
 
-model = Model()
+if USE_NEURAL_MAGIC:
+    model = NeuralMagicModel()
+elif USE_PYTORCH:
+    model = PytorchModel()
+else:
+    model = TensorflowModel()
 
 # custom metric to expose model version
 model_version_metric = prometheus_metrics.info(
