@@ -75,8 +75,6 @@ class Model:
                 Bucket=s3_bucket, Key=key, Filename=str(file_downloaded_path)
             )
 
-
-
         loaded_model = tf.keras.models.load_model(
             f"{trained_model_path}/{model_version}", compile=False
         )

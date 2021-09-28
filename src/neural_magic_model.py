@@ -43,7 +43,7 @@ class Model:
         model_version = str(
             os.environ.get(
                 "THOTH_AIDEVSECOPS_MODEL_VERSION",
-                "torch-210921164335-c352fe9b17e2f837_mnist_classification_pruned"
+                "torch-210921164335-c352fe9b17e2f837_mnist_classification_pruned",
             )
         )
 

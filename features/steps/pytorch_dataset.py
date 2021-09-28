@@ -17,7 +17,6 @@
 
 """Basic integration test for AI Project."""
 
-import json
 import os
 import logging
 
@@ -25,7 +24,7 @@ import torch
 from torchvision import datasets
 from torchvision.transforms import ToTensor
 
-from behave import given, when, then
+from behave import given
 
 _DEBUG_LEVEL = bool(int(os.getenv("DEBUG_LEVEL", 0)))
 

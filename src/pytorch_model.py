@@ -29,7 +29,10 @@ import torch.nn as nn
 
 
 class CNN(nn.Module):
+    """CNN for MNIST using Pytorch."""
+
     def __init__(self):
+        """init."""
         super(CNN, self).__init__()
         self.conv1 = nn.Sequential(
             nn.Conv2d(
@@ -58,12 +61,14 @@ class CNN(nn.Module):
         self.out = nn.Linear(64 * 7 * 7, num_classes)
 
     def forward(self, x):
+        """Forward step."""
         x = self.conv1(x)
         x = self.conv2(x)
         # flatten the output of conv2 to (batch_size, 32 * 7 * 7)
         x = x.view(x.size(0), -1)
         output = self.out(x)
         return output, x  # return x for visualization
+
 
 class Model:
     """Model to handle prediction for MNIST classification."""
