@@ -46,7 +46,7 @@ overlays:
       overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
     gather:
       overlay-name: test-model
-      name: gather_deployment_metrics
+      name: gather_deployment_metrics_using_tensorflow
 
   - name: nm-download
     build:
@@ -103,7 +103,7 @@ overlays:
       overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
     gather:
       overlay-name: test-model
-      name: gather_deployment_metrics
+      name: gather_deployment_metrics_using_tensorflow
 
   - name: pytorch-inference
     build:
