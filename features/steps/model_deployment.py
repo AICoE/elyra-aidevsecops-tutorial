@@ -36,47 +36,6 @@ else:
 _LOGGER = logging.getLogger(__name__)
 
 
-@given("dataset is available from {source}")
-def dataset_availability(context, source):
-    """Check availability of dataset and retrieves it."""
-    # Prepare MNIST data.
-    if source == "Pytorch":
-        import torch
-        from torchvision import datasets
-        from torchvision.transforms import ToTensor
-
-        test_data = datasets.MNIST(
-            root="./data/raw/pytorch-mnist-dataset",
-            train=False,
-            transform=ToTensor(),
-        )
-
-        loaders = {
-            "test": torch.utils.data.DataLoader(
-                test_data, batch_size=1, shuffle=True, num_workers=1
-            ),
-        }
-
-        test_data = loaders["test"]
-
-    else:
-        from tensorflow.keras.datasets import mnist as tf_dataset
-
-        _, (x_test, y_test) = tf_dataset.load_data()
-
-        # Convert to float32.
-        x_test = np.array(x_test, np.float32)
-
-        # Normalize images value from [0, 255] to [0, 1].
-        x_test = x_test / 255.0
-
-        test_data = zip(x_test, y_test)
-
-    context.dataset = test_data
-
-    assert context.dataset
-
-
 @given("deployment is accessible")
 def deployment_accessible(context):
     """Check the deployment is accessible."""
