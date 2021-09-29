@@ -2,38 +2,26 @@
   "doc_type": "pipeline",
   "version": "3.0",
   "json_schema": "http://api.dataplatform.ibm.com/schemas/common-pipeline/pipeline-flow/pipeline-flow-v3-schema.json",
-  "id": "4351e7f3-a1f9-474b-a0b3-2754c390b14b",
-  "primary_pipeline": "b649785a-fb1f-42c6-82ba-0473687e6cf1",
+  "id": "6a27d579-aab6-47f2-a503-50b8d21591e8",
+  "primary_pipeline": "4afe9d98-962a-4372-9ade-771a44bd2c92",
   "pipelines": [
     {
-      "id": "b649785a-fb1f-42c6-82ba-0473687e6cf1",
+      "id": "4afe9d98-962a-4372-9ade-771a44bd2c92",
       "nodes": [
         {
-          "id": "86588094-8bd0-4fe1-93a5-c7f733133133",
+          "id": "49fa3b56-a2dd-475d-a165-11b0c6024707",
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
-            "filename": "notebooks/download_dataset.ipynb",
-            "runtime_image": "quay.io/thoth-station/elyra-aidevsecops-dataset:v0.12.0",
-            "env_vars": [
-              "AUTOMATION=1"
-            ],
+            "filename": "notebooks/neural-magic-torch-mnist/download_dataset.ipynb",
+            "runtime_image": "",
+            "env_vars": [],
             "include_subdirectories": false,
-            "outputs": [
-              "data/raw/xdata.pkl",
-              "data/raw/xtestdata.pkl",
-              "data/raw/ydata.pkl",
-              "data/raw/ytestdata.pkl"
-            ],
-            "dependencies": [],
-            "invalidNodeError": null,
-            "cpu": 1,
-            "memory": 8,
             "ui_data": {
               "label": "download_dataset.ipynb",
               "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 66.82652282714844,
-              "y_pos": 135.20486450195312,
+              "x_pos": 142,
+              "y_pos": 87,
               "description": "Notebook file"
             }
           },
@@ -67,28 +55,19 @@
           ]
         },
         {
-          "id": "30105f5a-bda5-42fe-98b7-b6765ea15909",
+          "id": "277d7e65-c911-42e6-8359-13f063a6f326",
           "type": "execution_node",
           "op": "execute-notebook-node",
           "app_data": {
-            "filename": "notebooks/training.ipynb",
-            "runtime_image": "quay.io/thoth-station/elyra-aidevsecops-training:v0.12.0",
-            "env_vars": [
-              "AUTOMATION=1",
-              "OBJECT_STORAGE_ENDPOINT_URL=http://s3.openshift-storage.svc/",
-              "OBJECT_STORAGE_BUCKET_NAME=opf-datacatalog"
-            ],
+            "filename": "notebooks/neural-magic-torch-mnist/sparsify.ipynb",
+            "runtime_image": "",
+            "env_vars": [],
             "include_subdirectories": false,
-            "outputs": [],
-            "dependencies": [],
-            "invalidNodeError": null,
-            "cpu": 1,
-            "memory": 16,
             "ui_data": {
-              "label": "training.ipynb",
+              "label": "sparsify.ipynb",
               "image": "data:image/svg+xml;utf8,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2216%22%20viewBox%3D%220%200%2022%2022%22%3E%0A%20%20%3Cg%20class%3D%22jp-icon-warn0%20jp-icon-selectable%22%20fill%3D%22%23EF6C00%22%3E%0A%20%20%20%20%3Cpath%20d%3D%22M18.7%203.3v15.4H3.3V3.3h15.4m1.5-1.5H1.8v18.3h18.3l.1-18.3z%22%2F%3E%0A%20%20%20%20%3Cpath%20d%3D%22M16.5%2016.5l-5.4-4.3-5.6%204.3v-11h11z%22%2F%3E%0A%20%20%3C%2Fg%3E%0A%3C%2Fsvg%3E%0A",
-              "x_pos": 493.30279541015625,
-              "y_pos": 208.6829833984375,
+              "x_pos": 630,
+              "y_pos": 83,
               "description": "Notebook file"
             }
           },
@@ -106,8 +85,8 @@
               },
               "links": [
                 {
-                  "id": "a7de022a-a30f-4e0c-bffb-d84bde6bfe63",
-                  "node_id_ref": "86588094-8bd0-4fe1-93a5-c7f733133133",
+                  "id": "21aa90b5-9e1a-48ec-9a60-27896d6af238",
+                  "node_id_ref": "49fa3b56-a2dd-475d-a165-11b0c6024707",
                   "port_id_ref": "outPort"
                 }
               ]
@@ -133,32 +112,24 @@
         "ui_data": {
           "comments": [
             {
-              "id": "98ea7fcc-757d-4223-8670-47c3385693e9",
-              "x_pos": -23.939366927911266,
-              "y_pos": 62.82469583205825,
-              "width": 175,
-              "height": 42,
+              "id": "4e0f552d-d89e-4fc4-be99-6b091024d2f4",
+              "x_pos": 84.06063307208873,
+              "y_pos": 26.82469583205824,
+              "width": 275,
+              "height": 133,
               "class_name": "d3-comment-rect",
               "content": "Download MNIST Dataset",
-              "associated_id_refs": [
-                {
-                  "node_ref": "86588094-8bd0-4fe1-93a5-c7f733133133"
-                }
-              ]
+              "associated_id_refs": []
             },
             {
-              "id": "cddd732c-452c-4ea6-925e-a79b11a20785",
-              "x_pos": 408.7088455049501,
-              "y_pos": 67.01908755950575,
-              "width": 175,
-              "height": 42,
+              "id": "36d76d13-a22b-4ff4-9ba1-6e14f7090d37",
+              "x_pos": 559.7088455049501,
+              "y_pos": 27.01908755950575,
+              "width": 300,
+              "height": 134,
               "class_name": "d3-comment-rect",
-              "content": "Training using CPU",
-              "associated_id_refs": [
-                {
-                  "node_ref": "30105f5a-bda5-42fe-98b7-b6765ea15909"
-                }
-              ]
+              "content": "Sparsify model using Neural Magic",
+              "associated_id_refs": []
             }
           ]
         },
