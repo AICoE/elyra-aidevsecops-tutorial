@@ -61,20 +61,35 @@ if USE_NEURAL_MAGIC:
     from src.neural_magic_model import Model as NeuralMagicModel
 
     nm_model = NeuralMagicModel()
+    # custom metric to expose model version
+    model_version_metric = prometheus_metrics.info(
+        "aidevsecops_tutorial_model_info",
+        "Model version deployed",
+        version=nm_model.model_version,  # label
+    )
+
 elif USE_PYTORCH:
     from src.pytorch_model import Model as PytorchModel
 
     pytorch_model = PytorchModel()
+    # custom metric to expose model version
+    model_version_metric = prometheus_metrics.info(
+        "aidevsecops_tutorial_model_info",
+        "Model version deployed",
+        version=pytorch_model.model_version,  # label
+    )
+
 else:
     from src.model import Model as TensorflowModel
+
     model = TensorflowModel()
 
-# custom metric to expose model version
-model_version_metric = prometheus_metrics.info(
-    "aidevsecops_tutorial_model_info",
-    "Model version deployed",
-    version=model.model_version,  # label
-)
+    # custom metric to expose model version
+    model_version_metric = prometheus_metrics.info(
+        "aidevsecops_tutorial_model_info",
+        "Model version deployed",
+        version=model.model_version,  # label
+    )
 
 
 @application.before_first_request

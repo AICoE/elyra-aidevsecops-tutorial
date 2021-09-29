@@ -136,4 +136,4 @@ class Model:
         with torch.no_grad():
             output, last_layer = self.model(image_)
             pred_y = torch.max(output, 1)[1].data.squeeze()
-            return pred_y, output.tolist()[0][pred_y]
+            return pred_y, last_layer.tolist()[0][pred_y]

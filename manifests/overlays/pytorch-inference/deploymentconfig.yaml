@@ -24,7 +24,7 @@ spec:
           env:
             - name: WEB_CONCURRENCY
               value: "1"
-            - name: USE_PYTORCH
+            - name: TUTORIAL_USE_PYTORCH
               value: "1"
             - name: THOTH_AIDEVSECOPS_MODEL_VERSION
               value: "torch-210921163030-5341ad0f6f389a55"

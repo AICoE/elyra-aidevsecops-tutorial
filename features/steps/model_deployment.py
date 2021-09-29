@@ -68,7 +68,6 @@ def gather_metrics(context):
     n = 1
 
     for img, number in context.dataset:
-        _LOGGER.info(f"test number {n}/{total_tests}")
         data = json.dumps({"inputs": img.tolist()})
 
         try:
