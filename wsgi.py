@@ -29,13 +29,10 @@ from flask_cors import CORS
 from flask import Flask
 from flask import request
 from flask import redirect
+from flask import jsonify
 
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import generate_latest
-
-from src.model import Model as TensorflowModel
-from src.pytorch_model import Model as PytorchModel
-from src.neuralmagic import Model as NeuralMagicModel
 
 _LOGGER = logging.getLogger("aidevsecops-tutorial")
 _LOGGER.info("Thoth AIDevSecOps Tutorial v%s", __version__)
@@ -61,10 +58,15 @@ prometheus_metrics.info(
 )
 
 if USE_NEURAL_MAGIC:
-    model = NeuralMagicModel()
+    from src.neural_magic_model import Model as NeuralMagicModel
+
+    nm_model = NeuralMagicModel()
 elif USE_PYTORCH:
-    model = PytorchModel()
+    from src.pytorch_model import Model as PytorchModel
+
+    pytorch_model = PytorchModel()
 else:
+    from src.model import Model as TensorflowModel
     model = TensorflowModel()
 
 # custom metric to expose model version
@@ -95,13 +97,40 @@ def main():
     return redirect(_REDIRECT_URL, code=308)
 
 
+def _healthiness():
+    return (
+        jsonify({"status": "ready", "version": __version__}),
+        200,
+        {"ContentType": "application/json"},
+    )
+
+
+@application.route("/readiness")
+def api_readiness():
+    """Report readiness for OpenShift readiness probe."""
+    return _healthiness()
+
+
+@application.route("/liveness")
+def api_liveness():
+    """Report liveness for OpenShift readiness probe."""
+    return _healthiness()
+
+
 @application.route("/predict", methods=["POST"])
 def predict():
     """Evaluate prediction."""
     image = request.get_json()["inputs"]
 
     start = time.monotonic()
-    prediction, probability = model.predict(image=image)
+
+    if USE_NEURAL_MAGIC:
+        prediction, probability = nm_model.predict(image=image)
+    elif USE_PYTORCH:
+        prediction, probability = pytorch_model.predict(image=image)
+    else:
+        prediction, probability = model.predict(image=image)
+
     latency = time.monotonic() - start
 
     return json.dumps(

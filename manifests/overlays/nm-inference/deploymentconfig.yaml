@@ -8,24 +8,27 @@ spec:
   selector:
     service: neural-magic-deepsparse
     app.kubernetes.io/name: thoth
-    app.kubernetes.io/component: neural-magic-deepsparse
+    app.kubernetes.io/component: aicoe-gather-metrics-pipeline
     app.kubernetes.io/managed-by: aicoe-thoth-devops
   template:
     metadata:
       labels:
         service: neural-magic-deepsparse
         app.kubernetes.io/name: thoth
-        app.kubernetes.io/component: neural-magic-deepsparse
+        app.kubernetes.io/component: aicoe-gather-metrics-pipeline
         app.kubernetes.io/managed-by: aicoe-thoth-devops
     spec:
       containers:
         - name: neural-magic-deepsparse
           image: quay.io/thoth-station/neural-magic-deepsparse
           env:
+            - name: WEB_CONCURRENCY
+              value: "1"
             - name: TUTORIAL_USE_NEURAL_MAGIC
               value: "1"
             - name: THOTH_AIDEVSECOPS_MODEL_VERSION
               value: "torch-210921164335-c352fe9b17e2f837_mnist_classification_pruned"
+          imagePullPolicy: Always
           ports:
             - containerPort: 8080
               protocol: TCP
@@ -36,20 +39,20 @@ spec:
             limits:
               memory: "768Mi"
               cpu: "100m"
-          readinessProbe:
-            httpGet:
-              path: "/metrics"
-              port: 8080
-              scheme: HTTP
-            initialDelaySeconds: 30
-            periodSeconds: 10
-            timeoutSeconds: 10
           livenessProbe:
             httpGet:
-              path: "/metrics"
+              path: /liveness
               port: 8080
               scheme: HTTP
-            initialDelaySeconds: 45
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
             periodSeconds: 10
             timeoutSeconds: 10
   test: false
