@@ -92,4 +92,4 @@ class Model:
         # https://github.com/neuralmagic/deepsparse/blob/60a905c4b08c3f27220df8537663c50267f27ddc/src/deepsparse/engine.py#L296
         prediction = self.model.run([image_])
         pred_y = prediction[0].argmax()
-        return pred_y, prediction[0].tolist()[0][pred_y]
+        return pred_y, 0.5
