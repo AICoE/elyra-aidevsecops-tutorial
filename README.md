@@ -35,7 +35,7 @@ The project template used can be found here: [project template][15]. It shows co
 
 1. [Setup your initial environment](./docs/source/setup-initial-environment.md)
 
-2. [Explore notebooks and manage dependencies](./docs/source/explore-notebooks-and-manage-dependencies.md)
+2. [Explore notebooks and manage dependencies](./docs/source/mnist-classification-application.md)
 
 3. [Push changes to GitHub](./docs/source/push-changes.md)
 
