@@ -20,7 +20,7 @@
 
 import os
 import boto3
-
+import typing
 from pathlib import Path
 import numpy as np
 
@@ -73,7 +73,7 @@ class CNN(nn.Module):
 class Model:
     """Model to handle prediction for MNIST classification."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Load model once when app starts."""
         # Path to data
         use_ceph = bool(int(os.getenv("TUTORIAL_USE_CEPH", 0)))
@@ -129,7 +129,7 @@ class Model:
         self.model = loaded_model
         self.model_version = model_version
 
-    def predict(self, image):
+    def predict(self, image: typing.Any) -> typing.Tuple[float, float]:
         """Make prediction using MNIST classifcation model."""
         image_ = torch.Tensor(np.array(image))
         self.model.eval()

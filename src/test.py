@@ -50,7 +50,7 @@ def download_test_dataset():
     return dataset
 
 
-def main_test():
+def main_test() -> None:
     """Run main test to gather metrics for data scientists and AI DevOps Engineers."""
     addr = os.getenv("DEPLOYED_MODEL_URL", "http://localhost:8080")
     test_url = addr + "/predict"
@@ -98,8 +98,7 @@ def main_test():
         total_tests = int(os.getenv("TUTORIAL_MAX_REQUESTS_TEST", len(x_test)))
 
     for img, label in test_data:
-        print(n)
-        _LOGGER.info(f"test number {n}/{total_tests}")
+        print(f"test number {n}/{total_tests}")
 
         data = json.dumps({"inputs": img.tolist()})
 
@@ -134,6 +133,7 @@ def main_test():
     report = {
         "average_latency": np.mean([r["latency"] for r in results]),
         "average_error": np.mean([r["error"] for r in results]),
+        "average_probability": np.mean([r["probability"] for r in results]),
     }
 
     json.dump(report, sys.stdout, indent=2)
