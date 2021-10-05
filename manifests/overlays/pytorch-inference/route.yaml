@@ -1,0 +1,9 @@
+---
+apiVersion: route.openshift.io/v1
+kind: Route
+metadata:
+  name: pytorch-inference
+spec:
+  to:
+    kind: Service
+    name: pytorch-inference

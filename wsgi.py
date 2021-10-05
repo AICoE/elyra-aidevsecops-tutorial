@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright(C) 2020 Red Hat, Thoth Team
+# Copyright(C) 2020, 2021 Red Hat, Thoth Team
 #
 # This program is free software: you can redistribute it and / or modify
 # it under the terms of the GNU General Public License as published by
@@ -29,13 +29,10 @@ from flask_cors import CORS
 from flask import Flask
 from flask import request
 from flask import redirect
+from flask import jsonify
 
 from prometheus_flask_exporter import PrometheusMetrics
 from prometheus_client import generate_latest
-
-import numpy as np
-
-from src.model import Model
 
 _LOGGER = logging.getLogger("aidevsecops-tutorial")
 _LOGGER.info("Thoth AIDevSecOps Tutorial v%s", __version__)
@@ -44,6 +41,9 @@ _REDIRECT_URL = os.getenv(
     "THOTH_AIDEVSECOPS_REDIRECT_URL",
     "https://github.com/thoth-station/elyra-aidevsecops-tutorial/blob/master/README.md",
 )
+
+USE_NEURAL_MAGIC = bool(int(os.getenv("TUTORIAL_USE_NEURAL_MAGIC", 0)))
+USE_PYTORCH = bool(int(os.getenv("TUTORIAL_USE_PYTORCH", 0)))
 
 application = Flask("aidevsecops-tutorial")
 
@@ -57,14 +57,39 @@ prometheus_metrics.info(
     "aidevsecops_tutorial_app_info", "App version deployed", version=__version__
 )
 
-model = Model()
+if USE_NEURAL_MAGIC:
+    from src.neural_magic_model import Model as NeuralMagicModel
 
-# custom metric to expose model version
-model_version_metric = prometheus_metrics.info(
-    "aidevsecops_tutorial_model_info",
-    "Model version deployed",
-    version=model.model_version,  # label
-)
+    nm_model = NeuralMagicModel()
+    # custom metric to expose model version
+    model_version_metric = prometheus_metrics.info(
+        "aidevsecops_tutorial_model_info",
+        "Model version deployed",
+        version=nm_model.model_version,  # label
+    )
+
+elif USE_PYTORCH:
+    from src.pytorch_model import Model as PytorchModel
+
+    pytorch_model = PytorchModel()
+    # custom metric to expose model version
+    model_version_metric = prometheus_metrics.info(
+        "aidevsecops_tutorial_model_info",
+        "Model version deployed",
+        version=pytorch_model.model_version,  # label
+    )
+
+else:
+    from src.model import Model as TensorflowModel
+
+    model = TensorflowModel()
+
+    # custom metric to expose model version
+    model_version_metric = prometheus_metrics.info(
+        "aidevsecops_tutorial_model_info",
+        "Model version deployed",
+        version=model.model_version,  # label
+    )
 
 
 @application.before_first_request
@@ -87,16 +112,40 @@ def main():
     return redirect(_REDIRECT_URL, code=308)
 
 
+def _healthiness():
+    return (
+        jsonify({"status": "ready", "version": __version__}),
+        200,
+        {"ContentType": "application/json"},
+    )
+
+
+@application.route("/readiness")
+def api_readiness():
+    """Report readiness for OpenShift readiness probe."""
+    return _healthiness()
+
+
+@application.route("/liveness")
+def api_liveness():
+    """Report liveness for OpenShift readiness probe."""
+    return _healthiness()
+
+
 @application.route("/predict", methods=["POST"])
 def predict():
     """Evaluate prediction."""
-    image_list = request.get_json()["inputs"]
-
-    # reshape
-    image_array = np.array(image_list)
+    image = request.get_json()["inputs"]
 
     start = time.monotonic()
-    prediction, probability = model.predict(image_array=image_array)
+
+    if USE_NEURAL_MAGIC:
+        prediction, probability = nm_model.predict(image=image)
+    elif USE_PYTORCH:
+        prediction, probability = pytorch_model.predict(image=image)
+    else:
+        prediction, probability = model.predict(image=image)
+
     latency = time.monotonic() - start
 
     return json.dumps(

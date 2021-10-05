@@ -43,4 +43,3 @@
 [10]: https://superset.apache.org/
 [11]: https://github.com/thoth-station/jupyterlab-requirements
 [12]: https://github.com/AICoE/meteor
-

@@ -1,0 +1,13 @@
+apiVersion: image.openshift.io/v1
+kind: ImageStream
+metadata:
+  name: elyra-aidevsecops-pytorch-inference
+spec:
+  tags:
+    - name: latest
+      from:
+        kind: DockerImage
+        name: quay.io/thoth-station/elyra-aidevsecops-pytorch-inference:v0.13.0
+      importPolicy: {}
+      referencePolicy:
+        type: Source

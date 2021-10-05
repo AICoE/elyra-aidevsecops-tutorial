@@ -157,7 +157,7 @@ To create a new pipeline from scratch, go through the following steps:
     The `download_dataset` and `training` step of the pipeline have some mandatory and optional environment variables for running in automation which need to be set during this step of setting up the pipeline.
 
     List of Environment Variables that need to be configured for the notebooks to run:
-    - The `download_dataset` step uses Output Files to make certain files available to the training step during execution. Make sure that the output files `data/raw/xdata.pkl`, `data/raw/xtestdata.pkl`, `data/raw/ydata.pkl`, `data/raw/ytestdata.pkl` are specified for the `download_dataset` step.
+    - The `download_dataset` step uses Output Files to make certain files available to the training step during execution. Make sure that the output files `data/raw/mnist_datasets_tf/xdata.pkl`, `data/raw/mnist_datasets_tf/xtestdata.pkl`, `data/raw/mnist_datasets_tf/ydata.pkl`, `data/raw/mnist_datasets_tf/ytestdata.pkl` are specified for the `download_dataset` step.
     - Env variable `AUTOMATION` must be configured as 1 for both the notebooks to run in the pipeline.
     - The `training` step also needs the cloud storage environment credentials like the `OBJECT_STORAGE_BUCKET_NAME` and `OBJECT_STORAGE_ENDPOINT_URL` to store the trained model on the S3 bucket.
 

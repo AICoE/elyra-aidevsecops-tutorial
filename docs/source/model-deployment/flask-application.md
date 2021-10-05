@@ -2,9 +2,9 @@
 
 ## Create your Flask app
 
-Once you've trained your model and it's stored on Ceph, you can start to work on an inference application to make your model accessible. In this tutorial, we will make a minimal [Flask application](https://flask.palletsprojects.com/en/2.0.x/) that we can deploy on OpenShift to serve model inferences. We will also use [ArgoCD][2] for continuous deployment of our application as we make changes.
+Once you've trained your model and it's stored on Ceph, you can start to work on an inference application to make your model accessible. In this tutorial, we will make a minimal [Flask](https://flask.palletsprojects.com/en/2.0.x/) + [gunicorn](https://docs.gunicorn.org/en/stable/index.html) that we can deploy on OpenShift to serve model inferences. We will also use [ArgoCD][2] for continuous deployment of our application as we make changes.
 
-For the purpose of the tutorial you can reuse this [application script](../../../wsgi.py) created with Flask. This app exposes critical endpoints for serving and monitoring our model, such as `/predict` for generating model predictions from user provided inputs and `/metrics` to measure usage and model performance.
+For the purpose of the tutorial you can reuse this [application script](../../../wsgi.py) created with Flask+gunicorn. This app exposes critical endpoints for serving and monitoring our model, such as `/predict` for generating model predictions from user provided inputs and `/metrics` to measure usage and model performance.
 
 ### 1. Make a new release
 
@@ -12,21 +12,44 @@ When you make any changes to your model, typically through retraining, and add a
 
 ### 2. Deploy your application
 
-#### **Requirements**
+#### **Requirements for Tensorflow+Flask+Gunicorn**
 
 - Image Name: `quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.5.0`
 
-- [DeploymentConfig](../../../manifests/base/deploymentconfig.yaml): Deployment configs are templates for running applications on OpenShift. This will give the cluster the necessary information to deploy your Flask application.
+- [DeploymentConfig](../../../manifests/overlays/inference/deploymentconfig.yaml): Deployment configs are templates for running applications on OpenShift. This will give the cluster the necessary information to deploy your Flask application.
 
 - [Service](../../../manifests/base/service.yaml): A service manifest allows for an application running on a set of OpenShift pods to be exposed as a network service.
 
 - [Route](../../../manifests/base/route.yaml): Routes are used to expose services. This route will give your model deployment a reachable hostname to interact with.
 
+#### **Requirements for Pytorch+Flask+Gunicorn**
+
+- Image Name: `quay.io/thoth-station/elyra-aidevsecops-pytorch-inference:v0.13.0`
+
+- [DeploymentConfig](../../../manifests/overlays/pytorch-inference/deploymentconfig.yaml): Deployment configs are templates for running applications on OpenShift. This will give the cluster the necessary information to deploy your Flask application.
+
+- [Service](../../../manifests/overlays/pytorch-inference/service.yaml): A service manifest allows for an application running on a set of OpenShift pods to be exposed as a network service.
+
+- [Route](../../../manifests/overlays/pytorch-inference/route.yaml): Routes are used to expose services. This route will give your model deployment a reachable hostname to interact with.
+
+#### **Requirements for NeuralMagic+Flask+Gunicorn**
+
+NOTE: _Deepsparse deployment at the moment works only with CPU that supports avx2, avx512 flags (even better if [avx512_vnni](https://en.wikichip.org/wiki/x86/avx512_vnni) with VNNI is available: https://github.com/neuralmagic/deepsparse/issues/186). Please check your environment running `cat /proc/cpuinfo` to identify flags and verify if your machine supports the deployment. In the deployment manifests in `nm-inference` overlay you need to set the env variable NM_ARCH=avx2|avx512._
+
+- Image Name: `quay.io/thoth-station/neural-magic-deepsparse:v0.13.0`
+
+- [DeploymentConfig](../../../manifests/overlays/nm-inference/deploymentconfig.yaml): Deployment configs are templates for running applications on OpenShift. This will give the cluster the necessary information to deploy your Flask application.
+
+- [Service](../../../manifests/overlays/nm-inference/service.yaml): A service manifest allows for an application running on a set of OpenShift pods to be exposed as a network service.
+
+- [Route](../../../manifests/overlays/nm-inference/route.yaml): Routes are used to expose services. This route will give your model deployment a reachable hostname to interact with.
+
+
 #### **Using Operate First with ArgoCD**
 
-Once all manifests for your project (e.g. deployment, service, routes, workflows, pipelines) are created and placed in your repo under `/manifests` folde, you can make a request to the Operate First team to use ArgoCD for your application.
+Once all manifests for your project (e.g. deployment, service, routes, workflows, pipelines) are created and placed in your repo under `/manifests` folder, you can make a request to the Operate First team to use ArgoCD for your application.
 
-This way [ArgoCD][2] will be used to maintain your application and keep it in sync with all of your current changes. Once you create a new release of your application (e.g. you change your model, you add a new metric, you add a new feature, etc.) and a new image is available, all you need to do is update the [imagestreamtag](../../../manifests/overlays/test/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
+This way [ArgoCD][2] will be used to maintain your application and keep it in sync with all of your current changes. Once you create a new release of your application (e.g. you change your model, you add a new metric, you add a new feature, etc.) and a new image is available, all you need to do is update the [imagestreamtag](../../../manifests/overlays/inference/imagestreamtag.yaml#L10) so that ArgoCD can deploy new version.
 
 Note: An [AICoE Pipeline][3] can also automatically update the [imagestreamtag](../../../manifests/overlays/test/imagestreamtag.yaml#L10) once a new release is created.
 
@@ -66,13 +89,15 @@ Alternatively, you can also deploy your app manually to a cluster using the foll
 
 4. Make sure you are in `elyra-aidevsecops-tutorial` directory (you can run `pwd` command in the terminal to check your current path).
 
-5. Create the Service using: `oc apply -f ./manifests/base/service.yaml`.
+5. `cd` to the overlay you want to deploy. (e.g. `cd manifests/overlays/{inference|pytorch-inference|nm-inference}`)
 
-6. Create the Route using: `oc apply -f ./manifests/base/route.yaml`.
+6. Create the Service using: `oc apply -f ./manifests/overlays/{inference|pytorch-inference|nm-inference}/service.yaml`.
 
-7. Create the DeploymentConfig using: `oc apply -f ./manifests/base/deploymentconfig.yaml`.
+6. Create the Route using: `oc apply -f ./manifests/overlays/{inference|pytorch-inference|nm-inference}/route.yaml`.
 
-Once your pods deploy your Flask app should be ready to serve inference requests from the exposed Route.
+7. Create the DeploymentConfig using: `oc apply -f ./manifests/overlays/{inference|pytorch-inference|nm-inference}/deploymentconfig.yaml`.
+
+Once your pods deploy, your Flask app should be ready to serve inference requests from the exposed Route.
 
 ## Next Steps
 [Test your deployed inference application](/docs/source/test-model.md)

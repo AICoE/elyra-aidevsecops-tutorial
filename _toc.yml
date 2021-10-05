@@ -5,13 +5,21 @@ parts:
     chapters:
     - file: docs/source/pre-requisite
     - file: docs/source/setup-initial-environment
-    - file: docs/source/explore-notebooks-and-manage-dependencies
     - file: docs/source/push-changes
     - file: docs/source/thoth-aicoe-services
-  - caption: AI Lifecycle
+  - caption: AI Lifecycle (TensorFlow)
     chapters:
-    - file: notebooks/download_dataset
-    - file: notebooks/training
+    - file: notebooks/tf-mnist/download_dataset
+    - file: notebooks/tf-mnist/training
+    - file: notebooks/test_deployed_model
+    - file: docs/source/create-ai-pipeline
+    - file: docs/source/run-ai-pipeline
+  - caption: AI Lifecycle (Pytorch + NeuralMagic)
+    chapters:
+    - file: notebooks/neural-magic-torch-mnist/download_dataset
+    - file: notebooks/neural-magic-torch-mnist/training
+    - file: notebooks/neural-magic-torch-mnist/convert_model_to_onnx
+    - file: notebooks/neural-magic-torch-mnist/sparsify
     - file: notebooks/test_deployed_model
     - file: docs/source/create-ai-pipeline
     - file: docs/source/run-ai-pipeline

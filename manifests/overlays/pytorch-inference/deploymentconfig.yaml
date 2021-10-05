@@ -1,0 +1,58 @@
+---
+kind: DeploymentConfig
+apiVersion: apps.openshift.io/v1
+metadata:
+  name: pytorch-inference
+spec:
+  replicas: 1
+  selector:
+    service: pytorch-inference
+    app.kubernetes.io/name: thoth
+    app.kubernetes.io/component: aicoe-gather-metrics-pipeline
+    app.kubernetes.io/managed-by: aicoe-thoth-devops
+  template:
+    metadata:
+      labels:
+        service: pytorch-inference
+        app.kubernetes.io/name: thoth
+        app.kubernetes.io/component: aicoe-gather-metrics-pipeline
+        app.kubernetes.io/managed-by: aicoe-thoth-devops
+    spec:
+      containers:
+        - name: pytorch-inference
+          image: quay.io/thoth-station/elyra-aidevsecops-pytorch-inference
+          env:
+            - name: WEB_CONCURRENCY
+              value: "1"
+            - name: TUTORIAL_USE_PYTORCH
+              value: "1"
+            - name: THOTH_AIDEVSECOPS_MODEL_VERSION
+              value: "torch-210921163030-5341ad0f6f389a55"
+          imagePullPolicy: Always
+          ports:
+            - containerPort: 8080
+              protocol: TCP
+          resources:
+            requests:
+              memory: "384Mi"
+              cpu: "100m"
+            limits:
+              memory: "768Mi"
+              cpu: "100m"
+          livenessProbe:
+            httpGet:
+              path: /liveness
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 60
+            timeoutSeconds: 10
+          readinessProbe:
+            httpGet:
+              path: /readiness
+              port: 8080
+              scheme: HTTP
+            initialDelaySeconds: 5
+            periodSeconds: 10
+            timeoutSeconds: 10
+  test: false

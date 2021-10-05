@@ -22,8 +22,6 @@ import json
 import os
 import logging
 
-from tensorflow.keras.datasets import mnist as tf_dataset
-
 import numpy as np
 
 from behave import given, when, then
@@ -36,20 +34,6 @@ else:
     logging.basicConfig(level=logging.INFO)
 
 _LOGGER = logging.getLogger(__name__)
-
-
-@given("dataset is available")
-def dataset_availability(context):
-    """Check availability of dataset and retrieves it."""
-    # Prepare MNIST data.
-    _, (x_test, y_test) = tf_dataset.load_data()
-
-    context.dataset = {
-        "x_test": x_test,
-        "y_test": y_test,
-    }
-
-    assert context.dataset
 
 
 @given("deployment is accessible")
@@ -71,16 +55,6 @@ def deployment_accessible(context):
 @when("I run test to gather metrics on predict endpoint")
 def gather_metrics(context):
     """Gather metrics from the deployed ML model."""
-    x_test = context.dataset["x_test"]
-
-    y_test = context.dataset["y_test"]
-
-    # Convert to float32.
-    x_test = np.array(x_test, np.float32)
-
-    # Normalize images value from [0, 255] to [0, 1].
-    x_test = x_test / 255.0
-
     addr = f"{context.model_api_url}"
     test_url = addr + "/predict"
 
@@ -89,11 +63,11 @@ def gather_metrics(context):
 
     results = []
 
-    total_tests = len(x_test)
+    total_tests = int(os.getenv("TUTORIAL_MAX_REQUESTS_TEST", 10000))
+
     n = 1
 
-    for img, number in zip(x_test, y_test):
-        _LOGGER.info(f"test number {n}/{total_tests}")
+    for img, number in context.dataset:
         data = json.dumps({"inputs": img.tolist()})
 
         try:
@@ -118,6 +92,9 @@ def gather_metrics(context):
         results.append(
             {"error": answer, "latency": latency, "probability": probability}
         )
+
+        if n == total_tests:
+            break
 
         n += 1
 

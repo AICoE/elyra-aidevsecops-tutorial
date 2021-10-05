@@ -7,7 +7,10 @@ name = "pypi"
 requests = "*"
 numpy = "*"
 tensorflow = ">=2.4.0"
+torch = "*"
+torchvision = "*"
 behave = "*"
+plotly = "*"
 
 [dev-packages]
 

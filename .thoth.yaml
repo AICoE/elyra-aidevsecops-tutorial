@@ -39,6 +39,49 @@ runtime_environments:
     python_version: "3.8"
     recommendation_type: latest
 
+  - name: nm-download
+    operating_system:
+      name: ubi
+      version: "8"
+    python_version: "3.8"
+    recommendation_type: latest
+
+  - name: pytorch-training
+    operating_system:
+      name: ubi
+      version: "8"
+    python_version: "3.8"
+    recommendation_type: performance
+
+  - name: nm-convert-onnx
+    operating_system:
+      name: ubi
+      version: "8"
+    python_version: "3.8"
+    recommendation_type: latest
+
+  - name: nm-sparseml
+    operating_system:
+      name: ubi
+      version: "8"
+    python_version: "3.8"
+    recommendation_type: performance
+
+  - name: nm-inference
+    operating_system:
+      name: ubi
+      version: "8"
+    python_version: "3.8"
+    recommendation_type: performance
+
+  - name: pytorch-inference
+    operating_system:
+      name: ubi
+      version: "8"
+    python_version: "3.8"
+    recommendation_type: performance
+
+
 
 managers:
   - name: thoth-advise

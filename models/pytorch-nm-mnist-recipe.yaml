@@ -1,0 +1,43 @@
+version: 1.1.0
+
+modifiers:
+    - !EpochRangeModifier
+        end_epoch: 1.0
+        start_epoch: 0.0
+
+    - !GMPruningModifier
+        end_epoch: 1.0
+        final_sparsity: 0.82
+        global_sparsity: False
+        init_sparsity: 0.05
+        inter_func: cubic
+        leave_enabled: True
+        log_types: __ALL__
+        mask_type: unstructured
+        params: ['conv2.0.weight']
+        phased: False
+        score_type: magnitude
+        start_epoch: 1.0
+        update_frequency: -1
+
+    - !GMPruningModifier
+        end_epoch: 1.0
+        final_sparsity: 0.91
+        global_sparsity: False
+        init_sparsity: 0.05
+        inter_func: cubic
+        leave_enabled: True
+        log_types: __ALL__
+        mask_type: unstructured
+        params: ['out.weight']
+        phased: False
+        score_type: magnitude
+        start_epoch: 1.0
+        update_frequency: -1
+
+    - !SetLearningRateModifier
+        constant_logging: False
+        end_epoch: -1
+        learning_rate: 0.01
+        log_types: __ALL__
+        start_epoch: 0.0

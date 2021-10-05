@@ -1,6 +1,6 @@
 #!/usr/bin/env python3
 #
-# Copyright(C) 2020 Red Hat, Thoth Team
+# Copyright(C) 2020, 2021 Francesco Murdaca
 #
 # This program is free software: you can redistribute it and / or modify
 # it under the terms of the GNU General Public License as published by
@@ -22,6 +22,8 @@ import os
 import boto3
 
 from pathlib import Path
+import numpy as np
+import typing
 
 import tensorflow as tf
 
@@ -29,7 +31,7 @@ import tensorflow as tf
 class Model:
     """Model to handle prediction for MNIST classification."""
 
-    def __init__(self):
+    def __init__(self) -> None:
         """Load model once when app starts."""
         # Path to data
         use_ceph = bool(int(os.getenv("TUTORIAL_USE_CEPH", 0)))
@@ -38,9 +40,10 @@ class Model:
         trained_model_path = directory_path.joinpath(
             str(os.environ.get("THOTH_AIDEVSECOPS_TRAINED_MODEL_PATH", "models"))
         )
+
         model_version = str(
             os.environ.get(
-                "THOTH_AIDEVSECOPS_MODEL_VERSION", "210124112759-d97fd1f46b13ee40"
+                "THOTH_AIDEVSECOPS_MODEL_VERSION", "tf-210915165333-7b04047d1220f5cd"
             )
         )
 
@@ -55,7 +58,7 @@ class Model:
             s3_secret_key = os.environ["AWS_SECRET_ACCESS_KEY"]
             s3_bucket = os.getenv(
                 "BUCKET_NAME",
-                "test-new-elyra-kfp-79f9251e-19c3-4d80-8b68-969e8495dd34",
+                "elyra-aidevsecops-tutorial",
             )
 
             # Create an S3 client
@@ -80,10 +83,10 @@ class Model:
         self.model = loaded_model
         self.model_version = model_version
 
-    def predict(self, image_array):
+    def predict(self, image: typing.Any) -> typing.Tuple[float, float]:
         """Make prediction using MNIST classifcation model."""
+        # Default is TensorFlow model
         # reshape
-        image = image_array.reshape(1, 28, 28, 1)
-
-        prediction = self.model.predict(image)
+        image_ = np.array(image).reshape(1, 28, 28, 1)
+        prediction = self.model.predict(image_)
         return prediction.argmax(), prediction[0][prediction.argmax()]
