@@ -5,4 +5,4 @@ We have created different versions for the MNIST application depending on differ
 
 - [MNIST application with Tensorflow](./mnist-classification-application-tensorflow.md)
 
-- [MNIST application with Pytorch and Neural Magic](./mnist-classification-application-pytorch-neuralmagic.md)
+- [MNIST application with Pytorch and Neural Magic](./neural-magic-overview.md)

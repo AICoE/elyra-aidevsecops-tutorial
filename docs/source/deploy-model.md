@@ -6,6 +6,13 @@ There are different ways to deploy a model and there are different tools that ca
 
 [Deploy Inference Application using Flask+gunicorn](./model-deployment/flask-application.md)
 
+## Seldon
+
+WIP
+
+## OpenVINO
+
+WIP
 
 ## KFServing
 
