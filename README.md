@@ -1,4 +1,3 @@
-
 # Elyra AIDevSecOps Tutorial
 
 This tutorial is used to discuss the interface between Data Science and DevOps. It looks to highlight that data scientists are not so different from developers, therefore they need to know Git and follow best practices to maintain their dependencies and code, add tests and make release. All these tasks can be supported through pipelines and bots so that data scientists can focus on the main problem to solve. In other words in this tutorial you will learn how the ML lifecycle, practices and tools can be enhanced by DevSecOps techniques.
