@@ -23,7 +23,7 @@ Moreover, using Meteor, the URL of your GitHub repo already add your repo to [Ju
 
 If you're viewing this tutorial outside of the Jupyter Book rendered by Project Meteor, you can instead access the [JupyterHub][3] deployed on the [Operate First][4] cluster.
 
-1. Click this [link](https://jupyterhub-opf-jupyterhub.apps.zero.massopen.cloud/) to visit the Operate First JupyterHub.
+1. Click this [link](https://jupyterhub-opf-jupyterhub.apps.smaug.na.operate-first.cloud/) to visit the Operate First JupyterHub.
 
     <div style="text-align:center">
     <img alt="Jupyter Hub UI" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/JupyterHubNewUI.png">
