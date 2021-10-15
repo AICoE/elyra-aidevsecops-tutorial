@@ -21,6 +21,8 @@ spec:
       containers:
         - name: neural-magic-deepsparse
           image: quay.io/thoth-station/neural-magic-deepsparse
+          nodeSelector:
+            feature.node.kubernetes.io/cpu-cpuid.avx2: 'true'
           env:
             - name: WEB_CONCURRENCY
               value: "1"

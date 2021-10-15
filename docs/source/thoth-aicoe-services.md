@@ -76,11 +76,11 @@ build:
 ```
 
 For more detailed information on the config file and robot accounts, visit the [AICoE CI documentation](https://github.com/AICoE/aicoe-ci#configuring-build-requirements).
-Once you modify the .aicoe.yaml push the changes to your repo. Check [push changes section]((./push-changes.md)) for more details.
+Once you modify the .aicoe-ci.yaml push the changes to your repo. Check [push changes section]((./push-changes.md)) for more details.
 
 ## Ask for new release
 
-Some of the pipelines used in the Thoth project are maintained by bots. Therefore you can simply open an issue asking for a release (e.g patch, minor, major) and the bots will handle your request. Once the request is completed, the bot will also automatically close the issue, as you can see from the images below:
+Some of the pipelines used in the Thoth project are maintained by bots. Therefore you can simply open an issue asking for a release from the repo you maintain (e.g patch, minor, major) and the bots will handle your request. Once the request is completed, the bot will also automatically close the issue, as you can see from the images below:
 
 <div style="text-align:center">
 <img alt="Open Issue Release" src="https://raw.githubusercontent.com/thoth-station/elyra-aidevsecops-tutorial/master/docs/images/OpenIssueRelease.png">
