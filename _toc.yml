@@ -7,20 +7,18 @@ parts:
     - file: docs/source/setup-initial-environment
     - file: docs/source/push-changes
     - file: docs/source/thoth-aicoe-services
-  - caption: AI Lifecycle (TensorFlow)
+  - caption: MNIST Classification (TensorFlow)
     chapters:
     - file: notebooks/tf-mnist/download_dataset
     - file: notebooks/tf-mnist/training
-    - file: notebooks/test_deployed_model
-    - file: docs/source/create-ai-pipeline
-    - file: docs/source/run-ai-pipeline
-  - caption: AI Lifecycle (Pytorch + NeuralMagic)
+  - caption: MNIST Classification (Pytorch + NeuralMagic)
     chapters:
     - file: notebooks/neural-magic-torch-mnist/download_dataset
     - file: notebooks/neural-magic-torch-mnist/training
     - file: notebooks/neural-magic-torch-mnist/convert_model_to_onnx
     - file: notebooks/neural-magic-torch-mnist/sparsify
-    - file: notebooks/test_deployed_model
+  - caption: AI Pipeline
+    chapters:
     - file: docs/source/create-ai-pipeline
     - file: docs/source/run-ai-pipeline
   - caption: DevOps Lifecycle
@@ -29,4 +27,5 @@ parts:
       sections:
         - file: docs/source/model-deployment/flask-application
     - file: docs/source/test-model
+    - file: notebooks/test_deployed_model
     - file: docs/source/monitor-model
