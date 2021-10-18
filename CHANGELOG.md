@@ -1,4 +1,21 @@
 
+## Release 0.13.0 (2021-10-15T12:58:01)
+### Features
+* Add node selector to manifest (#455)
+* update link to smaug cluster (#451)
+* Fix links in main README (#447)
+* Feature/neural magic extension of the Elyra Tutorial (#446)
+* update pre-requisite
+* Update models
+* Update README.md
+* Add link to video of the workshop at DevConf.US
+* Add slide from workshop devconfus2021 (#288)
+* :ship: Deploy the Tag v0.12.1 for elyra-aidevsecops-tutorial
+### Improvements
+* Remove html part and update overlays
+### Other
+* remove jbook html files
+
 ## Release 0.12.1 (2021-09-02T16:03:22)
 ### Features
 * Use v0.3.3 custom elyra image
