@@ -22,7 +22,7 @@ overlays:
 
   - name: experiment
     build:
-      base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.3.3"
+      base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.4.1"
       build-source-script: "image:///opt/app-root/builder"
       custom-tag: latest
       build-stratergy: Source
@@ -43,7 +43,7 @@ overlays:
       project-org: "thoth-station"
       project-name: "elyra-aidevsecops-tutorial"
       image-name: "elyra-aidevsecops-tutorial"
-      overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
+      overlay-contextpath: "manifests/overlays/inference/imagestreamtag.yaml"
     gather:
       overlay-name: test-model
       name: gather_deployment_metrics_using_tensorflow
@@ -69,7 +69,6 @@ overlays:
   - name: nm-convert-onnx
     build:
       base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
-      build-source-script: "image:///opt/app-root/builder"
       custom-tag: latest
       build-stratergy: Source
       registry: quay.io
@@ -80,7 +79,6 @@ overlays:
   - name: nm-sparseml
     build:
       base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
-      build-source-script: "image:///opt/app-root/builder"
       custom-tag: latest
       build-stratergy: Source
       registry: quay.io
@@ -100,7 +98,7 @@ overlays:
       project-org: "thoth-station"
       project-name: "elyra-aidevsecops-tutorial"
       image-name: "neural-magic-deepsparse"
-      overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
+      overlay-contextpath: "manifests/overlays/nm-inference/imagestreamtag.yaml"
     gather:
       overlay-name: test-model
       name: gather_deployment_metrics_using_tensorflow
@@ -117,7 +115,7 @@ overlays:
       project-org: "thoth-station"
       project-name: "elyra-aidevsecops-tutorial"
       image-name: "elyra-aidevsecops-pytorch-inference"
-      overlay-contextpath: "manifests/overlays/test/imagestreamtag.yaml"
+      overlay-contextpath: "manifests/overlays/pytorch-inference/imagestreamtag.yaml"
     gather:
       overlay-name: test-model
       name: gather_deployment_metrics_using_pytorch
