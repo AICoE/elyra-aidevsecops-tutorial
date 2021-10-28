@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/elyra-aidevsecops-pytorch-inference:v0.13.0
+        name: quay.io/thoth-station/elyra-aidevsecops-pytorch-inference:v0.13.1
       importPolicy: {}
       referencePolicy:
         type: Source
