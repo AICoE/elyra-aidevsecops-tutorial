@@ -1,4 +1,9 @@
 
+## Release 0.13.1 (2021-10-20T17:26:16)
+### Features
+* update custom base image for correct jupyter version (#458)
+* Fix build jupyter book (#457)
+
 ## Release 0.13.0 (2021-10-15T12:58:01)
 ### Features
 * Add node selector to manifest (#455)
