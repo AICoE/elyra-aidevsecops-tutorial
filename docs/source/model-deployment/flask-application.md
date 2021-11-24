@@ -36,6 +36,8 @@ When you make any changes to your model, typically through retraining, and add a
 
 NOTE: _Deepsparse deployment at the moment works only with CPU that supports avx2, avx512 flags (even better if [avx512_vnni](https://en.wikichip.org/wiki/x86/avx512_vnni) with VNNI is available: https://github.com/neuralmagic/deepsparse/issues/186). Please check your environment running `cat /proc/cpuinfo` to identify flags and verify if your machine supports the deployment. In the deployment manifests in `nm-inference` overlay you need to set the env variable NM_ARCH=avx2|avx512._
 
+NOTE: Operate First has a [Grafana dashboard](http://grafana.operate-first.cloud/d/LCLH8kd7z/node-feature-discovery?orgId=1) showing what hardware and flags are available across all managed instances. In this way, we can identify the best place to deploy the model.
+
 - Image Name: `quay.io/thoth-station/neural-magic-deepsparse:v0.13.0`
 
 - [DeploymentConfig](../../../manifests/overlays/nm-inference/deploymentconfig.yaml): Deployment configs are templates for running applications on OpenShift. This will give the cluster the necessary information to deploy your Flask application.
