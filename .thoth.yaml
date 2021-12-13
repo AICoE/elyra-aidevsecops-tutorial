@@ -95,6 +95,7 @@ managers:
         - sesheta
         - goern
         - fridex
+        - Gregory-pereira
       assignees:
         - sesheta
       labels: [bot]
