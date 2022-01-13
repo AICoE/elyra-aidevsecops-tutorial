@@ -1,4 +1,13 @@
 
+## Release 0.14.0 (2022-01-13T11:23:03)
+### Features
+* Update custom elyra base image
+* :ship: Deploy the Tag pr-1 for elyra-aidevsecops-tutorial
+* :ship: Deploy the Tag pr-1 for elyra-aidevsecops-tutorial
+* :ship: Deploy the Tag v0.13.1 for elyra-aidevsecops-tutorial
+* :ship: Deploy the Tag v0.13.1 for elyra-aidevsecops-tutorial
+* :ship: Deploy the Tag v0.13.1 for elyra-aidevsecops-tutorial
+
 ## Release 0.13.1 (2021-10-20T17:26:16)
 ### Features
 * update custom base image for correct jupyter version (#458)
