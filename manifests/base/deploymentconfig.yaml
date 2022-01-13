@@ -20,7 +20,7 @@ spec:
     spec:
       containers:
         - name: elyra-aidevsecops-tutorial
-          image: quay.io/thoth-station/elyra-aidevsecops-tutorial
+          image: quay.io/thoth-station/elyra-aidevsecops-tutorial:v0.13.1
           env:
             - name: WEB_CONCURRENCY
               value: "1"
