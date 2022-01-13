@@ -7,7 +7,7 @@ spec:
     - name: latest
       from:
         kind: DockerImage
-        name: quay.io/thoth-station/nm-inference:pr-1
+        name: quay.io/thoth-station/neural-magic-deepsparse:v0.14.0
       importPolicy: {}
       referencePolicy:
         type: Source
