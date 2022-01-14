@@ -59,11 +59,11 @@ The project template used can be found here: [project template][15]. It shows co
 Here you find a list of conferences where this tutorial has been used:
 
 - [DevConf.US 2021](https://www.devconf.info/us/):
-    - [presentation](./docs/ML-Prague-2021-Workshop.pdf)
+    - [presentation](./docs/presentations/ML-Prague-2021-Workshop.pdf)
     - [video](https://www.youtube.com/watch?v=s52dKDQEiZw&t=2s)
 
 - [ML Prague 2021](https://www.mlprague.com/):
-    - [presentation](./docs/ML-Prague-2021-Workshop.pdf)
+    - [presentation](./docs/presentations/ML-Prague-2021-Workshop.pdf)
 
 
 ## References
