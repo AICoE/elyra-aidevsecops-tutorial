@@ -16,6 +16,7 @@ prometheus-client = "*"
 flask-cors = "*"
 gunicorn = "*"
 prometheus-flask-exporter = "*"
+ipython = "==7.31.0"
 boto3 = "*"
 behave = "*"
 
