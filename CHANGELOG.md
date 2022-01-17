@@ -1,4 +1,12 @@
 
+## Release 0.14.1 (2022-01-17T14:51:25)
+### Features
+* Update dependencies of all the overlays (#487)
+* :ship: Deploy the Tag v0.14.0 for elyra-aidevsecops-tutorial
+* :ship: Deploy the Tag v0.14.0 for elyra-aidevsecops-tutorial
+* :ship: Deploy the Tag v0.14.0 for elyra-aidevsecops-tutorial
+* Move presentations to docs
+
 ## Release 0.14.0 (2022-01-13T11:23:03)
 ### Features
 * Update custom elyra base image
