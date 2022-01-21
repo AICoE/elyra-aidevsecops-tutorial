@@ -9,7 +9,7 @@ torch = "*"
 torchinfo = "*"
 sparseml = "*"
 boto3 = "*"
-ipython = "==7.31.0"
+ipython = "==7.31.1"
 
 [dev-packages]
 
