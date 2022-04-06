@@ -4,7 +4,7 @@ overlays_dir: overlays
 overlays:
   - name: download-dataset
     build:
-      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.32.3"
       build-stratergy: Source
       registry: quay.io
       registry-org: thoth-station
@@ -13,7 +13,7 @@ overlays:
 
   - name: training
     build:
-      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.32.3"
       build-stratergy: Source
       registry: quay.io
       registry-org: thoth-station
@@ -22,7 +22,7 @@ overlays:
 
   - name: experiment
     build:
-      base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.4.4"
+      base-image: "quay.io/thoth-station/s2i-elyra-custom-notebook:v0.4.5"
       build-source-script: "image:///opt/app-root/builder"
       custom-tag: latest
       build-stratergy: Source
@@ -33,7 +33,7 @@ overlays:
 
   - name: inference
     build:
-      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.32.3"
       build-stratergy: Source
       registry: quay.io
       registry-org: thoth-station
@@ -50,7 +50,7 @@ overlays:
 
   - name: nm-download
     build:
-      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.32.3"
       build-stratergy: Source
       registry: quay.io
       registry-org: thoth-station
@@ -59,7 +59,7 @@ overlays:
 
   - name: pytorch-training
     build:
-      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.32.3"
       build-stratergy: Source
       registry: quay.io
       registry-org: thoth-station
@@ -68,7 +68,7 @@ overlays:
 
   - name: nm-convert-onnx
     build:
-      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.32.3"
       custom-tag: latest
       build-stratergy: Source
       registry: quay.io
@@ -78,7 +78,7 @@ overlays:
 
   - name: nm-sparseml
     build:
-      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.32.3"
       custom-tag: latest
       build-stratergy: Source
       registry: quay.io
@@ -88,7 +88,7 @@ overlays:
 
   - name: nm-inference
     build:
-      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.32.3"
       build-stratergy: Source
       registry: quay.io
       registry-org: thoth-station
@@ -105,7 +105,7 @@ overlays:
 
   - name: pytorch-inference
     build:
-      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.28.0"
+      base-image: "quay.io/thoth-station/s2i-thoth-ubi8-py38:v0.32.3"
       build-stratergy: Source
       registry: quay.io
       registry-org: thoth-station
