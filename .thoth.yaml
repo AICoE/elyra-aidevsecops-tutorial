@@ -90,11 +90,6 @@ managers:
   - name: info
   - name: version
     configuration:
-      maintainers:
-        - pacospace
-        - sesheta
-        - goern
-        - fridex
       assignees:
         - sesheta
       labels: [bot]
