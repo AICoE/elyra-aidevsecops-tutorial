@@ -64,7 +64,7 @@ Once your image is ready and you are in the Jupyterlab UI, you can use the Git e
 
 ## Next Step
 
-[Explore notebooks and manage dependencies](./explore-notebooks-and-manage-dependencies.md)
+[Explore notebooks and manage dependencies](./mnist-classification-application.md)
 
 ## References
 
